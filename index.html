@@ -343,7 +343,8 @@ const STEPS = [
       {l:'Em forma',img:'target_em_forma.png'},
       {l:'Cheia',img:'target_cheia.png'}
     ]),
-    opts:[{l:'Curvilínea'},{l:'Mag  {id:'focusareas',type:'multi-card', q:'Quais áreas do corpo você quer\nfocar?', key:'focusAreas',
+    opts:[{l:'Curvilínea'},{l:'Magra'},{l:'Normal'},{l:'Em forma'},{l:'Cheia'}]},
+  {id:'focusareas',type:'multi-card', q:'Quais áreas do corpo você quer\nfocar?', key:'focusAreas',
     getOpts: ()=>(ud.gender==='homem'?[
       {l:'Barriga',img:'peitinho.png'},{l:'Peito',img:'peitinho.png'},{l:'Braços',img:'braço.png'},{l:'Costas',img:'costa.png'},{l:'Pernas',img:'perna.png'}
     ]:[
@@ -465,6 +466,7 @@ const STEPS = [
   {id:'event',    type:'single', q:'Você tem algum evento importante\nchegando?',
     sub:'Ter algo para esperar pode ser uma grande motivação para alcançar o seu objetivo!',
     key:'upcomingEvent',
+    opts:[{l:'Férias',e:'✈️'},{l:'Casamento',e:'💍'},{l:'Feriado',e:'🏖️'},{l:'Evento esportivo',e:'🏆'},{l:'Encontro de amigos',e:'🎂'},{l:'Aniversário',e:'🎉'},{l:'Outro',e:'🤷'},{l:'Não tenho nenhum evento',e:'❌'}]},
   {id:'wgraph',   type:'weight-graph'},
   {id:'loading',  type:'loading'},
   {id:'result',   type:'result'}
