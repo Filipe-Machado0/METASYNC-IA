@@ -321,18 +321,38 @@ const STEPS = [
   {id:'goal',     type:'single', q:'Qual é o seu objetivo principal?', key:'goal',
     opts:[{l:'Perder peso',e:'🏃‍♀️'},{l:'Ficar em forma',e:'💪'},{l:'Melhorar a saúde do coração',e:'❤️‍🩺'},{l:'Aliviar o estresse',e:'🧘‍♀️'}]},
   {id:'bodytype', type:'single', q:'Como você descreveria seu físico?', key:'bodyType',
-    opts:[{l:'Magra',e:'🟢'},{l:'Falsa magra',e:'🟡'},{l:'Sobrepeso',e:'🟠'},{l:'Obesa',e:'🔴'}]},
+    getOpts: ()=>(ud.gender==='homem'?[
+      {l:'Magro',img:'magro.png'},{l:'Falso magro',img:'flacido.png'},{l:'Sobrepeso',img:'amais.png'},{l:'Obeso',img:'amais.png'}
+    ]:[
+      {l:'Magra',img:'magro.png'},{l:'Falsa magra',img:'flacido.png'},{l:'Sobrepeso',img:'amais.png'},{l:'Obesa',img:'amais.png'}
+    ]),
+    opts:[{l:'Magro'},{l:'Falso magro'},{l:'Sobrepeso'},{l:'Obeso'}]},
   {id:'info-chart1', type:'info-chart1'},
   {id:'targetbody',type:'single', q:'Qual corpo você deseja alcançar?', key:'targetBody',
-    opts:[{l:'Curvilínea',e:'🌟'},{l:'Magra',e:'✨'},{l:'Normal',e:'🙂'},{l:'Em forma',e:'💪'},{l:'Cheia',e:'😊'}]},
+    getOpts: ()=>(ud.gender==='homem'?[
+      {l:'Definido',e:'🌟'},{l:'Magro',e:'✨'},{l:'Normal',e:'🙂'},{l:'Em forma',e:'💪'},{l:'Forte',e:'😊'}
+    ]:[
+      {l:'Curvilínea',e:'🌟'},{l:'Magra',e:'✨'},{l:'Normal',e:'🙂'},{l:'Em forma',e:'💪'},{l:'Cheia',e:'😊'}
+    ]),
+    opts:[{l:'Definido'},{l:'Magro'},{l:'Normal'},{l:'Em forma'},{l:'Forte'}]},
   {id:'focusareas',type:'multi-card', q:'Quais áreas do corpo você quer\nfocar?', key:'focusAreas',
-    opts:[{l:'Barriga',e:'🫁'},{l:'Bunda',e:'🍑'},{l:'Peito',e:'💙'},{l:'Pernas',e:'🦵'}]},
+    getOpts: ()=>(ud.gender==='homem'?[
+      {l:'Barriga',img:'peitinho.png'},{l:'Peito',img:'peitinho.png'},{l:'Braços',img:'braço.png'},{l:'Costas',img:'costa.png'},{l:'Pernas',img:'perna.png'}
+    ]:[
+      {l:'Barriga',img:'peitinho.png'},{l:'Peito',img:'peitinho.png'},{l:'Braços',img:'braço.png'},{l:'Costas',img:'costa.png'},{l:'Pernas',img:'perna.png'}
+    ]),
+    opts:[{l:'Barriga'},{l:'Peito'},{l:'Braços'},{l:'Costas'},{l:'Pernas'}]},
   {id:'lastshape', type:'single', q:'Faz quanto tempo que você se\nsentiu na sua melhor forma?', key:'lastBestShape',
-    layout:'side', img:'👸',
+    layout:'side', getImg: ()=>(ud.gender==='homem'?'🧔':'👸'),
     opts:[{l:'0 a 6 meses atrás'},{l:'7 a 12 meses atrás'},{l:'1 a 3 anos atrás'},{l:'Mais de 3 anos atrás'}]},
   {id:'info-metabolism', type:'info-metabolism'},
   {id:'bodyDesc', type:'single', q:'O que mais te descreve?', key:'bodyDescription',
-    opts:[{l:'Tenho dificuldade em ganhar músculos',e:'😐'},{l:'Eu ganho e perco sem esforço',e:'💪'},{l:'Eu ganho peso facilmente, mas tenho dificuldade para perder',e:'😬'}]},
+    getOpts: ()=>(ud.gender==='homem'?[
+      {l:'Tenho dificuldade em ganhar músculos',e:'😐'},{l:'Eu ganho e perco sem esforço',e:'💪'},{l:'Eu ganho peso facilmente, mas tenho dificuldade para perder',e:'😬'}
+    ]:[
+      {l:'Tenho dificuldade em ganhar músculos',e:'😐'},{l:'Eu ganho e perco sem esforço',e:'💪'},{l:'Eu ganho peso facilmente, mas tenho dificuldade para perder',e:'😬'}
+    ]),
+    opts:[{l:'Tenho dificuldade em ganhar músculos'},{l:'Eu ganho e perco sem esforço'},{l:'Eu ganho peso facilmente, mas tenho dificuldade para perder'}]},
   {id:'ifknowledge',type:'single', q:'O que você sabe sobre o jejum\nintermitente?', key:'ifKnowledge',
     opts:[{l:'Não sei nada',e:'🤔'},{l:'Já ouvi falar um pouco',e:'🤷'},{l:'Entendo bastante',e:'😎'}]},
   {id:'breakfast', type:'single', q:'Quando você costuma tomar seu\ncafé da manhã?', key:'breakfast',
@@ -342,25 +362,38 @@ const STEPS = [
   {id:'dinner',   type:'single', q:'Quando você janta?', key:'dinner',
     opts:[{l:'Entre 16h e 18h',e:'🥩'},{l:'Entre 18h e 20h',e:'🍲'},{l:'Entre 20h e 22h',e:'🥑'},{l:'Eu costumo pular o jantar',e:'💧'}]},
   {id:'restrictions',type:'multi', q:'Você tem alguma restrição\nalimentar?', key:'dietaryRestrictions',
-    opts:[
+    getOpts: ()=>(ud.gender==='homem'?[
       {l:'Sem lactose',sub:'Eu não consumo alimentos com lactose',e:'🥛'},
       {l:'Sem glúten',sub:'Eu evito grãos com glúten',e:'🍞'},
       {l:'Vegetariano',sub:'Eu não como carne',e:'🥦'},
       {l:'Vegano',sub:'Eu não consumo produto de origem animal',e:'🌱'},
       {l:'Nenhum peixe',sub:'Não como nenhum tipo de peixe',e:'🐟'},
+      {l:'Nenhum dos acima',sub:'Eu como quase tudo',e:'❌'}
+    ]:[
+      {l:'Sem lactose',sub:'Eu não consumo alimentos com lactose',e:'🥛'},
+      {l:'Sem glúten',sub:'Eu evito grãos com glúten',e:'🍞'},
+      {l:'Vegetariana',sub:'Eu não como carne',e:'🥦'},
+      {l:'Vegana',sub:'Eu não consumo produto de origem animal',e:'🌱'},
+      {l:'Nenhum peixe',sub:'Não como nenhum tipo de peixe',e:'🐟'},
       {l:'Nenhuma das acima',sub:'Eu como quase tudo',e:'❌'}
-    ]},
+    ]),
+    opts:[{l:'Sem lactose'},{l:'Sem glúten'},{l:'Vegetariano'},{l:'Vegano'},{l:'Nenhum peixe'},{l:'Nenhum dos acima'}]},
   {id:'dislikedfoods',type:'food-picker', q:'Escolha as comidas que você NÃO gosta'},
   {id:'mealpref', type:'single', q:'Você prefere cozinhar, comer fora\nou pedir comida?', key:'mealPreference',
     opts:[{l:'Cozinhar em casa',e:'🍳'},{l:'Eu prefiro ir a um restaurante',e:'🍽️'},{l:'Gosto de pedir comida',e:'🍟'},{l:'Eu faço um pouco de tudo',e:'😊'}]},
   {id:'weekendbrk',type:'single', q:'Você precisa de uma pausa no\nJejum para o final de semana?', key:'weekendBreak',
     opts:[{l:'Claro que sim! Final de semana é para curtir',e:'🤙'},{l:'Não paro nem no fim de semana!',e:'💪'}]},
   {id:'exercise', type:'single', q:'Com que frequência você se\nexercita?', key:'exerciseFrequency',
-    layout:'side', img:'🏃‍♀️',
+    layout:'side', getImg: ()=>(ud.gender==='homem'?'🏃‍♂️':'🏃‍♀️'),
     opts:[{l:'Quase todos os dias'},{l:'Várias vezes por semana'},{l:'Várias vezes por mês'},{l:'Nunca'}]},
   {id:'workroutine',type:'single', q:'Como é a sua rotina de trabalho?', key:'workRoutine',
-    layout:'side', img:'👩‍💼',
-    opts:[{l:'das 09:00 às 18:00'},{l:'Turnos noturnos'},{l:'Meu horário é flexível'},{l:'Estou aposentada'}]},
+    layout:'side', getImg: ()=>(ud.gender==='homem'?'👨‍💼':'👩‍💼'),
+    getOpts: ()=>(ud.gender==='homem'?[
+      {l:'das 09:00 às 18:00'},{l:'Turnos noturnos'},{l:'Meu horário é flexível'},{l:'Estou aposentado'}
+    ]:[
+      {l:'das 09:00 às 18:00'},{l:'Turnos noturnos'},{l:'Meu horário é flexível'},{l:'Estou aposentada'}
+    ]),
+    opts:[{l:'das 09:00 às 18:00'},{l:'Turnos noturnos'},{l:'Meu horário é flexível'},{l:'Estou aposentado'}]},
   {id:'sleep',    type:'single', q:'Quantas horas você costuma\ndormir?', key:'sleepHours',
     layout:'side', img:'😴',
     opts:[{l:'Durmo pouco (menos de 5 horas)'},{l:'Eu consigo dormir um pouco (5-6 horas)'},{l:'Eu durmo muito e bem (7-8 horas)'},{l:'Gosto de dormir até mais tarde (mais de 8 horas)'}]},
@@ -368,15 +401,26 @@ const STEPS = [
     layout:'side', img:'💧',
     opts:[{l:'Eu só tomo café ou chá'},{l:'Cerca de 2 copos'},{l:'2 a 6 copos'},{l:'Mais de 6 copos'}]},
   {id:'physical', type:'multi', q:'Você tem algum desses problemas?', key:'physicalProblems',
-    opts:[{l:'Joelhos sensíveis',e:'🦵'},{l:'Costas sensíveis',e:'🔙'},{l:'Nenhuma das acima',e:'✅'}]},
+    getOpts: ()=>(ud.gender==='homem'?[
+      {l:'Joelhos sensíveis',e:'🦵'},{l:'Costas sensíveis',e:'🔙'},{l:'Nenhum dos acima',e:'✅'}
+    ]:[
+      {l:'Joelhos sensíveis',e:'🦵'},{l:'Costas sensíveis',e:'🔙'},{l:'Nenhuma das acima',e:'✅'}
+    ]),
+    opts:[{l:'Joelhos sensíveis'},{l:'Costas sensíveis'},{l:'Nenhum dos acima'}]},
   {id:'info-face',type:'info-face'},
   {id:'weightgain',type:'multi', q:'Algum desses acontecimentos fez\nvocê ganhar peso nos últimos\nanos?', key:'weightGainEvents',
-    opts:[
+    getOpts: ()=>(ud.gender==='homem'?[
+      {l:'Casamento ou relacionamento',e:'💍'},{l:'Rotina corrida com trabalho ou família',e:'😔'},
+      {l:'Dificuldades financeiras',e:'💰'},{l:'Lesão ou incapacidade',e:'🤕'},
+      {l:'Estresse ou problemas de saúde mental',e:'😤'},{l:'Metabolismo mais lento devido a idade',e:'🐌'},
+      {l:'Complicações pós-tratamentos',e:'💊'},{l:'Nenhum dos acima',e:'❌'}
+    ]:[
       {l:'Casamento ou relacionamento',e:'💍'},{l:'Rotina corrida com trabalho ou família',e:'😔'},
       {l:'Dificuldades financeiras',e:'💰'},{l:'Lesão ou incapacidade',e:'🤕'},
       {l:'Estresse ou problemas de saúde mental',e:'😤'},{l:'Metabolismo mais lento devido a idade',e:'🐌'},
       {l:'Complicações pós-tratamentos',e:'💊'},{l:'Nenhuma das acima',e:'❌'}
-    ]},
+    ]),
+    opts:[{l:'Casamento ou relacionamento'},{l:'Rotina corrida'}]},
   {id:'height',   type:'slider', q:'Qual é a sua altura?', key:'height', min:140, max:220, def:165, units:['cm','pol']},
   {id:'curweight',type:'slider', q:'Qual é o seu peso atual?', key:'currentWeight', min:40, max:180, def:70, units:['kg','lb']},
   {id:'tgtweight',type:'slider', q:'Qual é o seu peso desejado?', key:'targetWeight', min:40, max:180, def:60, units:['kg','lb'], showIMC:true},
@@ -941,7 +985,7 @@ function drawMetabolism(){
 
 function calcIMC(){ const h=ud.height/100,w=ud.currentWeight; return h&&w?w/(h*h):25; }
 function imcPct(imc){ return Math.max(5,Math.min(93,((imc-13)/(42-13))*100)); }
-function imcText(imc){ return imc<18.5?'Abaixo do peso':imc<25?'Normal':imc<30?'Sobrepeso':'Obeso'; }
+function imcText(imc){ return imc<18.5?'Abaixo do peso':imc<25?'Normal':imc<30?'Sobrepeso':(ud.gender==='homem'?'Obeso':'Obesa'); }
 function bodyEmoji(imc){ return imc<18.5?'🦴':imc<25?'😊':imc<30?'🙂':'😔'; }
 function toDisplay(val,key,unit){
   if(key==='height' && unit==='pol') return Math.round(val/2.54);
