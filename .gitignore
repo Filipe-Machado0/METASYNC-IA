@@ -1,0 +1,9 @@
+# Arquivos temporários de análise
+analyze.js
+download_missing.js
+
+# Node.js
+node_modules/
+
+# Logs
+*.log
