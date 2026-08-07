@@ -319,7 +319,12 @@ const STEPS = [
     opts:[{l:'18 a 25 anos'},{l:'26 a 35 anos'},{l:'36 a 45 anos'},{l:'+46 anos'}]},
   {id:'social1',  type:'info-social'},
   {id:'goal',     type:'single', q:'Qual é o seu objetivo principal?', key:'goal',
-    opts:[{l:'Perder peso',e:'🏃‍♀️'},{l:'Ficar em forma',e:'💪'},{l:'Melhorar a saúde do coração',e:'❤️‍🩺'},{l:'Aliviar o estresse',e:'🧘‍♀️'}]},
+    opts:[
+      {l:'Perder peso',img:'goal_lose_weight.jpg'},
+      {l:'Ficar em forma',img:'goal_get_fit.jpg'},
+      {l:'Melhorar a saúde do coração',img:'goal_heart_health.jpg'},
+      {l:'Aliviar o estresse',img:'goal_relieve_stress.jpg'}
+    ]},
   {id:'bodytype', type:'single', q:'Como você descreveria seu físico?', key:'bodyType',
     getOpts: ()=>(ud.gender==='homem'?[
       {l:'Magro',img:'magro.png'},{l:'Falso magro',img:'flacido.png'},{l:'Sobrepeso',img:'amais.png'},{l:'Obeso',img:'amais.png'}
@@ -354,11 +359,25 @@ const STEPS = [
     ]),
     opts:[{l:'Tenho dificuldade em ganhar músculos'},{l:'Eu ganho e perco sem esforço'},{l:'Eu ganho peso facilmente, mas tenho dificuldade para perder'}]},
   {id:'ifknowledge',type:'single', q:'O que você sabe sobre o jejum\nintermitente?', key:'ifKnowledge',
-    opts:[{l:'Não sei nada',e:'🤔'},{l:'Já ouvi falar um pouco',e:'🤷'},{l:'Entendo bastante',e:'😎'}]},
+    opts:[
+      {l:'Não sei nada',img:'if_know_nothing.jpg'},
+      {l:'Já ouvi falar um pouco',img:'if_know_a_little.jpg'},
+      {l:'Entendo bastante',img:'if_know_a_lot.jpg'}
+    ]},
   {id:'breakfast', type:'single', q:'Quando você costuma tomar seu\ncafé da manhã?', key:'breakfast',
-    opts:[{l:'Entre 6 e 8 da manhã',e:'🫐'},{l:'Entre 8 e 10 da manhã',e:'🥗'},{l:'Entre 10h e meio-dia',e:'🍳'},{l:'Eu costumo pular o café da manhã',e:'☕'}]},
+    opts:[
+      {l:'Entre 6 e 8 da manhã',img:'breakfast_early.jpg'},
+      {l:'Entre 8 e 10 da manhã',img:'breakfast_mid.jpg'},
+      {l:'Entre 10h e meio-dia',img:'breakfast_late.jpg'},
+      {l:'Eu costumo pular o café da manhã',img:'breakfast_skip.jpg'}
+    ]},
   {id:'lunch',    type:'single', q:'Quando você costuma almoçar?', key:'lunch',
-    opts:[{l:'Entre 10h e 12h',e:'🥗'},{l:'Entre 12h e 14h',e:'🍱'},{l:'Entre 14h e 16h',e:'🍽️'},{l:'Eu costumo pular o almoço',e:'💧'}]},
+    opts:[
+      {l:'Entre 10h e 12h',img:'lunch_12.jpg'},
+      {l:'Entre 12h e 14h',img:'lunch_12.jpg'},
+      {l:'Entre 14h e 16h',img:'lunch_14.jpg'},
+      {l:'Eu costumo pular o almoço',img:'breakfast_skip.jpg'}
+    ]},
   {id:'dinner',   type:'single', q:'Quando você janta?', key:'dinner',
     opts:[{l:'Entre 16h e 18h',e:'🥩'},{l:'Entre 18h e 20h',e:'🍲'},{l:'Entre 20h e 22h',e:'🥑'},{l:'Eu costumo pular o jantar',e:'💧'}]},
   {id:'restrictions',type:'multi', q:'Você tem alguma restrição\nalimentar?', key:'dietaryRestrictions',
