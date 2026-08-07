@@ -337,9 +337,13 @@ const STEPS = [
     getOpts: ()=>(ud.gender==='homem'?[
       {l:'Definido',e:'🌟'},{l:'Magro',e:'✨'},{l:'Normal',e:'🙂'},{l:'Em forma',e:'💪'},{l:'Forte',e:'😊'}
     ]:[
-      {l:'Curvilínea',e:'🌟'},{l:'Magra',e:'✨'},{l:'Normal',e:'🙂'},{l:'Em forma',e:'💪'},{l:'Cheia',e:'😊'}
+      {l:'Curvilínea',img:'target_curvilinea.png'},
+      {l:'Magra',img:'target_magra.png'},
+      {l:'Normal',img:'target_normal.png'},
+      {l:'Em forma',img:'target_em_forma.png'},
+      {l:'Cheia',img:'target_cheia.png'}
     ]),
-    opts:[{l:'Definido'},{l:'Magro'},{l:'Normal'},{l:'Em forma'},{l:'Forte'}]},
+    opts:[{l:'Curvilínea'},{l:'Magra'},{l:'Normal'},{l:'Em forma'},{l:'Cheia'}]},
   {id:'focusareas',type:'multi-card', q:'Quais áreas do corpo você quer\nfocar?', key:'focusAreas',
     getOpts: ()=>(ud.gender==='homem'?[
       {l:'Barriga',img:'peitinho.png'},{l:'Peito',img:'peitinho.png'},{l:'Braços',img:'braço.png'},{l:'Costas',img:'costa.png'},{l:'Pernas',img:'perna.png'}
@@ -611,13 +615,14 @@ function renderMulti(step){
 
 function renderMultiCard(step){
   const saved = ud[step.key]||[];
+  const opts = typeof step.getOpts === 'function' ? step.getOpts() : step.opts;
   return `
   <div>
     <h2 class="q-title">${step.question||step.q}</h2>
     <div class="opts" id="multi-opts">
-      ${step.opts.map(o=>`
+      ${opts.map(o=>`
       <div class="opt ${saved.includes(o.l)?'sel':''}" onclick="togMulti('${step.key}','${esc(o.l)}',this)">
-        <div class="opt-img-l">${o.e||''}</div>
+        ${o.img ? `<div class="opt-img-l" style="width:42px;height:42px;border-radius:10px;overflow:hidden;border:1px solid var(--border-glass)"><img src="${o.img}" style="width:100%;height:100%;object-fit:cover"></div>` : `<div class="opt-img-l">${o.e||''}</div>`}
         <span class="opt-label">${o.l}</span>
         <div class="chk"><span class="chk-mark">✓</span></div>
       </div>`).join('')}
