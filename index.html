@@ -3,266 +3,272 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Seca Jejum — Plano Personalizado de Jejum Adaptado & Mentoria IA 24h</title>
-<meta name="description" content="Descubra seu Plano Personalizado de Jejum Adaptado. Elimine até 10kg em 21 dias sem passar fome e sem efeito sanfona com acompanhamento de IA 24h.">
+<title>METASYNC IA — Laboratório Digital de Biohacking & Jejum Adaptado</title>
+<meta name="description" content="Sincronização Metabólica de Alta Precisão. Elimine até 10kg em 21 dias com Nutrição Adaptada e Mentoria IA 24h.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 <style>
-/* ===== RESET ===== */
+/* ===== RESET & ROOT ===== */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:#e8e8e8;min-height:100vh;display:flex;justify-content:center;align-items:flex-start}
+html{scroll-behavior:smooth;background:#06080A}
+body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:#06080A;color:#E1E7ED;min-height:100vh;display:flex;justify-content:center;align-items:flex-start;overflow-x:hidden}
 
-/* ===== VARIABLES ===== */
 :root{
-  --primary:#1BC9B5;
-  --primary-dark:#17b0a0;
-  --primary-light:#e0f9f6;
-  --text:#1a1a1a;
-  --text-muted:#666;
-  --border:#e8e8e8;
-  --red:#e74c3c;
-  --green:#27ae60;
-  --yellow:#f39c12;
+  --bg-deep:#0D0D0D;
+  --bg-card:rgba(18, 24, 32, 0.65);
+  --cyan-neon:#00F2FF;
+  --cyan-glow:rgba(0, 242, 255, 0.35);
+  --cyan-dark:#008B99;
+  --cyan-light:rgba(0, 242, 255, 0.1);
+  --silver:#A0AAB0;
+  --silver-light:#D0D8DF;
+  --border-glass:rgba(0, 242, 255, 0.18);
+  --border-subtle:rgba(255, 255, 255, 0.08);
+  --red-neon:#FF3B5C;
+  --green-neon:#00FF87;
+  --yellow-neon:#FFB800;
+}
+
+/* ===== BACKGROUND FX ===== */
+body::before{
+  content:'';position:fixed;top:0;left:0;width:100vw;height:100vh;
+  background:radial-gradient(circle at 50% 15%, rgba(0, 242, 255, 0.08) 0%, rgba(13, 13, 13, 0) 70%),
+             radial-gradient(circle at 80% 75%, rgba(0, 255, 135, 0.04) 0%, rgba(13, 13, 13, 0) 60%);
+  pointer-events:none;z-index:0;
 }
 
 /* ===== APP SHELL ===== */
-#app{width:100%;max-width:430px;min-height:100vh;background:#fff;position:relative;overflow-x:hidden}
+#app{width:100%;max-width:440px;min-height:100vh;background:var(--bg-deep);position:relative;overflow-x:hidden;z-index:1;box-shadow:0 0 50px rgba(0, 242, 255, 0.12);border-left:1px solid var(--border-subtle);border-right:1px solid var(--border-subtle)}
 
 /* ===== HEADER ===== */
-.quiz-header{display:flex;align-items:center;justify-content:center;padding:14px 16px;position:relative;background:#fff}
-.btn-back{position:absolute;left:14px;background:none;border:none;font-size:22px;cursor:pointer;color:#333;padding:4px 8px;line-height:1;display:none}
-.logo{font-size:15px;font-weight:800;color:#1a1a1a;display:flex;align-items:center;gap:5px;letter-spacing:-0.3px}
+.quiz-header{display:flex;align-items:center;justify-content:center;padding:16px;position:relative;background:rgba(13, 13, 13, 0.85);backdrop-filter:blur(16px);border-bottom:1px solid var(--border-glass)}
+.btn-back{position:absolute;left:14px;background:none;border:none;font-size:22px;cursor:pointer;color:var(--silver);padding:4px 8px;line-height:1;display:none;transition:color .2s}
+.btn-back:hover{color:var(--cyan-neon)}
+.logo{font-family:'Montserrat',sans-serif;font-size:16px;font-weight:900;letter-spacing:1.5px;text-transform:uppercase;color:#fff;display:flex;align-items:center;gap:6px;text-shadow:0 0 14px var(--cyan-glow)}
+.logo-badge{background:linear-gradient(135deg,var(--cyan-neon),var(--cyan-dark));color:#06080A;font-size:10px;font-weight:900;padding:2px 6px;border-radius:4px;letter-spacing:0.5px}
 
 /* ===== PROGRESS ===== */
-.progress-bar-wrap{width:100%;height:4px;background:#e8e8e8;display:none}
-.progress-bar-fill{height:100%;background:var(--primary);transition:width .45s ease;border-radius:0 2px 2px 0}
+.progress-bar-wrap{width:100%;height:3px;background:rgba(255,255,255,0.06);display:none;position:relative}
+.progress-bar-fill{height:100%;background:linear-gradient(to right,var(--cyan-dark),var(--cyan-neon));transition:width .45s ease;box-shadow:0 0 10px var(--cyan-neon)}
 
 /* ===== STEP CONTAINER ===== */
-.step-wrap{padding:22px 20px 36px;min-height:calc(100vh - 70px);display:flex;flex-direction:column}
-.step-wrap.anim-in{animation:slideIn .28s ease}
-.step-wrap.anim-back{animation:slideInLeft .28s ease}
+.step-wrap{padding:24px 20px 40px;min-height:calc(100vh - 75px);display:flex;flex-direction:column}
+.step-wrap.anim-in{animation:fadeIn .35s ease}
+.step-wrap.anim-back{animation:fadeInLeft .35s ease}
 
-@keyframes slideIn{from{opacity:0;transform:translateX(28px)}to{opacity:1;transform:translateX(0)}}
-@keyframes slideInLeft{from{opacity:0;transform:translateX(-28px)}to{opacity:1;transform:translateX(0)}}
+@keyframes fadeIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeInLeft{from{opacity:0;transform:translateY(-12px)}to{opacity:1;transform:translateY(0)}}
+
+/* ===== SYNC LOADER ===== */
+.sync-overlay{position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(13,13,13,0.88);backdrop-filter:blur(8px);display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:99;animation:fadeIn .2s ease}
+.sync-spinner{width:48px;height:48px;border:3px solid rgba(0,242,255,0.15);border-top:3px solid var(--cyan-neon);border-radius:50%;animation:spin .6s linear infinite;box-shadow:0 0 15px var(--cyan-glow)}
+.sync-text{font-family:'Montserrat',sans-serif;font-size:12px;font-weight:700;letter-spacing:2px;color:var(--cyan-neon);margin-top:16px;text-transform:uppercase;text-shadow:0 0 10px var(--cyan-glow)}
+
+@keyframes spin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
 
 /* ===== TYPOGRAPHY ===== */
-.q-title{font-size:21px;font-weight:900;color:var(--text);line-height:1.3;margin-bottom:22px;white-space:pre-line}
+.q-title{font-family:'Montserrat',sans-serif;font-size:22px;font-weight:800;color:#fff;line-height:1.35;margin-bottom:22px;white-space:pre-line;letter-spacing:-0.2px}
 .q-title.center{text-align:center}
-.q-sub{font-size:13px;color:var(--text-muted);line-height:1.55;margin-bottom:18px}
+.q-sub{font-size:13.5px;color:var(--silver);line-height:1.6;margin-bottom:20px;letter-spacing:0.3px}
 
-/* ===== OPTION CARDS ===== */
-.opts{display:flex;flex-direction:column;gap:10px}
-.opt{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;border:1.5px solid var(--border);border-radius:14px;cursor:pointer;transition:border-color .18s,background .18s,transform .12s;background:#fff;-webkit-tap-highlight-color:transparent}
+/* ===== GLASS CARDS & OPTIONS ===== */
+.opts{display:flex;flex-direction:column;gap:12px}
+.opt{display:flex;align-items:center;justify-content:space-between;padding:16px;background:var(--bg-card);border:1px solid var(--border-glass);backdrop-filter:blur(12px);border-radius:16px;cursor:pointer;transition:all .2s ease;-webkit-tap-highlight-color:transparent}
+.opt:hover{border-color:var(--cyan-neon);box-shadow:0 0 20px var(--cyan-light);transform:translateY(-1px)}
 .opt:active{transform:scale(.98)}
-.opt:hover{border-color:var(--primary)}
-.opt.sel{border-color:var(--primary);background:var(--primary-light)}
-.opt-label{font-size:14.5px;font-weight:500;color:var(--text);flex:1;line-height:1.4}
-.opt-sub{font-size:11.5px;color:#888;font-weight:400;margin-top:2px}
-.opt-emoji{font-size:22px;margin-left:8px;flex-shrink:0}
-.opt-img-l{width:56px;height:56px;border-radius:10px;object-fit:cover;margin-right:12px;flex-shrink:0;background:#f5ede0;display:flex;align-items:center;justify-content:center;font-size:28px;overflow:hidden}
+.opt.sel{border-color:var(--cyan-neon);background:rgba(0, 242, 255, 0.08);box-shadow:0 0 25px var(--cyan-glow)}
+.opt-label{font-size:15px;font-weight:600;color:#F0F5FA;flex:1;line-height:1.4}
+.opt-sub{font-size:12px;color:var(--silver);font-weight:400;margin-top:3px}
+.opt-emoji{font-size:24px;margin-left:10px;flex-shrink:0}
+.opt-img-l{width:56px;height:56px;border-radius:12px;object-fit:cover;margin-right:14px;flex-shrink:0;background:rgba(255,255,255,0.04);border:1px solid var(--border-glass);display:flex;align-items:center;justify-content:center;font-size:28px;overflow:hidden}
 
-/* Checkbox */
-.chk{width:22px;height:22px;border-radius:6px;border:2px solid #ccc;flex-shrink:0;display:flex;align-items:center;justify-content:center;margin-left:8px;transition:all .18s}
-.opt.sel .chk{background:var(--primary);border-color:var(--primary)}
-.chk-mark{color:#fff;font-size:13px;font-weight:700;display:none}
+/* Neon Checkbox */
+.chk{width:22px;height:22px;border-radius:6px;border:1.5px solid var(--silver);flex-shrink:0;display:flex;align-items:center;justify-content:center;margin-left:10px;transition:all .2s}
+.opt.sel .chk{background:var(--cyan-neon);border-color:var(--cyan-neon);box-shadow:0 0 10px var(--cyan-neon)}
+.chk-mark{color:#06080A;font-size:13px;font-weight:900;display:none}
 .opt.sel .chk-mark{display:block}
 
 /* ===== GENDER GRID ===== */
 .gender-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:4px}
-.gender-card{border:1.5px solid var(--border);border-radius:18px;overflow:hidden;cursor:pointer;transition:border-color .18s,transform .18s;background:#fff;-webkit-tap-highlight-color:transparent}
-.gender-card:hover{border-color:var(--primary);transform:translateY(-2px)}
-.gender-card.sel{border-color:var(--primary)}
-.gender-card-img{width:100%;height:175px;display:flex;align-items:center;justify-content:center;font-size:80px;background:#f5ede0}
-.gender-card-img.woman{background:#f0e8d8}
-.gender-card-foot{display:flex;align-items:center;justify-content:space-between;padding:12px 14px;font-weight:700;font-size:15px;color:var(--text)}
+.gender-card{background:var(--bg-card);border:1px solid var(--border-glass);backdrop-filter:blur(12px);border-radius:20px;overflow:hidden;cursor:pointer;transition:all .25s ease;-webkit-tap-highlight-color:transparent}
+.gender-card:hover{border-color:var(--cyan-neon);box-shadow:0 0 25px var(--cyan-glow);transform:translateY(-3px)}
+.gender-card.sel{border-color:var(--cyan-neon);box-shadow:0 0 30px var(--cyan-glow)}
+.gender-card-img{width:100%;height:180px;display:flex;align-items:center;justify-content:center;font-size:82px;background:rgba(255,255,255,0.02)}
+.gender-card-foot{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;font-family:'Montserrat',sans-serif;font-weight:700;font-size:15px;color:#fff}
 
 /* ===== SIDE-IMAGE LAYOUT ===== */
-.side-layout{display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:start}
-.side-img-box{border-radius:18px;overflow:hidden;background:#f5ede0;aspect-ratio:.65;display:flex;align-items:center;justify-content:center;font-size:80px;position:relative}
-.side-opts{display:flex;flex-direction:column;gap:9px}
-.side-opts .opt{padding:10px 12px}
-.side-opts .opt-label{font-size:13px}
+.side-layout{display:grid;grid-template-columns:1.1fr 1fr;gap:14px;align-items:start}
+.side-img-box{border-radius:20px;overflow:hidden;background:var(--bg-card);border:1px solid var(--border-glass);backdrop-filter:blur(12px);aspect-ratio:.68;display:flex;align-items:center;justify-content:center;font-size:84px;position:relative}
+.side-opts{display:flex;flex-direction:column;gap:10px}
+.side-opts .opt{padding:12px 14px}
+.side-opts .opt-label{font-size:13.5px}
 
 /* ===== BUTTONS ===== */
-.btn{width:100%;padding:17px;border:none;border-radius:14px;font-size:16px;font-weight:700;cursor:pointer;transition:background .18s,transform .12s;font-family:inherit;letter-spacing:.2px}
+.btn{width:100%;padding:18px;border:none;border-radius:16px;font-family:'Montserrat',sans-serif;font-size:15.5px;font-weight:800;cursor:pointer;transition:all .2s ease;letter-spacing:0.5px;-webkit-tap-highlight-color:transparent}
 .btn:active{transform:scale(.98)}
-.btn-primary{background:var(--primary);color:#fff}
-.btn-primary:hover{background:var(--primary-dark)}
-.btn-intro{text-transform:none;font-size:15.5px;padding:18px}
+.btn-primary{background:linear-gradient(135deg,var(--cyan-neon),var(--cyan-dark));color:#06080A;box-shadow:0 0 20px var(--cyan-glow)}
+.btn-primary:hover{box-shadow:0 0 30px rgba(0, 242, 255, 0.6);transform:translateY(-1px)}
+.btn-intro{text-transform:uppercase;font-size:15px;padding:20px}
 .mt16{margin-top:16px}
 
-/* ===== INFO BOXES ===== */
-.info-box{border-radius:14px;padding:15px 16px;margin:14px 0;font-size:13px;line-height:1.55}
-.info-box .ib-title{font-weight:700;margin-bottom:5px}
-.info-blue{background:#EBF5FB;border-left:4px solid #2E86C1}
-.info-blue .ib-title{color:#1A5276}
-.info-blue p{color:#1A5276}
-.info-yellow{background:#FEF9E7;border-left:4px solid var(--yellow)}
-.info-yellow .ib-title{color:#7D6608}
-.info-yellow p{color:#7D6608}
+/* ===== GLASS INFO BOXES ===== */
+.info-box{background:var(--bg-card);border:1px solid var(--border-glass);backdrop-filter:blur(12px);border-radius:16px;padding:16px;margin:16px 0;font-size:13.5px;line-height:1.6}
+.info-box .ib-title{font-weight:800;font-size:14px;margin-bottom:6px}
+.info-blue{border-left:4px solid var(--cyan-neon);background:rgba(0, 242, 255, 0.06)}
+.info-blue .ib-title{color:var(--cyan-neon)}
+.info-blue p{color:var(--silver-light)}
+.info-yellow{border-left:4px solid var(--yellow-neon);background:rgba(255, 184, 0, 0.06)}
+.info-yellow .ib-title{color:var(--yellow-neon)}
+.info-yellow p{color:var(--silver-light)}
 
 /* ===== SLIDER ===== */
-.slider-wrap{text-align:center;margin:16px 0}
-.slider-num{font-size:54px;font-weight:900;color:var(--text);line-height:1}
-.slider-unit-label{font-size:26px;font-weight:600;color:#aaa}
-.unit-toggle{display:inline-flex;background:#f2f2f2;border-radius:20px;padding:3px;margin-bottom:18px}
-.unit-btn{padding:6px 22px;border-radius:18px;border:none;background:none;cursor:pointer;font-weight:600;font-size:13.5px;color:#888;transition:all .2s;font-family:inherit}
-.unit-btn.active{background:var(--primary);color:#fff}
-.range-track{position:relative;padding:18px 0}
-input[type=range].rng{-webkit-appearance:none;width:100%;height:5px;outline:none;border-radius:3px;background:#e0e0e0;cursor:pointer}
-input[type=range].rng::-webkit-slider-thumb{-webkit-appearance:none;width:26px;height:26px;border-radius:50%;background:var(--primary);cursor:pointer;box-shadow:0 2px 10px rgba(27,201,181,.45)}
-.slider-hint{font-size:12px;color:#bbb;margin-top:6px;text-align:center}
-.slider-minmax{display:flex;justify-content:space-between;font-size:11px;color:#bbb;margin-top:2px}
+.slider-wrap{text-align:center;margin:20px 0}
+.slider-num{font-family:'Montserrat',sans-serif;font-size:56px;font-weight:900;color:#fff;line-height:1;text-shadow:0 0 15px var(--cyan-glow)}
+.slider-unit-label{font-size:24px;font-weight:600;color:var(--silver);margin-left:4px}
+.unit-toggle{display:inline-flex;background:rgba(255,255,255,0.05);border:1px solid var(--border-subtle);border-radius:24px;padding:4px;margin-bottom:20px}
+.unit-btn{padding:7px 24px;border-radius:20px;border:none;background:none;cursor:pointer;font-weight:700;font-size:13px;color:var(--silver);transition:all .2s;font-family:inherit}
+.unit-btn.active{background:var(--cyan-neon);color:#06080A;box-shadow:0 0 12px var(--cyan-glow)}
+.range-track{position:relative;padding:20px 0}
+input[type=range].rng{-webkit-appearance:none;width:100%;height:6px;outline:none;border-radius:4px;background:rgba(255,255,255,0.1);cursor:pointer}
+input[type=range].rng::-webkit-slider-thumb{-webkit-appearance:none;width:28px;height:28px;border-radius:50%;background:var(--cyan-neon);cursor:pointer;box-shadow:0 0 15px var(--cyan-neon)}
+.slider-hint{font-size:12px;color:var(--silver);margin-top:8px;text-align:center;letter-spacing:0.5px}
+.slider-minmax{display:flex;justify-content:space-between;font-size:11px;color:var(--silver);margin-top:4px}
 
 /* ===== AGE INPUT ===== */
-.age-input{width:100%;padding:16px 18px;border:1.5px solid var(--border);border-radius:14px;font-size:17px;font-family:inherit;outline:none;color:var(--text);margin-bottom:14px;transition:border-color .2s}
-.age-input:focus{border-color:var(--primary)}
+.age-input{width:100%;padding:18px;background:var(--bg-card);border:1px solid var(--border-glass);backdrop-filter:blur(12px);border-radius:16px;font-size:18px;font-family:inherit;outline:none;color:#fff;margin-bottom:16px;transition:all .2s;text-align:center}
+.age-input:focus{border-color:var(--cyan-neon);box-shadow:0 0 20px var(--cyan-glow)}
 
 /* ===== FOOD PICKER ===== */
-.food-cat-title{font-size:12px;font-weight:700;color:#aaa;text-transform:uppercase;letter-spacing:.8px;padding:8px 0 8px;border-bottom:1px solid #f5f5f5;margin-bottom:10px}
+.food-cat-title{font-family:'Montserrat',sans-serif;font-size:12px;font-weight:800;color:var(--cyan-neon);text-transform:uppercase;letter-spacing:1px;padding:10px 0 6px;margin-bottom:8px;border-bottom:1px solid var(--border-subtle)}
 .food-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:18px}
-.food-chip{border:1.5px solid var(--border);border-radius:12px;padding:10px 6px;text-align:center;font-size:12px;font-weight:500;cursor:pointer;transition:border-color .18s,background .18s,transform .1s;-webkit-tap-highlight-color:transparent}
+.food-chip{background:var(--bg-card);border:1px solid var(--border-glass);backdrop-filter:blur(12px);border-radius:14px;padding:12px 6px;text-align:center;font-size:12px;font-weight:600;cursor:pointer;transition:all .18s ease;-webkit-tap-highlight-color:transparent;color:var(--silver-light)}
 .food-chip:active{transform:scale(.95)}
-.food-chip.sel{border-color:var(--primary);background:var(--primary-light);color:var(--primary)}
-.food-chip .fc-icon{display:block;font-size:22px;margin-bottom:3px}
+.food-chip.sel{border-color:var(--cyan-neon);background:rgba(0, 242, 255, 0.12);color:var(--cyan-neon);box-shadow:0 0 15px var(--cyan-glow)}
+.food-chip .fc-icon{display:block;font-size:22px;margin-bottom:4px}
 
 /* ===== SOCIAL PROOF ===== */
-.sp-title{font-size:44px;font-weight:900;text-align:center}
-.sp-sub{font-size:15px;text-align:center;color:var(--text);margin-bottom:8px}
-.sp-sub span{color:var(--primary);font-weight:700}
+.sp-title{font-family:'Montserrat',sans-serif;font-size:46px;font-weight:900;text-align:center;color:#fff;text-shadow:0 0 20px var(--cyan-glow)}
+.sp-sub{font-size:15px;text-align:center;color:var(--silver);margin-bottom:10px}
+.sp-sub span{color:var(--cyan-neon);font-weight:700}
 
 /* ===== CHARTS ===== */
-.chart-box{background:#fafafa;border-radius:16px;padding:16px;margin:14px 0;overflow:hidden}
+.chart-box{background:var(--bg-card);border:1px solid var(--border-glass);backdrop-filter:blur(12px);border-radius:20px;padding:16px;margin:16px 0;overflow:hidden}
 canvas{max-width:100%}
 
 /* ===== IMC BAR ===== */
-.imc-track{width:100%;height:10px;border-radius:5px;background:linear-gradient(to right,#3498db 0%,#27ae60 35%,#f39c12 65%,#e74c3c 100%);position:relative;margin:10px 0}
-.imc-thumb{position:absolute;width:20px;height:20px;border-radius:50%;background:#fff;border:3px solid var(--primary);top:50%;transform:translateY(-50%) translateX(-50%);transition:left .4s ease;box-shadow:0 2px 6px rgba(0,0,0,.15)}
-.imc-labels{display:flex;justify-content:space-between;font-size:11px;color:#aaa}
+.imc-track{width:100%;height:10px;border-radius:5px;background:linear-gradient(to right,#3498db 0%,var(--green-neon) 35%,var(--yellow-neon) 65%,var(--red-neon) 100%);position:relative;margin:12px 0}
+.imc-thumb{position:absolute;width:22px;height:22px;border-radius:50%;background:#fff;border:3px solid var(--cyan-neon);top:50%;transform:translateY(-50%) translateX(-50%);transition:left .4s ease;box-shadow:0 0 12px var(--cyan-neon)}
+.imc-labels{display:flex;justify-content:space-between;font-size:11px;color:var(--silver)}
 
 /* ===== LOADING ===== */
-.loading-bar-track{background:#e8e8e8;border-radius:8px;height:12px;overflow:hidden;margin:6px 0 10px}
-.loading-bar-fill{height:100%;background:var(--primary);border-radius:8px;transition:width .45s ease}
-.loading-status{font-weight:700;font-size:15px;margin-bottom:3px}
-.loading-sub{font-size:12px;color:#aaa;margin-bottom:24px}
+.loading-bar-track{background:rgba(255,255,255,0.06);border-radius:8px;height:12px;overflow:hidden;margin:8px 0 12px;border:1px solid var(--border-subtle)}
+.loading-bar-fill{height:100%;background:linear-gradient(to right,var(--cyan-dark),var(--cyan-neon));border-radius:8px;transition:width .45s ease;box-shadow:0 0 12px var(--cyan-glow)}
+.loading-status{font-family:'Montserrat',sans-serif;font-weight:800;font-size:16px;color:#fff;margin-bottom:4px}
+.loading-sub{font-size:12.5px;color:var(--silver);margin-bottom:24px}
 
-/* ===== TESTIMONIAL ===== */
-.test-card{background:#F9F9FC;border:1px solid #EDEDF5;border-radius:16px;padding:16px;text-align:left;margin-bottom:12px}
-.test-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
-.test-user{display:flex;align-items:center;gap:10px}
-.test-avatar{width:42px;height:42px;border-radius:50%;background:var(--primary-light);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;overflow:hidden}
-.test-name{font-weight:700;font-size:13.5px;color:#333}
-.test-stars{color:var(--primary);font-size:14px;font-weight:700}
-.test-star-icon{color:#1BC9B5;font-size:18px}
-.test-title{font-weight:800;font-size:14px;margin-bottom:6px;color:#111}
-.test-body{font-size:12.5px;color:#555;line-height:1.55}
-
-/* ===== DOTS ===== */
-.dots{display:flex;justify-content:center;gap:6px;margin-top:12px}
-.dot{width:8px;height:8px;border-radius:50%;background:#ddd;transition:background .2s}
-.dot.act{background:var(--primary)}
+/* ===== TESTIMONIAL CARDS ===== */
+.test-card{background:var(--bg-card);border:1px solid var(--border-glass);backdrop-filter:blur(12px);border-radius:18px;padding:18px;text-align:left;margin-bottom:14px}
+.test-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+.test-user{display:flex;align-items:center;gap:12px}
+.test-avatar{width:44px;height:44px;border-radius:50%;background:rgba(0, 242, 255, 0.1);border:1px solid var(--cyan-neon);display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;overflow:hidden}
+.test-name{font-weight:700;font-size:14px;color:#fff}
+.test-stars{color:var(--cyan-neon);font-size:14px;font-weight:700}
+.test-star-icon{color:var(--cyan-neon);font-size:18px;text-shadow:0 0 8px var(--cyan-glow)}
+.test-title{font-family:'Montserrat',sans-serif;font-weight:800;font-size:14px;margin-bottom:6px;color:#fff}
+.test-body{font-size:13px;color:var(--silver-light);line-height:1.6}
 
 /* ===== WEIGHT GRAPH ===== */
-.graph-wrap{position:relative;background:#fff;border-radius:16px;margin:10px 0;overflow:visible;padding:8px 8px 0}
-.graph-badge{position:absolute;background:#e8e8e8;border-radius:10px;padding:4px 10px;font-size:11.5px;font-weight:600;color:#555}
-.graph-goal{position:absolute;right:12px;bottom:24px;background:var(--primary);border-radius:8px;padding:4px 10px;font-size:12px;font-weight:700;color:#fff}
-.graph-labels{display:flex;justify-content:space-between;font-size:11px;color:#bbb;padding:2px 4px 4px}
+.graph-wrap{position:relative;background:var(--bg-card);border:1px solid var(--border-glass);backdrop-filter:blur(12px);border-radius:20px;margin:14px 0;overflow:visible;padding:10px 10px 0}
+.graph-badge{position:absolute;background:rgba(255,255,255,0.08);border:1px solid var(--border-subtle);border-radius:10px;padding:4px 12px;font-size:11.5px;font-weight:700;color:var(--silver-light)}
+.graph-goal{position:absolute;right:14px;bottom:26px;background:linear-gradient(135deg,var(--cyan-neon),var(--cyan-dark));border-radius:8px;padding:5px 12px;font-size:12px;font-weight:900;color:#06080A;box-shadow:0 0 15px var(--cyan-glow)}
+.graph-labels{display:flex;justify-content:space-between;font-size:11px;color:var(--silver);padding:4px 6px 6px}
 
-/* ===== SALES PAGE ===== */
-#sales-page{display:none;background:#fff;max-width:430px;width:100%}
-.sales-header-bar{width:100%;height:5px;background:linear-gradient(to right,var(--primary),var(--primary-dark))}
-.sales-logo{text-align:center;padding:14px;font-size:16px;font-weight:800;display:flex;align-items:center;justify-content:center;gap:5px;border-bottom:1px solid #f5f5f5}
+/* ===== SALES PAGE (DASHBOARD LAB AESTHETIC) ===== */
+#sales-page{display:none;background:var(--bg-deep);max-width:440px;width:100%}
+.sales-header-bar{width:100%;height:3px;background:linear-gradient(to right,var(--cyan-dark),var(--cyan-neon),var(--green-neon));box-shadow:0 0 12px var(--cyan-glow)}
+.sales-logo{text-align:center;padding:16px;font-family:'Montserrat',sans-serif;font-size:16px;font-weight:900;letter-spacing:1.5px;color:#fff;display:flex;align-items:center;justify-content:center;gap:6px;border-bottom:1px solid var(--border-subtle)}
 
-/* App & AI Badge */
-.app-hero-badge{background:linear-gradient(135deg,#1BC9B5,#0d9182);color:#fff;border-radius:16px;padding:16px;margin:14px 20px;display:flex;align-items:center;gap:14px;box-shadow:0 4px 14px rgba(27,201,181,0.25)}
-.app-badge-icon{font-size:42px;flex-shrink:0}
-.app-badge-txt{font-size:13px;line-height:1.4}
-.app-badge-txt strong{font-size:15px;display:block;margin-bottom:2px}
+/* Cyberpunk App & AI Hero Banner */
+.app-hero-badge{background:linear-gradient(135deg, rgba(0, 242, 255, 0.15), rgba(0, 139, 153, 0.25));border:1px solid var(--cyan-neon);backdrop-filter:blur(16px);border-radius:20px;padding:18px;margin:16px 20px;display:flex;align-items:center;gap:14px;box-shadow:0 0 25px var(--cyan-glow)}
+.app-badge-icon{font-size:46px;flex-shrink:0;filter:drop-shadow(0 0 8px var(--cyan-neon))}
+.app-badge-txt{font-size:13px;line-height:1.45;color:var(--silver-light)}
+.app-badge-txt strong{font-family:'Montserrat',sans-serif;font-size:15px;font-weight:800;color:#fff;display:block;margin-bottom:3px}
 
-.compare-wrap{background:#f5ede0;border-radius:20px;padding:18px;margin:12px 0}
+.compare-wrap{background:var(--bg-card);border:1px solid var(--border-glass);backdrop-filter:blur(12px);border-radius:22px;padding:20px;margin:14px 0}
 .compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.compare-ava{text-align:center;font-size:72px;margin-bottom:12px;line-height:1}
-.compare-ava-label{font-size:11px;font-weight:700;color:#aaa;text-transform:uppercase;letter-spacing:.8px;margin-bottom:8px}
-.compare-col-title{font-size:17px;font-weight:900;margin-bottom:12px}
-.metric{margin-bottom:10px}
-.metric-name{font-size:11px;color:#666;margin-bottom:2px}
-.metric-val{font-size:11.5px;font-weight:700;margin-bottom:3px}
-.metric-bar-track{height:8px;background:#e0e0e0;border-radius:4px;overflow:hidden}
+.compare-ava{text-align:center;font-size:74px;margin-bottom:12px;line-height:1;filter:drop-shadow(0 0 10px rgba(255,255,255,0.1))}
+.compare-ava-label{font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;color:var(--cyan-neon);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px}
+.compare-col-title{font-family:'Montserrat',sans-serif;font-size:17px;font-weight:900;color:#fff;margin-bottom:14px}
+.metric{margin-bottom:12px}
+.metric-name{font-size:11px;color:var(--silver);margin-bottom:3px}
+.metric-val{font-size:12px;font-weight:800;margin-bottom:4px}
+.metric-bar-track{height:8px;background:rgba(255,255,255,0.06);border-radius:4px;overflow:hidden;border:1px solid var(--border-subtle)}
 .metric-bar-fill{height:100%;border-radius:4px;transition:width .5s ease}
-.fill-red{background:var(--red)}
-.fill-green{background:var(--green)}
-.how-box{background:#E8F8F0;border-radius:16px;padding:18px;margin:16px 0}
-.how-box h3{font-size:15px;font-weight:800;margin-bottom:8px;color:#1a5c3a}
-.how-box p{font-size:13px;color:#2c7a5a;line-height:1.6}
-.plan-incl-title{font-size:22px;font-weight:900;text-align:center;margin:20px 0 16px}
-.plan-item{padding:22px 20px;border-bottom:1px solid #f7f7f7;text-align:center}
-.plan-icon{font-size:42px;margin-bottom:12px}
-.plan-title{font-size:17px;font-weight:800;margin-bottom:8px;line-height:1.3}
-.plan-desc{font-size:13px;color:#666;line-height:1.6}
+.fill-red{background:linear-gradient(to right,#ff6b81,var(--red-neon));box-shadow:0 0 8px var(--red-neon)}
+.fill-green{background:linear-gradient(to right,var(--cyan-dark),var(--green-neon));box-shadow:0 0 8px var(--green-neon)}
+
+.how-box{background:rgba(0, 255, 135, 0.05);border:1px solid rgba(0, 255, 135, 0.2);backdrop-filter:blur(12px);border-radius:18px;padding:20px;margin:18px 0}
+.how-box h3{font-family:'Montserrat',sans-serif;font-size:16px;font-weight:800;margin-bottom:8px;color:var(--green-neon)}
+.how-box p{font-size:13.5px;color:var(--silver-light);line-height:1.65}
+
+.plan-incl-title{font-family:'Montserrat',sans-serif;font-size:22px;font-weight:900;text-align:center;color:#fff;margin:24px 0 18px;letter-spacing:-0.3px}
+
+.plan-item{padding:22px 20px;border-bottom:1px solid var(--border-subtle);text-align:center}
+.plan-icon{font-size:44px;margin-bottom:12px;filter:drop-shadow(0 0 10px var(--cyan-glow))}
+.plan-title{font-family:'Montserrat',sans-serif;font-size:17px;font-weight:800;color:#fff;margin-bottom:8px;line-height:1.35}
+.plan-desc{font-size:13.5px;color:var(--silver-light);line-height:1.6}
 
 /* Expert Card */
-.expert-card{background:#FAF9FF;border:1.5px solid #E6E1FA;border-radius:20px;padding:20px;margin:24px 20px;text-align:center}
-.expert-avatar{width:90px;height:90px;border-radius:50%;background:#e0f5e8;margin:0 auto 12px;display:flex;align-items:center;justify-content:center;font-size:48px;border:3px solid var(--primary)}
-.expert-name{font-size:18px;font-weight:900;color:#111;margin-bottom:2px}
-.expert-title{font-size:12px;font-weight:700;color:var(--primary);text-transform:uppercase;letter-spacing:.8px;margin-bottom:10px}
-.expert-bio{font-size:13px;color:#555;line-height:1.6}
+.expert-card{background:linear-gradient(135deg, rgba(20, 25, 35, 0.7), rgba(10, 15, 20, 0.9));border:1px solid var(--cyan-neon);backdrop-filter:blur(16px);border-radius:24px;padding:22px;margin:26px 20px;text-align:center;box-shadow:0 0 30px var(--cyan-light)}
+.expert-avatar{width:96px;height:96px;border-radius:50%;background:rgba(0, 242, 255, 0.1);margin:0 auto 14px;display:flex;align-items:center;justify-content:center;font-size:52px;border:2px solid var(--cyan-neon);box-shadow:0 0 20px var(--cyan-glow)}
+.expert-name{font-family:'Montserrat',sans-serif;font-size:19px;font-weight:900;color:#fff;margin-bottom:3px}
+.expert-title{font-size:11.5px;font-weight:800;color:var(--cyan-neon);text-transform:uppercase;letter-spacing:1px;margin-bottom:12px}
+.expert-bio{font-size:13px;color:var(--silver-light);line-height:1.65}
 
 /* FAQ Accordion */
 .faq-wrap{padding:0 20px;margin:24px 0}
-.faq-item{border:1.5px solid var(--border);border-radius:14px;margin-bottom:10px;overflow:hidden;background:#fff}
-.faq-q{padding:16px;font-size:14px;font-weight:700;color:#222;display:flex;justify-content:space-between;align-items:center;cursor:pointer;user-select:none}
-.faq-q span{color:var(--primary);font-size:18px;transition:transform .2s}
+.faq-item{background:var(--bg-card);border:1px solid var(--border-glass);backdrop-filter:blur(12px);border-radius:16px;margin-bottom:12px;overflow:hidden}
+.faq-q{padding:18px 16px;font-family:'Montserrat',sans-serif;font-size:14px;font-weight:700;color:#fff;display:flex;justify-content:space-between;align-items:center;cursor:pointer;user-select:none}
+.faq-q span{color:var(--cyan-neon);font-size:20px;transition:transform .25s ease;text-shadow:0 0 8px var(--cyan-glow)}
 .faq-item.open .faq-q span{transform:rotate(45deg)}
-.faq-a{padding:0 16px 16px;font-size:13px;color:#555;line-height:1.6;display:none;border-top:1px solid #f5f5f5}
+.faq-a{padding:0 16px 18px;font-size:13px;color:var(--silver-light);line-height:1.65;display:none;border-top:1px solid var(--border-subtle)}
 .faq-item.open .faq-a{display:block}
 
-.price-badge{background:var(--primary);color:#fff;border-radius:12px 12px 0 0;padding:13px 16px;text-align:center;font-size:13px;font-weight:600}
-.price-card{border:2px solid var(--primary);border-radius:0 0 12px 12px;padding:16px;display:flex;justify-content:space-between;align-items:center;background:#fff}
-.price-product{font-weight:700;font-size:14px;line-height:1.4}
+/* Pricing Card */
+.price-badge{background:linear-gradient(135deg,var(--cyan-neon),var(--cyan-dark));color:#06080A;border-radius:14px 14px 0 0;padding:14px 16px;text-align:center;font-family:'Montserrat',sans-serif;font-size:13px;font-weight:900;letter-spacing:0.5px}
+.price-card{background:var(--bg-card);border:2px solid var(--cyan-neon);border-top:none;border-radius:0 0 16px 16px;padding:18px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 0 25px var(--cyan-light)}
+.price-product{font-family:'Montserrat',sans-serif;font-weight:800;font-size:14px;color:#fff;line-height:1.4}
 .price-val{text-align:right}
-.price-install{font-size:14px;font-weight:800;color:var(--primary)}
-.price-full{font-size:11.5px;color:#aaa}
-.trust{display:flex;justify-content:center;gap:20px;margin-top:14px;padding-bottom:8px}
-.trust-item{display:flex;flex-direction:column;align-items:center;gap:3px;font-size:11px;font-weight:700;color:#555;text-align:center}
-.trust-icon{font-size:22px}
-.cta-btn{width:100%;padding:20px;background:var(--primary);color:#fff;border:none;border-radius:14px;font-size:17px;font-weight:800;cursor:pointer;margin-top:16px;font-family:inherit;letter-spacing:.3px;transition:background .18s,transform .12s;text-transform:uppercase}
-.cta-btn:hover{background:var(--primary-dark)}
+.price-install{font-family:'Montserrat',sans-serif;font-size:15px;font-weight:900;color:var(--cyan-neon);text-shadow:0 0 10px var(--cyan-glow)}
+.price-full{font-size:11.5px;color:var(--silver)}
+.trust{display:flex;justify-content:center;gap:20px;margin-top:16px;padding-bottom:8px}
+.trust-item{display:flex;flex-direction:column;align-items:center;gap:4px;font-size:11px;font-weight:700;color:var(--silver);text-align:center}
+.trust-icon{font-size:24px}
+.cta-btn{width:100%;padding:22px;background:linear-gradient(135deg,var(--cyan-neon),var(--cyan-dark));color:#06080A;border:none;border-radius:16px;font-family:'Montserrat',sans-serif;font-size:16px;font-weight:900;cursor:pointer;margin-top:18px;letter-spacing:0.8px;transition:all .2s ease;text-transform:uppercase;box-shadow:0 0 25px var(--cyan-glow)}
+.cta-btn:hover{box-shadow:0 0 35px rgba(0, 242, 255, 0.7);transform:translateY(-2px)}
 .cta-btn:active{transform:scale(.98)}
 
 /* Gallery of Transformation Photos */
 .photos-grid{display:flex;flex-direction:column;gap:16px;padding:0 20px;margin:20px 0}
-.photo-pair{display:grid;grid-template-columns:1fr 1fr;gap:8px;border-radius:16px;overflow:hidden;background:#f5ede0;height:240px;position:relative}
-.photo-card{height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:64px;position:relative;background:#f0e8d8}
-.photo-card.after{background:#e0f5e8}
-.photo-tag{position:absolute;top:8px;left:8px;font-size:10px;font-weight:700;padding:3px 8px;border-radius:4px;color:#fff}
-.tag-before{background:var(--red)}
-.tag-after{background:var(--green)}
+.photo-pair{display:grid;grid-template-columns:1fr 1fr;gap:10px;border-radius:18px;overflow:hidden;background:var(--bg-card);border:1px solid var(--border-glass);height:240px;position:relative}
+.photo-card{height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:68px;position:relative;background:rgba(255,255,255,0.02)}
+.photo-card.after{background:rgba(0, 255, 135, 0.04)}
+.photo-tag{position:absolute;top:10px;left:10px;font-size:10px;font-weight:800;padding:4px 8px;border-radius:6px;color:#fff;text-transform:uppercase;letter-spacing:0.5px}
+.tag-before{background:var(--red-neon);box-shadow:0 0 8px var(--red-neon)}
+.tag-after{background:var(--green-neon);color:#06080A;box-shadow:0 0 8px var(--green-neon)}
 
 /* Guarantee Box */
-.guarantee-box{text-align:center;padding:24px 20px;margin:24px 0 10px;background:#fff;border-top:1px solid #f0f0f0}
-.guarantee-seal{width:110px;height:110px;margin:0 auto 14px;background:#fcf4d4;border:4px dashed var(--yellow);border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#b58105;font-weight:900;line-height:1.1}
-.guarantee-seal span{font-size:28px}
+.guarantee-box{text-align:center;padding:28px 20px;margin:28px 0 10px;background:var(--bg-card);border-top:1px solid var(--border-glass)}
+.guarantee-seal{width:115px;height:115px;margin:0 auto 16px;background:rgba(255, 184, 0, 0.08);border:2px dashed var(--yellow-neon);border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--yellow-neon);font-weight:900;line-height:1.1;box-shadow:0 0 20px rgba(255, 184, 0, 0.15)}
+.guarantee-seal span{font-size:30px}
 .guarantee-seal small{font-size:9px;letter-spacing:1px}
-.guarantee-title{font-size:19px;font-weight:900;margin-bottom:10px;color:#111}
-.guarantee-desc{font-size:13px;color:#666;line-height:1.6;margin-bottom:14px}
-.guarantee-email{font-weight:700;color:#333;background:#f5f5f5;padding:4px 10px;border-radius:6px;font-size:12.5px;display:inline-block}
-
-/* ===== INFO SCREENS ===== */
-.info-big-title{font-size:21px;font-weight:900;line-height:1.3;text-align:center;margin-bottom:14px}
-.info-body-text{font-size:13.5px;color:#555;line-height:1.65;text-align:center;margin-bottom:16px}
-.face-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:14px 0;border-radius:16px;overflow:hidden}
-.face-card{border-radius:14px;height:150px;display:flex;align-items:center;justify-content:center;font-size:54px}
-
-/* ===== RESULT SCREEN ===== */
-.result-target{font-size:16px;font-weight:900;text-align:center;margin:6px 0 14px}
+.guarantee-title{font-family:'Montserrat',sans-serif;font-size:20px;font-weight:900;margin-bottom:10px;color:#fff}
+.guarantee-desc{font-size:13.5px;color:var(--silver-light);line-height:1.65;margin-bottom:16px}
+.guarantee-email{font-weight:700;color:var(--cyan-neon);background:rgba(0, 242, 255, 0.08);border:1px solid var(--border-glass);padding:6px 14px;border-radius:8px;font-size:13px;display:inline-block}
 
 /* ===== SCROLLBAR HIDE ===== */
 ::-webkit-scrollbar{width:0;height:0}
-
-/* ===== MOBILE ===== */
-@media(min-width:431px){#app,#sales-page{box-shadow:0 0 40px rgba(0,0,0,.12)}}
 </style>
 </head>
 <body>
@@ -270,7 +276,9 @@ canvas{max-width:100%}
   <div id="quiz-section">
     <div class="quiz-header" id="hdr">
       <button class="btn-back" id="btnBack" onclick="goBack()">←</button>
-      <div class="logo">🔥 SECA JEJUM</div>
+      <div class="logo">
+        <span class="logo-badge">LAB</span> METASYNC IA
+      </div>
     </div>
     <div class="progress-bar-wrap" id="pbWrap">
       <div class="progress-bar-fill" id="pbFill" style="width:0%"></div>
@@ -418,53 +426,68 @@ function render(){
   window.scrollTo(0,0);
 }
 
+function triggerSyncNext(){
+  const app = document.getElementById('app');
+  const sync = document.createElement('div');
+  sync.className = 'sync-overlay';
+  sync.innerHTML = `
+    <div class="sync-spinner"></div>
+    <div class="sync-text">Sincronização Metabólica...</div>
+  `;
+  app.appendChild(sync);
+
+  setTimeout(() => {
+    sync.remove();
+    next();
+  }, 480);
+}
+
 function next(){ if(currentStep < STEPS.length-1){ currentStep++; render(); } }
 function goBack(){ if(currentStep > 0){ goingBack=true; currentStep--; render(); } }
 
 function renderIntro(){
   return `
   <div style="text-align:center">
-    <h1 style="font-size:24px;font-weight:900;line-height:1.3;margin-bottom:14px;color:var(--text)">
-      Esse <span style="color:var(--primary)">Método de Jejum Adaptado</span> está ajudando Homens e Mulheres a
-      <span style="color:var(--red)">eliminar até 10kg em 21 dias</span> sem passar fome
+    <h1 style="font-family:'Montserrat',sans-serif;font-size:24px;font-weight:900;line-height:1.3;margin-bottom:14px;color:#fff">
+      Sincronize seu Metabolismo com <span style="color:var(--cyan-neon);text-shadow:0 0 12px var(--cyan-glow)">Biohacking Adaptado</span> e
+      <span style="color:var(--red-neon)">elimine até 10kg em 21 dias</span>
     </h1>
-    <p style="font-size:14px;line-height:1.55;margin-bottom:20px;color:var(--text)">
-      Responda esse <span style="color:var(--primary);font-weight:700">teste gratuito</span> de apenas 2 minutos
-      e receba seu <span style="color:var(--primary);font-weight:700">plano personalizado</span> 👇
+    <p style="font-size:14px;line-height:1.6;margin-bottom:22px;color:var(--silver)">
+      Responda a esta <span style="color:var(--cyan-neon);font-weight:700">avaliação metabólica gratuita</span> de 2 minutos e ative o seu <span style="color:var(--cyan-neon);font-weight:700">protocolo personalizado de alta precisão</span> 👇
     </p>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:18px 0;border-radius:18px;overflow:hidden">
-      <div style="background:#f0e8d8;border-radius:16px;padding:12px;display:flex;flex-direction:column;gap:8px;height:240px;justify-content:center;align-items:center;position:relative">
-        <span style="position:absolute;top:10px;left:10px;background:var(--red);color:#fff;font-size:10px;font-weight:700;padding:3px 8px;border-radius:4px">Antes</span>
-        <span style="font-size:72px">👨‍🦱</span>
-        <span style="position:absolute;top:10px;right:10px;background:var(--green);color:#fff;font-size:10px;font-weight:700;padding:3px 8px;border-radius:4px">Depois</span>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:20px 0;border-radius:20px;overflow:hidden">
+      <div style="background:var(--bg-card);border:1px solid var(--border-glass);backdrop-filter:blur(12px);border-radius:18px;padding:12px;display:flex;flex-direction:column;gap:8px;height:240px;justify-content:center;align-items:center;position:relative">
+        <span style="position:absolute;top:10px;left:10px;background:var(--red-neon);color:#fff;font-size:10px;font-weight:800;padding:3px 8px;border-radius:4px">Antes</span>
+        <span style="font-size:76px;filter:grayscale(0.6)">👨‍🦱</span>
+        <span style="position:absolute;top:10px;right:10px;background:var(--green-neon);color:#06080A;font-size:10px;font-weight:800;padding:3px 8px;border-radius:4px">Depois</span>
       </div>
-      <div style="display:flex;flex-direction:column;gap:8px">
-        <div style="background:#f0e8d8;border-radius:16px;flex:1;display:flex;align-items:center;justify-content:center;position:relative;min-height:112px">
-          <span style="position:absolute;top:8px;left:8px;background:var(--red);color:#fff;font-size:10px;font-weight:700;padding:3px 8px;border-radius:4px">Antes</span>
-          <span style="font-size:52px">👩</span>
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <div style="background:var(--bg-card);border:1px solid var(--border-glass);backdrop-filter:blur(12px);border-radius:18px;flex:1;display:flex;align-items:center;justify-content:center;position:relative;min-height:112px">
+          <span style="position:absolute;top:8px;left:8px;background:var(--red-neon);color:#fff;font-size:10px;font-weight:800;padding:3px 8px;border-radius:4px">Antes</span>
+          <span style="font-size:54px;filter:grayscale(0.6)">👩</span>
         </div>
-        <div style="background:#e0f5e8;border-radius:16px;flex:1;display:flex;align-items:center;justify-content:center;position:relative;min-height:112px">
-          <span style="position:absolute;top:8px;left:8px;background:var(--green);color:#fff;font-size:10px;font-weight:700;padding:3px 8px;border-radius:4px">Depois</span>
-          <span style="font-size:52px">💃</span>
+        <div style="background:rgba(0, 255, 135, 0.06);border:1px solid rgba(0, 255, 135, 0.25);backdrop-filter:blur(12px);border-radius:18px;flex:1;display:flex;align-items:center;justify-content:center;position:relative;min-height:112px">
+          <span style="position:absolute;top:8px;left:8px;background:var(--green-neon);color:#06080A;font-size:10px;font-weight:800;padding:3px 8px;border-radius:4px">Depois</span>
+          <span style="font-size:54px">💃</span>
         </div>
       </div>
     </div>
-    <button class="btn btn-primary btn-intro" onclick="next()">QUERO APRENDER TAMBÉM! 😱</button>
+    <button class="btn btn-primary btn-intro" onclick="triggerSyncNext()">INICIAR DIAGNÓSTICO METABÓLICO ⚡</button>
   </div>`;
 }
 
 function renderGender(){
   return `
   <div>
-    <h2 class="q-title">Jejum Intermitente para:</h2>
+    <h2 class="q-title">Perfil Metabolico para:</h2>
     <div class="gender-grid">
       <div class="gender-card" onclick="selGender('homem',this)">
         <div class="gender-card-img">🧔</div>
-        <div class="gender-card-foot"><span>Homem</span><span style="color:#bbb">›</span></div>
+        <div class="gender-card-foot"><span>Homem</span><span style="color:var(--cyan-neon)">›</span></div>
       </div>
       <div class="gender-card" onclick="selGender('mulher',this)">
-        <div class="gender-card-img woman">👩</div>
-        <div class="gender-card-foot"><span>Mulher</span><span style="color:#bbb">›</span></div>
+        <div class="gender-card-img">👩</div>
+        <div class="gender-card-foot"><span>Mulher</span><span style="color:var(--cyan-neon)">›</span></div>
       </div>
     </div>
   </div>`;
@@ -512,7 +535,7 @@ function renderMulti(step){
     <div class="opts" id="multi-opts">
       ${step.opts.map(o=>`
       <div class="opt ${saved.includes(o.l)?'sel':''}" onclick="togMulti('${step.key}','${esc(o.l)}',this)">
-        ${o.e?`<span class="opt-emoji" style="margin-right:8px;margin-left:0">${o.e}</span>`:''}
+        ${o.e?`<span class="opt-emoji" style="margin-right:10px;margin-left:0">${o.e}</span>`:''}
         <div style="flex:1">
           <div class="opt-label">${o.l}</div>
           ${o.sub?`<div class="opt-sub">${o.sub}</div>`:''}
@@ -520,7 +543,7 @@ function renderMulti(step){
         <div class="chk"><span class="chk-mark">✓</span></div>
       </div>`).join('')}
     </div>
-    <div class="mt16"><button class="btn btn-primary" onclick="next()">Continuar</button></div>
+    <div class="mt16"><button class="btn btn-primary" onclick="triggerSyncNext()">Continuar</button></div>
   </div>`;
 }
 
@@ -537,7 +560,7 @@ function renderMultiCard(step){
         <div class="chk"><span class="chk-mark">✓</span></div>
       </div>`).join('')}
     </div>
-    <div class="mt16"><button class="btn btn-primary" onclick="next()">Continuar</button></div>
+    <div class="mt16"><button class="btn btn-primary" onclick="triggerSyncNext()">Continuar</button></div>
   </div>`;
 }
 
@@ -547,8 +570,8 @@ function renderSlider(step){
   const disp = toDisplay(val, step.key, activeUnit);
   const imcHtml = step.showIMC ? `
   <div class="info-box info-blue" id="imcBox">
-    <div class="ib-title" id="imcTitle">O seu IMC está fora do ideal!</div>
-    <p>É hora de cuidar do seu peso! Vamos usar suas informações para criar um plano personalizado para você, que acelera o metabolismo, ajuda na perda de peso, fortalece e melhora a saúde do coração.</p>
+    <div class="ib-title" id="imcTitle">O seu IMC requer calibração metabólica!</div>
+    <p>É hora de otimizar sua composição corporal. O sistema criará uma rotina adaptada para reprogramar seu metabolismo, preservar massa magra e maximizar a queima lipídica.</p>
   </div>` : '';
   return `
   <div>
@@ -562,11 +585,11 @@ function renderSlider(step){
       <div class="range-track">
         <input type="range" class="rng" id="mainSlider" min="${step.min}" max="${step.max}" value="${val}" oninput="onSlide(this,'${step.key}')">
       </div>
-      <p class="slider-hint">Arraste para ajustar</p>
+      <p class="slider-hint">Arraste para calibrar</p>
       <div class="slider-minmax"><span>${step.min}</span><span>${step.max}</span></div>
     </div>
     ${imcHtml}
-    <button class="btn btn-primary mt16" onclick="next()">Continuar</button>
+    <button class="btn btn-primary mt16" onclick="triggerSyncNext()">Continuar</button>
   </div>`;
 }
 
@@ -576,10 +599,10 @@ function renderAgeInput(step){
     <h2 class="q-title center">${step.q}</h2>
     <input type="number" class="age-input" id="ageIn" placeholder="Digite sua idade..." min="18" max="100" value="${ud.exactAge||''}" oninput="ud.exactAge=parseInt(this.value)||null">
     <div class="info-box info-blue">
-      <div class="ib-title">Vamos usar essa informação para criar seu plano personalizado!</div>
-      <p>Pessoas mais velhas tendem a ter mais gordura corporal do que pessoas mais jovens com o mesmo IMC, por isso vamos personalizar para você.</p>
+      <div class="ib-title">Calibração por Faixa Etária Exata</div>
+      <p>Com o avanço da idade, a flexibilidade metabólica altera a proporção de lipídios acumulados. Essa métrica garantirá a precisão do seu plano.</p>
     </div>
-    <div class="mt16"><button class="btn btn-primary" onclick="next()">Continuar</button></div>
+    <div class="mt16"><button class="btn btn-primary" onclick="triggerSyncNext()">Continuar</button></div>
   </div>`;
 }
 
@@ -594,7 +617,7 @@ function renderFoodPicker(){
   const saved = ud.dislikedFoods||[];
   return `
   <div>
-    <h2 class="q-title">Escolha as comidas que você NÃO gosta</h2>
+    <h2 class="q-title">Escolha os alimentos para EXCLUIR do seu plano</h2>
     ${FOODS.map(cat=>`
     <div class="food-cat-title">${cat.cat}</div>
     <div class="food-grid">
@@ -603,7 +626,7 @@ function renderFoodPicker(){
         <span class="fc-icon">${i.e}</span>${i.l}
       </div>`).join('')}
     </div>`).join('')}
-    <div class="mt16"><button class="btn btn-primary" onclick="next()">Continuar</button></div>
+    <div class="mt16"><button class="btn btn-primary" onclick="triggerSyncNext()">Continuar</button></div>
   </div>`;
 }
 
@@ -612,55 +635,55 @@ function renderInfoSocial(){
   const positions=[{t:8,l:28},{t:8,l:60},{t:8,l:85},{t:32,l:7},{t:32,l:93},{t:68,l:12},{t:75,l:55},{t:78,l:85}];
   return `
   <div style="text-align:center">
-    <div class="sp-title">+45 mil pessoas</div>
-    <p class="sp-sub">escolheram o <span>Seca Jejum Turbo</span></p>
-    <div style="position:relative;width:260px;height:260px;margin:16px auto">
-      <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:78px;height:78px;border-radius:50%;background:var(--primary-light);border:3px solid var(--primary);display:flex;align-items:center;justify-content:center;font-size:38px;z-index:2">👩</div>
+    <div class="sp-title">+45 mil</div>
+    <p class="sp-sub">usuários ativaram o <span>METASYNC IA</span></p>
+    <div style="position:relative;width:260px;height:260px;margin:20px auto">
+      <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:82px;height:82px;border-radius:50%;background:rgba(0, 242, 255, 0.1);border:2px solid var(--cyan-neon);display:flex;align-items:center;justify-content:center;font-size:42px;z-index:2;box-shadow:0 0 20px var(--cyan-glow)">👩</div>
       ${positions.map((p,i)=>`
-      <div style="position:absolute;top:${p.t}%;left:${p.l}%;transform:translate(-50%,-50%);width:50px;height:50px;border-radius:50%;background:var(--primary-light);border:2px solid var(--primary);display:flex;align-items:center;justify-content:center;font-size:22px">${avatars[i]}</div>`).join('')}
+      <div style="position:absolute;top:${p.t}%;left:${p.l}%;transform:translate(-50%,-50%);width:48px;height:48px;border-radius:50%;background:var(--bg-card);border:1px solid var(--border-glass);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;font-size:22px">${avatars[i]}</div>`).join('')}
       <svg style="position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none" viewBox="0 0 260 260">
-        <circle cx="130" cy="130" r="56" fill="none" stroke="#ddd" stroke-dasharray="4 5"/>
-        <circle cx="130" cy="130" r="108" fill="none" stroke="#ddd" stroke-dasharray="4 5"/>
+        <circle cx="130" cy="130" r="56" fill="none" stroke="rgba(0, 242, 255, 0.2)" stroke-dasharray="4 6"/>
+        <circle cx="130" cy="130" r="108" fill="none" stroke="rgba(0, 242, 255, 0.15)" stroke-dasharray="4 6"/>
       </svg>
     </div>
-    <button class="btn btn-primary mt16" onclick="next()">Continuar</button>
+    <button class="btn btn-primary mt16" onclick="triggerSyncNext()">Continuar</button>
   </div>`;
 }
 
 function renderInfoChart1(){
   return `
   <div>
-    <h2 class="info-big-title">Sabemos como mantê-la em forma e saudável a longo prazo</h2>
+    <h2 class="info-big-title">Engenharia metabólica para longevidade e alto desempenho</h2>
     <div class="chart-box">
       <canvas id="c1" height="200"></canvas>
     </div>
-    <button class="btn btn-primary mt16" onclick="next()">Continuar</button>
+    <button class="btn btn-primary mt16" onclick="triggerSyncNext()">Continuar</button>
   </div>`;
 }
 
 function renderInfoMetabolism(){
   return `
   <div>
-    <h2 class="info-big-title">68% das mudanças de peso são influenciadas pelo seu metabolismo</h2>
-    <p class="info-body-text">Mas boas notícias - você está no controle! Ao gerenciar sua ingestão calórica diária, gastos e atividade, você pode atingir suas metas, e estamos aqui para ajudar você</p>
+    <h2 class="info-big-title">68% da sua queima calórica é regulada pela flexibilidade metabólica</h2>
+    <p class="info-body-text">Ao otimizar a sua janela de alimentação e a sensibilidade à insulina, o sistema força seu organismo a utilizar gordura estocada como energia contínua.</p>
     <div class="chart-box">
       <canvas id="cmet" height="200"></canvas>
     </div>
-    <button class="btn btn-primary mt16" onclick="next()">Continuar</button>
+    <button class="btn btn-primary mt16" onclick="triggerSyncNext()">Continuar</button>
   </div>`;
 }
 
 function renderInfoFace(){
   return `
   <div>
-    <h2 class="info-big-title">Não é só o seu corpo! Veja como o Jejum pode mudar o seu rosto!</h2>
+    <h2 class="info-big-title">Desinflamação facial e estética rejuvenescida</h2>
     <div class="face-grid">
-      <div class="face-card" style="background:#f5e0e0">😔</div>
-      <div class="face-card" style="background:#f5f0e0">🙂</div>
-      <div class="face-card" style="background:#e0f5e5">😊</div>
+      <div class="face-card" style="background:rgba(255,59,92,0.1);border:1px solid rgba(255,59,92,0.3)">😔</div>
+      <div class="face-card" style="background:rgba(255,184,0,0.1);border:1px solid rgba(255,184,0,0.3)">🙂</div>
+      <div class="face-card" style="background:rgba(0,255,135,0.1);border:1px solid rgba(0,255,135,0.3)">😊</div>
     </div>
-    <p class="info-body-text">Perder peso através do jejum ajuda a reduzir gordura e inchaço no rosto, principalmente ao redor dos olhos, queixo e mandíbula, deixando sua pele com aparência mais jovem e saudável.</p>
-    <button class="btn btn-primary mt16" onclick="next()">Continuar</button>
+    <p class="info-body-text">A redução de retenção e inflamação pela autofagia celular afina o contorno do rosto, reduz inchaços faciais e devolve a firmeza e o brilho natural à pele.</p>
+    <button class="btn btn-primary mt16" onclick="triggerSyncNext()">Continuar</button>
   </div>`;
 }
 
@@ -668,24 +691,24 @@ function renderIMCSummary(){
   const imc = calcIMC();
   const pct = imcPct(imc);
   const txt = imcText(imc);
-  const alrt = imc >= 30 ? 'preocupante' : imc >= 25 ? 'atenção' : 'excelente';
+  const alrt = imc >= 30 ? 'crítica' : imc >= 25 ? 'de atenção' : 'otimizada';
   return `
   <div>
-    <h2 class="info-big-title">Resumo do seu nível de condicionamento físico</h2>
-    <div style="text-align:left;margin:16px 0">
-      <div style="font-size:12.5px;color:#888">Índice de massa corporal (IMC)</div>
-      <div style="font-size:13px;color:var(--green);font-weight:700;margin-bottom:8px">${txt} — IMC ${imc.toFixed(1)}</div>
+    <h2 class="info-big-title">Diagnóstico do seu Nível de Condicionamento</h2>
+    <div style="text-align:left;margin:18px 0">
+      <div style="font-size:12px;color:var(--silver);letter-spacing:0.5px">ÍNDICE DE MASSA CORPORAL (IMC)</div>
+      <div style="font-family:'Montserrat',sans-serif;font-size:14px;color:var(--cyan-neon);font-weight:800;margin-top:2px;margin-bottom:8px;text-shadow:0 0 8px var(--cyan-glow)">${txt} — IMC ${imc.toFixed(1)}</div>
       <div class="imc-track">
         <div class="imc-thumb" style="left:${pct}%"></div>
       </div>
-      <div class="imc-labels"><span>Abaixo</span><span>Normal</span><span>Obesa</span></div>
+      <div class="imc-labels"><span>Baixo</span><span>Normal</span><span>Elevado</span></div>
     </div>
-    <div style="text-align:center;font-size:100px;padding:16px 0;line-height:1">${bodyEmoji(imc)}</div>
+    <div style="text-align:center;font-size:96px;padding:16px 0;line-height:1;filter:drop-shadow(0 0 15px rgba(255,255,255,0.1))">${bodyEmoji(imc)}</div>
     <div class="info-box info-yellow">
-      <div class="ib-title">Sua situação é ${alrt}!</div>
-      <p>Parabéns por dar o primeiro passo. Vamos criar um plano personalizado para acelerar seu metabolismo, aumentar sua força e melhorar sua saúde.</p>
+      <div class="ib-title">Sua situação atual é ${alrt}!</div>
+      <p>Iniciando o seu protocolo de biohacking metabólico. Iremos destravar a sua queima de gordura e aumentar a sua energia diária.</p>
     </div>
-    <button class="btn btn-primary mt16" onclick="next()">Continuar</button>
+    <button class="btn btn-primary mt16" onclick="triggerSyncNext()">Continuar</button>
   </div>`;
 }
 
@@ -693,38 +716,38 @@ function renderWeightGraphScreen(){
   const tw = ud.targetWeight;
   return `
   <div>
-    <h2 class="info-big-title">O único plano que você precisa para entrar em forma</h2>
-    <p class="info-body-text" style="margin-bottom:4px">De acordo com as informações que você nos forneceu, você pode atingir o seu peso ideal:</p>
-    <p class="result-target">${tw}kg em 21 dias</p>
+    <h2 class="info-big-title">Projeção da sua Curva Metabólica</h2>
+    <p class="info-body-text" style="margin-bottom:4px">Com base no seu perfil biohacker, você alcançará o seu objetivo:</p>
+    <p class="result-target" style="font-family:'Montserrat',sans-serif;font-size:20px;color:var(--cyan-neon);text-shadow:0 0 12px var(--cyan-glow)">${tw}kg em 21 dias</p>
     <div class="graph-wrap">
-      <div class="graph-badge" style="top:12px;left:12px">Você</div>
+      <div class="graph-badge" style="top:12px;left:12px">Você Hoje</div>
       <div class="graph-goal">${tw}Kg</div>
       <canvas id="wgcanvas" height="200"></canvas>
-      <div class="graph-labels"><span>Hoje</span><span>21d</span></div>
+      <div class="graph-labels"><span>Dia 01</span><span>Dia 21</span></div>
     </div>
-    <button class="btn btn-primary mt16" onclick="next()">Continuar</button>
+    <button class="btn btn-primary mt16" onclick="triggerSyncNext()">Continuar</button>
   </div>`;
 }
 
 const TESTS = [
-  {n:'Rogéria Cardoso',a:'👩',t:'realmente esse Plano é incrível',b:'Fiquei realmente surpresa com esse plano, não imaginei que iria fazer tanta diferença! Realmente consegui sair dos 68kg e voltar para os meus 60kg. Eu sempre gostei de fazer jejum, mas eu não sabia nem da metade das estratégias que vcs passam... O planejamento das refeições me ajudou demais, gratidão!!'},
-  {n:'Sérgio Augusto',a:'🏃‍♂️',t:'Nunca tinha visto nenhum conteúdo parecido!',b:'O conteúdo de vcs se encaixou perfeitamente com o que eu precisava. Eu sempre gostei de correr mas de 4 anos pra cá eu não conseguia, estava acima do peso e era muito complicado... Foi quando eu conheci o plano personalizado de jejum de vocês, perdi um pouco mais de 10kg... E no final de semana passado voltei a correr, só agradecer!!'},
-  {n:'Cláudia Santos',a:'👩‍🦱',t:'Perder peso era muito difícil, agora eu estou conseguindo sem esforço!',b:'Estou muito feliz com os resultados do Plano personalizado! Desde que comecei a seguir as orientações, notei uma grande diferença no espelho... to muito menos inchada e to com menos 5kg na balança. Mas isso nem foi o melhor, o que mais mudou foi a minha energia, antes eu já acordava cansada sabe? agora pareço ter 20 anos novamente kkkk, obrigada!!'},
-  {n:'Gleide Almeida',a:'👩‍🦰',t:'Extramamente satisfied',b:'Fiquei muito feliz com o conteúdo. Depois de consumir todo o material e começar a fazer o jejum, finalmente consegui o que eu queria... Eu sempre fui aquelas pessoas que emagrecem mas logo dps engordava dnv, e graças ao plano personalizado de vocês isso mudou. Já estou a 6 meses com o mesmo peso, nunca consegui isso na minha vida!! obrigada.'}
+  {n:'Rogéria Cardoso',a:'👩',t:'Protocolo impressionante!',b:'Fiquei realmente surpresa com esse plano, não imaginei que iria fazer tanta diferença! Consegui sair dos 68kg e voltar para os meus 60kg. A IA da Dra. Maya no meu WhatsApp me ajudou a cada refeição!'},
+  {n:'Sérgio Augusto',a:'🏃‍♂️',t:'Alta tecnologia aplicada à saúde!',b:'O METASYNC se encaixou perfeitamente na minha rotina corrida. Eu sempre gostei de correr mas estava acima do peso... perdi mais de 10kg em 21 dias e voltei a ter disposição total!'},
+  {n:'Cláudia Santos',a:'👩‍🦱',t:'Menos 5kg e sem cansaço!',b:'Desde que ativei as orientações adaptadas, to muito menos inchada e com menos 5kg na balança. O melhor de tudo foi a energia, pareço ter 20 anos novamente kkkk!'},
+  {n:'Gleide Almeida',a:'👩‍🦰',t:'Fim definitivo do Efeito Sanfona',b:'Depois de testar o METASYNC e alinhar o jejum adaptado com a IA, finalmente estabilizei meu peso ideal por mais de 6 meses sem sofrimento. Recomendo demais!'}
 ];
 let testIdx = 0;
 
 function renderLoading(){
   return `
   <div style="text-align:center">
-    <h2 style="font-size:19px;font-weight:900;margin-bottom:20px;line-height:1.3">Criando o seu Plano Personalizado de Jejum</h2>
-    <div style="display:flex;justify-content:flex-end"><span id="lPct" style="font-size:12.5px;color:#aaa">34%</span></div>
+    <h2 style="font-family:'Montserrat',sans-serif;font-size:20px;font-weight:900;margin-bottom:20px;line-height:1.3;color:#fff">Gerando o seu Protocolo no METASYNC LAB</h2>
+    <div style="display:flex;justify-content:flex-end"><span id="lPct" style="font-family:'Montserrat',sans-serif;font-size:13px;font-weight:700;color:var(--cyan-neon)">34%</span></div>
     <div class="loading-bar-track"><div class="loading-bar-fill" id="lBar" style="width:34%"></div></div>
-    <p class="loading-status" id="lStatus" style="margin-top:10px">Preparando...</p>
-    <p class="loading-sub">Estamos preparando o seu plano exclusivo e personalizado..</p>
-    <div style="margin:20px 0">
-      <div style="font-size:36px;font-weight:900">+45 mil pessoas</div>
-      <p style="font-size:13.5px;color:#888">nos escolheram, veja o que eles falaram sobre nós...</p>
+    <p class="loading-status" id="lStatus" style="margin-top:10px">Sincronizando IA da Dra. Maya...</p>
+    <p class="loading-sub">Calibrando janelas metabólicas e plano de nutrição adaptada..</p>
+    <div style="margin:22px 0">
+      <div style="font-family:'Montserrat',sans-serif;font-size:38px;font-weight:900;color:#fff;text-shadow:0 0 15px var(--cyan-glow)">+45.000</div>
+      <p style="font-size:13px;color:var(--silver)">usuários já ativaram a plataforma</p>
     </div>
     <div id="testWrap">
       ${renderTest(TESTS[0])}
@@ -755,26 +778,26 @@ function renderResult(){
   const tw = ud.targetWeight;
   return `
   <div>
-    <h2 class="info-big-title">O seu Plano Personalizado de Jejum está pronto!</h2>
-    <p class="info-body-text" style="margin-bottom:4px">De acordo com as informações que você nos forneceu, você pode atingir o seu peso ideal:</p>
-    <p class="result-target">Você chegará ${tw}kg em 21 dias</p>
+    <h2 class="info-big-title">Seu Protocolo METASYNC IA está Pronto!</h2>
+    <p class="info-body-text" style="margin-bottom:4px">De acordo com a calibração dos seus dados metabólicos:</p>
+    <p class="result-target" style="font-family:'Montserrat',sans-serif;font-size:22px;color:var(--cyan-neon);text-shadow:0 0 15px var(--cyan-glow)">Você chegará a ${tw}kg em 21 dias</p>
     <div class="graph-wrap">
-      <div class="graph-badge" style="top:12px;left:12px">Você</div>
+      <div class="graph-badge" style="top:12px;left:12px">Status: Ativo</div>
       <div class="graph-goal">${tw}Kg</div>
       <canvas id="rcanvas" height="200"></canvas>
-      <div class="graph-labels"><span>Hoje</span><span>21d</span></div>
+      <div class="graph-labels"><span>Dia 01</span><span>Dia 21</span></div>
     </div>
-    <button class="btn btn-primary mt16" onclick="showSales()">Continuar</button>
+    <button class="btn btn-primary mt16" onclick="showSales()">ACESSAR PAINEL DASHBOARD 🚀</button>
   </div>`;
 }
 
-function selGender(g,el){ ud.gender=g; next(); }
+function selGender(g,el){ ud.gender=g; triggerSyncNext(); }
 
 function selSingle(key,val,el){
   el.closest('.opts,.side-opts').querySelectorAll('.opt').forEach(e=>e.classList.remove('sel'));
   el.classList.add('sel');
   ud[key]=val;
-  setTimeout(next,280);
+  triggerSyncNext();
 }
 
 function togMulti(key,val,el){
@@ -805,7 +828,7 @@ function onSlide(el,key){
   const step=STEPS.find(s=>s.key===key);
   if(step){
     const pct=((val-step.min)/(step.max-step.min))*100;
-    el.style.background=`linear-gradient(to right,var(--primary) 0%,var(--primary) ${pct}%,#e0e0e0 ${pct}%)`;
+    el.style.background=`linear-gradient(to right,var(--cyan-neon) 0%,var(--cyan-neon) ${pct}%,rgba(255,255,255,0.1) ${pct}%)`;
   }
   if(key==='targetWeight'||key==='currentWeight') updateIMCBox();
 }
@@ -814,7 +837,7 @@ function updateIMCBox(){
   const b=document.getElementById('imcBox');
   if(!b) return;
   const imc=calcIMC();
-  document.getElementById('imcTitle').textContent = imc<25 ? 'Seu IMC está no intervalo normal!' : 'O seu IMC está fora do ideal!';
+  document.getElementById('imcTitle').textContent = imc<25 ? 'Composição Corporal Otimizada!' : 'O seu IMC requer calibração metabólica!';
 }
 
 function setUnit(key,unit){
@@ -822,7 +845,7 @@ function setUnit(key,unit){
   render();
 }
 
-const loadMsgs=['Preparando...','Analisando seu perfil...','Calculando seu metabolismo...','Personalizando o plano...','Ajustando as refeições...','Finalizando...','Seu plano está quase pronto!'];
+const loadMsgs=['Iniciando METASYNC LAB...','Analisando flexibilidade metabólica...','Calibrando sensibilidade à insulina...','Sincronizando IA da Dra. Maya...','Otimizando janelas lipídicas...','Finalizando painel dashboard...','Seu plano está 100% calibrado!'];
 let loadPct=34, loadTmr=null;
 
 function startLoading(){
@@ -840,36 +863,37 @@ function startLoading(){
     if(newIdx!==testIdx){
       testIdx=newIdx;
       const tw=document.getElementById('testWrap');
-      if(tw){ tw.innerHTML=renderTest(TESTS[testIdx]); tw.style.animation='none'; void tw.offsetWidth; tw.style.animation='slideIn .3s ease'; }
+      if(tw){ tw.innerHTML=renderTest(TESTS[testIdx]); tw.style.animation='none'; void tw.offsetWidth; tw.style.animation='fadeIn .3s ease'; }
       document.querySelectorAll('#testDots .dot').forEach((d,i)=>d.classList.toggle('act',i===testIdx));
     }
   },420);
 }
 
+/* ===== NEON CANVAS CHARTS ===== */
 function drawWeightGraph(id){
   const c=document.getElementById(id); if(!c) return;
   const ctx=c.getContext('2d');
   c.width=c.offsetWidth||380; const W=c.width,H=c.height,P=20;
   ctx.clearRect(0,0,W,H);
-  ctx.strokeStyle='#f0f0f0'; ctx.lineWidth=1;
+  ctx.strokeStyle='rgba(255,255,255,0.06)'; ctx.lineWidth=1;
   for(let i=0;i<4;i++){ const y=P+i*((H-2*P)/3); ctx.beginPath(); ctx.moveTo(P,y); ctx.lineTo(W-P,y); ctx.stroke(); }
   const pts=[];
   for(let i=0;i<8;i++){
     const t=i/7;
     const x=P+t*(W-2*P);
-    const y=P+(1-t)*(1-t)*0.85*(H-2*P)+P*0.2+Math.sin(i*1.8)*5;
+    const y=P+(1-t)*(1-t)*0.85*(H-2*P)+P*0.2+Math.sin(i*1.8)*4;
     pts.push({x,y});
   }
   const ag=ctx.createLinearGradient(0,P,0,H-P);
-  ag.addColorStop(0,'rgba(231,76,60,0.25)'); ag.addColorStop(.5,'rgba(243,156,18,0.15)'); ag.addColorStop(1,'rgba(39,174,96,0.08)');
+  ag.addColorStop(0,'rgba(255,59,92,0.28)'); ag.addColorStop(.5,'rgba(255,184,0,0.18)'); ag.addColorStop(1,'rgba(0,242,255,0.1)');
   ctx.beginPath(); ctx.moveTo(pts[0].x,H-P); ctx.lineTo(pts[0].x,pts[0].y);
   for(let i=1;i<pts.length;i++){ const c1x=(pts[i-1].x+pts[i].x)/2; ctx.bezierCurveTo(c1x,pts[i-1].y,c1x,pts[i].y,pts[i].x,pts[i].y); }
   ctx.lineTo(pts[pts.length-1].x,H-P); ctx.closePath(); ctx.fillStyle=ag; ctx.fill();
   ctx.beginPath(); ctx.moveTo(pts[0].x,pts[0].y);
   for(let i=1;i<pts.length;i++){ const c1x=(pts[i-1].x+pts[i].x)/2; ctx.bezierCurveTo(c1x,pts[i-1].y,c1x,pts[i].y,pts[i].x,pts[i].y); }
-  ctx.strokeStyle='#555'; ctx.lineWidth=2; ctx.stroke();
-  const cols=['#e74c3c','#e74c3c','#e67e22','#f39c12','#f39c12','#27ae60','#27ae60','#27ae60'];
-  pts.forEach((p,i)=>{ ctx.beginPath(); ctx.arc(p.x,p.y,5,0,Math.PI*2); ctx.fillStyle=cols[i]; ctx.fill(); ctx.strokeStyle='#fff'; ctx.lineWidth=1.5; ctx.stroke(); });
+  ctx.strokeStyle='#00F2FF'; ctx.lineWidth=2.5; ctx.shadowColor='#00F2FF'; ctx.shadowBlur=12; ctx.stroke(); ctx.shadowBlur=0;
+  const cols=['#FF3B5C','#FF3B5C','#FFB800','#FFB800','#00FF87','#00F2FF','#00F2FF','#00F2FF'];
+  pts.forEach((p,i)=>{ ctx.beginPath(); ctx.arc(p.x,p.y,5.5,0,Math.PI*2); ctx.fillStyle=cols[i]; ctx.fill(); ctx.strokeStyle='#06080A'; ctx.lineWidth=2; ctx.stroke(); });
 }
 
 function drawChart1(){
@@ -877,23 +901,24 @@ function drawChart1(){
   const ctx=c.getContext('2d'); c.width=c.offsetWidth||360;
   const W=c.width,H=c.height,P=16;
   ctx.clearRect(0,0,W,H);
-  const bw=52,gap=W/4;
+  const bw=56,gap=W/4;
   function drawBar(x,bH,c1,c2,lbl){
     const top=H-P-bH;
     const g=ctx.createLinearGradient(0,top,0,H-P);
     g.addColorStop(0,c1); g.addColorStop(1,c2);
-    ctx.beginPath(); ctx.roundRect(x,top,bw,bH,6); ctx.fillStyle=g; ctx.fill();
-    const chipY=top-22;
-    ctx.fillStyle='rgba(255,255,255,0.95)'; ctx.beginPath(); ctx.roundRect(x-4,chipY,bw+8,18,4); ctx.fill();
-    ctx.fillStyle='#333'; ctx.font='bold 9px Inter'; ctx.textAlign='center'; ctx.fillText(lbl,x+bw/2,chipY+12);
+    ctx.beginPath(); ctx.roundRect(x,top,bw,bH,8); ctx.fillStyle=g; ctx.fill();
+    const chipY=top-24;
+    ctx.fillStyle='rgba(18,24,32,0.9)'; ctx.beginPath(); ctx.roundRect(x-4,chipY,bw+8,18,6); ctx.fill();
+    ctx.strokeStyle='rgba(0,242,255,0.2)'; ctx.stroke();
+    ctx.fillStyle='#fff'; ctx.font='bold 9px Montserrat'; ctx.textAlign='center'; ctx.fillText(lbl,x+bw/2,chipY+12);
   }
-  drawBar(gap-bw/2,0.68*(H-P*2),'#ff9999','#e74c3c','CALORIAS VAZIAS ☠️ ↑');
-  drawBar(3*gap-bw/2,0.75*(H-P*2),'#80ede5','#1BC9B5','ENERGIA ⚡ ↑');
-  ctx.strokeStyle='var(--primary)'; ctx.lineWidth=2.5;
+  drawBar(gap-bw/2,0.68*(H-P*2),'#FF3B5C','#881122','GORDURA ☠️ ↑');
+  drawBar(3*gap-bw/2,0.78*(H-P*2),'#00F2FF','#008B99','ENERGIA ⚡ ↑');
+  ctx.strokeStyle='var(--cyan-neon)'; ctx.lineWidth=2.5; ctx.shadowColor='var(--cyan-neon)'; ctx.shadowBlur=10;
   ctx.beginPath(); ctx.moveTo(2*gap-18,H/2); ctx.lineTo(2*gap+18,H/2);
-  ctx.moveTo(2*gap+10,H/2-7); ctx.lineTo(2*gap+18,H/2); ctx.lineTo(2*gap+10,H/2+7); ctx.stroke();
-  ctx.fillStyle='#555'; ctx.font='10px Inter'; ctx.textAlign='center';
-  ctx.fillText('HOJE',gap,H-2); ctx.fillText('DEPOIS',3*gap,H-2);
+  ctx.moveTo(2*gap+10,H/2-7); ctx.lineTo(2*gap+18,H/2); ctx.lineTo(2*gap+10,H/2+7); ctx.stroke(); ctx.shadowBlur=0;
+  ctx.fillStyle='var(--silver)'; ctx.font='10px Inter'; ctx.textAlign='center';
+  ctx.fillText('ESTADO ANTERIOR',gap,H-2); ctx.fillText('METASYNC LAB',3*gap,H-2);
 }
 
 function drawMetabolism(){
@@ -905,21 +930,21 @@ function drawMetabolism(){
     const x=P+i*(W-2*P)/N+2;
     const bH=(0.4+0.45*Math.sin(i/N*Math.PI+.3))*(H-P*2);
     const g=ctx.createLinearGradient(0,H-P-bH,0,H-P);
-    g.addColorStop(0,'#f7dc6f'); g.addColorStop(1,'#f39c12');
+    g.addColorStop(0,'#00F2FF'); g.addColorStop(1,'#008B99');
     ctx.beginPath(); ctx.roundRect(x,H-P-bH,BW,bH,4); ctx.fillStyle=g; ctx.fill();
   }
   const pp=[];
   for(let i=0;i<=N;i++){ const t=i/N; pp.push({x:P+t*(W-2*P),y:P+(0.35+0.4*Math.sin(t*Math.PI*.7+.6))*(H-P*2)}); }
   ctx.beginPath(); ctx.moveTo(pp[0].x,pp[0].y);
   pp.slice(1).forEach(p=>ctx.lineTo(p.x,p.y));
-  ctx.lineTo(pp[N].x,H-P); ctx.lineTo(pp[0].x,H-P); ctx.fillStyle='rgba(231,76,60,.12)'; ctx.fill();
+  ctx.lineTo(pp[N].x,H-P); ctx.lineTo(pp[0].x,H-P); ctx.fillStyle='rgba(255,59,92,.12)'; ctx.fill();
   ctx.beginPath(); ctx.moveTo(pp[0].x,pp[0].y); pp.slice(1).forEach(p=>ctx.lineTo(p.x,p.y));
-  ctx.strokeStyle='#e74c3c'; ctx.lineWidth=2.5; ctx.stroke();
+  ctx.strokeStyle='#FF3B5C'; ctx.lineWidth=2.5; ctx.stroke();
   const lx1=P+4,ly1=H-P-0.55*(H-P*2)-16;
-  ctx.fillStyle='rgba(27,201,181,.15)'; ctx.beginPath(); ctx.roundRect(lx1,ly1,84,18,4); ctx.fill();
-  ctx.fillStyle='#0d8a7a'; ctx.font='bold 10px Inter'; ctx.textAlign='left'; ctx.fillText('Metabolismo',lx1+4,ly1+13);
-  ctx.fillStyle='rgba(231,76,60,.15)'; ctx.beginPath(); ctx.roundRect(W-P-60,P+4,56,18,4); ctx.fill();
-  ctx.fillStyle='#c0392b'; ctx.textAlign='right'; ctx.fillText('Peso',W-P-6,P+17);
+  ctx.fillStyle='rgba(0, 242, 255, 0.15)'; ctx.beginPath(); ctx.roundRect(lx1,ly1,88,18,4); ctx.fill();
+  ctx.fillStyle='var(--cyan-neon)'; ctx.font='bold 10px Montserrat'; ctx.textAlign='left'; ctx.fillText('Flexibilidade',lx1+6,ly1+13);
+  ctx.fillStyle='rgba(255, 59, 92, 0.15)'; ctx.beginPath(); ctx.roundRect(W-P-60,P+4,56,18,4); ctx.fill();
+  ctx.fillStyle='#FF3B5C'; ctx.textAlign='right'; ctx.fillText('Gordura',W-P-6,P+17);
 }
 
 function calcIMC(){ const h=ud.height/100,w=ud.currentWeight; return h&&w?w/(h*h):25; }
@@ -944,129 +969,115 @@ function showSales(){
   sp.style.display='block';
   const tw=ud.targetWeight;
   sp.innerHTML=`
-  <div style="background:#fff;max-width:430px;width:100%;padding-bottom:48px">
+  <div style="background:var(--bg-deep);max-width:440px;width:100%;padding-bottom:48px">
     <div class="sales-header-bar"></div>
-    <div class="sales-logo">🔥 SECA JEJUM</div>
+    <div class="sales-logo"><span class="logo-badge">LAB</span> METASYNC IA</div>
 
-    <!-- Title -->
-    <div style="padding:20px 20px 0;text-align:center">
-      <h2 style="font-size:21px;font-weight:900;line-height:1.3">O seu Plano Personalizado de Jejum está pronto!</h2>
+    <div style="padding:22px 20px 0;text-align:center">
+      <h2 style="font-family:'Montserrat',sans-serif;font-size:21px;font-weight:900;line-height:1.3;color:#fff">Seu Painel de Biohacking Metabólico está Pronto!</h2>
     </div>
 
-    <!-- Hero App & AI Badge -->
+    <!-- Cyberpunk Hero Banner -->
     <div class="app-hero-badge">
       <div class="app-badge-icon">🤖</div>
       <div class="app-badge-txt">
-        <strong>Acesso à Plataforma Web + Mentora IA 24h</strong>
-        Seu plano 100% interativo com suporte instantâneo tira-dúvidas da Dra. Maya a qualquer momento do dia!
+        <strong>Plataforma Dashboard + Mentora IA 24h</strong>
+        Sincronização diária de parâmetros com orientação instantânea da Dra. Maya a qualquer momento.
       </div>
     </div>
 
-    <!-- Before / After Comparison Grid -->
+    <!-- Before / After Grid -->
     <div style="padding:0 20px 12px">
       <div class="compare-wrap">
         <div class="compare-grid" style="margin-bottom:16px;text-align:center">
-          <div><div class="compare-ava-label">Agora</div><div class="compare-ava">🧍‍♀️</div></div>
-          <div><div class="compare-ava-label">Seu objetivo</div><div class="compare-ava">💃</div></div>
+          <div><div class="compare-ava-label">Status Atual</div><div class="compare-ava">🧍‍♀️</div></div>
+          <div><div class="compare-ava-label">Meta Calibrada</div><div class="compare-ava">💃</div></div>
         </div>
         <div class="compare-grid">
           <div>
             <div class="compare-col-title">Hoje</div>
-            <div class="metric"><div class="metric-name">Seu Nível de gordura</div><div class="metric-val" style="color:var(--red)">Alto</div><div class="metric-bar-track"><div class="metric-bar-fill fill-red" style="width:82%"></div></div></div>
-            <div class="metric"><div class="metric-name">Seu Nível de energia</div><div class="metric-val" style="color:var(--red)">Baixo</div><div class="metric-bar-track"><div class="metric-bar-fill fill-red" style="width:18%"></div></div></div>
-            <div class="metric"><div class="metric-name">Seu Metabolismo</div><div class="metric-val" style="color:var(--red)">Baixo</div><div class="metric-bar-track"><div class="metric-bar-fill fill-red" style="width:14%"></div></div></div>
+            <div class="metric"><div class="metric-name">Nível de gordura</div><div class="metric-val" style="color:var(--red-neon)">Elevado</div><div class="metric-bar-track"><div class="metric-bar-fill fill-red" style="width:82%"></div></div></div>
+            <div class="metric"><div class="metric-name">Flexibilidade Metabólica</div><div class="metric-val" style="color:var(--red-neon)">Baixa</div><div class="metric-bar-track"><div class="metric-bar-fill fill-red" style="width:18%"></div></div></div>
+            <div class="metric"><div class="metric-name">Energia Diária</div><div class="metric-val" style="color:var(--red-neon)">Baixa</div><div class="metric-bar-track"><div class="metric-bar-fill fill-red" style="width:14%"></div></div></div>
           </div>
           <div>
             <div class="compare-col-title">Em 21 dias</div>
-            <div class="metric"><div class="metric-name">Seu Nível de gordura</div><div class="metric-val" style="color:var(--green)">Baixo</div><div class="metric-bar-track"><div class="metric-bar-fill fill-green" style="width:14%"></div></div></div>
-            <div class="metric"><div class="metric-name">Seu Nível de energia</div><div class="metric-val" style="color:var(--green)">Alto</div><div class="metric-bar-track"><div class="metric-bar-fill fill-green" style="width:90%"></div></div></div>
-            <div class="metric"><div class="metric-name">Seu Metabolismo</div><div class="metric-val" style="color:var(--green)">Alto</div><div class="metric-bar-track"><div class="metric-bar-fill fill-green" style="width:93%"></div></div></div>
+            <div class="metric"><div class="metric-name">Nível de gordura</div><div class="metric-val" style="color:var(--green-neon)">Otimizado</div><div class="metric-bar-track"><div class="metric-bar-fill fill-green" style="width:14%"></div></div></div>
+            <div class="metric"><div class="metric-name">Flexibilidade Metabólica</div><div class="metric-val" style="color:var(--green-neon)">Máxima</div><div class="metric-bar-track"><div class="metric-bar-fill fill-green" style="width:90%"></div></div></div>
+            <div class="metric"><div class="metric-name">Energia Diária</div><div class="metric-val" style="color:var(--green-neon)">Alta</div><div class="metric-bar-track"><div class="metric-bar-fill fill-green" style="width:93%"></div></div></div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- How it works -->
     <div style="padding:0 20px">
       <div class="how-box">
-        <h3>Como funciona o Jejum Adaptado?</h3>
-        <p>Com base nas suas informações pessoais e rotina, criamos uma estratégia interativa 100% personalizada. Diferente de dietas genéricas, o nosso método ajusta a sua janela metabólica para acelerar a queima de gordura respeitando o que você gosta de comer e sem comprometer sua vida social.</p>
+        <h3>Como Funciona o METASYNC IA?</h3>
+        <p>Ajustamos a sua sensibilidade hormonal e janela metabólica. O sistema instrui seu organismo a utilizar depósitos adiposos acumulados como combustível constante, sem comprometer massa magra ou sua rotina social.</p>
       </div>
     </div>
 
-    <!-- Expert Authority Section -->
+    <!-- Expert Card -->
     <div class="expert-card">
       <div class="expert-avatar">👩‍⚕️</div>
       <div class="expert-name">Dra. Maya</div>
-      <div class="expert-title">Especialista em Fisiologia & Nutrição Adaptada</div>
+      <div class="expert-title">Nutrição Adaptada & Fisiologia do Jejum</div>
       <p class="expert-bio">
-        Baseado em pesquisas de ponta da Universidade de Harvard, desenvolvemos a metodologia do <strong>Jejum Adaptado</strong>. Além de acessar o plano completo no site interativo, você terá a **IA da Dra. Maya como sua Mentora de Bolso 24h**, treinada com todo o meu conhecimento para responder suas dúvidas instantaneamente!
+        "Desenvolvi a inteligência do METASYNC com base em pesquisas de ponta da Universidade de Harvard. Ao ativar sua conta, minha IA estará sincronizada com você 24 horas por dia no seu celular para orientar cada refeição e decisão!"
       </p>
     </div>
 
-    <!-- Plan includes -->
-    <h2 class="plan-incl-title">Tudo o que você vai receber:</h2>
+    <h2 class="plan-incl-title">O Que Você Recebe na Plataforma:</h2>
 
     <div class="plan-item">
-      <div class="plan-icon">📱</div>
-      <div class="plan-title">Acesso ao WebApp / Plataforma Interativa</div>
-      <p class="plan-desc">Seu mapa de 21 dias em uma plataforma moderna e intuitiva. Chega de PDFs perdidos no e-mail: acompanhe seu progresso diário direto pelo celular.</p>
+      <div class="plan-icon">💻</div>
+      <div class="plan-title">Acesso ao Dashboard METASYNC LAB</div>
+      <p class="plan-desc">Seu mapa de 21 dias em uma plataforma estilo SaaS futurista. Acompanhe a calibração do seu metabolismo direto do navegador.</p>
     </div>
     <div class="plan-item">
       <div class="plan-icon">🤖</div>
-      <div class="plan-title">Mentora de Bolso 24h por Inteligência Artificial</div>
-      <p class="plan-desc">Ficou na dúvida do que pedir num restaurante ou se certo alimento quebra o jejum? Mande uma mensagem para a IA da Dra. Maya a qualquer hora e receba orientação imediata.</p>
+      <div class="plan-title">Mentora de Bolso IA 24h (Dra. Maya)</div>
+      <p class="plan-desc">Tire dúvidas de restaurantes, alimentos ou substituições instantaneamente via assistente inteligente.</p>
     </div>
     <div class="plan-item">
       <div class="plan-icon">🔄</div>
-      <div class="plan-title">Protocolo de Reprogramação Metabólica Anti-Efeito Sanfona</div>
-      <p class="plan-desc">Aprenda exatamente o que fazer após os 21 dias para manter o seu peso ideal e nunca mais voltar a engordar, garantindo resultados definitivos.</p>
+      <div class="plan-title">Reprogramação Metabólica Anti-Efeito Sanfona</div>
+      <p class="plan-desc">Manutenção permanente dos resultados para nunca mais recuperar o peso perdido após o 21º dia.</p>
     </div>
     <div class="plan-item">
       <div class="plan-icon">🥗</div>
-      <div class="plan-title">Guia de Receitas de Montagem Rápida (< 15 min)</div>
-      <p class="plan-desc">Pratos práticos e muito saborosos usando apenas ingredientes acessíveis que você já encontra em qualquer supermercado brasileiro.</p>
+      <div class="plan-title">Guia de Nutrição de Montagem Rápida (< 15 min)</div>
+      <p class="plan-desc">Pratos práticos com alto valor nutricional utilizando ingredientes comuns de supermercado.</p>
     </div>
     <div class="plan-item">
       <div class="plan-icon">🥂</div>
-      <div class="plan-title">Estratégia de Janela Flexível (Sem Isolamento Social)</div>
-      <p class="plan-desc">Aprenda a remanejar sua janela de jejum para curtir jantares com amigos, festas de aniversário ou churrascos no fim de semana sem culpa e sem perder o ritmo.</p>
+      <div class="plan-title">Protocolo de Janela Flexível</div>
+      <p class="plan-desc">Ajuste seu tempo de jejum para jantares, encontros e churrascos sem perder a queima de gordura.</p>
     </div>
     <div class="plan-item">
       <div class="plan-icon">⚡</div>
-      <div class="plan-title">Preservação Proteica & Queima Acelerada</div>
-      <p class="plan-desc">Saiba como direcionar seu corpo para queimar gordura pura como combustível primário, mantendo sua massa muscular intacta e sem sentir fraqueza.</p>
-    </div>
-    <div class="plan-item">
-      <div class="plan-icon">😴</div>
-      <div class="plan-title">Táticas de Descanso Profundo & Queima Noturna</div>
-      <p class="plan-desc">Regule seus hormônios de sono para ter noites de descanso reparador enquanto seu metabolismo continua queimando gordura durante a noite.</p>
-    </div>
-    <div class="plan-item">
-      <div class="plan-icon">🎯</div>
-      <div class="plan-title">Painel de Acompanhamento Diário</div>
-      <p class="plan-desc">Acompanhe sua evolução diária, metas batidas e conquistas dentro do seu painel interativo.</p>
+      <div class="plan-title">Preservação Proteica Lipídica</div>
+      <p class="plan-desc">Preserve sua massa muscular intacta enquanto direciona a queima para a gordura visceral e subcutânea.</p>
     </div>
 
-    <!-- First Pricing Card -->
     <div style="padding:20px 20px 10px">
-      <div class="price-badge">De R$ 197,90 por apenas 👇</div>
+      <div class="price-badge">OFERTA DE LANÇAMENTO METASYNC LAB 👇</div>
       <div class="price-card">
-        <div class="price-product">Plano Jejum Adaptado<br>+ Mentora IA 24h</div>
+        <div class="price-product">Plano METASYNC IA<br>+ Mentora IA 24h</div>
         <div class="price-val"><div class="price-install">6x de R$5,56</div><div class="price-full">Ou R$29,00 à vista</div></div>
       </div>
-      <button class="cta-btn" onclick="alert('Redirecionando para o pagamento seguro...')">RECEBER O MEU PLANO + IA 24H</button>
+      <button class="cta-btn" onclick="alert('Redirecionando para a ativação do seu painel...')">ATIVAR MINHA CONTA NO LAB ⚡</button>
       <div class="trust">
-        <div class="trust-item"><span class="trust-icon">✅</span><span>Compra<br>SEGURA</span></div>
-        <div class="trust-item"><span class="trust-icon">🏆</span><span>Satisfação<br>GARANTIDA</span></div>
-        <div class="trust-item"><span class="trust-icon">🔒</span><span>Privacidade<br>PROTEGIDA</span></div>
+        <div class="trust-item"><span class="trust-icon">🔒</span><span>Conexão<br>CRIPTOGRAFADA</span></div>
+        <div class="trust-item"><span class="trust-icon">⚡</span><span>Ativação<br>IMEDIATA</span></div>
+        <div class="trust-item"><span class="trust-icon">🛡️</span><span>Garantia<br>ABSOLUTA</span></div>
       </div>
     </div>
 
     <!-- Client Photo Transformations Section -->
     <div style="margin-top:24px">
-      <h2 class="plan-incl-title" style="margin-bottom:6px">Histórias Reais de Sucesso</h2>
-      <p style="text-align:center;font-size:13px;color:#777;margin-bottom:18px;padding:0 20px">Pessoas comuns com rotinas corridas, trabalho e família que alcançaram grandes resultados</p>
+      <h2 class="plan-incl-title" style="margin-bottom:6px">Casos Reais de Sincronização</h2>
+      <p style="text-align:center;font-size:13px;color:var(--silver);margin-bottom:18px;padding:0 20px">Resultados de usuários que reajustaram a flexibilidade metabólica</p>
       <div class="photos-grid">
         <div class="photo-pair">
           <div class="photo-card"><span class="photo-tag tag-before">Antes</span>🏋️‍♀️</div>
@@ -1091,58 +1102,43 @@ function showSales(){
       </div>
     </div>
 
-    <!-- Detailed Written Testimonials -->
     <div style="padding:0 20px;margin-top:10px">
       ${TESTS.map(t=>renderTest(t)).join('')}
     </div>
 
-    <!-- Interactive FAQ / Objection Destroyer -->
+    <!-- FAQ Section -->
     <div style="margin-top:24px">
       <h2 class="plan-incl-title" style="margin-bottom:14px">Perguntas Frequentes</h2>
       <div class="faq-wrap">
         <div class="faq-item">
-          <div class="faq-q" onclick="togFaq(this)">Vou sentir fraqueza, tontura ou passar mal? <span>+</span></div>
-          <div class="faq-a">Não! O método do **Jejum Adaptado** é feito de forma gradual e progressiva. Ele ajusta sua alimentação para evitar picos de insulina e quedas bruscas de glicose, permitindo que você mantenha sua energia alta durante todo o dia.</div>
+          <div class="faq-q" onclick="togFaq(this)">Vou sentir fraqueza ou queda de energia? <span>+</span></div>
+          <div class="faq-a">Não. O protocolo do METASYNC faz uma transição hormonal gradual, estabilizando a glicose e utilizando gordura como fonte direta de energia.</div>
         </div>
         <div class="faq-item">
-          <div class="faq-q" onclick="togFaq(this)">Vou perder massa muscular durante o jejum? <span>+</span></div>
-          <div class="faq-a">De forma alguma. Nosso protocolo foi desenvolvido focando na **preservação proteica**. Ao seguir as janelas corretas, seu corpo é instruído a utilizar exclusivamente a gordura acumulada como fonte primária de combustível.</div>
+          <div class="faq-q" onclick="togFaq(this)">Vou perder massa magra? <span>+</span></div>
+          <div class="faq-a">O método prioriza a preservação proteica, sinalizando o corpo para metabolizar unicamente o tecido adiposo acumulado.</div>
         </div>
         <div class="faq-item">
-          <div class="faq-q" onclick="togFaq(this)">E quando eu tiver um jantar com amigos ou aniversário? <span>+</span></div>
-          <div class="faq-a">Você **não precisa se isolar socialmente**. O grande diferencial do Jejum Adaptado é a flexibilidade: ensinamos como mover sua janela de alimentação no dia do evento para você curtir sem comprometer seus resultados.</div>
+          <div class="faq-q" onclick="togFaq(this)">E em eventos sociais e fins de semana? <span>+</span></div>
+          <div class="faq-a">O sistema é 100% flexível. Você aprenderá a remanejar suas janelas para eventos sociais sem atrapalhar a queima de gordura.</div>
         </div>
         <div class="faq-item">
-          <div class="faq-q" onclick="togFaq(this)">Não tenho tempo para cozinhar pratos complicados. Funciona para mim? <span>+</span></div>
-          <div class="faq-a">Com certeza! Nossas sugestões de refeições levam **menos de 15 minutos de preparo** e utilizam ingredientes simples e baratos que você encontra em qualquer supermercado.</div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-q" onclick="togFaq(this)">É mais uma dieta que vou engordar tudo depois do 21º dia? <span>+</span></div>
-          <div class="faq-a">Não. Os 21 dias são a fase de **Reprogramação Metabólica**. Além de eliminar o excesso de peso inicial, o programa te ensina a manter o metabolismo acelerado para que você nunca mais passe pelo efeito sanfona.</div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-q" onclick="togFaq(this)">Não é apenas um PDF simples que vou esquecer no e-mail? <span>+</span></div>
-          <div class="faq-a">Definitivamente não! Você terá acesso a uma **Plataforma Web/App completa e interativa** + o suporte 24h da nossa **IA treinada pela Dra. Maya** no seu celular para tirar qualquer dúvida na hora!</div>
+          <div class="faq-q" onclick="togFaq(this)">Como funciona a Mentora de Bolso IA? <span>+</span></div>
+          <div class="faq-a">A IA da Dra. Maya estará disponível no seu painel e via mensagem no celular 24 horas por dia para tirar qualquer dúvida em tempo real.</div>
         </div>
       </div>
     </div>
 
-    <!-- Second Pricing & Guarantee -->
     <div style="padding:10px 20px 20px">
-      <div class="price-badge">De R$ 197,90 por apenas 👇</div>
+      <div class="price-badge">OFERTA DE LANÇAMENTO METASYNC LAB 👇</div>
       <div class="price-card">
-        <div class="price-product">Plano Jejum Adaptado<br>+ Mentora IA 24h</div>
+        <div class="price-product">Plano METASYNC IA<br>+ Mentora IA 24h</div>
         <div class="price-val"><div class="price-install">6x de R$5,56</div><div class="price-full">Ou R$29,00 à vista</div></div>
       </div>
-      <button class="cta-btn" onclick="alert('Redirecionando para o pagamento seguro...')">RECEBER O MEU PLANO + IA 24H</button>
-      <div class="trust">
-        <div class="trust-item"><span class="trust-icon">✅</span><span>Compra<br>SEGURA</span></div>
-        <div class="trust-item"><span class="trust-icon">🏆</span><span>Satisfação<br>GARANTIDA</span></div>
-        <div class="trust-item"><span class="trust-icon">🔒</span><span>Privacidade<br>PROTEGIDA</span></div>
-      </div>
+      <button class="cta-btn" onclick="alert('Redirecionando para a ativação do seu painel...')">ATIVAR MINHA CONTA NO LAB ⚡</button>
     </div>
 
-    <!-- Guarantee Badge -->
+    <!-- Guarantee Box -->
     <div class="guarantee-box">
       <div class="guarantee-seal">
         <small>GARANTIA DE</small>
@@ -1151,9 +1147,8 @@ function showSales(){
       </div>
       <h3 class="guarantee-title">Garantia Incondicional de 30 Dias</h3>
       <p class="guarantee-desc">
-        A compra deste material é <strong>totalmente sem risco</strong> para você.<br><br>
-        Se você não ficar 100% satisfeito com a plataforma, com o método ou com a Mentora IA nos primeiros 30 dias após a compra, nós reembolsaremos todo o valor investido, sem perguntas e sem letras miúdas.<br><br>
-        Basta enviar um e-mail para o nosso suporte em:
+        Se você não estiver totalmente satisfeito com os resultados da sua calibração nos primeiros 30 dias, reembolsaremos 100% do seu investimento sem perguntas.<br><br>
+        Suporte técnico:
       </p>
       <span class="guarantee-email">cetoturboseca@gmail.com</span>
     </div>
