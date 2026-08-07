@@ -305,7 +305,18 @@ const STEPS = [
   {id:'intro',    type:'intro'},
   {id:'gender',   type:'gender'},
   {id:'age',      type:'single', q:'Ajuste o seu plano de acordo com\na sua idade', key:'ageRange',
-    opts:[{l:'18 a 25 anos',e:'👩'},{l:'26 a 35 anos',e:'👩‍🦱'},{l:'36 a 45 anos',e:'👩‍🦳'},{l:'+46 anos',e:'👩‍🦲'}]},
+    getOpts: ()=>(ud.gender==='homem'?[
+      {l:'18 a 25 anos',img:'h18.jfif'},
+      {l:'26 a 35 anos',img:'h35.jfif'},
+      {l:'36 a 45 anos',img:'h45.jfif'},
+      {l:'+46 anos',img:'h46.jpg'}
+    ]:[
+      {l:'18 a 25 anos',img:'m18.png'},
+      {l:'26 a 35 anos',img:'m35.png'},
+      {l:'36 a 45 anos',img:'m45.png'},
+      {l:'+46 anos',img:'m46.png'}
+    ]),
+    opts:[{l:'18 a 25 anos'},{l:'26 a 35 anos'},{l:'36 a 45 anos'},{l:'+46 anos'}]},
   {id:'social1',  type:'info-social'},
   {id:'goal',     type:'single', q:'Qual é o seu objetivo principal?', key:'goal',
     opts:[{l:'Perder peso',e:'🏃‍♀️'},{l:'Ficar em forma',e:'💪'},{l:'Melhorar a saúde do coração',e:'❤️‍🩺'},{l:'Aliviar o estresse',e:'🧘‍♀️'}]},
@@ -481,14 +492,16 @@ function renderGender(){
 
 function renderSingle(step){
   const saved = ud[step.key];
+  const opts = typeof step.getOpts === 'function' ? step.getOpts() : step.opts;
   if(step.layout === 'side'){
+    const sideImg = typeof step.getImg === 'function' ? step.getImg() : step.img;
     return `
     <div>
       <h2 class="q-title">${step.question||step.q}</h2>
       <div class="side-layout">
-        <div class="side-img-box">${step.img||'👩'}</div>
+        <div class="side-img-box">${sideImg && sideImg.includes('.') ? `<img src="${sideImg}" style="width:100%;height:100%;object-fit:cover">` : sideImg||'👩'}</div>
         <div class="side-opts">
-          ${step.opts.map(o=>`
+          ${opts.map(o=>`
           <div class="opt ${saved===o.l?'sel':''}" onclick="selSingle('${step.key}','${esc(o.l)}',this)">
             <span class="opt-label">${o.l}</span>
           </div>`).join('')}
@@ -501,13 +514,13 @@ function renderSingle(step){
     <h2 class="q-title">${step.question||step.q}</h2>
     ${step.sub?`<p class="q-sub">${step.sub}</p>`:''}
     <div class="opts">
-      ${step.opts.map(o=>`
+      ${opts.map(o=>`
       <div class="opt ${saved===o.l?'sel':''}" onclick="selSingle('${step.key}','${esc(o.l)}',this)">
         <div style="flex:1">
           <div class="opt-label">${o.l}</div>
           ${o.sub?`<div class="opt-sub">${o.sub}</div>`:''}
         </div>
-        ${o.e?`<span class="opt-emoji">${o.e}</span>`:''}
+        ${o.img ? `<img src="${o.img}" style="width:42px;height:42px;border-radius:50%;object-fit:cover;margin-left:10px;border:1px solid var(--cyan-neon);box-shadow:0 0 10px var(--cyan-glow)">` : o.e ? `<span class="opt-emoji">${o.e}</span>` : ''}
       </div>`).join('')}
     </div>
   </div>`;
