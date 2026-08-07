@@ -630,20 +630,13 @@ function renderFoodPicker(){
 }
 
 function renderInfoSocial(){
-  const avatars=['👩','👨','👩‍🦳','👨‍🦱','👩‍🦲','🧑','👩‍🦱','👨‍🦳'];
-  const positions=[{t:8,l:28},{t:8,l:60},{t:8,l:85},{t:32,l:7},{t:32,l:93},{t:68,l:12},{t:75,l:55},{t:78,l:85}];
+  const circImg = ud.gender === 'homem' ? 'circhomem.png' : 'circmulher.png';
   return `
   <div style="text-align:center">
     <div class="sp-title">+45 mil</div>
     <p class="sp-sub">usuários ativaram o <span>METASYNC IA</span></p>
-    <div style="position:relative;width:260px;height:260px;margin:20px auto">
-      <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:82px;height:82px;border-radius:50%;background:rgba(0, 242, 255, 0.1);border:2px solid var(--cyan-neon);display:flex;align-items:center;justify-content:center;font-size:42px;z-index:2;box-shadow:0 0 20px var(--cyan-glow)">👩</div>
-      ${positions.map((p,i)=>`
-      <div style="position:absolute;top:${p.t}%;left:${p.l}%;transform:translate(-50%,-50%);width:48px;height:48px;border-radius:50%;background:var(--bg-card);border:1px solid var(--border-glass);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;font-size:22px">${avatars[i]}</div>`).join('')}
-      <svg style="position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none" viewBox="0 0 260 260">
-        <circle cx="130" cy="130" r="56" fill="none" stroke="rgba(0, 242, 255, 0.2)" stroke-dasharray="4 6"/>
-        <circle cx="130" cy="130" r="108" fill="none" stroke="rgba(0, 242, 255, 0.15)" stroke-dasharray="4 6"/>
-      </svg>
+    <div style="margin:20px auto;width:100%;max-width:280px;display:flex;justify-content:center;align-items:center">
+      <img src="${circImg}" alt="Usuários Ativos Metasync" style="width:100%;height:auto;max-width:260px;display:block">
     </div>
     <button class="btn btn-primary mt16" onclick="triggerSyncNext()">Continuar</button>
   </div>`;
