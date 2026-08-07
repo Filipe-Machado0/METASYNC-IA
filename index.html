@@ -451,7 +451,16 @@ const STEPS = [
       {l:'Complicações pós-tratamentos',e:'🩺'},
       {l:'Nenhuma das acima',e:'❌'}
     ]),
-    opts:[{l:'Casamento ou relacionamento'},{l:'Rotina corrida'}]},
+    opts:[
+      {l:'Casamento ou relacionamento',e:'👰'},
+      {l:'Rotina corrida com trabalho ou família',e:'😓'},
+      {l:'Dificuldades financeiras',e:'💰'},
+      {l:'Lesão ou incapacidade',e:'🏥'},
+      {l:'Estresse ou problemas de saúde mental',e:'😖'},
+      {l:'Metabolismo mais lento devido a idade',e:'👵'},
+      {l:'Complicações pós-tratamentos',e:'🩺'},
+      {l:'Nenhuma das acima',e:'❌'}
+    ]},
   {id:'motivation', type:'single', q:'Quão motivado você está para perder peso?', key:'motivationLevel',
     opts:[
       {l:'Estou tentando fazer o jejum apenas por curiosidade',e:'🤔'},
@@ -609,11 +618,12 @@ function renderSingle(step){
 
 function renderMulti(step){
   const saved = ud[step.key]||[];
+  const opts = typeof step.getOpts === 'function' ? step.getOpts() : step.opts;
   return `
   <div>
     <h2 class="q-title">${step.question||step.q}</h2>
     <div class="opts" id="multi-opts">
-      ${step.opts.map(o=>`
+      ${opts.map(o=>`
       <div class="opt ${saved.includes(o.l)?'sel':''}" onclick="togMulti('${step.key}','${esc(o.l)}',this)">
         ${o.e?`<span class="opt-emoji" style="margin-right:10px;margin-left:0">${o.e}</span>`:''}
         <div style="flex:1">
