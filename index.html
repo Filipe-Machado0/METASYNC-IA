@@ -1060,7 +1060,20 @@ function togFaq(el){
   item.classList.toggle('open');
 }
 
+function goToCheckout(){
+  try {
+    localStorage.setItem('metasync_opened_checkout', 'true');
+    localStorage.setItem('metasync_completed_quiz', 'true');
+    localStorage.setItem('metasync_user_data', JSON.stringify(ud));
+  } catch (e) {}
+  window.location.href = 'https://checkout.perfectpay.com.br/pay/PPU38CQF6AH?';
+}
+
 function showSales(){
+  try {
+    localStorage.setItem('metasync_completed_quiz', 'true');
+    localStorage.setItem('metasync_user_data', JSON.stringify(ud));
+  } catch (e) {}
   document.getElementById('quiz-section').style.display='none';
   const sp=document.getElementById('sales-page');
   sp.style.display='block';
@@ -1154,6 +1167,12 @@ function showSales(){
       <div class="plan-icon">🥂</div>
       <div class="plan-title">Protocolo de Janela Flexível</div>
       <p class="plan-desc">Ajuste seu tempo de jejum para jantares, encontros e churrascos sem perder a queima de gordura.</p>
+      <button class="cta-btn" onclick="goToCheckout()">ATIVAR MINHA CONTA NO LAB ⚡</button>
+      <div class="trust">
+        <div class="trust-item"><span class="trust-icon">🔒</span><span>Conexão<br>CRIPTOGRAFADA</span></div>
+        <div class="trust-item"><span class="trust-icon">⚡</span><span>Ativação<br>IMEDIATA</span></div>
+        <div class="trust-item"><span class="trust-icon">🛡️</span><span>Garantia<br>ABSOLUTA</span></div>
+      </div>
     </div>
     <div class="plan-item">
       <div class="plan-icon">⚡</div>
@@ -1167,7 +1186,7 @@ function showSales(){
         <div class="price-product">Plano METASYNC IA<br>+ Mentora IA 24h</div>
         <div class="price-val"><div class="price-install">6x de R$5,56</div><div class="price-full">Ou R$29,00 à vista</div></div>
       </div>
-      <button class="cta-btn" onclick="window.location.href='https://checkout.perfectpay.com.br/pay/PPU38CQF6AH?'">ATIVAR MINHA CONTA NO LAB ⚡</button>
+      <button class="cta-btn" onclick="goToCheckout()">ATIVAR MINHA CONTA NO LAB ⚡</button>
       <div class="trust">
         <div class="trust-item"><span class="trust-icon">🔒</span><span>Conexão<br>CRIPTOGRAFADA</span></div>
         <div class="trust-item"><span class="trust-icon">⚡</span><span>Ativação<br>IMEDIATA</span></div>
@@ -1213,24 +1232,24 @@ function showSales(){
     </div>
 
     <!-- FAQ Section -->
-    <div style="margin-top:24px">
+    <div style="margin-top:28px">
       <h2 class="plan-incl-title" style="margin-bottom:14px">Perguntas Frequentes</h2>
       <div class="faq-wrap">
         <div class="faq-item">
-          <div class="faq-q" onclick="togFaq(this)">Vou sentir fraqueza ou queda de energia? <span>+</span></div>
-          <div class="faq-a">Não. O protocolo do METASYNC faz uma transição hormonal gradual, estabilizando a glicose e utilizando gordura como fonte direta de energia.</div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-q" onclick="togFaq(this)">Vou perder massa magra? <span>+</span></div>
-          <div class="faq-a">O método prioriza a preservação proteica, sinalizando o corpo para metabolizar unicamente o tecido adiposo acumulado.</div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-q" onclick="togFaq(this)">E em eventos sociais e fins de semana? <span>+</span></div>
-          <div class="faq-a">O sistema é 100% flexível. Você aprenderá a remanejar suas janelas para eventos sociais sem atrapalhar a queima de gordura.</div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-q" onclick="togFaq(this)">Como funciona a Mentora de Bolso IA? <span>+</span></div>
+          <div class="faq-q" onclick="togFaq(this)">Como funciona a Mentora IA 24h? <span>+</span></div>
           <div class="faq-a">A IA da Dra. Maya estará disponível no seu painel e via mensagem no celular 24 horas por dia para tirar qualquer dúvida em tempo real.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="togFaq(this)">Preciso parar de comer o que gosto? <span>+</span></div>
+          <div class="faq-a">Não! Nosso algoritmo filtra apenas os alimentos que você declarou que não gosta no quiz e calcula sua janela metabólica para você comer bem.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="togFaq(this)">Em quanto tempo vejo resultados? <span>+</span></div>
+          <div class="faq-a">Os primeiros efeitos no alívio do inchaço e aumento da energia são percebidos nos primeiros 3 dias de sincronização da janela.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="togFaq(this)">E se eu não gostar da plataforma? <span>+</span></div>
+          <div class="faq-a">Você tem 30 dias de garantia incondicional. Se não aprovar, devolvemos 100% do seu dinheiro sem burocracia.</div>
         </div>
       </div>
     </div>
@@ -1241,7 +1260,7 @@ function showSales(){
         <div class="price-product">Plano METASYNC IA<br>+ Mentora IA 24h</div>
         <div class="price-val"><div class="price-install">6x de R$5,56</div><div class="price-full">Ou R$29,00 à vista</div></div>
       </div>
-      <button class="cta-btn" onclick="window.location.href='https://checkout.perfectpay.com.br/pay/PPU38CQF6AH?'">ATIVAR MINHA CONTA NO LAB ⚡</button>
+      <button class="cta-btn" onclick="goToCheckout()">ATIVAR MINHA CONTA NO LAB ⚡</button>
     </div>
 
     <!-- Guarantee Box -->
@@ -1263,7 +1282,25 @@ function showSales(){
   window.scrollTo(0,0);
 }
 
-render();
+function checkAutoShowSales(){
+  try {
+    const openedCheckout = localStorage.getItem('metasync_opened_checkout') === 'true';
+    const completedQuiz = localStorage.getItem('metasync_completed_quiz') === 'true';
+    if (openedCheckout || completedQuiz) {
+      const savedUd = localStorage.getItem('metasync_user_data');
+      if (savedUd) {
+        Object.assign(ud, JSON.parse(savedUd));
+      }
+      showSales();
+      return true;
+    }
+  } catch (e) {}
+  return false;
+}
+
+if (!checkAutoShowSales()) {
+  render();
+}
 </script>
 </body>
 </html>
