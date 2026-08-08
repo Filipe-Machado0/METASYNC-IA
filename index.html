@@ -415,7 +415,7 @@ const STEPS = [
       {l:'Eu consigo subir alguns lances de escada facilmente',e:'🚀'}
     ]},
   {id:'workroutine',type:'single', q:'Como é a sua rotina de trabalho?', key:'workRoutine',
-    layout:'side', getImg: ()=>(ud.gender==='homem'?'h46.jpg':'lunch_12.jpg'),
+    layout:'side', getImg: ()=>(ud.gender==='homem'?'h46.jpg':'work_routine.png'),
     getOpts: ()=>(ud.gender==='homem'?[
       {l:'das 09:00 às 18:00'},{l:'Turnos noturnos'},{l:'Meu horário é flexível'},{l:'Estou aposentado'}
     ]:[
@@ -594,7 +594,7 @@ function renderSingle(step){
     <div>
       <h2 class="q-title">${step.question||step.q}</h2>
       <div class="side-layout">
-        <div class="side-img-box">${sideImg && sideImg.includes('.') ? `<img src="${sideImg}" style="width:100%;height:100%;object-fit:cover;object-position:${step.id==='workroutine'?'left center':'center center'}">` : sideImg||'👩'}</div>
+        <div class="side-img-box">${sideImg && sideImg.includes('.') ? `<img src="${sideImg}" style="width:100%;height:100%;object-fit:cover;object-position:${step.id==='workroutine'?'right center':'center center'}">` : sideImg||'👩'}</div>
         <div class="side-opts">
           ${opts.map(o=>`
           <div class="opt ${saved===o.l?'sel':''}" onclick="selSingle('${step.key}','${esc(o.l)}',this)">
