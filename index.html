@@ -251,12 +251,10 @@ canvas{max-width:100%}
 
 /* Gallery of Transformation Photos */
 .photos-grid{display:flex;flex-direction:column;gap:16px;padding:0 20px;margin:20px 0}
-.photo-pair{display:grid;grid-template-columns:1fr 1fr;gap:10px;border-radius:18px;overflow:hidden;background:var(--bg-card);border:1px solid var(--border-glass);height:240px;position:relative}
-.photo-card{height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:68px;position:relative;background:rgba(255,255,255,0.02)}
-.photo-card.after{background:rgba(0, 255, 135, 0.04)}
-.photo-tag{position:absolute;top:10px;left:10px;font-size:10px;font-weight:800;padding:4px 8px;border-radius:6px;color:#fff;text-transform:uppercase;letter-spacing:0.5px}
-.tag-before{background:var(--red-neon);box-shadow:0 0 8px var(--red-neon)}
-.tag-after{background:var(--green-neon);color:#06080A;box-shadow:0 0 8px var(--green-neon)}
+.photo-pair-img{width:100%;border-radius:18px;overflow:hidden;background:var(--bg-card);border:1px solid var(--border-glass);position:relative}
+.photo-pair-img img{width:100%;height:auto;display:block;object-fit:cover;border-radius:18px}
+.photo-tag-left{position:absolute;top:10px;left:10px;font-size:10px;font-weight:800;padding:4px 8px;border-radius:6px;color:#fff;text-transform:uppercase;letter-spacing:0.5px;background:var(--red-neon);box-shadow:0 0 8px var(--red-neon);z-index:2}
+.photo-tag-right{position:absolute;top:10px;right:10px;font-size:10px;font-weight:800;padding:4px 8px;border-radius:6px;color:#06080A;text-transform:uppercase;letter-spacing:0.5px;background:var(--green-neon);box-shadow:0 0 8px var(--green-neon);z-index:2}
 
 /* Guarantee Box */
 .guarantee-box{text-align:center;padding:28px 20px;margin:28px 0 10px;background:var(--bg-card);border-top:1px solid var(--border-glass)}
@@ -295,7 +293,7 @@ const ud = {
   gender:'mulher', ageRange:null, goal:null, bodyType:null, targetBody:null,
   focusAreas:[], lastBestShape:null, bodyDescription:null, ifKnowledge:null,
   breakfast:null, lunch:null, dinner:null, dietaryRestrictions:[], dislikedFoods:[],
-  mealPreference:null, weekendBreak:null, exerciseFrequency:null, workRoutine:null,
+  mealPreference:null, weekendBreak:null, exerciseFrequency:null, stairsBreath:null, workRoutine:null,
   sleepHours:null, waterIntake:null, physicalProblems:[], weightGainEvents:[],
   height:165, currentWeight:70, targetWeight:60, exactAge:null, upcomingEvent:null,
   heightUnit:'cm', weightUnit:'kg'
@@ -320,16 +318,16 @@ const STEPS = [
   {id:'social1',  type:'info-social'},
   {id:'goal',     type:'single', q:'Qual é o seu objetivo principal?', key:'goal',
     opts:[
-      {l:'Perder peso',img:'goal_lose_weight.jpg'},
-      {l:'Ficar em forma',img:'goal_get_fit.jpg'},
-      {l:'Melhorar a saúde do coração',img:'goal_heart_health.jpg'},
-      {l:'Aliviar o estresse',img:'goal_relieve_stress.jpg'}
+      {l:'Perder peso',img:'goal_lose_weight.png'},
+      {l:'Ficar em forma',img:'goal_get_fit.png'},
+      {l:'Melhorar a saúde do coração',img:'goal_heart_health.png'},
+      {l:'Aliviar o estresse',img:'goal_relieve_stress.png'}
     ]},
   {id:'bodytype', type:'single', q:'Como você descreveria seu físico?', key:'bodyType',
     getOpts: ()=>(ud.gender==='homem'?[
       {l:'Magro',img:'magro.png'},{l:'Falso magro',img:'flacido.png'},{l:'Sobrepeso',img:'amais.png'},{l:'Obeso',img:'amais.png'}
     ]:[
-      {l:'Magra',e:'🟢'},{l:'Falsa magra',e:'🟡'},{l:'Sobrepeso',e:'🟠'},{l:'Obesa',e:'🔴'}
+      {l:'Magra',img:'body_magra.png'},{l:'Falsa magra',img:'body_falsa_magra.png'},{l:'Sobrepeso',img:'body_sobrepeso.png'},{l:'Obesa',img:'body_obesa.png'}
     ]),
     opts:[{l:'Magro'},{l:'Falso magro'},{l:'Sobrepeso'},{l:'Obeso'}]},
   {id:'info-chart1', type:'info-chart1'},
@@ -348,7 +346,7 @@ const STEPS = [
     getOpts: ()=>(ud.gender==='homem'?[
       {l:'Barriga',img:'peitinho.png'},{l:'Peito',img:'peitinho.png'},{l:'Braços',img:'braço.png'},{l:'Costas',img:'costa.png'},{l:'Pernas',img:'perna.png'}
     ]:[
-      {l:'Barriga',img:'peitinho.png'},{l:'Bunda',img:'peitinho.png'},{l:'Peito',img:'peitinho.png'},{l:'Pernas',img:'perna.png'}
+      {l:'Barriga',img:'focus_barriga.png'},{l:'Bunda',img:'focus_bunda.png'},{l:'Peito',img:'focus_peito.png'},{l:'Pernas',img:'focus_pernas.png'}
     ]),
     opts:[{l:'Barriga'},{l:'Bunda'},{l:'Peito'},{l:'Pernas'}]},
   {id:'lastshape', type:'single', q:'Faz quanto tempo que você se\nsentiu na sua melhor forma?', key:'lastBestShape',
@@ -370,17 +368,17 @@ const STEPS = [
     ]},
   {id:'breakfast', type:'single', q:'Quando você costuma tomar seu\ncafé da manhã?', key:'breakfast',
     opts:[
-      {l:'Entre 6 e 8 da manhã',img:'breakfast_early.jpg'},
-      {l:'Entre 8 e 10 da manhã',img:'breakfast_mid.jpg'},
-      {l:'Entre 10h e meio-dia',img:'breakfast_late.jpg'},
-      {l:'Eu costumo pular o café da manhã',img:'breakfast_skip.jpg'}
+      {l:'Entre 6 e 8 da manhã',img:'breakfast_early.png'},
+      {l:'Entre 8 e 10 da manhã',img:'breakfast_mid.png'},
+      {l:'Entre 10h e meio-dia',img:'breakfast_late.png'},
+      {l:'Eu costumo pular o café da manhã',img:'breakfast_skip.png'}
     ]},
   {id:'lunch',    type:'single', q:'Quando você costuma almoçar?', key:'lunch',
     opts:[
-      {l:'Entre 10h e 12h',img:'lunch_12.jpg'},
-      {l:'Entre 12h e 14h',img:'lunch_12.jpg'},
-      {l:'Entre 14h e 16h',img:'lunch_14.jpg'},
-      {l:'Eu costumo pular o almoço',img:'breakfast_skip.jpg'}
+      {l:'Entre 10h e 12h',img:'lunch_10.png'},
+      {l:'Entre 12h e 14h',img:'lunch_12.png'},
+      {l:'Entre 14h e 16h',img:'lunch_14.png'},
+      {l:'Eu costumo pular o almoço',img:'lunch_skip.png'}
     ]},
   {id:'dinner',   type:'single', q:'Quando você janta?', key:'dinner',
     opts:[{l:'Entre 16h e 18h',e:'🥩'},{l:'Entre 18h e 20h',e:'🍲'},{l:'Entre 20h e 22h',e:'🥑'},{l:'Eu costumo pular o jantar',e:'💧'}]},
@@ -409,8 +407,15 @@ const STEPS = [
   {id:'exercise', type:'single', q:'Com que frequência você se\nexercita?', key:'exerciseFrequency',
     layout:'side', getImg: ()=>'goal_get_fit.jpg',
     opts:[{l:'Quase todos os dias'},{l:'Várias vezes por semana'},{l:'Várias vezes por mês'},{l:'Nunca'}]},
+  {id:'stairs', type:'single', q:'Você fica sem fôlego depois de\nsubir um lance de escadas?', key:'stairsBreath',
+    opts:[
+      {l:'Fico tão sem fôlego que não consigo falar',e:'🥵'},
+      {l:'Fico um pouco sem fôlego, mas consigo falar',e:'💨'},
+      {l:'Fico bem depois de um lance de escadas',e:'🙂'},
+      {l:'Eu consigo subir alguns lances de escada facilmente',e:'🚀'}
+    ]},
   {id:'workroutine',type:'single', q:'Como é a sua rotina de trabalho?', key:'workRoutine',
-    layout:'side', getImg: ()=>'lunch_12.jpg',
+    layout:'side', getImg: ()=>(ud.gender==='homem'?'h46.jpg':'work_routine.png'),
     getOpts: ()=>(ud.gender==='homem'?[
       {l:'das 09:00 às 18:00'},{l:'Turnos noturnos'},{l:'Meu horário é flexível'},{l:'Estou aposentado'}
     ]:[
@@ -655,9 +660,15 @@ function renderMultiCard(step){
   </div>`;
 }
 
+function getTargetWeight(){
+  const cw = ud.currentWeight || 70;
+  return Math.max(30, cw - 10);
+}
+
 function renderSlider(step){
+  if(step.key==='targetWeight') ud.targetWeight = getTargetWeight();
   const activeUnit = step.key==='height' ? ud.heightUnit : ud.weightUnit;
-  const val = ud[step.key] || step.def;
+  const val = step.key==='targetWeight' ? getTargetWeight() : (ud[step.key] || step.def);
   const disp = toDisplay(val, step.key, activeUnit);
   const imcHtml = step.showIMC ? `
   <div class="info-box info-blue" id="imcBox">
@@ -738,8 +749,8 @@ function renderInfoChart1(){
   return `
   <div>
     <h2 class="info-big-title">Engenharia metabólica para longevidade e alto desempenho</h2>
-    <div class="chart-box">
-      <canvas id="c1" height="200"></canvas>
+    <div class="chart-box" style="padding:10px;display:flex;justify-content:center;align-items:center;background:rgba(255,255,255,0.02)">
+      <img src="grafic.png" alt="Engenharia Metabólica" style="width:100%;height:auto;max-width:340px;border-radius:12px;display:block">
     </div>
     <button class="btn btn-primary mt16" onclick="triggerSyncNext()">Continuar</button>
   </div>`;
@@ -750,8 +761,8 @@ function renderInfoMetabolism(){
   <div>
     <h2 class="info-big-title">68% da sua queima calórica é regulada pela flexibilidade metabólica</h2>
     <p class="info-body-text">Ao otimizar a sua janela de alimentação e a sensibilidade à insulina, o sistema força seu organismo a utilizar gordura estocada como energia contínua.</p>
-    <div class="chart-box">
-      <canvas id="cmet" height="200"></canvas>
+    <div class="chart-box" style="padding:10px;display:flex;justify-content:center;align-items:center;background:rgba(255,255,255,0.02)">
+      <img src="chart_metabolism.png" alt="Flexibilidade Metabólica" style="width:100%;height:auto;max-width:340px;border-radius:12px;display:block">
     </div>
     <button class="btn btn-primary mt16" onclick="triggerSyncNext()">Continuar</button>
   </div>`;
@@ -760,44 +771,45 @@ function renderInfoMetabolism(){
 function renderInfoFace(){
   return `
   <div>
-    <h2 class="info-big-title">Desinflamação facial e estética rejuvenescida</h2>
-    <div class="face-grid">
-      <div class="face-card" style="background:rgba(255,59,92,0.1);border:1px solid rgba(255,59,92,0.3)">😔</div>
-      <div class="face-card" style="background:rgba(255,184,0,0.1);border:1px solid rgba(255,184,0,0.3)">🙂</div>
-      <div class="face-card" style="background:rgba(0,255,135,0.1);border:1px solid rgba(0,255,135,0.3)">😊</div>
+    <h2 class="info-big-title">Não é só o seu corpo! Veja como o Jejum pode mudar o seu rosto!</h2>
+    <div style="margin:16px auto;width:100%;max-width:320px;display:flex;justify-content:center;align-items:center">
+      <img src="face_transformation.png" alt="Transformação Facial" style="width:100%;height:auto;border-radius:16px;display:block">
     </div>
-    <p class="info-body-text">A redução de retenção e inflamação pela autofagia celular afina o contorno do rosto, reduz inchaços faciais e devolve a firmeza e o brilho natural à pele.</p>
+    <p class="info-body-text">Perder peso através do jejum ajuda a reduzir gordura e inchaço no rosto, principalmente ao redor dos olhos, queixo e mandíbula, deixando sua pele com aparência mais jovem e saudável.</p>
     <button class="btn btn-primary mt16" onclick="triggerSyncNext()">Continuar</button>
   </div>`;
 }
 
 function renderIMCSummary(){
-  const imc = calcIMC();
-  const pct = imcPct(imc);
-  const txt = imcText(imc);
-  const alrt = imc >= 30 ? 'crítica' : imc >= 25 ? 'de atenção' : 'otimizada';
+  const pct = Math.floor(Math.random() * (88 - 65 + 1)) + 65;
   return `
   <div>
-    <h2 class="info-big-title">Diagnóstico do seu Nível de Condicionamento</h2>
+    <h2 class="info-big-title">Resumo do seu nível de condicionamento físico</h2>
     <div style="text-align:left;margin:18px 0">
-      <div style="font-size:12px;color:var(--silver);letter-spacing:0.5px">ÍNDICE DE MASSA CORPORAL (IMC)</div>
-      <div style="font-family:'Montserrat',sans-serif;font-size:14px;color:var(--cyan-neon);font-weight:800;margin-top:2px;margin-bottom:8px;text-shadow:0 0 8px var(--cyan-glow)">${txt} — IMC ${imc.toFixed(1)}</div>
+      <div style="font-size:13px;font-weight:700;color:var(--silver-light);letter-spacing:0.3px">Índice de massa corporal (IMC)</div>
+      <div style="display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--silver);margin-top:4px;margin-bottom:6px">
+        <span>Normal - entre 18,4 e 25</span>
+        <span style="font-weight:800;font-size:14px;color:#fff">${pct}%</span>
+      </div>
       <div class="imc-track">
         <div class="imc-thumb" style="left:${pct}%"></div>
       </div>
-      <div class="imc-labels"><span>Baixo</span><span>Normal</span><span>Elevado</span></div>
+      <div class="imc-labels"><span>Anormal</span><span>Normal</span><span>Obesa</span></div>
     </div>
-    <div style="text-align:center;font-size:96px;padding:16px 0;line-height:1;filter:drop-shadow(0 0 15px rgba(255,255,255,0.1))">${bodyEmoji(imc)}</div>
-    <div class="info-box info-yellow">
-      <div class="ib-title">Sua situação atual é ${alrt}!</div>
-      <p>Iniciando o seu protocolo de biohacking metabólico. Iremos destravar a sua queima de gordura e aumentar a sua energia diária.</p>
+    <div style="display:flex;justify-content:center;align-items:center;margin:16px 0">
+      <img src="woman_overweight.png" alt="Nível de condicionamento" style="height:210px;width:auto;display:block;object-fit:contain">
+    </div>
+    <div style="background:#FFF8EA;border:1px solid #FFE8B8;border-radius:16px;padding:16px;text-align:left;margin-top:16px">
+      <div style="font-family:'Montserrat',sans-serif;font-weight:800;font-size:15px;color:#D97706;margin-bottom:8px">Sua situação é preocupante!</div>
+      <p style="font-size:13px;line-height:1.5;color:#785E2A;margin:0">Parabéns por dar o primeiro passo. Vamos criar um plano personalizado para acelerar seu metabolismo, aumentar sua força e melhorar sua saúde.</p>
     </div>
     <button class="btn btn-primary mt16" onclick="triggerSyncNext()">Continuar</button>
   </div>`;
 }
 
 function renderWeightGraphScreen(){
-  const tw = ud.targetWeight;
+  const tw = getTargetWeight();
+  ud.targetWeight = tw;
   return `
   <div>
     <h2 class="info-big-title">Projeção da sua Curva Metabólica</h2>
@@ -814,10 +826,10 @@ function renderWeightGraphScreen(){
 }
 
 const TESTS = [
-  {n:'Rogéria Cardoso',a:'👩',t:'Protocolo impressionante!',b:'Fiquei realmente surpresa com esse plano, não imaginei que iria fazer tanta diferença! Consegui sair dos 68kg e voltar para os meus 60kg. A IA da Dra. Maya no meu WhatsApp me ajudou a cada refeição!'},
-  {n:'Sérgio Augusto',a:'🏃‍♂️',t:'Alta tecnologia aplicada à saúde!',b:'O METASYNC se encaixou perfeitamente na minha rotina corrida. Eu sempre gostei de correr mas estava acima do peso... perdi mais de 10kg em 21 dias e voltei a ter disposição total!'},
-  {n:'Cláudia Santos',a:'👩‍🦱',t:'Menos 5kg e sem cansaço!',b:'Desde que ativei as orientações adaptadas, to muito menos inchada e com menos 5kg na balança. O melhor de tudo foi a energia, pareço ter 20 anos novamente kkkk!'},
-  {n:'Gleide Almeida',a:'👩‍🦰',t:'Fim definitivo do Efeito Sanfona',b:'Depois de testar o METASYNC e alinhar o jejum adaptado com a IA, finalmente estabilizei meu peso ideal por mais de 6 meses sem sofrimento. Recomendo demais!'}
+  {n:'Rogéria Cardoso',a:'user_rogeria.jpg',t:'Protocolo impressionante!',b:'Fiquei realmente surpresa com esse plano, não imaginei que iria fazer tanta diferença! Consegui sair dos 68kg e voltar para os meus 60kg. A IA da Dra. Maya no meu WhatsApp me ajudou a cada refeição!'},
+  {n:'Sérgio Augusto',a:'user_sergio.png',t:'Alta tecnologia aplicada à saúde!',b:'O METASYNC se encaixou perfeitamente na minha rotina corrida. Eu sempre gostei de correr mas estava acima do peso... perdi mais de 10kg em 21 dias e voltei a ter disposição total!'},
+  {n:'Cláudia Santos',a:'user_claudia.png',t:'Menos 5kg e sem cansaço!',b:'Desde que ativei as orientações adaptadas, to muito menos inchada e com menos 5kg na balança. O melhor de tudo foi a energia, pareço ter 20 anos novamente kkkk!'},
+  {n:'Gleide Almeida',a:'user_gleide.png',t:'Fim definitivo do Efeito Sanfona',b:'Depois de testar o METASYNC e alinhar o jejum adaptado com a IA, finalmente estabilizei meu peso ideal por mais de 6 meses sem sofrimento. Recomendo demais!'}
 ];
 let testIdx = 0;
 
@@ -847,7 +859,7 @@ function renderTest(t){
   <div class="test-card">
     <div class="test-head">
       <div class="test-user">
-        <div class="test-avatar">${t.a}</div>
+        <div class="test-avatar">${t.a.includes('.') ? `<img src="${t.a}" alt="${t.n}" style="width:100%;height:100%;object-fit:cover">` : t.a}</div>
         <div class="test-name">${t.n}</div>
       </div>
       <span class="test-star-icon">★</span>
@@ -859,7 +871,8 @@ function renderTest(t){
 }
 
 function renderResult(){
-  const tw = ud.targetWeight;
+  const tw = getTargetWeight();
+  ud.targetWeight = tw;
   return `
   <div>
     <h2 class="info-big-title">Seu Protocolo METASYNC IA está Pronto!</h2>
@@ -1051,7 +1064,8 @@ function showSales(){
   document.getElementById('quiz-section').style.display='none';
   const sp=document.getElementById('sales-page');
   sp.style.display='block';
-  const tw=ud.targetWeight;
+  const tw=getTargetWeight();
+  ud.targetWeight=tw;
   sp.innerHTML=`
   <div style="background:var(--bg-deep);max-width:440px;width:100%;padding-bottom:48px">
     <div class="sales-header-bar"></div>
@@ -1073,9 +1087,8 @@ function showSales(){
     <!-- Before / After Grid -->
     <div style="padding:0 20px 12px">
       <div class="compare-wrap">
-        <div class="compare-grid" style="margin-bottom:16px;text-align:center">
-          <div><div class="compare-ava-label">Status Atual</div><div class="compare-ava">🧍‍♀️</div></div>
-          <div><div class="compare-ava-label">Meta Calibrada</div><div class="compare-ava">💃</div></div>
+        <div style="margin-bottom:14px;border-radius:14px;overflow:hidden;border:1px solid var(--border-glass)">
+          <img src="before_after_graphic.png" alt="Antes e Depois - Agora vs Seu objetivo" style="width:100%;height:auto;display:block">
         </div>
         <div class="compare-grid">
           <div>
@@ -1145,7 +1158,7 @@ function showSales(){
     </div>
 
     <div style="padding:20px 20px 10px">
-      <div class="price-badge">OFERTA DE LANÇAMENTO METASYNC LAB 👇</div>
+      <div class="price-badge">OFERTA DO MÊS DE AGOSTO 👇</div>
       <div class="price-card">
         <div class="price-product">Plano METASYNC IA<br>+ Mentora IA 24h</div>
         <div class="price-val"><div class="price-install">6x de R$5,56</div><div class="price-full">Ou R$29,00 à vista</div></div>
@@ -1163,25 +1176,30 @@ function showSales(){
       <h2 class="plan-incl-title" style="margin-bottom:6px">Casos Reais de Sincronização</h2>
       <p style="text-align:center;font-size:13px;color:var(--silver);margin-bottom:18px;padding:0 20px">Resultados de usuários que reajustaram a flexibilidade metabólica</p>
       <div class="photos-grid">
-        <div class="photo-pair">
-          <div class="photo-card"><span class="photo-tag tag-before">Antes</span>🏋️‍♀️</div>
-          <div class="photo-card after"><span class="photo-tag tag-after">Depois</span>💃</div>
+        <div class="photo-pair-img">
+          <span class="photo-tag-left">Antes</span>
+          <span class="photo-tag-right">Depois</span>
+          <img src="case1.png" alt="Caso Real 1">
         </div>
-        <div class="photo-pair">
-          <div class="photo-card"><span class="photo-tag tag-before">Antes</span>👙</div>
-          <div class="photo-card after"><span class="photo-tag tag-after">Depois</span>✨</div>
+        <div class="photo-pair-img">
+          <span class="photo-tag-left">Antes</span>
+          <span class="photo-tag-right">Depois</span>
+          <img src="case2.png" alt="Caso Real 2">
         </div>
-        <div class="photo-pair">
-          <div class="photo-card"><span class="photo-tag tag-before">Antes</span>🙋‍♀️</div>
-          <div class="photo-card after"><span class="photo-tag tag-after">Depois</span>🌟</div>
+        <div class="photo-pair-img">
+          <span class="photo-tag-left">Antes</span>
+          <span class="photo-tag-right">Depois</span>
+          <img src="case3.png" alt="Caso Real 3">
         </div>
-        <div class="photo-pair">
-          <div class="photo-card"><span class="photo-tag tag-before">Antes</span>👚</div>
-          <div class="photo-card after"><span class="photo-tag tag-after">Depois</span>🔥</div>
+        <div class="photo-pair-img">
+          <span class="photo-tag-left">Antes</span>
+          <span class="photo-tag-right">Depois</span>
+          <img src="case4.png" alt="Caso Real 4">
         </div>
-        <div class="photo-pair">
-          <div class="photo-card"><span class="photo-tag tag-before">Antes</span>👗</div>
-          <div class="photo-card after"><span class="photo-tag tag-after">Depois</span>👠</div>
+        <div class="photo-pair-img">
+          <span class="photo-tag-left">Antes</span>
+          <span class="photo-tag-right">Depois</span>
+          <img src="case5.png" alt="Caso Real 5">
         </div>
       </div>
     </div>
@@ -1214,7 +1232,7 @@ function showSales(){
     </div>
 
     <div style="padding:10px 20px 20px">
-      <div class="price-badge">OFERTA DE LANÇAMENTO METASYNC LAB 👇</div>
+      <div class="price-badge">OFERTA DO MÊS DE AGOSTO 👇</div>
       <div class="price-card">
         <div class="price-product">Plano METASYNC IA<br>+ Mentora IA 24h</div>
         <div class="price-val"><div class="price-install">6x de R$5,56</div><div class="price-full">Ou R$29,00 à vista</div></div>
