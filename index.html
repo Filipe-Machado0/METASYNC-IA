@@ -1167,21 +1167,11 @@ function showSales(){
         <div class="price-product">Plano METASYNC IA<br>+ Mentora IA 24h</div>
         <div class="price-val"><div class="price-install">6x de R$5,56</div><div class="price-full">Ou R$29,00 à vista</div></div>
       </div>
-function goToApp(){
-  const params = new URLSearchParams({
-    peso: ud.currentWeight || 70,
-    meta: ud.targetWeight || 60,
-    idade: ud.exactAge || 30,
-    dislikes: (ud.dislikedFoods || []).join(','),
-    workStart: '09h',
-    workEnd: '18h',
-    windowStart: '12:00',
-    windowEnd: '20:00'
-  });
-  window.location.href = 'https://metasyncia.lovable.app/?' + params.toString();
+function goToCheckout(){
+  window.location.href = 'https://checkout.perfectpay.com.br/pay/PPU38CQF6AH?';
 }
 
-      <button class="cta-btn" onclick="goToApp()">ATIVAR MINHA CONTA NO LAB ⚡</button>
+      <button class="cta-btn" onclick="goToCheckout()">ATIVAR MINHA CONTA NO LAB ⚡</button>
       <div class="trust">
         <div class="trust-item"><span class="trust-icon">🔒</span><span>Conexão<br>CRIPTOGRAFADA</span></div>
         <div class="trust-item"><span class="trust-icon">⚡</span><span>Ativação<br>IMEDIATA</span></div>
@@ -1255,7 +1245,7 @@ function goToApp(){
         <div class="price-product">Plano METASYNC IA<br>+ Mentora IA 24h</div>
         <div class="price-val"><div class="price-install">6x de R$5,56</div><div class="price-full">Ou R$29,00 à vista</div></div>
       </div>
-      <button class="cta-btn" onclick="goToApp()">ATIVAR MINHA CONTA NO LAB ⚡</button>
+      <button class="cta-btn" onclick="goToCheckout()">ATIVAR MINHA CONTA NO LAB ⚡</button>
     </div>
 
     <!-- Guarantee Box -->
