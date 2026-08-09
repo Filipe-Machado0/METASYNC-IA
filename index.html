@@ -370,7 +370,11 @@ const STEPS = [
   {id:'info-chart1', type:'info-chart1'},
   {id:'targetbody',type:'single', q:'Qual corpo você deseja alcançar?', key:'targetBody',
     getOpts: ()=>(ud.gender==='homem'?[
-      {l:'Definido',e:'🌟'},{l:'Magro',e:'✨'},{l:'Normal',e:'🙂'},{l:'Em forma',e:'💪'},{l:'Forte',e:'😊'}
+      {l:'Definido',img:'target_definido_man.png'},
+      {l:'Magro',img:'target_magro_man.png'},
+      {l:'Normal',img:'target_normal_man.png'},
+      {l:'Em forma',img:'target_em_forma_man.png'},
+      {l:'Forte',img:'target_forte_man.png'}
     ]:[
       {l:'Curvilínea',img:'target_curvilinea.png'},
       {l:'Magra',img:'target_magra.png'},
