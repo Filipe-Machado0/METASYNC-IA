@@ -402,6 +402,15 @@ const STEPS = [
     ]),
     opts:[{l:'Tenho dificuldade em ganhar músculos'},{l:'Eu ganho e perco sem esforço'},{l:'Eu ganho peso facilmente, mas tenho dificuldade para perder'}]},
   {id:'ifknowledge',type:'single', q:'O que você sabe sobre o jejum\nintermitente?', key:'ifKnowledge',
+    getOpts: ()=>(ud.gender==='homem'?[
+      {l:'Não sei nada',img:'h18.jfif'},
+      {l:'Já ouvi falar um pouco',img:'h35.jfif'},
+      {l:'Entendo bastante',img:'h45.jfif'}
+    ]:[
+      {l:'Não sei nada',img:'if_know_nothing.jpg'},
+      {l:'Já ouvi falar um pouco',img:'if_know_a_little.jpg'},
+      {l:'Entendo bastante',img:'if_know_a_lot.jpg'}
+    ]),
     opts:[
       {l:'Não sei nada',img:'if_know_nothing.jpg'},
       {l:'Já ouvi falar um pouco',img:'if_know_a_little.jpg'},
@@ -446,7 +455,7 @@ const STEPS = [
   {id:'weekendbrk',type:'single', q:'Você precisa de uma pausa no\nJejum para o final de semana?', key:'weekendBreak',
     opts:[{l:'Claro que sim! Final de semana é para curtir',e:'🤙'},{l:'Não paro nem no fim de semana!',e:'💪'}]},
   {id:'exercise', type:'single', q:'Com que frequência você se\nexercita?', key:'exerciseFrequency',
-    layout:'side', getImg: ()=>'goal_get_fit.jpg',
+    layout:'side', getImg: ()=>(ud.gender==='homem'?'goal_get_fit_man.png':'goal_get_fit.jpg'),
     opts:[{l:'Quase todos os dias'},{l:'Várias vezes por semana'},{l:'Várias vezes por mês'},{l:'Nunca'}]},
   {id:'stairs', type:'single', q:'Você fica sem fôlego depois de\nsubir um lance de escadas?', key:'stairsBreath',
     opts:[
@@ -464,7 +473,7 @@ const STEPS = [
     ]),
     opts:[{l:'das 09:00 às 18:00'},{l:'Turnos noturnos'},{l:'Meu horário é flexível'},{l:'Estou aposentado'}]},
   {id:'sleep',    type:'single', q:'Quantas horas você costuma\ndormir?', key:'sleepHours',
-    layout:'side', getImg: ()=>'goal_relieve_stress.jpg',
+    layout:'side', getImg: ()=>(ud.gender==='homem'?'goal_relieve_stress_man.png':'goal_relieve_stress.jpg'),
     opts:[{l:'Durmo pouco (menos de 5 horas)'},{l:'Eu consigo dormir um pouco (5-6 horas)'},{l:'Eu durmo muito e bem (7-8 horas)'},{l:'Gosto de dormir até mais tarde (mais de 8 horas)'}]},
   {id:'water',    type:'single', q:'Qual é a sua ingestão diária de\nágua?', key:'waterIntake',
     layout:'side', img:'💧',
