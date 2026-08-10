@@ -833,6 +833,8 @@ function renderInfoFace(){
 
 function renderIMCSummary(){
   const pct = Math.floor(Math.random() * (88 - 65 + 1)) + 65;
+  const imcImg = ud.gender === 'homem' ? 'imc_man.png' : 'woman_overweight.png';
+  const labelObese = ud.gender === 'homem' ? 'Obeso' : 'Obesa';
   return `
   <div>
     <h2 class="info-big-title">Resumo do seu nível de condicionamento físico</h2>
@@ -845,10 +847,10 @@ function renderIMCSummary(){
       <div class="imc-track">
         <div class="imc-thumb" style="left:${pct}%"></div>
       </div>
-      <div class="imc-labels"><span>Anormal</span><span>Normal</span><span>Obesa</span></div>
+      <div class="imc-labels"><span>Anormal</span><span>Normal</span><span>${labelObese}</span></div>
     </div>
     <div style="display:flex;justify-content:center;align-items:center;margin:16px 0">
-      <img src="woman_overweight.png" alt="Nível de condicionamento" style="height:210px;width:auto;display:block;object-fit:contain">
+      <img src="${imcImg}" alt="Nível de condicionamento" style="height:210px;width:auto;display:block;object-fit:contain">
     </div>
     <div style="background:#FFF8EA;border:1px solid #FFE8B8;border-radius:16px;padding:16px;text-align:left;margin-top:16px">
       <div style="font-family:'Montserrat',sans-serif;font-weight:800;font-size:15px;color:#D97706;margin-bottom:8px">Sua situação é preocupante!</div>
