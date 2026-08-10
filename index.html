@@ -819,11 +819,12 @@ function renderInfoMetabolism(){
 }
 
 function renderInfoFace(){
+  const faceImg = ud.gender === 'homem' ? 'face_transformation_man.png' : 'face_transformation.png';
   return `
   <div>
     <h2 class="info-big-title">Não é só o seu corpo! Veja como o Jejum pode mudar o seu rosto!</h2>
     <div style="margin:16px auto;width:100%;max-width:320px;display:flex;justify-content:center;align-items:center">
-      <img src="face_transformation.png" alt="Transformação Facial" style="width:100%;height:auto;border-radius:16px;display:block">
+      <img src="${faceImg}" alt="Transformação Facial" style="width:100%;height:auto;border-radius:16px;display:block">
     </div>
     <p class="info-body-text">Perder peso através do jejum ajuda a reduzir gordura e inchaço no rosto, principalmente ao redor dos olhos, queixo e mandíbula, deixando sua pele com aparência mais jovem e saudável.</p>
     <button class="btn btn-primary mt16" onclick="triggerSyncNext()">Continuar</button>
