@@ -596,7 +596,57 @@ function render(){
   } catch(e){}
 }
 
+function showValidationError(msg){
+  haptic();
+  let err = document.getElementById('valError');
+  if(!err){
+    err = document.createElement('div');
+    err.id = 'valError';
+    err.style.cssText = 'position:fixed;top:60px;left:50%;transform:translateX(-50%);background:rgba(255,59,92,0.95);color:#fff;border:1px solid #FF3B5C;backdrop-filter:blur(10px);padding:12px 18px;border-radius:12px;font-size:13px;font-weight:700;box-shadow:0 0 20px rgba(255,59,92,0.4);z-index:10000;text-align:center;max-width:360px;width:90%;transition:all .3s ease';
+    document.body.appendChild(err);
+  }
+  err.textContent = '⚠️ ' + msg;
+  err.style.display = 'block';
+  setTimeout(() => {
+    if(err) err.style.display = 'none';
+  }, 3200);
+}
+
+function validateCurrentStep(){
+  const step = STEPS[currentStep];
+  if(!step) return true;
+
+  if(step.type === 'single'){
+    if(step.key && !ud[step.key]){
+      showValidationError('Por favor, selecione uma opção para continuar.');
+      return false;
+    }
+  }
+
+  if(step.type === 'multi' || step.type === 'multi-card'){
+    const val = ud[step.key];
+    if(!val || val.length === 0){
+      showValidationError('Por favor, selecione pelo menos 1 opção para continuar.');
+      return false;
+    }
+  }
+
+  if(step.type === 'age-input'){
+    const age = ud.exactAge;
+    if(!age || isNaN(age) || age < 18 || age > 100){
+      showValidationError('Por favor, informe uma idade válida (entre 18 e 100 anos).');
+      const input = document.getElementById('ageIn');
+      if(input) { input.focus(); input.style.border = '2px solid var(--red-neon)'; }
+      return false;
+    }
+  }
+
+  return true;
+}
+
 function triggerSyncNext(){
+  if(!validateCurrentStep()) return;
+  haptic();
   const app = document.getElementById('app');
   const sync = document.createElement('div');
   sync.className = 'sync-overlay';
