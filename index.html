@@ -1252,31 +1252,13 @@ function showSales(){
       <h2 class="plan-incl-title" style="margin-bottom:6px">Casos Reais de Sincronização</h2>
       <p style="text-align:center;font-size:13px;color:var(--silver);margin-bottom:18px;padding:0 20px">Resultados de usuários que reajustaram a flexibilidade metabólica</p>
       <div class="photos-grid">
-        <div class="photo-pair-img">
-          <span class="photo-tag-left">Antes</span>
-          <span class="photo-tag-right">Depois</span>
-          <img src="case1.png" alt="Caso Real 1">
-        </div>
-        <div class="photo-pair-img">
-          <span class="photo-tag-left">Antes</span>
-          <span class="photo-tag-right">Depois</span>
-          <img src="case2.png" alt="Caso Real 2">
-        </div>
-        <div class="photo-pair-img">
-          <span class="photo-tag-left">Antes</span>
-          <span class="photo-tag-right">Depois</span>
-          <img src="case3.png" alt="Caso Real 3">
-        </div>
-        <div class="photo-pair-img">
-          <span class="photo-tag-left">Antes</span>
-          <span class="photo-tag-right">Depois</span>
-          <img src="case4.png" alt="Caso Real 4">
-        </div>
-        <div class="photo-pair-img">
-          <span class="photo-tag-left">Antes</span>
-          <span class="photo-tag-right">Depois</span>
-          <img src="case5.png" alt="Caso Real 5">
-        </div>
+        ${(ud.gender === 'homem' ? ['case1_man.png','case2_man.png','case3_man.png','case4_man.png'] : ['case1.png','case2.png','case3.png','case4.png','case5.png']).map((c,i)=>`
+          <div class="photo-pair-img">
+            <span class="photo-tag-left">Antes</span>
+            <span class="photo-tag-right">Depois</span>
+            <img src="${c}" alt="Caso Real ${i+1}">
+          </div>
+        `).join('')}
       </div>
     </div>
 
