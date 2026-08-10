@@ -878,15 +878,27 @@ function renderWeightGraphScreen(){
   </div>`;
 }
 
-const TESTS = [
-  {n:'Rogéria Cardoso',a:'user_rogeria.jpg',t:'Protocolo impressionante!',b:'Fiquei realmente surpresa com esse plano, não imaginei que iria fazer tanta diferença! Consegui sair dos 68kg e voltar para os meus 60kg. A IA da Dra. Maya no meu WhatsApp me ajudou a cada refeição!'},
-  {n:'Sérgio Augusto',a:'user_sergio.png',t:'Alta tecnologia aplicada à saúde!',b:'O METASYNC se encaixou perfeitamente na minha rotina corrida. Eu sempre gostei de correr mas estava acima do peso... perdi mais de 10kg em 21 dias e voltei a ter disposição total!'},
-  {n:'Cláudia Santos',a:'user_claudia.png',t:'Menos 5kg e sem cansaço!',b:'Desde que ativei as orientações adaptadas, to muito menos inchada e com menos 5kg na balança. O melhor de tudo foi a energia, pareço ter 20 anos novamente kkkk!'},
-  {n:'Gleide Almeida',a:'user_gleide.png',t:'Fim definitivo do Efeito Sanfona',b:'Depois de testar o METASYNC e alinhar o jejum adaptado com a IA, finalmente estabilizei meu peso ideal por mais de 6 meses sem sofrimento. Recomendo demais!'}
-];
+function getTestimonials(){
+  if(ud.gender === 'homem'){
+    return [
+      {n:'Sérgio Augusto',a:'user_sergio.png',t:'Alta tecnologia aplicada à saúde!',b:'O METASYNC se encaixou perfeitamente na minha rotina corrida. Eu sempre gostei de correr mas estava acima do peso... perdi mais de 10kg em 21 dias e voltei a ter disposição total!'},
+      {n:'Carlos Eduardo',a:'h35.jfif',t:'Definição rápida sem perder massa!',b:'Sempre tive dificuldade para perder a gordura abdominal sem perder massa muscular. A mentoria da IA alinhada com o jejum adaptado me deu resultados surreais em 3 semanas!'},
+      {n:'Rodrigo Mendes',a:'h45.jfif',t:'Energia e foco no topo!',b:'Com 42 anos achei que meu metabolismo já era lento demais. Eliminei 8kg e sinto minha energia e disposição no trabalho e nos treinos melhores do que aos 20 anos.'},
+      {n:'Cláudia Santos',a:'user_claudia.png',t:'Resultado incrível para a família toda!',b:'Meu marido e eu ativamos o plano juntos. Ele perdeu 9kg e eu 5kg em poucas semanas. A mentora IA no WhatsApp salvou nossas refeições no dia a dia!'}
+    ];
+  }
+  return [
+    {n:'Rogéria Cardoso',a:'user_rogeria.jpg',t:'Protocolo impressionante!',b:'Fiquei realmente surpresa com esse plano, não imaginei que iria fazer tanta diferença! Consegui sair dos 68kg e voltar para os meus 60kg. A IA da Dra. Maya no meu WhatsApp me ajudou a cada refeição!'},
+    {n:'Sérgio Augusto',a:'user_sergio.png',t:'Alta tecnologia aplicada à saúde!',b:'O METASYNC se encaixou perfeitamente na minha rotina corrida. Eu sempre gostei de correr mas estava acima do peso... perdi mais de 10kg em 21 dias e voltei a ter disposição total!'},
+    {n:'Cláudia Santos',a:'user_claudia.png',t:'Menos 5kg e sem cansaço!',b:'Desde que ativei as orientações adaptadas, to muito menos inchada e com menos 5kg na balança. O melhor de tudo foi a energia, pareço ter 20 anos novamente kkkk!'},
+    {n:'Gleide Almeida',a:'user_gleide.png',t:'Fim definitivo do Efeito Sanfona',b:'Depois de testar o METASYNC e alinhar o jejum adaptado com a IA, finalmente estabilizei meu peso ideal por mais de 6 meses sem sofrimento. Recomendo demais!'}
+  ];
+}
+const TESTS = getTestimonials();
 let testIdx = 0;
 
 function renderLoading(){
+  const tests = getTestimonials();
   return `
   <div style="text-align:center">
     <h2 style="font-family:'Montserrat',sans-serif;font-size:20px;font-weight:900;margin-bottom:20px;line-height:1.3;color:#fff">Gerando o seu Protocolo no METASYNC LAB</h2>
@@ -899,10 +911,10 @@ function renderLoading(){
       <p style="font-size:13px;color:var(--silver)">usuários já ativaram a plataforma</p>
     </div>
     <div id="testWrap">
-      ${renderTest(TESTS[0])}
+      ${renderTest(tests[0])}
     </div>
     <div class="dots" id="testDots">
-      ${TESTS.map((_,i)=>`<div class="dot ${i===0?'act':''}"></div>`).join('')}
+      ${tests.map((_,i)=>`<div class="dot ${i===0?'act':''}"></div>`).join('')}
     </div>
   </div>`;
 }
@@ -1009,11 +1021,12 @@ function startLoading(){
     if(b) b.style.width=loadPct+'%';
     if(p) p.textContent=Math.round(loadPct)+'%';
     if(s) s.textContent=loadMsgs[Math.min(Math.floor((loadPct/100)*loadMsgs.length),loadMsgs.length-1)];
-    const newIdx=Math.floor((loadPct/100)*(TESTS.length-1));
+    const tests = getTestimonials();
+    const newIdx=Math.floor((loadPct/100)*(tests.length-1));
     if(newIdx!==testIdx){
       testIdx=newIdx;
       const tw=document.getElementById('testWrap');
-      if(tw){ tw.innerHTML=renderTest(TESTS[testIdx]); tw.style.animation='none'; void tw.offsetWidth; tw.style.animation='fadeIn .3s ease'; }
+      if(tw){ tw.innerHTML=renderTest(tests[testIdx]); tw.style.animation='none'; void tw.offsetWidth; tw.style.animation='fadeIn .3s ease'; }
       document.querySelectorAll('#testDots .dot').forEach((d,i)=>d.classList.toggle('act',i===testIdx));
     }
   },420);
@@ -1263,7 +1276,7 @@ function showSales(){
     </div>
 
     <div style="padding:0 20px;margin-top:10px">
-      ${TESTS.map(t=>renderTest(t)).join('')}
+      ${getTestimonials().map(t=>renderTest(t)).join('')}
     </div>
 
     <!-- FAQ Section -->
