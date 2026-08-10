@@ -586,6 +586,7 @@ function render(){
     case 'loading':        wrap.innerHTML = renderLoading(); startLoading(); break;
     case 'result':         wrap.innerHTML = renderResult(); setTimeout(()=>drawWeightGraph('rcanvas'),100); break;
     default: wrap.innerHTML = '<p>Step not found</p>';
+  }
   window.scrollTo(0,0);
   saveQuizProgress();
   try {
