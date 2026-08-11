@@ -316,9 +316,12 @@ canvas{max-width:100%}
 .demo-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid var(--border-subtle)}
 .demo-title{font-family:'Montserrat',sans-serif;font-size:13px;font-weight:800;color:#fff;display:flex;align-items:center;gap:8px}
 .demo-title-badge{background:rgba(0,242,255,0.15);color:var(--cyan-neon);border:1px solid var(--cyan-neon);font-size:9px;font-weight:900;padding:2px 7px;border-radius:20px;letter-spacing:0.5px}
-.demo-tabs{display:flex;gap:8px;background:rgba(0,0,0,0.4);padding:6px;border-radius:16px;border:1px solid var(--border-glass);margin-bottom:16px}
-.demo-tab{flex:1;min-height:48px;padding:12px 8px;font-size:12.5px;font-weight:800;color:var(--silver);background:none;border:none;border-radius:12px;cursor:pointer;transition:all .2s;text-align:center;display:flex;align-items:center;justify-content:center;gap:6px;white-space:nowrap}
-.demo-tab.active{background:linear-gradient(135deg,var(--cyan-neon),var(--cyan-dark));color:#06080A;box-shadow:0 0 16px var(--cyan-glow);font-weight:900}
+.demo-tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;background:rgba(0,0,0,0.5);padding:6px;border-radius:18px;border:1px solid var(--border-glass);margin-bottom:16px}
+.demo-tab{width:100%;padding:10px 4px;font-size:11.5px;font-weight:700;color:var(--silver);background:rgba(255,255,255,0.03);border:1px solid transparent;border-radius:14px;cursor:pointer;transition:all .25s ease;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;text-align:center;box-sizing:border-box}
+.demo-tab:hover{background:rgba(255,255,255,0.08);color:#fff}
+.demo-tab.active{background:linear-gradient(135deg,var(--cyan-neon),var(--cyan-dark));color:#06080A;box-shadow:0 0 16px var(--cyan-glow);font-weight:900;border-color:var(--cyan-neon)}
+.demo-tab-icon{font-size:18px;line-height:1}
+.demo-tab-label{font-family:'Montserrat',sans-serif;font-size:11px;font-weight:800;letter-spacing:0.2px}
 
 .demo-pane{display:none;animation:fadeIn .3s ease}
 .demo-pane.active{display:block}
@@ -1568,9 +1571,18 @@ function showSales(){
       </div>
 
       <div class="demo-tabs">
-        <button class="demo-tab active" id="tab-btn-chat" onclick="switchDemoTab('chat')">🤖 Dra. Maya IA</button>
-        <button class="demo-tab" id="tab-btn-timer" onclick="switchDemoTab('timer')">⏱️ Timer Autofagia</button>
-        <button class="demo-tab" id="tab-btn-meals" onclick="switchDemoTab('meals')">🥗 Cardápio</button>
+        <button class="demo-tab active" id="tab-btn-chat" onclick="switchDemoTab('chat')">
+          <span class="demo-tab-icon">🤖</span>
+          <span class="demo-tab-label">Mentora IA</span>
+        </button>
+        <button class="demo-tab" id="tab-btn-timer" onclick="switchDemoTab('timer')">
+          <span class="demo-tab-icon">⏱️</span>
+          <span class="demo-tab-label">Timer Autofagia</span>
+        </button>
+        <button class="demo-tab" id="tab-btn-meals" onclick="switchDemoTab('meals')">
+          <span class="demo-tab-icon">🥗</span>
+          <span class="demo-tab-label">Cardápio</span>
+        </button>
       </div>
 
       <!-- Tab 1: Chat Pane -->
