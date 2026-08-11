@@ -1270,7 +1270,7 @@ function goToCheckout(planType = 'pro'){
     localStorage.setItem('metasync_user_data', JSON.stringify(ud));
   } catch (e) {}
 
-  const baseUrl = isBasic ? 'https://checkout.perfectpay.com.br/pay/PPU38CQF6AH?plan=basic' : 'https://checkout.perfectpay.com.br/pay/PPU38CQF6AH';
+  const baseUrl = isBasic ? 'https://go.perfectpay.com.br/PPU38CQF988' : 'https://checkout.perfectpay.com.br/pay/PPU38CQF97R';
   const currentParams = new URLSearchParams(window.location.search);
   const paramString = currentParams.toString();
   const checkoutUrl = paramString ? (baseUrl.includes('?') ? `${baseUrl}&${paramString}` : `${baseUrl}?${paramString}`) : baseUrl;
