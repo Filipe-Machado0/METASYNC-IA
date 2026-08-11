@@ -1329,6 +1329,12 @@ function selectFastingStage(hours, stageName, percent){
   if(timerDisplay) timerDisplay.textContent = `${hours}:00:00`;
   if(stageTitle) stageTitle.textContent = stageName;
   if(fill) fill.style.width = `${percent}%`;
+function scrollToPricing(){
+  haptic();
+  const el = document.querySelector('.pricing-section');
+  if(el){
+    el.scrollIntoView({ behavior: 'smooth' });
+  }
 }
 
 function showSales(){
@@ -1531,6 +1537,7 @@ function showSales(){
       <div class="plan-icon">🥂</div>
       <div class="plan-title">Protocolo de Janela Flexível</div>
       <p class="plan-desc">Ajuste seu tempo de jejum para jantares, encontros e churrascos sem perder a queima de gordura.</p>
+      <button class="cta-btn" onclick="scrollToPricing()" style="margin-top:18px">VER PLANOS ⚡</button>
     </div>
 
     <!-- Client Photo Transformations Section -->
