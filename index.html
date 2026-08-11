@@ -1400,96 +1400,45 @@ function scrollToPricing(){
 }
 
 let isAudioPlaying = false;
-let synthUtterance = null;
 
 function toggleAudioPlay(){
   haptic();
   const btn = document.getElementById('audioPlayBtn');
   const waveform = document.getElementById('audioWaveform');
   const timeTxt = document.getElementById('audioTimeTxt');
-  const audioEl = document.getElementById('draMayaAudioEl');
+  let audioEl = document.getElementById('draMayaAudioEl');
 
-  if(audioEl && audioEl.src && !audioEl.paused){
+  if(!audioEl){
+    audioEl = document.createElement('audio');
+    audioEl.id = 'draMayaAudioEl';
+    audioEl.src = 'dra_maya_audio.mp3';
+    document.body.appendChild(audioEl);
+  }
+
+  if(!audioEl.paused){
     audioEl.pause();
     isAudioPlaying = false;
     if(btn) btn.textContent = '▶';
     if(waveform) waveform.classList.remove('playing');
     if(timeTxt) timeTxt.textContent = 'Ouvir áudio da Dra. Maya (0:45)';
-    return;
-  }
-
-  if(audioEl && audioEl.src && audioEl.readyState >= 2){
-    audioEl.play().then(()=>{
+  } else {
+    audioEl.play().then(() => {
       isAudioPlaying = true;
       if(btn) btn.textContent = '⏸';
       if(waveform) waveform.classList.add('playing');
       if(timeTxt) timeTxt.textContent = 'Reproduzindo áudio...';
+
       audioEl.onended = () => {
         isAudioPlaying = false;
         if(btn) btn.textContent = '▶';
         if(waveform) waveform.classList.remove('playing');
         if(timeTxt) timeTxt.textContent = 'Ouvir áudio da Dra. Maya (0:45)';
       };
-    }).catch(e=>{
-      playSpeechSynth(btn, waveform, timeTxt);
+    }).catch(err => {
+      console.error("Erro ao tocar áudio MP3:", err);
+      // Fallback em caso de bloqueio de autoplai do navegador
+      audioEl.controls = true;
     });
-    return;
-  }
-
-  playSpeechSynth(btn, waveform, timeTxt);
-}
-
-function playSpeechSynth(btn, waveform, timeTxt){
-  if('speechSynthesis' in window){
-    if(!isAudioPlaying){
-      window.speechSynthesis.cancel();
-      const text = "Olá! Aqui é a Dra. Maya. Analisei os dados do seu diagnóstico metabólico e notei uma oportunidade incrível para reprogramar o seu metabolismo. Ao ativarmos a sua janela de autofagia de 21 dias, seu corpo começará a utilizar os depósitos de gordura acumulada como energia principal. Estou muito empolgada para te guiar diariamente na plataforma. Escolha o seu plano abaixo e vamos começar agora mesmo!";
-      synthUtterance = new SpeechSynthesisUtterance(text);
-      synthUtterance.lang = 'pt-BR';
-      synthUtterance.rate = 1.02;
-      synthUtterance.pitch = 1.1;
-
-      synthUtterance.onstart = function(){
-        isAudioPlaying = true;
-        if(btn) btn.textContent = '⏸';
-        if(waveform) waveform.classList.add('playing');
-        if(timeTxt) timeTxt.textContent = 'Reproduzindo voz da Dra. Maya...';
-      };
-
-      synthUtterance.onend = function(){
-        isAudioPlaying = false;
-        if(btn) btn.textContent = '▶';
-        if(waveform) waveform.classList.remove('playing');
-        if(timeTxt) timeTxt.textContent = 'Ouvir áudio da Dra. Maya (0:45)';
-      };
-
-      synthUtterance.onerror = function(){
-        isAudioPlaying = false;
-        if(btn) btn.textContent = '▶';
-        if(waveform) waveform.classList.remove('playing');
-        if(timeTxt) timeTxt.textContent = 'Ouvir áudio da Dra. Maya (0:45)';
-      };
-
-      window.speechSynthesis.speak(synthUtterance);
-    } else {
-      window.speechSynthesis.cancel();
-      isAudioPlaying = false;
-      if(btn) btn.textContent = '▶';
-      if(waveform) waveform.classList.remove('playing');
-      if(timeTxt) timeTxt.textContent = 'Ouvir áudio da Dra. Maya (0:45)';
-    }
-  } else {
-    if(!isAudioPlaying){
-      isAudioPlaying = true;
-      if(btn) btn.textContent = '⏸';
-      if(waveform) waveform.classList.add('playing');
-      if(timeTxt) timeTxt.textContent = 'Tocando mensagem... (0:45)';
-    } else {
-      isAudioPlaying = false;
-      if(btn) btn.textContent = '▶';
-      if(waveform) waveform.classList.remove('playing');
-      if(timeTxt) timeTxt.textContent = 'Ouvir áudio da Dra. Maya (0:45)';
-    }
   }
 }
 
