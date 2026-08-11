@@ -1329,6 +1329,8 @@ function selectFastingStage(hours, stageName, percent){
   if(timerDisplay) timerDisplay.textContent = `${hours}:00:00`;
   if(stageTitle) stageTitle.textContent = stageName;
   if(fill) fill.style.width = `${percent}%`;
+}
+
 function scrollToPricing(){
   haptic();
   const el = document.querySelector('.pricing-section');
