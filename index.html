@@ -374,6 +374,53 @@ canvas{max-width:100%}
 .plan-feat-icon{font-size:14px;flex-shrink:0}
 .cta-btn-basic{width:100%;padding:16px;background:rgba(255,255,255,0.08);color:#fff;border:1px solid var(--border-glass);border-radius:14px;font-family:'Montserrat',sans-serif;font-size:13.5px;font-weight:800;cursor:pointer;transition:all .2s;text-transform:uppercase}
 .cta-btn-basic:hover{background:rgba(255,255,255,0.15);border-color:var(--silver-light)}
+
+/* ===== CRO 1: DIAGNOSTIC REPORT CARD ===== */
+.diag-report-card{background:linear-gradient(180deg, rgba(0,242,255,0.06) 0%, rgba(18,24,32,0.85) 100%);border:1.5px solid var(--border-glass);backdrop-filter:blur(16px);border-radius:22px;padding:20px;margin:16px 20px;box-shadow:0 0 25px rgba(0,242,255,0.15)}
+.diag-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid var(--border-subtle)}
+.diag-user-title{font-family:'Montserrat',sans-serif;font-size:13.5px;font-weight:900;color:#fff}
+.diag-tag{background:rgba(255,59,92,0.15);color:var(--red-neon);border:1px solid var(--red-neon);font-size:9.5px;font-weight:800;padding:3px 8px;border-radius:12px;text-transform:uppercase}
+.diag-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px}
+.diag-stat-box{background:rgba(0,0,0,0.3);border:1px solid var(--border-subtle);border-radius:14px;padding:12px;text-align:center}
+.diag-stat-label{font-size:11px;color:var(--silver);margin-bottom:4px}
+.diag-stat-val{font-family:'Montserrat',sans-serif;font-size:17px;font-weight:900;color:var(--cyan-neon);text-shadow:0 0 10px var(--cyan-glow)}
+
+.weekly-projection-title{font-family:'Montserrat',sans-serif;font-size:12px;font-weight:800;color:#fff;margin-bottom:10px;text-align:center}
+.weekly-projection-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.proj-step{background:rgba(255,255,255,0.04);border:1px solid var(--border-subtle);border-radius:12px;padding:10px 6px;text-align:center}
+.proj-week{font-size:10px;font-weight:800;color:var(--silver);text-transform:uppercase}
+.proj-weight{font-family:'Montserrat',sans-serif;font-size:15px;font-weight:900;color:var(--green-neon);margin-top:2px}
+
+/* ===== CRO 2: AUDIO PLAYER CARD ===== */
+.audio-player-card{background:var(--bg-card);border:1px solid var(--border-glass);backdrop-filter:blur(14px);border-radius:20px;padding:14px;margin:16px 20px;display:flex;align-items:center;gap:12px;box-shadow:0 0 20px rgba(0,242,255,0.1)}
+.audio-avatar{width:48px;height:48px;border-radius:50%;overflow:hidden;border:2px solid var(--cyan-neon);flex-shrink:0;box-shadow:0 0 12px var(--cyan-glow)}
+.audio-btn{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--cyan-neon),var(--cyan-dark));border:none;color:#06080A;font-size:15px;font-weight:900;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 0 12px var(--cyan-glow);transition:all .2s}
+.audio-btn:hover{transform:scale(1.05)}
+.audio-waveform{display:flex;align-items:center;gap:3px;height:22px;flex:1}
+.wave-bar{width:3px;height:25%;background:var(--cyan-neon);border-radius:2px;transition:height .2s ease}
+.audio-waveform.playing .wave-bar{animation:waveAnim 0.8s ease-in-out infinite alternate}
+.audio-waveform.playing .wave-bar:nth-child(2n){animation-delay:0.15s}
+.audio-waveform.playing .wave-bar:nth-child(3n){animation-delay:0.3s}
+@keyframes waveAnim{0%{height:20%}100%{height:100%}}
+
+/* ===== CRO 3: BONUSES STACK ===== */
+.bonuses-section{padding:0 20px;margin:24px 0}
+.bonus-card{background:var(--bg-card);border:1px solid var(--border-glass);backdrop-filter:blur(12px);border-radius:18px;padding:16px;margin-bottom:12px;display:flex;align-items:start;gap:14px;position:relative;overflow:hidden}
+.bonus-badge{position:absolute;top:10px;right:10px;background:var(--green-neon);color:#06080A;font-size:9.5px;font-weight:900;padding:2px 8px;border-radius:10px;text-transform:uppercase;box-shadow:0 0 8px var(--green-neon)}
+.bonus-icon{font-size:32px;flex-shrink:0;filter:drop-shadow(0 0 8px var(--cyan-glow))}
+.bonus-title{font-family:'Montserrat',sans-serif;font-size:14px;font-weight:800;color:#fff;margin-bottom:4px;padding-right:50px}
+.bonus-desc{font-size:12px;color:var(--silver-light);line-height:1.45;margin-bottom:6px}
+.bonus-price{font-size:11px;color:var(--silver)}
+.bonus-price del{color:var(--red-neon);margin-right:4px}
+
+/* ===== CRO 4: COUPON BANNER ===== */
+.coupon-banner{background:linear-gradient(135deg, rgba(0,242,255,0.12), rgba(0,255,135,0.12));border:1px dashed var(--cyan-neon);border-radius:14px;padding:12px 16px;text-align:center;margin:16px 20px;box-shadow:0 0 15px rgba(0,242,255,0.15)}
+.coupon-txt{font-family:'Montserrat',sans-serif;font-size:11.5px;font-weight:900;color:var(--cyan-neon);letter-spacing:0.5px;text-transform:uppercase}
+
+/* ===== CRO 6: FLOATING SUPPORT BUTTON ===== */
+#floatingSupportBtn{position:fixed;bottom:20px;right:16px;background:linear-gradient(135deg,#25D366,#128C7E);color:#fff;border:none;border-radius:30px;padding:10px 16px;font-family:'Montserrat',sans-serif;font-size:11.5px;font-weight:800;cursor:pointer;display:flex;align-items:center;gap:8px;box-shadow:0 0 20px rgba(37,211,102,0.5);z-index:999;transition:all .25s ease;animation:pulseFloat 2.5s infinite}
+#floatingSupportBtn:hover{transform:translateY(-2px);box-shadow:0 0 30px rgba(37,211,102,0.8)}
+@keyframes pulseFloat{0%,100%{transform:scale(1)}50%{transform:scale(1.04)}}
 </style>
 </head>
 <body>
@@ -1352,6 +1399,32 @@ function scrollToPricing(){
   }
 }
 
+let isAudioPlaying = false;
+function toggleAudioPlay(){
+  haptic();
+  const btn = document.getElementById('audioPlayBtn');
+  const waveform = document.getElementById('audioWaveform');
+  const timeTxt = document.getElementById('audioTimeTxt');
+  
+  if(!isAudioPlaying){
+    isAudioPlaying = true;
+    if(btn) btn.textContent = '⏸';
+    if(waveform) waveform.classList.add('playing');
+    if(timeTxt) timeTxt.textContent = 'Tocando mensagem... (0:45)';
+  } else {
+    isAudioPlaying = false;
+    if(btn) btn.textContent = '▶';
+    if(waveform) waveform.classList.remove('playing');
+    if(timeTxt) timeTxt.textContent = 'Ouvir áudio da Dra. Maya (0:45)';
+  }
+}
+
+function openSupportChat(){
+  haptic();
+  const msg = encodeURIComponent("Olá! Fiz o teste no METASYNC IA e tenho dúvidas sobre o meu diagnóstico.");
+  window.open("https://api.whatsapp.com/send?phone=5511999999999&text=" + msg, "_blank");
+}
+
 function showSales(){
   try {
     if(typeof fbq === 'function') {
@@ -1365,10 +1438,16 @@ function showSales(){
   if (quizSec) quizSec.style.display = 'none';
   if (!sp) return;
   sp.style.display = 'block';
-  const tw=getTargetWeight();
-  ud.targetWeight=tw;
-  const kgDiff = ud.weight && tw ? Math.round(ud.weight - tw) : 8;
-  const kgTargetText = kgDiff > 0 ? `${kgDiff}kg` : '8kg';
+  const tw = getTargetWeight();
+  ud.targetWeight = tw;
+  const cw = ud.currentWeight || 70;
+  const h = (ud.height || 165) / 100;
+  const imc = (cw / (h * h)).toFixed(1);
+  const kgDiff = Math.max(3, Math.round(cw - tw));
+  const kgTargetText = `${kgDiff}kg`;
+  const w1 = Math.max(30, cw - Math.round(kgDiff * 0.35 || 3));
+  const w2 = Math.max(30, cw - Math.round(kgDiff * 0.70 || 6));
+  const w3 = Math.max(30, tw);
 
   sp.innerHTML=`
   <div style="background:var(--bg-deep);max-width:440px;width:100%;padding-bottom:48px">
@@ -1389,6 +1468,59 @@ function showSales(){
       <p style="font-size:13px;color:var(--silver);margin-top:8px;line-height:1.5">
         Com base nas suas respostas, ativamos a sua sincronização hormonal e ativamos o assistente inteligente da Dra. Maya.
       </p>
+    </div>
+
+    <!-- CRO 1: DIAGNOSTIC REPORT CARD -->
+    <div class="diag-report-card">
+      <div class="diag-header">
+        <div class="diag-user-title">📊 RELATÓRIO DO SEU DIAGNÓSTICO</div>
+        <span class="diag-tag">CALIBRAÇÃO NECESSÁRIA</span>
+      </div>
+      <div class="diag-grid">
+        <div class="diag-stat-box">
+          <div class="diag-stat-label">IMC Atual Estimado</div>
+          <div class="diag-stat-val">${imc} kg/m²</div>
+        </div>
+        <div class="diag-stat-box">
+          <div class="diag-stat-label">Meta Recomendada</div>
+          <div class="diag-stat-val">${tw} kg</div>
+        </div>
+      </div>
+      <div class="weekly-projection-title">📉 Projeção de Perda de Peso Gradual:</div>
+      <div class="weekly-projection-grid">
+        <div class="proj-step">
+          <div class="proj-week">Semana 1</div>
+          <div class="proj-weight">${w1} kg</div>
+        </div>
+        <div class="proj-step">
+          <div class="proj-week">Semana 2</div>
+          <div class="proj-weight">${w2} kg</div>
+        </div>
+        <div class="proj-step">
+          <div class="proj-week">Semana 3</div>
+          <div class="proj-weight">${w3} kg</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CRO 2: AUDIO PLAYER CARD -->
+    <div class="audio-player-card">
+      <div class="audio-avatar">
+        <img src="dra_maya.jpg" alt="Dra. Maya" style="width:100%;height:100%;object-fit:cover">
+      </div>
+      <div style="flex:1">
+        <div style="font-size:11px;font-weight:800;color:var(--cyan-neon);margin-bottom:2px">DRA. MAYA (VOICE NOTE)</div>
+        <div id="audioTimeTxt" style="font-size:11.5px;color:#fff;font-weight:600">Ouvir áudio da Dra. Maya (0:45)</div>
+      </div>
+      <button class="audio-btn" id="audioPlayBtn" onclick="toggleAudioPlay()">▶</button>
+      <div class="audio-waveform" id="audioWaveform">
+        <div class="wave-bar" style="height:30%"></div>
+        <div class="wave-bar" style="height:60%"></div>
+        <div class="wave-bar" style="height:100%"></div>
+        <div class="wave-bar" style="height:50%"></div>
+        <div class="wave-bar" style="height:80%"></div>
+        <div class="wave-bar" style="height:40%"></div>
+      </div>
     </div>
 
     <!-- Cyberpunk Hero Banner -->
@@ -1557,6 +1689,41 @@ function showSales(){
       <button class="cta-btn" onclick="scrollToPricing()" style="margin-top:18px">VER PLANOS ⚡</button>
     </div>
 
+    <!-- CRO 3: BONUSES STACK SECTION -->
+    <div class="bonuses-section">
+      <h2 class="plan-incl-title" style="margin-bottom:14px">🎁 Bônus Exclusivos Inclusos HOJE:</h2>
+      
+      <div class="bonus-card">
+        <span class="bonus-badge">GRÁTIS</span>
+        <div class="bonus-icon">🥑</div>
+        <div>
+          <div class="bonus-title">Bônus #1: Guia Desintoxicação Hepática Express (3 Dias)</div>
+          <div class="bonus-desc">Protocolo acelerado para murchar a barriga e eliminar o inchaço retido logo nos primeiros 3 dias.</div>
+          <div class="bonus-price"><del>R$ 47,00</del> <strong>R$ 0,00</strong></div>
+        </div>
+      </div>
+
+      <div class="bonus-card">
+        <span class="bonus-badge">GRÁTIS</span>
+        <div class="bonus-icon">🛒</div>
+        <div>
+          <div class="bonus-title">Bônus #2: Lista Econômica de Supermercado Anti-Inflamatória</div>
+          <div class="bonus-desc">Alimentos baratos e acessíveis que potencializam a queima de gordura economizando no caixa.</div>
+          <div class="bonus-price"><del>R$ 37,00</del> <strong>R$ 0,00</strong></div>
+        </div>
+      </div>
+
+      <div class="bonus-card">
+        <span class="bonus-badge">GRÁTIS</span>
+        <div class="bonus-icon">☕</div>
+        <div>
+          <div class="bonus-title">Bônus #3: Manual de Bebidas & Chás Biohacking</div>
+          <div class="bonus-desc">Combinações funcionais de chás e bebidas termogênicas para acelerar o metabolismo em repouso.</div>
+          <div class="bonus-price"><del>R$ 29,00</del> <strong>R$ 0,00</strong></div>
+        </div>
+      </div>
+    </div>
+
     <!-- Client Photo Transformations Section -->
     <div style="margin-top:24px">
       <h2 class="plan-incl-title" style="margin-bottom:6px">Casos Reais de Sincronização</h2>
@@ -1602,9 +1769,14 @@ function showSales(){
     <!-- DUAL PRICING TABLE SECTION -->
     <div class="pricing-section">
       <!-- Urgency Timer Banner -->
-      <div style="background:rgba(255,59,92,0.12);border:1.5px solid var(--red-neon);border-radius:16px;padding:14px 16px;text-align:center;margin-bottom:20px;box-shadow:0 0 20px rgba(255,59,92,0.2)">
-        <div style="font-size:11px;color:var(--silver-light);font-weight:700;letter-spacing:0.8px;text-transform:uppercase;margin-bottom:4px">⚠️ OFERTA COM 70% DE DESCONTO ENCERRA EM:</div>
+      <div style="background:rgba(255,59,92,0.12);border:1.5px solid var(--red-neon);border-radius:16px;padding:14px 16px;text-align:center;margin-bottom:16px;box-shadow:0 0 20px rgba(255,59,92,0.2)">
+        <div style="font-size:11px;color:var(--silver-light);font-weight:700;letter-spacing:0.8px;text-transform:uppercase;margin-bottom:4px">⚠️ OFERTA COM DESCONTO DE ANÁLISE ENCERRA EM:</div>
         <div id="offerCountdown" style="font-family:'Montserrat',sans-serif;font-size:28px;font-weight:900;color:var(--red-neon);letter-spacing:2px;text-shadow:0 0 12px rgba(255,59,92,0.5)">09:59</div>
+      </div>
+
+      <!-- CRO 4: COUPON BANNER -->
+      <div class="coupon-banner" style="margin:0 0 18px">
+        <div class="coupon-txt">🎟️ CUPOM DE ANÁLISE METABÓLICA APLICADO: 85% DE DESCONTO</div>
       </div>
 
       <h2 class="plan-incl-title" style="margin-top:0;margin-bottom:16px">Escolha seu Plano de Ativação 👇</h2>
@@ -1621,7 +1793,7 @@ function showSales(){
             
             <div class="plan-price-wrap">
               <div class="plan-price-inst">3x de R$ 6,80</div>
-              <div class="plan-price-total">ou R$ 19,00 à vista</div>
+              <div class="plan-price-total">ou R$ 19,00 à vista (<del style="color:var(--red-neon)">R$ 97,00</del>)</div>
             </div>
 
             <div class="plan-features-list">
@@ -1631,6 +1803,7 @@ function showSales(){
               <div class="plan-feat excluded"><span class="plan-feat-icon">✕</span> Plataforma Dashboard SaaS App</div>
               <div class="plan-feat excluded"><span class="plan-feat-icon">✕</span> Mentora IA Dra. Maya 24h</div>
               <div class="plan-feat excluded"><span class="plan-feat-icon">✕</span> Monitor de Autofagia & Metas</div>
+              <div class="plan-feat excluded"><span class="plan-feat-icon">✕</span> 3 Bônus Exclusivos de Ação Rápida</div>
             </div>
 
             <button class="cta-btn-basic" onclick="goToCheckout('basic')">OBTER APENAS O GUIA BÁSICO (R$ 19)</button>
@@ -1645,11 +1818,11 @@ function showSales(){
               <span>Plano METASYNC PRO ⚡</span>
               <span style="font-size:11px;background:var(--cyan-neon);color:#06080A;font-weight:900;padding:2px 8px;border-radius:10px">COMPLETO</span>
             </div>
-            <div class="plan-card-subtitle">Plataforma SaaS interativa completa + Mentora Inteligente Dra. Maya 24h no celular.</div>
+            <div class="plan-card-subtitle">Plataforma SaaS interativa completa + Mentora Inteligente Dra. Maya 24h no celular + 3 Bônus.</div>
 
             <div class="plan-price-wrap">
               <div class="plan-price-inst">6x de R$ 5,56</div>
-              <div class="plan-price-total">ou R$ 29,00 à vista (Desconto de 70%)</div>
+              <div class="plan-price-total">ou R$ 29,00 à vista (De <del style="color:var(--red-neon)">R$ 197,00</del> por R$ 29,00)</div>
             </div>
 
             <div class="plan-features-list">
@@ -1659,6 +1832,7 @@ function showSales(){
               <div class="plan-feat included" style="color:var(--cyan-neon);font-weight:800"><span class="plan-feat-icon">⚡</span> Acesso Vitalício ao Dashboard SaaS</div>
               <div class="plan-feat included" style="color:var(--cyan-neon);font-weight:800"><span class="plan-feat-icon">⚡</span> Mentora IA 24h Dra. Maya Ilimitada</div>
               <div class="plan-feat included" style="color:var(--cyan-neon);font-weight:800"><span class="plan-feat-icon">⚡</span> Monitor de Autofagia em Tempo Real</div>
+              <div class="plan-feat included" style="color:var(--green-neon);font-weight:800"><span class="plan-feat-icon">🎁</span> 3 Bônus Exclusivos de Ação Rápida</div>
               <div class="plan-feat included"><span class="plan-feat-icon">🛡️</span> Garantia Incondicional de 30 Dias</div>
             </div>
 
@@ -1673,20 +1847,25 @@ function showSales(){
       </div>
     </div>
 
-    <!-- Guarantee Box -->
+    <!-- CRO 5: RISK-FREE GUARANTEE BOX -->
     <div class="guarantee-box">
       <div class="guarantee-seal">
         <small>GARANTIA DE</small>
         <span>30</span>
         <small>DIAS REEMBOLSO</small>
       </div>
-      <h3 class="guarantee-title">Garantia Incondicional de 30 Dias</h3>
+      <h3 class="guarantee-title">Garantia Risco Zero de 30 Dias</h3>
       <p class="guarantee-desc">
-        Se você não estiver totalmente satisfeito com os resultados da sua calibração nos primeiros 30 dias, reembolsaremos 100% do seu investimento sem perguntas.<br><br>
-        Suporte técnico:
+        Se você seguir o protocolo e não observar resultados visíveis no espelho ou na balança nos primeiros 30 dias, nós devolvemos 100% do seu dinheiro. Sem perguntas e sem letras miúdas.<br><br>
+        Suporte técnico & atendimento:
       </p>
       <span class="guarantee-email">cetoturboseca@gmail.com</span>
     </div>
+
+    <!-- CRO 6: FLOATING SUPPORT BUTTON -->
+    <button id="floatingSupportBtn" onclick="openSupportChat()">
+      <span>💬 Dúvidas? Fale no Suporte</span>
+    </button>
 
   </div>`;
   window.scrollTo(0,0);
