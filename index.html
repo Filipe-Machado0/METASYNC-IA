@@ -2026,6 +2026,11 @@ function returnToQuizFromSales(){
 
 function checkAutoShowSales(){
   try {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('sales') === '1' || params.get('sales') === 'true' || params.get('demo') === '1') {
+      showSales();
+      return true;
+    }
     const openedCheckout = localStorage.getItem('metasync_opened_checkout') === 'true';
     const completedQuiz = localStorage.getItem('metasync_completed_quiz') === 'true';
     if (openedCheckout || completedQuiz) {
