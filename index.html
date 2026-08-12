@@ -357,6 +357,9 @@ canvas{max-width:100%}
 .meal-demo-name{font-size:12px;font-weight:700;color:#fff;margin-top:2px}
 .meal-demo-cal{font-size:11px;color:var(--silver);font-weight:600}
 
+/* ===== STICKY MOBILE CTA BAR ===== */
+.sticky-cta-bar{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:440px;background:rgba(13,13,13,0.96);backdrop-filter:blur(16px);border-top:1.5px solid var(--cyan-neon);padding:10px 16px;display:flex;align-items:center;justify-content:space-between;z-index:999;box-shadow:0 -5px 25px rgba(0,242,255,0.2);animation:fadeIn .3s ease}
+
 /* ===== DUAL PRICING TABLE ===== */
 .pricing-section{padding:0 20px;margin:24px 0}
 .pricing-grid{display:flex;flex-direction:column;gap:18px}
@@ -1535,6 +1538,11 @@ function showSales(){
       </div>
     </div>
 
+    <!-- CTA INTERMEDIÁRIO 1 -->
+    <div style="padding:0 20px;margin:14px 0">
+      <button class="cta-btn" onclick="scrollToPricing()" style="font-size:12px;padding:12px 18px;box-shadow:0 0 16px var(--cyan-glow)">QUERO ATIVAR MEU PROTOCOLO AGORA ⚡</button>
+    </div>
+
     <!-- CRO 2: AUDIO PLAYER CARD -->
     <div class="audio-player-card">
       <audio id="draMayaAudioEl" src="dra_maya_audio.mp3" preload="auto"></audio>
@@ -1675,6 +1683,11 @@ function showSales(){
       </div>
     </div>
 
+    <!-- CTA INTERMEDIÁRIO 2 -->
+    <div style="padding:0 20px;margin:16px 0 20px">
+      <button class="cta-btn" onclick="scrollToPricing()" style="font-size:12px;padding:12px 18px;box-shadow:0 0 16px var(--cyan-glow)">DESBLOQUEAR PLANO COMPLETO PRO ⚡</button>
+    </div>
+
     <!-- Before / After Grid -->
     <div style="padding:0 20px 12px">
       <div class="compare-wrap">
@@ -1709,9 +1722,9 @@ function showSales(){
     <div class="expert-card">
       <div class="expert-avatar"><img src="dra_maya.jpg" alt="Dra. Maya" style="width:100%;height:100%;object-fit:cover"></div>
       <div class="expert-name">Dra. Maya</div>
-      <div class="expert-title">Nutrição Adaptada & Fisiologia do Jejum</div>
+      <div class="expert-title">Metodologia de Nutrição Adaptada & Jejum Funcional</div>
       <p class="expert-bio">
-        "Desenvolvi a inteligência do METASYNC com base em pesquisas de ponta da Universidade de Harvard. Ao ativar sua conta, minha IA estará sincronizada com você 24 horas por dia no seu celular para orientar cada refeição e decisão!"
+        "Desenvolvemos a inteligência do METASYNC com base em consolidadas pesquisas científicas sobre nutrição adaptada e fisiologia alimentar. Ao ativar sua conta, o Cérebro IA com a nossa metodologia estará disponível 24h por dia no seu celular para orientar suas escolhas alimentares!"
       </p>
     </div>
 
@@ -1827,7 +1840,7 @@ function showSales(){
     <div class="pricing-section">
       <!-- Urgency Timer Banner -->
       <div style="background:rgba(255,59,92,0.12);border:1.5px solid var(--red-neon);border-radius:16px;padding:14px 16px;text-align:center;margin-bottom:16px;box-shadow:0 0 20px rgba(255,59,92,0.2)">
-        <div style="font-size:11px;color:var(--silver-light);font-weight:700;letter-spacing:0.8px;text-transform:uppercase;margin-bottom:4px">⚠️ OFERTA COM DESCONTO DE ANÁLISE ENCERRA EM:</div>
+        <div style="font-size:11px;color:var(--silver-light);font-weight:700;letter-spacing:0.8px;text-transform:uppercase;margin-bottom:4px">⚠️ O SEU DESCONTO DE ANÁLISE FOI RESERVADO PARA ESTA SESSÃO (EXPIRA EM):</div>
         <div id="offerCountdown" style="font-family:'Montserrat',sans-serif;font-size:28px;font-weight:900;color:var(--red-neon);letter-spacing:2px;text-shadow:0 0 12px rgba(255,59,92,0.5)">09:59</div>
       </div>
 
@@ -1849,8 +1862,9 @@ function showSales(){
             <div class="plan-card-subtitle">Ideal para quem quer apenas a leitura do guia simples de 21 dias.</div>
             
             <div class="plan-price-wrap">
-              <div class="plan-price-inst">3x de R$ 6,80</div>
+              <div class="plan-price-inst">3x de R$ 6,84*</div>
               <div class="plan-price-total">ou R$ 19,00 à vista (<del style="color:var(--red-neon)">R$ 97,00</del>)</div>
+              <div style="font-size:9.5px;color:var(--silver);margin-top:2px">*parcelado no cartão com juros da operadora</div>
             </div>
 
             <div class="plan-features-list">
@@ -1878,8 +1892,9 @@ function showSales(){
             <div class="plan-card-subtitle">Plataforma SaaS interativa completa + Cérebro Treinado pela Dra. Maya 24h no celular + 3 Bônus.</div>
 
             <div class="plan-price-wrap">
-              <div class="plan-price-inst">6x de R$ 5,56</div>
+              <div class="plan-price-inst">6x de R$ 5,42* ou 3x de R$ 10,44*</div>
               <div class="plan-price-total">ou R$ 29,00 à vista (De <del style="color:var(--red-neon)">R$ 197,00</del> por R$ 29,00)</div>
+              <div style="font-size:9.5px;color:var(--silver);margin-top:2px">*parcelado no cartão com juros da operadora</div>
             </div>
 
             <div class="plan-features-list">
@@ -1911,12 +1926,27 @@ function showSales(){
         <span>30</span>
         <small>DIAS REEMBOLSO</small>
       </div>
-      <h3 class="guarantee-title">Garantia Risco Zero de 30 Dias</h3>
+      <h3 class="guarantee-title">Garantia Incondicional de 30 Dias</h3>
       <p class="guarantee-desc">
-        Se você seguir o protocolo e não observar resultados visíveis no espelho ou na balança nos primeiros 30 dias, nós devolvemos 100% do seu dinheiro. Sem perguntas e sem letras miúdas.<br><br>
+        Teste a plataforma por 30 dias com Risco Zero. Se por qualquer motivo você não se adaptar à metodologia ou não ficar 100% satisfeito(a), nós devolvemos 100% do seu investimento sem perguntas e sem burocracia.<br><br>
         Suporte técnico & atendimento:
       </p>
       <span class="guarantee-email">cetoturboseca@gmail.com</span>
+    </div>
+
+    <!-- STICKY MOBILE CTA BAR -->
+    <div class="sticky-cta-bar">
+      <div>
+        <div style="font-size:10px;color:var(--silver);font-weight:700">PLANO COMPLETO PRO</div>
+        <div style="font-size:14px;color:var(--green-neon);font-weight:900">R$ 29,00 <span style="font-size:10px;color:var(--silver);font-weight:400">(à vista)</span></div>
+      </div>
+      <button class="cta-btn" onclick="scrollToPricing()" style="width:auto;padding:8px 18px;font-size:11px;margin:0;box-shadow:0 0 12px var(--cyan-glow)">LIBERAR ACESSO ⚡</button>
+    </div>
+
+    <!-- DISCLAIMER & FOOTER -->
+    <div style="margin-top:28px;padding:18px 20px 60px;border-top:1px solid var(--border-subtle);text-align:center;font-size:10.5px;color:var(--silver);line-height:1.6">
+      <p style="margin-bottom:6px"><strong>Isenção de Responsabilidade:</strong> Este site não possui vínculo oficial com o Facebook, Meta, Google ou qualquer uma de suas entidades. Os conteúdos apresentados possuem caráter educativo de reeducação alimentar e saúde. Os resultados podem variar de acordo com o ponto de partida, metabolismo e nível de adesão individual de cada pessoa ao protocolo.</p>
+      <p>© 2026 METASYNC IA — Todos os direitos reservados.</p>
     </div>
 
     <!-- CRO 6: FLOATING SUPPORT BUTTON -->
