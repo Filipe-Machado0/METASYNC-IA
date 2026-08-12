@@ -1079,7 +1079,7 @@ function getTestimonials(){
     ];
   }
   return [
-    {n:'Rogéria Cardoso',a:'user_rogeria.jpg',t:'Protocolo impressionante!',b:'Fiquei realmente surpresa com esse plano, não imaginei que iria fazer tanta diferença! Consegui sair dos 68kg e voltar para os meus 60kg. A IA da Dra. Maya no meu WhatsApp me ajudou a cada refeição!'},
+    {n:'Rogéria Cardoso',a:'user_rogeria.jpg',t:'Protocolo impressionante!',b:'Fiquei realmente surpresa com esse plano, não imaginei que iria fazer tanta diferença! Consegui sair dos 68kg e voltar para os meus 60kg. O Cérebro treinado pela Dra. Maya no meu WhatsApp me ajudou a cada refeição!'},
     {n:'Sérgio Augusto',a:'user_sergio.png',t:'Alta tecnologia aplicada à saúde!',b:'O METASYNC se encaixou perfeitamente na minha rotina corrida. Eu sempre gostei de correr mas estava acima do peso... perdi mais de 10kg em 21 dias e voltei a ter disposição total!'},
     {n:'Cláudia Santos',a:'user_claudia.png',t:'Menos 5kg e sem cansaço!',b:'Desde que ativei as orientações adaptadas, to muito menos inchada e com menos 5kg na balança. O melhor de tudo foi a energia, pareço ter 20 anos novamente kkkk!'},
     {n:'Gleide Almeida',a:'user_gleide.png',t:'Fim definitivo do Efeito Sanfona',b:'Depois de testar o METASYNC e alinhar o jejum adaptado com a IA, finalmente estabilizei meu peso ideal por mais de 6 meses sem sofrimento. Recomendo demais!'}
@@ -1095,7 +1095,7 @@ function renderLoading(){
     <h2 style="font-family:'Montserrat',sans-serif;font-size:20px;font-weight:900;margin-bottom:20px;line-height:1.3;color:#fff">Gerando o seu Protocolo no METASYNC LAB</h2>
     <div style="display:flex;justify-content:flex-end"><span id="lPct" style="font-family:'Montserrat',sans-serif;font-size:13px;font-weight:700;color:var(--cyan-neon)">34%</span></div>
     <div class="loading-bar-track"><div class="loading-bar-fill" id="lBar" style="width:34%"></div></div>
-    <p class="loading-status" id="lStatus" style="margin-top:10px">Sincronizando IA da Dra. Maya...</p>
+    <p class="loading-status" id="lStatus" style="margin-top:10px">Sincronizando Cérebro treinado pela Dra. Maya...</p>
     <p class="loading-sub">Calibrando janelas metabólicas e plano de nutrição adaptada..</p>
     <div style="margin:22px 0">
       <div style="font-family:'Montserrat',sans-serif;font-size:38px;font-weight:900;color:#fff;text-shadow:0 0 15px var(--cyan-glow)">+45.000</div>
@@ -1199,7 +1199,7 @@ function setUnit(key,unit){
   render();
 }
 
-const loadMsgs=['Iniciando METASYNC LAB...','Analisando flexibilidade metabólica...','Calibrando sensibilidade à insulina...','Sincronizando IA da Dra. Maya...','Otimizando janelas lipídicas...','Finalizando painel dashboard...','Seu plano está 100% calibrado!'];
+const loadMsgs=['Iniciando METASYNC LAB...','Analisando flexibilidade metabólica...','Calibrando sensibilidade à insulina...','Sincronizando Cérebro treinado pela Dra. Maya...','Otimizando janelas lipídicas...','Finalizando painel dashboard...','Seu plano está 100% calibrado!'];
 let loadPct=34, loadTmr=null;
 
 function startLoading(){
@@ -1365,7 +1365,7 @@ function sendDemoQuestion(question, answer){
   aiMsg.className = 'demo-msg ai';
   aiMsg.innerHTML = `
     <div class="demo-msg-avatar"><img src="dra_maya.jpg" style="width:100%;height:100%;object-fit:cover"></div>
-    <div class="demo-msg-bubble"><em>Sincronizando resposta com algoritmo... ⚡</em></div>
+    <div class="demo-msg-bubble"><em>Consultando Cérebro treinado pela Dra. Maya... ⚡</em></div>
   `;
   chatBox.appendChild(aiMsg);
   chatBox.scrollTop = chatBox.scrollHeight;
@@ -1379,7 +1379,7 @@ function sendDemoQuestion(question, answer){
   }, 600);
 }
 
-function selectFastingStage(hours, stageName, percent){
+function selectFastingStage(hours, stageName, percent, isPro){
   haptic();
   document.querySelectorAll('.stage-btn').forEach(b=>b.classList.remove('active'));
   const activeBtn = document.getElementById('stage-btn-'+hours);
@@ -1390,7 +1390,13 @@ function selectFastingStage(hours, stageName, percent){
   const fill = document.getElementById('demoFastingFill');
   
   if(timerDisplay) timerDisplay.textContent = `${hours}:00:00`;
-  if(stageTitle) stageTitle.textContent = stageName;
+  if(stageTitle) {
+    if(isPro) {
+      stageTitle.innerHTML = `${stageName} <br><button onclick="scrollToPricing()" style="margin-top:8px;background:linear-gradient(135deg,var(--cyan-neon),#00aaff);color:#06080A;font-family:'Montserrat',sans-serif;font-size:10.5px;font-weight:900;border:none;padding:5px 12px;border-radius:12px;cursor:pointer;box-shadow:0 0 12px var(--cyan-glow)">🔓 DESBLOQUEAR MÓDULO TURBO 24H</button>`;
+    } else {
+      stageTitle.textContent = stageName;
+    }
+  }
   if(fill) fill.style.width = `${percent}%`;
 }
 
@@ -1492,7 +1498,7 @@ function showSales(){
         Seu Protocolo Biohacking para Eliminar até <span style="color:var(--cyan-neon);text-shadow:0 0 10px var(--cyan-glow)">${kgTargetText} em 21 Dias</span> está Pronto!
       </h2>
       <p style="font-size:13px;color:var(--silver);margin-top:8px;line-height:1.5">
-        Com base nas suas respostas, ativamos a sua sincronização hormonal e ativamos o assistente inteligente da Dra. Maya.
+        Com base nas suas respostas, ativamos a sua sincronização hormonal e o Cérebro treinado pela Dra. Maya.
       </p>
     </div>
 
@@ -1556,8 +1562,8 @@ function showSales(){
         <img src="app_logo.png" alt="METASYNC IA" style="width:100%;height:100%;object-fit:contain">
       </div>
       <div class="app-badge-txt">
-        <strong>Plataforma SaaS + Mentora IA 24h</strong>
-        Sincronização diária de parâmetros com orientação instantânea da Dra. Maya a qualquer momento no seu celular.
+        <strong>Plataforma SaaS + Cérebro Treinado 24h</strong>
+        Sincronização diária de parâmetros com orientação instantânea do Cérebro treinado pela Dra. Maya a qualquer momento no seu celular.
       </div>
     </div>
 
@@ -1567,13 +1573,13 @@ function showSales(){
         <div class="demo-title">
           <span>⚡ DEMO AO VIVO DO APP</span>
         </div>
-        <span class="demo-title-badge">INTERATIVO</span>
+        <span class="demo-title-badge" style="background:rgba(255,215,0,0.15);color:#ffd700;border:1px solid #ffd700">MODO DEGUSTAÇÃO</span>
       </div>
 
       <div class="demo-tabs">
         <button class="demo-tab active" id="tab-btn-chat" onclick="switchDemoTab('chat')">
-          <span class="demo-tab-icon">🤖</span>
-          <span class="demo-tab-label">Mentora IA</span>
+          <span class="demo-tab-icon">🧠</span>
+          <span class="demo-tab-label">Cérebro Dra. Maya</span>
         </button>
         <button class="demo-tab" id="tab-btn-timer" onclick="switchDemoTab('timer')">
           <span class="demo-tab-icon">⏱️</span>
@@ -1591,14 +1597,18 @@ function showSales(){
           <div class="demo-msg ai">
             <div class="demo-msg-avatar"><img src="dra_maya.jpg" style="width:100%;height:100%;object-fit:cover"></div>
             <div class="demo-msg-bubble">
-              Olá! Sou a Dra. Maya IA. Como posso te orientar na sua janela metabólica hoje? Toque em uma pergunta abaixo para testar!
+              Olá! Sou o <strong>Cérebro treinado pela Dra. Maya</strong>. Como posso orientar sua janela metabólica hoje? Toque em uma dúvida abaixo para testar a inteligência:
             </div>
           </div>
         </div>
         <div class="demo-quick-chips">
-          <button class="demo-chip" onclick="sendDemoQuestion('Como acelerar minha queima de gordura?', 'Com o METASYNC IA, ajustamos sua janela de jejum para ativar a enzima AMPK. Isso força o corpo a queimar gordura profunda como energia principal!')">⚡ Como queimar gordura mais rápido?</button>
-          <button class="demo-chip" onclick="sendDemoQuestion('Posso tomar café no jejum?', 'Sim! Café preto, chá verde e água com pitada de sal marinho são permitidos e potencializam o efeito da autofagia celular!')">☕ Posso tomar café?</button>
-          <button class="demo-chip" onclick="sendDemoQuestion('O que comer para quebrar o jejum?', 'O ideal é começar com proteínas leves e gorduras boas. O app gera refeições personalizadas em menos de 15 minutos!')">🥗 O que comer na quebra?</button>
+          <button class="demo-chip" onclick="sendDemoQuestion('Como acelerar minha queima de gordura?', 'Com o METASYNC, ajustamos sua janela metabólica para ativar a enzima AMPK. Isso força seu corpo a queimar a gordura visceral acumulada como combustível primário!')">⚡ Como acelerar a queima?</button>
+          <button class="demo-chip" onclick="sendDemoQuestion('Qual o suplemento secreto para o meu perfil?', 'Analisando seu perfil no algoritmo... Para o seu metabolismo, a combinação para destravar a queima retida é:<br><br><div style=\'background:rgba(0,242,255,0.08);border:1px dashed var(--cyan-neon);padding:10px;border-radius:10px;margin-top:4px;font-size:11px;color:#fff\'>🔒 <strong>CONTEÚDO VIP BLOQUEADO NA DEMO:</strong><br>A dosagem exata e o horário ideal de manipulação foram gerados no seu Protocolo Completo. Desbloqueie abaixo para ver!</div>')">💊 Suplemento para o meu perfil?</button>
+          <button class="demo-chip" onclick="sendDemoQuestion('O que comer hoje no meu jantar de 10 min?', 'Sugestão Express: Omelete Creamy com Abacate + 🔒 <em>[Segredo Anti-Estufamento liberado no Plano Completo]</em>. O app gera mais de 50 receitas em menos de 15 minutos!')">🥗 Cardápio de 10 min?</button>
+        </div>
+        <div style="margin-top:12px;padding:10px 12px;background:rgba(255,255,255,0.03);border:1px solid var(--border-glass);border-radius:14px;text-align:center">
+          <div style="font-size:11px;color:var(--silver);margin-bottom:6px">🔥 Quer tirar qualquer dúvida da sua alimentação em tempo real?</div>
+          <button class="cta-btn" onclick="scrollToPricing()" style="font-size:11px;padding:8px 16px;width:auto;margin:0 auto;box-shadow:0 0 12px var(--cyan-glow)">DESBLOQUEAR CÉREBRO COMPLETO ⚡</button>
         </div>
       </div>
 
@@ -1610,18 +1620,22 @@ function showSales(){
           <div class="fasting-progress-track">
             <div class="fasting-progress-fill" id="demoFastingFill" style="width: 100%"></div>
           </div>
-          <div class="fasting-stages-grid">
-            <div class="stage-btn" id="stage-btn-6" onclick="selectFastingStage('6', 'Digestão & Glicogênio', 35)">
-              <div class="stage-btn-h">6 HORAS</div>
-              <div class="stage-btn-txt">Queda de Insulina</div>
+          <div class="fasting-stages-grid" style="grid-template-columns:repeat(4,1fr)">
+            <div class="stage-btn" id="stage-btn-6" onclick="selectFastingStage('6', 'Digestão & Glicogênio', 25, false)">
+              <div class="stage-btn-h">6H</div>
+              <div class="stage-btn-txt">Queda Insulina</div>
             </div>
-            <div class="stage-btn" id="stage-btn-12" onclick="selectFastingStage('12', 'Cetose Inicial (Fat Burn)', 68)">
-              <div class="stage-btn-h">12 HORAS</div>
+            <div class="stage-btn" id="stage-btn-12" onclick="selectFastingStage('12', 'Cetose Inicial (Fat Burn)', 50, false)">
+              <div class="stage-btn-h">12H</div>
               <div class="stage-btn-txt">Queima Ativa</div>
             </div>
-            <div class="stage-btn active" id="stage-btn-16" onclick="selectFastingStage('16', 'Autofagia Profunda', 100)">
-              <div class="stage-btn-h">16 HORAS</div>
-              <div class="stage-btn-txt">Renovação Celular</div>
+            <div class="stage-btn active" id="stage-btn-16" onclick="selectFastingStage('16', 'Autofagia Profunda', 75, false)">
+              <div class="stage-btn-h">16H</div>
+              <div class="stage-btn-txt">Renovação</div>
+            </div>
+            <div class="stage-btn" id="stage-btn-24" onclick="selectFastingStage('24', '🔒 Pico HGH & Biohacking (Módulo PRO)', 100, true)" style="border-color:var(--gold,#ffd700)">
+              <div class="stage-btn-h" style="color:#ffd700">24H 🔒</div>
+              <div class="stage-btn-txt" style="color:#ffd700">Turbo PRO</div>
             </div>
           </div>
         </div>
@@ -1644,13 +1658,16 @@ function showSales(){
           </div>
           <div class="meal-demo-cal">450 kcal</div>
         </div>
-        <div class="meal-demo-card">
-          <div>
-            <div class="meal-demo-time">Ceia Opcional</div>
-            <div class="meal-demo-name">Mousse Proteico Instantâneo com Cacau 70%</div>
+        <div class="meal-demo-card" style="position:relative;overflow:hidden;border:1.5px dashed var(--cyan-neon);background:rgba(0,242,255,0.04)">
+          <div style="filter:blur(3.5px);opacity:0.4;user-select:none">
+            <div class="meal-demo-time">Refeição 3 (Doce Fit Secreto)</div>
+            <div class="meal-demo-name">Mousse Proteico Instantâneo Antidoce 3 min</div>
           </div>
-          <div class="meal-demo-cal">180 kcal</div>
+          <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(6,8,10,0.75);color:var(--cyan-neon);font-size:11px;font-weight:800;gap:6px">
+            <span>🔒 BLOQUEADO — EXCLUSIVO DO PLANO COMPLETO</span>
+          </div>
         </div>
+        <button class="cta-btn" onclick="scrollToPricing()" style="font-size:11px;padding:9px 14px;margin-top:10px;box-shadow:0 0 12px var(--cyan-glow)">VER MAIS DE 50 RECEITAS NO APP 🥗</button>
       </div>
     </div>
 
@@ -1705,7 +1722,7 @@ function showSales(){
     </div>
     <div class="plan-item">
       <div class="plan-icon" style="background:#fff;padding:3px;border-radius:10px;overflow:hidden;border:1px solid var(--cyan-neon)"><img src="app_logo.png" alt="METASYNC IA" style="width:100%;height:100%;object-fit:contain"></div>
-      <div class="plan-title">Mentora de Bolso IA 24h (Dra. Maya)</div>
+      <div class="plan-title">Cérebro Treinado pela Dra. Maya 24h</div>
       <p class="plan-desc">Tire dúvidas de restaurantes, alimentos ou substituições instantaneamente via assistente inteligente.</p>
     </div>
     <div class="plan-item">
@@ -1784,8 +1801,8 @@ function showSales(){
       <h2 class="plan-incl-title" style="margin-bottom:14px">Perguntas Frequentes</h2>
       <div class="faq-wrap">
         <div class="faq-item">
-          <div class="faq-q" onclick="togFaq(this)">Como funciona a Mentora IA 24h? <span>+</span></div>
-          <div class="faq-a">A IA da Dra. Maya estará disponível no seu painel e via mensagem no celular 24 horas por dia para tirar qualquer dúvida em tempo real.</div>
+          <div class="faq-q" onclick="togFaq(this)">Como funciona o Cérebro Treinado pela Dra. Maya? <span>+</span></div>
+          <div class="faq-a">O Cérebro treinado pela Dra. Maya estará disponível no seu painel e via mensagem no celular 24 horas por dia para tirar qualquer dúvida em tempo real.</div>
         </div>
         <div class="faq-item">
           <div class="faq-q" onclick="togFaq(this)">Preciso parar de comer o que gosto? <span>+</span></div>
@@ -1837,7 +1854,7 @@ function showSales(){
               <div class="plan-feat included"><span class="plan-feat-icon">✓</span> Protocolo de Janela Flexível</div>
               <div class="plan-feat included"><span class="plan-feat-icon">✓</span> Reprogramação Anti-Sanfona</div>
               <div class="plan-feat excluded"><span class="plan-feat-icon">✕</span> Plataforma Dashboard SaaS App</div>
-              <div class="plan-feat excluded"><span class="plan-feat-icon">✕</span> Mentora IA Dra. Maya 24h</div>
+              <div class="plan-feat excluded"><span class="plan-feat-icon">✕</span> Cérebro Treinado pela Dra. Maya 24h</div>
               <div class="plan-feat excluded"><span class="plan-feat-icon">✕</span> Monitor de Autofagia & Metas</div>
               <div class="plan-feat excluded"><span class="plan-feat-icon">✕</span> 3 Bônus Exclusivos de Ação Rápida</div>
             </div>
@@ -1854,7 +1871,7 @@ function showSales(){
               <span>Plano METASYNC PRO ⚡</span>
               <span style="font-size:11px;background:var(--cyan-neon);color:#06080A;font-weight:900;padding:2px 8px;border-radius:10px">COMPLETO</span>
             </div>
-            <div class="plan-card-subtitle">Plataforma SaaS interativa completa + Mentora Inteligente Dra. Maya 24h no celular + 3 Bônus.</div>
+            <div class="plan-card-subtitle">Plataforma SaaS interativa completa + Cérebro Treinado pela Dra. Maya 24h no celular + 3 Bônus.</div>
 
             <div class="plan-price-wrap">
               <div class="plan-price-inst">6x de R$ 5,56</div>
@@ -1866,7 +1883,7 @@ function showSales(){
               <div class="plan-feat included"><span class="plan-feat-icon">✓</span> Protocolo de Janela Flexível</div>
               <div class="plan-feat included"><span class="plan-feat-icon">✓</span> Reprogramação Anti-Sanfona Permanente</div>
               <div class="plan-feat included" style="color:var(--cyan-neon);font-weight:800"><span class="plan-feat-icon">⚡</span> Acesso Vitalício ao Dashboard SaaS</div>
-              <div class="plan-feat included" style="color:var(--cyan-neon);font-weight:800"><span class="plan-feat-icon">⚡</span> Mentora IA 24h Dra. Maya Ilimitada</div>
+              <div class="plan-feat included" style="color:var(--cyan-neon);font-weight:800"><span class="plan-feat-icon">⚡</span> Cérebro Treinado pela Dra. Maya 24h Ilimitado</div>
               <div class="plan-feat included" style="color:var(--cyan-neon);font-weight:800"><span class="plan-feat-icon">⚡</span> Monitor de Autofagia em Tempo Real</div>
               <div class="plan-feat included" style="color:var(--green-neon);font-weight:800"><span class="plan-feat-icon">🎁</span> 3 Bônus Exclusivos de Ação Rápida</div>
               <div class="plan-feat included"><span class="plan-feat-icon">🛡️</span> Garantia Incondicional de 30 Dias</div>
