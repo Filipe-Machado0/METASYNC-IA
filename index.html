@@ -424,8 +424,7 @@ canvas{max-width:100%}
 .coupon-txt{font-family:'Montserrat',sans-serif;font-size:11.5px;font-weight:900;color:var(--cyan-neon);letter-spacing:0.5px;text-transform:uppercase}
 
 /* ===== CRO 6: FLOATING SUPPORT BUTTON ===== */
-#floatingSupportBtn{position:fixed;bottom:20px;right:16px;background:linear-gradient(135deg,#25D366,#128C7E);color:#fff;border:none;border-radius:30px;padding:10px 16px;font-family:'Montserrat',sans-serif;font-size:11.5px;font-weight:800;cursor:pointer;display:flex;align-items:center;gap:8px;box-shadow:0 0 20px rgba(37,211,102,0.5);z-index:999;transition:all .25s ease;animation:pulseFloat 2.5s infinite}
-#floatingSupportBtn:hover{transform:translateY(-2px);box-shadow:0 0 30px rgba(37,211,102,0.8)}
+
 @keyframes pulseFloat{0%,100%{transform:scale(1)}50%{transform:scale(1.04)}}
 </style>
 </head>
@@ -1979,10 +1978,7 @@ function showSales(){
       <p>© 2026 METASYNC IA — Todos os direitos reservados.</p>
     </div>
 
-    <!-- CRO 6: FLOATING SUPPORT BUTTON -->
-    <button id="floatingSupportBtn" onclick="openSupportChat()">
-      <span>💬 Dúvidas? Fale no Suporte</span>
-    </button>
+
 
   </div>`;
   window.scrollTo(0,0);
