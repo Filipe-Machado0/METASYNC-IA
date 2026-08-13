@@ -1469,8 +1469,8 @@ function showSales(){
       <div style="display:inline-block;background:rgba(0,242,255,0.1);border:1px solid var(--cyan-neon);color:var(--cyan-neon);font-size:10px;font-weight:900;padding:4px 12px;border-radius:20px;letter-spacing:1px;text-transform:uppercase;margin-bottom:10px;box-shadow:0 0 10px var(--cyan-glow)">
         📋 AVALIAÇÃO CONCLUÍDA
       </div>
-      <h2 style="font-family:'Montserrat',sans-serif;font-size:22px;font-weight:900;line-height:1.35;color:#fff;letter-spacing:-0.3px">
-        Seu plano personalizado de <span style="color:var(--cyan-neon);text-shadow:0 0 12px var(--cyan-glow)">21 dias está pronto</span>
+      <h2 style="font-family:'Montserrat',sans-serif;font-size:21px;font-weight:900;line-height:1.35;color:#fff;letter-spacing:-0.3px">
+        Prévia de um plano de 21 dias <span style="color:var(--cyan-neon);text-shadow:0 0 12px var(--cyan-glow)">baseada nas suas respostas</span>
       </h2>
       <p style="font-size:13px;color:var(--silver);margin-top:8px;line-height:1.5">
         Organizamos uma prévia com sugestões de refeições, horários e recursos de acompanhamento a partir das informações que você compartilhou.
@@ -1494,7 +1494,22 @@ function showSales(){
         </div>
       </div>
       <div style="font-size:10.5px;color:var(--silver);margin-top:6px;text-align:center">Estimativa baseada nas informações fornecidas.</div>
-      <div class="weekly-projection-title" style="margin-top:12px">📅 Estrutura do Plano de 21 Dias:</div>
+      
+      <!-- PERSONALIZAÇÃO COMPROVÁVEL -->
+      <div style="margin-top:14px;padding:12px;background:rgba(0,242,255,0.04);border:1px solid var(--border-glass);border-radius:14px;text-align:left">
+        <div style="font-size:11px;font-weight:900;color:var(--cyan-neon);letter-spacing:0.5px;margin-bottom:8px">
+          📋 SEU PLANO FOI ORGANIZADO CONSIDERANDO:
+        </div>
+        <div style="font-size:11.5px;color:var(--silver-light);line-height:1.6">
+          ✓ Seus horários de rotina e sono informados<br>
+          ✓ Suas preferências alimentares declaradas<br>
+          ✓ Suas restrições e alimentos filtrados no quiz<br>
+          ✓ Seu objetivo de acompanhamento selecionado<br>
+          ✓ Sua rotina diária e hábitos compartilhados
+        </div>
+      </div>
+
+      <div class="weekly-projection-title" style="margin-top:14px">📅 Estrutura do Plano de 21 Dias:</div>
       <div class="weekly-projection-grid">
         <div class="proj-step">
           <div class="proj-week">Semana 1</div>
@@ -1523,7 +1538,7 @@ function showSales(){
           VEJA O METASYNC FUNCIONANDO NA PRÁTICA
         </h2>
         <p style="font-size:12.5px;color:var(--silver);margin:0;line-height:1.4">
-          Uma demonstração real do painel, do cardápio e da Mentora IA.
+          Demonstração real da plataforma que você recebe no plano PRO.
         </p>
       </div>
 
@@ -1552,7 +1567,7 @@ function showSales(){
         </div>
 
         <p style="font-size:12px;line-height:1.5;color:var(--silver-light);margin:12px 0 14px;text-align:center">
-          Você está vendo uma prévia real da plataforma. No plano PRO, você desbloqueia o painel completo, as receitas, o acompanhamento e a Mentora IA.
+          No plano PRO, você desbloqueia os recursos completos mostrados nesta demonstração, conforme a descrição da oferta.
         </p>
 
         <button class="cta-btn" onclick="goToCheckout('pro')" style="font-size:12px;padding:12px 16px;margin:0;box-shadow:0 0 16px var(--cyan-glow)">
@@ -1697,9 +1712,29 @@ function showSales(){
     <!-- 6. OFERTA PRO E PREÇO (TABELA DE PREÇOS) -->
     <div class="pricing-section">
       <div style="background:rgba(0,242,255,0.06);border:1.5px solid var(--cyan-neon);border-radius:16px;padding:14px 16px;text-align:center;margin-bottom:18px">
-        <div style="font-size:11.5px;color:var(--cyan-neon);font-weight:800;letter-spacing:0.5px">
+        <div style="font-size:11.5px;color:var(--cyan-neon);font-weight:800;letter-spacing:0.5px;margin-bottom:4px">
           Condição especial para quem concluiu a avaliação: plano PRO por R$ 29 à vista.
         </div>
+        <div style="font-size:11px;color:var(--silver-light);line-height:1.4">
+          Após a confirmação do pagamento, você receberá as instruções de acesso no e-mail cadastrado e poderá começar pela plataforma.
+        </div>
+      </div>
+
+      <!-- SEÇÃO COMO VOCÊ COMEÇA -->
+      <div style="margin:0 0 20px;padding:16px;background:rgba(255,255,255,0.03);border:1px solid var(--border-glass);border-radius:16px;text-align:left">
+        <div style="font-family:'Montserrat',sans-serif;font-size:13px;font-weight:900;color:var(--cyan-neon);margin-bottom:10px;text-align:center;letter-spacing:0.5px">
+          🚀 COMO VOCÊ COMEÇA
+        </div>
+        <div style="display:flex;flex-direction:column;gap:10px;font-size:12px;color:var(--silver-light);line-height:1.4">
+          <div><strong>1. Confirme o pagamento:</strong> escolha seu plano e conclua a compra em ambiente 100% seguro.</div>
+          <div><strong>2. Receba o acesso:</strong> receba as instruções de acesso no seu e-mail cadastrado.</div>
+          <div><strong>3. Entre na plataforma:</strong> acesse e comece a organizar seu plano de 21 dias.</div>
+        </div>
+      </div>
+
+      <!-- REFORÇO DE SEGURANÇA E LIMITES -->
+      <div style="margin:0 0 16px;padding:10px 14px;background:rgba(255,255,255,0.02);border:1px solid var(--border-subtle);border-radius:12px;text-align:center;font-size:11px;color:var(--silver);line-height:1.4">
+        🔒 O conteúdo é educativo e voltado à organização da rotina alimentar. Ele não substitui orientação médica ou nutricional.
       </div>
 
       <h2 class="plan-incl-title" style="margin-top:0;margin-bottom:16px">Escolha como deseja acessar seu plano 👇</h2>
@@ -1713,7 +1748,7 @@ function showSales(){
               <span>Plano Guia de 21 dias</span>
               <span style="font-size:12px;color:var(--silver);font-weight:700">Guia PDF</span>
             </div>
-            <div class="plan-card-subtitle">Para quem quer começar com um guia simples em PDF.</div>
+            <div class="plan-card-subtitle">Para quem quer começar com um guia simples em PDF. Você recebe o guia em PDF. O acesso à plataforma, à Mentora IA, ao painel e aos materiais complementares está disponível somente no PRO.</div>
             
             <div class="plan-price-wrap">
               <div class="plan-price-inst">3x de R$ 6,84*</div>
@@ -1743,7 +1778,7 @@ function showSales(){
               <span>Plano PRO METASYNC ⚡</span>
               <span style="font-size:11px;background:var(--cyan-neon);color:#06080A;font-weight:900;padding:2px 8px;border-radius:10px">COMPLETO</span>
             </div>
-            <div class="plan-card-subtitle">Acesso completo à plataforma, receitas, painel de acompanhamento, Mentora IA METASYNC e materiais complementares.</div>
+            <div class="plan-card-subtitle">Você recebe acesso à plataforma, ao plano de 21 dias, às receitas, ao painel de acompanhamento, à Mentora IA METASYNC e aos materiais complementares descritos nesta oferta.</div>
 
             <div class="plan-price-wrap">
               <div class="plan-price-inst">6x de R$ 5,42* ou 3x de R$ 10,44*</div>
@@ -1788,7 +1823,7 @@ function showSales(){
       <div class="plan-item">
         <div class="plan-icon">🤖</div>
         <div class="plan-title">Mentora IA METASYNC</div>
-        <p class="plan-desc">Uma assistente digital baseada na metodologia do programa para ajudar você a consultar receitas, substituições e sugestões de organização da rotina.</p>
+        <p class="plan-desc">A Mentora IA METASYNC é uma assistente digital baseada no conteúdo e na metodologia do programa. Ela ajuda com dúvidas sobre refeições, substituições e organização da rotina, mas não substitui acompanhamento médico ou nutricional.</p>
       </div>
       <div class="plan-item">
         <div class="plan-icon">📊</div>
@@ -1862,7 +1897,7 @@ function showSales(){
       <div class="faq-wrap">
         <div class="faq-item open">
           <div class="faq-q" onclick="togFaq(this)">O plano substitui acompanhamento médico ou nutricional? <span>+</span></div>
-          <div class="faq-a">Não. A plataforma é uma ferramenta educativa e de organização de rotina. Pessoas com condições de saúde, gestantes, menores de idade ou em uso de medicamentos devem buscar orientação profissional antes de mudar a alimentação ou iniciar uma rotina de jejum.</div>
+          <div class="faq-a">Não. A plataforma é uma ferramenta educativa e de organização de rotina. Pessoas com condições de saúde, gestantes, lactantes, menores de idade ou em uso de medicamentos devem buscar orientação profissional antes de mudar a alimentação ou iniciar uma rotina de jejum.</div>
         </div>
         <div class="faq-item">
           <div class="faq-q" onclick="togFaq(this)">Como funciona a Mentora IA METASYNC? <span>+</span></div>
@@ -1905,8 +1940,8 @@ function showSales(){
       </div>
       <h3 class="guarantee-title">Garantia de 30 dias</h3>
       <p class="guarantee-desc">
-        Você pode conhecer a plataforma e avaliar se os conteúdos e recursos fazem sentido para sua rotina. Se decidir que o produto não é adequado para você, solicite o reembolso pelo canal de suporte dentro do prazo informado nos termos da compra.<br><br>
-        Suporte técnico & atendimento:
+        Você pode conhecer a plataforma e avaliar se os conteúdos e recursos fazem sentido para sua rotina. Se decidir que o produto não é adequado para você, solicite o reembolso pelo canal de suporte dentro do prazo de 30 dias, conforme os termos da compra.<br><br>
+        Para solicitar ajuda ou reembolso, entre em contato pelo e-mail de suporte informado nesta página:
       </p>
       <span class="guarantee-email">metasyncia@suporte.com</span>
     </div>
