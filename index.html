@@ -474,80 +474,78 @@ const STEPS = [
       {l:'+46 anos',img:'m46.png'}
     ]),
     opts:[{l:'18 a 25 anos'},{l:'26 a 35 anos'},{l:'36 a 45 anos'},{l:'+46 anos'}]},
-  {id:'social1',  type:'info-social'},
   {id:'goal',     type:'single', q:'Qual é o seu objetivo principal?', key:'goal',
     getOpts: ()=>(ud.gender==='homem'?[
-      {l:'Perder peso',img:'goal_lose_weight_man.png'},
-      {l:'Ficar em forma',img:'goal_get_fit_man.png'},
+      {l:'Organizar minha alimentação',img:'goal_lose_weight_man.png'},
+      {l:'Buscar mais energia e disposição',img:'goal_get_fit_man.png'},
       {l:'Melhorar a saúde do coração',img:'goal_heart_health_man.png'},
-      {l:'Aliviar o estresse',img:'goal_relieve_stress_man.png'}
+      {l:'Aliviar a rotina e o estresse',img:'goal_relieve_stress_man.png'}
     ]:[
-      {l:'Perder peso',img:'goal_lose_weight.png'},
-      {l:'Ficar em forma',img:'goal_get_fit.png'},
+      {l:'Organizar minha alimentação',img:'goal_lose_weight.png'},
+      {l:'Buscar mais energia e disposição',img:'goal_get_fit.png'},
       {l:'Melhorar a saúde do coração',img:'goal_heart_health.png'},
-      {l:'Aliviar o estresse',img:'goal_relieve_stress.png'}
+      {l:'Aliviar a rotina e o estresse',img:'goal_relieve_stress.png'}
     ]),
     opts:[
-      {l:'Perder peso',img:'goal_lose_weight.png'},
-      {l:'Ficar em forma',img:'goal_get_fit.png'},
+      {l:'Organizar minha alimentação',img:'goal_lose_weight.png'},
+      {l:'Buscar mais energia e disposição',img:'goal_get_fit.png'},
       {l:'Melhorar a saúde do coração',img:'goal_heart_health.png'},
-      {l:'Aliviar o estresse',img:'goal_relieve_stress.png'}
+      {l:'Aliviar a rotina e o estresse',img:'goal_relieve_stress.png'}
     ]},
-  {id:'bodytype', type:'single', q:'Como você descreveria seu físico?', key:'bodyType',
+  {id:'bodytype', type:'single', q:'Como você percebe seu corpo hoje?', key:'bodyType',
     getOpts: ()=>(ud.gender==='homem'?[
-      {l:'Magro',img:'body_type_magro_man.png'},{l:'Falso magro',img:'body_type_falso_magro_man.png'},{l:'Sobrepeso',img:'body_type_sobrepeso_man.png'},{l:'Obeso',img:'body_type_obeso_man.png'}
+      {l:'Magro',img:'body_type_magro_man.png'},{l:'Falso magro',img:'body_type_falso_magro_man.png'},{l:'Acima da faixa de peso',img:'body_type_sobrepeso_man.png'},{l:'Acima do peso desejado',img:'body_type_obeso_man.png'}
     ]:[
-      {l:'Magra',img:'body_magra.png'},{l:'Falsa magra',img:'body_falsa_magra.png'},{l:'Sobrepeso',img:'body_sobrepeso.png'},{l:'Obesa',img:'body_obesa.png'}
+      {l:'Magra',img:'body_magra.png'},{l:'Falsa magra',img:'body_falsa_magra.png'},{l:'Acima da faixa de peso',img:'body_sobrepeso.png'},{l:'Acima do peso desejado',img:'body_obesa.png'}
     ]),
-    opts:[{l:'Magro'},{l:'Falso magro'},{l:'Sobrepeso'},{l:'Obeso'}]},
-  {id:'info-chart1', type:'info-chart1'},
-  {id:'targetbody',type:'single', q:'Qual corpo você deseja alcançar?', key:'targetBody',
+    opts:[{l:'Magro(a)'},{l:'Falso magro(a)'},{l:'Acima da faixa de peso'},{l:'Acima do peso desejado'}]},
+  {id:'targetbody',type:'single', q:'Qual resultado você gostaria de buscar?', key:'targetBody',
     getOpts: ()=>(ud.gender==='homem'?[
       {l:'Definido',img:'target_definido_man.png'},
       {l:'Magro',img:'target_magro_man.png'},
-      {l:'Normal',img:'target_normal_man.png'},
+      {l:'Equilibrado',img:'target_normal_man.png'},
       {l:'Em forma',img:'target_em_forma_man.png'},
       {l:'Forte',img:'target_forte_man.png'}
     ]:[
       {l:'Curvilínea',img:'target_curvilinea.png'},
       {l:'Magra',img:'target_magra.png'},
-      {l:'Normal',img:'target_normal.png'},
+      {l:'Equilibrada',img:'target_normal.png'},
       {l:'Em forma',img:'target_em_forma.png'},
-      {l:'Cheia',img:'target_cheia.png'}
+      {l:'Mais preenchida',img:'target_cheia.png'}
     ]),
-    opts:[{l:'Curvilínea'},{l:'Magra'},{l:'Normal'},{l:'Em forma'},{l:'Cheia'}]},
+    opts:[{l:'Curvilínea'},{l:'Magra'},{l:'Equilibrada'},{l:'Em forma'},{l:'Mais preenchida'}]},
   {id:'focusareas',type:'multi-card', q:'Quais áreas do corpo você quer\nfocar?', key:'focusAreas',
     getOpts: ()=>(ud.gender==='homem'?[
       {l:'Barriga',img:'peitinho.png'},{l:'Peito',img:'peitinho.png'},{l:'Braços',img:'braço.png'},{l:'Costas',img:'costa.png'},{l:'Pernas',img:'perna.png'}
     ]:[
-      {l:'Barriga',img:'focus_barriga.png'},{l:'Bunda',img:'focus_bunda.png'},{l:'Peito',img:'focus_peito.png'},{l:'Pernas',img:'focus_pernas.png'}
+      {l:'Barriga',img:'focus_barriga.png'},{l:'Glúteos',img:'focus_bunda.png'},{l:'Busto',img:'focus_peito.png'},{l:'Pernas',img:'focus_pernas.png'}
     ]),
-    opts:[{l:'Barriga'},{l:'Bunda'},{l:'Peito'},{l:'Pernas'}]},
+    opts:[{l:'Barriga'},{l:'Glúteos'},{l:'Busto'},{l:'Pernas'}]},
   {id:'lastshape', type:'single', q:'Faz quanto tempo que você se\nsentiu na sua melhor forma?', key:'lastBestShape',
     layout:'side', getImg: ()=>(ud.gender==='homem'?'lastshape_man.png':'gender_woman.png'),
     opts:[{l:'0 a 6 meses atrás'},{l:'7 a 12 meses atrás'},{l:'1 a 3 anos atrás'},{l:'Mais de 3 anos atrás'}]},
   {id:'info-metabolism', type:'info-metabolism'},
   {id:'bodyDesc', type:'single', q:'O que mais te descreve?', key:'bodyDescription',
     getOpts: ()=>(ud.gender==='homem'?[
-      {l:'Tenho dificuldade em ganhar músculos',e:'😐'},{l:'Eu ganho e perco sem esforço',e:'💪'},{l:'Eu ganho peso facilmente, mas tenho dificuldade para perder',e:'😬'}
+      {l:'Tenho dificuldade em ganhar massa',e:'😐'},{l:'Mantenho meu peso com facilidade',e:'💪'},{l:'Tenho tendência a acumular peso na rotina',e:'😬'}
     ]:[
-      {l:'Tenho dificuldade em ganhar músculos',e:'😐'},{l:'Eu ganho e perco sem esforço',e:'💪'},{l:'Eu ganho peso facilmente, mas tenho dificuldade para perder',e:'😬'}
+      {l:'Tenho dificuldade em ganhar massa',e:'😐'},{l:'Mantenho meu peso com facilidade',e:'💪'},{l:'Tenho tendência a acumular peso na rotina',e:'😬'}
     ]),
-    opts:[{l:'Tenho dificuldade em ganhar músculos'},{l:'Eu ganho e perco sem esforço'},{l:'Eu ganho peso facilmente, mas tenho dificuldade para perder'}]},
-  {id:'ifknowledge',type:'single', q:'O que você sabe sobre o jejum\nintermitente?', key:'ifKnowledge',
+    opts:[{l:'Tenho dificuldade em ganhar massa'},{l:'Mantenho meu peso com facilidade'},{l:'Tenho tendência a acumular peso na rotina'}]},
+  {id:'ifknowledge',type:'single', q:'O que você sabe sobre organizar\nsuas janelas de alimentação?', key:'ifKnowledge',
     getOpts: ()=>(ud.gender==='homem'?[
-      {l:'Não sei nada',img:'h18.jfif'},
-      {l:'Já ouvi falar um pouco',img:'h35.jfif'},
-      {l:'Entendo bastante',img:'h45.jfif'}
+      {l:'Nunca experimentei',img:'h18.jfif'},
+      {l:'Conheço um pouco',img:'h35.jfif'},
+      {l:'Já tenho experiência',img:'h45.jfif'}
     ]:[
-      {l:'Não sei nada',img:'if_know_nothing.jpg'},
-      {l:'Já ouvi falar um pouco',img:'if_know_a_little.jpg'},
-      {l:'Entendo bastante',img:'if_know_a_lot.jpg'}
+      {l:'Nunca experimentei',img:'if_know_nothing.jpg'},
+      {l:'Conheço um pouco',img:'if_know_a_little.jpg'},
+      {l:'Já tenho experiência',img:'if_know_a_lot.jpg'}
     ]),
     opts:[
-      {l:'Não sei nada',img:'if_know_nothing.jpg'},
-      {l:'Já ouvi falar um pouco',img:'if_know_a_little.jpg'},
-      {l:'Entendo bastante',img:'if_know_a_lot.jpg'}
+      {l:'Nunca experimentei',img:'if_know_nothing.jpg'},
+      {l:'Conheço um pouco',img:'if_know_a_little.jpg'},
+      {l:'Já tenho experiência',img:'if_know_a_lot.jpg'}
     ]},
   {id:'breakfast', type:'single', q:'Quando você costuma tomar seu\ncafé da manhã?', key:'breakfast',
     opts:[
@@ -582,88 +580,81 @@ const STEPS = [
       {l:'Nenhuma das acima',sub:'Eu como quase tudo',e:'❌'}
     ]),
     opts:[{l:'Sem lactose'},{l:'Sem glúten'},{l:'Vegetariana'},{l:'Vegana'},{l:'Nenhum peixe'},{l:'Nenhuma das acima'}]},
-  {id:'dislikedfoods',type:'food-picker', q:'Escolha as comidas que você NÃO gosta'},
-  {id:'mealpref', type:'single', q:'Você prefere cozinhar, comer fora\nou pedir comida?', key:'mealPreference',
-    opts:[{l:'Cozinhar em casa',e:'🍳'},{l:'Eu prefiro ir a um restaurante',e:'🍽️'},{l:'Gosto de pedir comida',e:'🍟'},{l:'Eu faço um pouco de tudo',e:'😊'}]},
-  {id:'weekendbrk',type:'single', q:'Você precisa de uma pausa no\nJejum para o final de semana?', key:'weekendBreak',
-    opts:[{l:'Claro que sim! Final de semana é para curtir',e:'🤙'},{l:'Não paro nem no fim de semana!',e:'💪'}]},
+  {id:'dislikedfoods',type:'food-picker', q:'Escolha os alimentos que você prefere EXCLUIR'},
+  {id:'mealpref', type:'single', q:'Como você prefere resolver suas refeições?', key:'mealPreference',
+    opts:[{l:'Cozinhar em casa',e:'🍳'},{l:'Comer em restaurante',e:'🍽️'},{l:'Pedir delivery',e:'🍟'},{l:'Um pouco de tudo',e:'😊'}]},
+  {id:'weekendbrk',type:'single', q:'Você prefere uma rotina mais flexível no final de semana?', key:'weekendBreak',
+    opts:[{l:'Sim, prefiro mais liberdade no fim de semana',e:'🤙'},{l:'Prefiro manter a mesma rotina todos os dias',e:'💪'}]},
   {id:'exercise', type:'single', q:'Com que frequência você se\nexercita?', key:'exerciseFrequency',
     layout:'side', getImg: ()=>(ud.gender==='homem'?'exercise_man.png':'goal_get_fit.jpg'),
-    opts:[{l:'Quase todos os dias'},{l:'Várias vezes por semana'},{l:'Várias vezes por mês'},{l:'Nunca'}]},
-  {id:'stairs', type:'single', q:'Você fica sem fôlego depois de\nsubir um lance de escadas?', key:'stairsBreath',
+    opts:[{l:'Quase todos os dias'},{l:'Várias vezes por semana'},{l:'Várias vezes por mês'},{l:'Raramente / Nunca'}]},
+  {id:'stairs', type:'single', q:'Como seu corpo costuma reagir ao subir uma escada?', key:'stairsBreath',
     opts:[
-      {l:'Fico tão sem fôlego que não consigo falar',e:'🥵'},
-      {l:'Fico um pouco sem fôlego, mas consigo falar',e:'💨'},
-      {l:'Fico bem depois de um lance de escadas',e:'🙂'},
-      {l:'Eu consigo subir alguns lances de escada facilmente',e:'🚀'}
+      {l:'Fico bastante cansado(a)',e:'🥵'},
+      {l:'Sinto um leve cansaço, mas normal',e:'💨'},
+      {l:'Fico bem, sem alterações',e:'🙂'},
+      {l:'Subo facilmente sem nenhum esforço',e:'🚀'}
     ]},
   {id:'workroutine',type:'single', q:'Como é a sua rotina de trabalho?', key:'workRoutine',
     layout:'side', getImg: ()=>(ud.gender==='homem'?'lastshape_man.png':'work_routine.png'),
     getOpts: ()=>(ud.gender==='homem'?[
-      {l:'das 09:00 às 18:00'},{l:'Turnos noturnos'},{l:'Meu horário é flexível'},{l:'Estou aposentado'}
+      {l:'das 09:00 às 18:00'},{l:'Turnos noturnos'},{l:'Meu horário é flexível'},{l:'Aposentado / Outro'}
     ]:[
-      {l:'das 09:00 às 18:00'},{l:'Turnos noturnos'},{l:'Meu horário é flexível'},{l:'Estou aposentada'}
+      {l:'das 09:00 às 18:00'},{l:'Turnos noturnos'},{l:'Meu horário é flexível'},{l:'Aposentada / Outro'}
     ]),
-    opts:[{l:'das 09:00 às 18:00'},{l:'Turnos noturnos'},{l:'Meu horário é flexível'},{l:'Estou aposentado'}]},
+    opts:[{l:'das 09:00 às 18:00'},{l:'Turnos noturnos'},{l:'Meu horário é flexível'},{l:'Aposentado / Outro'}]},
   {id:'sleep',    type:'single', q:'Quantas horas você costuma\ndormir?', key:'sleepHours',
     layout:'side', getImg: ()=>(ud.gender==='homem'?'goal_relieve_stress_man.png':'goal_relieve_stress.jpg'),
-    opts:[{l:'Durmo pouco (menos de 5 horas)'},{l:'Eu consigo dormir um pouco (5-6 horas)'},{l:'Eu durmo muito e bem (7-8 horas)'},{l:'Gosto de dormir até mais tarde (mais de 8 horas)'}]},
+    opts:[{l:'Menos de 5 horas'},{l:'Entre 5 e 6 horas'},{l:'Entre 7 e 8 horas'},{l:'Mais de 8 horas'}]},
   {id:'water',    type:'single', q:'Qual é a sua ingestão diária de\nágua?', key:'waterIntake',
     layout:'side', img:'💧',
-    opts:[{l:'Eu só tomo café ou chá'},{l:'Cerca de 2 copos'},{l:'2 a 6 copos'},{l:'Mais de 6 copos'}]},
-  {id:'physical', type:'multi', q:'Você tem algum desses problemas?', key:'physicalProblems',
+    opts:[{l:'Consumo pouca água (1-2 copos)'},{l:'Entre 3 e 5 copos'},{l:'Entre 6 e 8 copos'},{l:'Mais de 8 copos'}]},
+  {id:'physical', type:'multi', q:'Existe alguma limitação ou desconforto que devemos considerar?', key:'physicalProblems',
     getOpts: ()=>(ud.gender==='homem'?[
-      {l:'Joelhos sensíveis',e:'🦵'},{l:'Costas sensíveis',e:'🔙'},{l:'Nenhum dos acima',e:'✅'}
+      {l:'Sensibilidade nos joelhos',e:'🦵'},{l:'Sensibilidade nas costas',e:'🔙'},{l:'Nenhum dos acima',e:'✅'}
     ]:[
-      {l:'Joelhos sensíveis',e:'🦵'},{l:'Costas sensíveis',e:'🔙'},{l:'Nenhuma das acima',e:'✅'}
+      {l:'Sensibilidade nos joelhos',e:'🦵'},{l:'Sensibilidade nas costas',e:'🔙'},{l:'Nenhuma das acima',e:'✅'}
     ]),
-    opts:[{l:'Joelhos sensíveis'},{l:'Costas sensíveis'},{l:'Nenhum dos acima'}]},
-  {id:'info-face',type:'info-face'},
-  {id:'weightgain',type:'multi', q:'Algum desses acontecimentos fez\nvocê ganhar peso nos últimos\nanos?', key:'weightGainEvents',
+    opts:[{l:'Sensibilidade nos joelhos'},{l:'Sensibilidade nas costas'},{l:'Nenhum dos acima'}]},
+  {id:'weightgain',type:'multi', q:'Algum desses fatores influenciou seus hábitos nos últimos anos?', key:'weightGainEvents',
     getOpts: ()=>(ud.gender==='homem'?[
-      {l:'Casamento ou relacionamento',e:'👰'},
-      {l:'Rotina corrida com trabalho ou família',e:'😓'},
-      {l:'Dificuldades financeiras',e:'💰'},
-      {l:'Lesão ou incapacidade',e:'🏥'},
-      {l:'Estresse ou problemas de saúde mental',e:'😖'},
-      {l:'Metabolismo mais lento devido a idade',e:'👵'},
-      {l:'Complicações pós-tratamentos',e:'🩺'},
+      {l:'Mudanças na rotina pessoal ou relacionamento',e:'👰'},
+      {l:'Rotina corrida no trabalho ou família',e:'😓'},
+      {l:'Mudanças financeiras ou estresse',e:'💰'},
+      {l:'Falta de tempo para preparar refeições',e:'🏥'},
+      {l:'Mudanças no ritmo do metabolismo',e:'👵'},
       {l:'Nenhum dos acima',e:'❌'}
     ]:[
-      {l:'Casamento ou relacionamento',e:'👰'},
-      {l:'Rotina corrida com trabalho ou família',e:'😓'},
-      {l:'Dificuldades financeiras',e:'💰'},
-      {l:'Lesão ou incapacidade',e:'🏥'},
-      {l:'Estresse ou problemas de saúde mental',e:'😖'},
-      {l:'Metabolismo mais lento devido a idade',e:'👵'},
-      {l:'Complicações pós-tratamentos',e:'🩺'},
+      {l:'Mudanças na rotina pessoal ou relacionamento',e:'👰'},
+      {l:'Rotina corrida no trabalho ou família',e:'😓'},
+      {l:'Mudanças financeiras ou estresse',e:'💰'},
+      {l:'Falta de tempo para preparar refeições',e:'🏥'},
+      {l:'Mudanças no ritmo do metabolismo',e:'👵'},
       {l:'Nenhuma das acima',e:'❌'}
     ]),
     opts:[
-      {l:'Casamento ou relacionamento',e:'👰'},
-      {l:'Rotina corrida com trabalho ou família',e:'😓'},
-      {l:'Dificuldades financeiras',e:'💰'},
-      {l:'Lesão ou incapacidade',e:'🏥'},
-      {l:'Estresse ou problemas de saúde mental',e:'😖'},
-      {l:'Metabolismo mais lento devido a idade',e:'👵'},
-      {l:'Complicações pós-tratamentos',e:'🩺'},
+      {l:'Mudanças na rotina pessoal ou relacionamento',e:'👰'},
+      {l:'Rotina corrida no trabalho ou família',e:'😓'},
+      {l:'Mudanças financeiras ou estresse',e:'💰'},
+      {l:'Falta de tempo para preparar refeições',e:'🏥'},
+      {l:'Mudanças no ritmo do metabolismo',e:'👵'},
       {l:'Nenhuma das acima',e:'❌'}
     ]},
-  {id:'motivation', type:'single', q:'Quão motivado você está para perder peso?', key:'motivationLevel',
+  {id:'motivation', type:'single', q:'O que melhor descreve seu momento atual?', key:'motivationLevel',
     opts:[
-      {l:'Estou tentando fazer o jejum apenas por curiosidade',e:'🤔'},
-      {l:'Estou determinado a diminuir um ou dois tamanhos',e:'🤘'},
-      {l:'Eu não vou parar até atingir meu peso ideal',e:'🔥'}
+      {l:'Quero conhecer o método para entender se encaixa na minha rotina',e:'🤔'},
+      {l:'Estou pronto(a) para organizar meus hábitos e ver evolução',e:'🤘'},
+      {l:'Busco um acompanhamento prático para seguir com consistência',e:'🔥'}
     ]},
   {id:'height',   type:'slider', q:'Qual é a sua altura?', key:'height', min:140, max:220, def:165, units:['cm','pol']},
   {id:'curweight',type:'slider', q:'Qual é o seu peso atual?', key:'currentWeight', min:40, max:180, def:70, units:['kg','lb']},
-  {id:'tgtweight',type:'slider', q:'Qual é o seu peso desejado?', key:'targetWeight', min:40, max:180, def:60, units:['kg','lb'], showIMC:true},
+  {id:'tgtweight',type:'slider', q:'Qual a sua meta de peso?', key:'targetWeight', min:40, max:180, def:60, units:['kg','lb'], showIMC:true},
   {id:'exactage', type:'age-input', q:'Qual é a sua idade exata?', key:'exactAge'},
   {id:'imc-summary', type:'imc-summary'},
-  {id:'event',    type:'single', q:'Você tem algum evento importante\nchegando?',
-    sub:'Ter algo para esperar pode ser uma grande motivação para alcançar o seu objetivo!',
+  {id:'event',    type:'single', q:'Você tem algum compromisso ou evento nos próximos meses?',
+    sub:'Ter uma data importante em mente ajuda na consistência do seu plano!',
     key:'upcomingEvent',
-    opts:[{l:'Férias',e:'✈️'},{l:'Casamento',e:'💍'},{l:'Feriado',e:'🏖️'},{l:'Evento esportivo',e:'🏆'},{l:'Encontro de amigos',e:'🎂'},{l:'Aniversário',e:'🎉'},{l:'Outro',e:'🤷'},{l:'Não tenho nenhum evento',e:'❌'}]},
+    opts:[{l:'Viagem / Férias',e:'✈️'},{l:'Casamento / Festa',e:'💍'},{l:'Feriado especial',e:'🏖️'},{l:'Aniversário',e:'🎉'},{l:'Outro evento',e:'🤷'},{l:'Nenhum evento específico',e:'❌'}]},
   {id:'wgraph',   type:'weight-graph'},
   {id:'loading',  type:'loading'},
   {id:'result',   type:'result'}
@@ -797,24 +788,27 @@ function goBack(){ if(currentStep > 0){ goingBack=true; currentStep--; render();
 function renderIntro(){
   return `
   <div style="text-align:center">
-    <h1 style="font-family:'Montserrat',sans-serif;font-size:24px;font-weight:900;line-height:1.3;margin-bottom:14px;color:#fff">
-      Sincronize seu Metabolismo com <span style="color:var(--cyan-neon);text-shadow:0 0 12px var(--cyan-glow)">Biohacking Adaptado</span> e
-      <span style="color:var(--red-neon)">elimine até 10kg em 21 dias</span>
+    <h1 style="font-family:'Montserrat',sans-serif;font-size:23px;font-weight:900;line-height:1.35;margin-bottom:14px;color:#fff">
+      Seu plano de 21 dias começa com uma <span style="color:var(--cyan-neon);text-shadow:0 0 12px var(--cyan-glow)">rotina possível de seguir.</span>
     </h1>
-    <p style="font-size:14px;line-height:1.6;margin-bottom:22px;color:var(--silver)">
-      Responda a esta <span style="color:var(--cyan-neon);font-weight:700">avaliação metabólica gratuita</span> de 2 minutos e ative o seu <span style="color:var(--cyan-neon);font-weight:700">protocolo personalizado de alta precisão</span> 👇
+    <p style="font-size:13.5px;line-height:1.6;margin-bottom:20px;color:var(--silver)">
+      Responda algumas perguntas sobre seus horários, preferências e objetivo. No final, você verá uma prévia do plano METASYNC organizado para o seu momento.
     </p>
-    <div style="margin:20px 0;border-radius:20px;overflow:hidden;border:1px solid var(--border-glass);box-shadow:0 0 25px var(--cyan-glow)">
-      <img src="hero_transformation.png" alt="Transformação Antes e Depois METASYNC" style="width:100%;height:auto;display:block;border-radius:18px">
+    <div style="margin:18px 0;border-radius:20px;overflow:hidden;border:1px solid var(--border-glass)">
+      <img src="hero_transformation.png" alt="Exemplo de rotina e acompanhamento METASYNC IA" style="width:100%;height:auto;display:block;border-radius:18px">
     </div>
-    <button class="btn btn-primary btn-intro" onclick="triggerSyncNext()">INICIAR DIAGNÓSTICO METABÓLICO ⚡</button>
+    <button class="btn btn-primary btn-intro" onclick="triggerSyncNext()">CRIAR MEU PLANO GRATUITAMENTE ⚡</button>
+    <p style="font-size:11.5px;color:var(--silver);margin-top:10px">Leva cerca de 2 minutos. Não existe resposta certa ou errada.</p>
   </div>`;
 }
 
 function renderGender(){
   return `
   <div>
-    <h2 class="q-title">Perfil Metabolico para:</h2>
+    <div style="background:rgba(0,242,255,0.06);border:1px solid var(--border-glass);border-radius:14px;padding:12px 14px;margin-bottom:16px;font-size:12px;line-height:1.5;color:var(--silver-light);text-align:center">
+      💡 Vou usar suas respostas para adaptar exemplos de refeições, horários e sugestões à sua rotina. Responda com sinceridade. Não existe resposta certa ou errada.
+    </div>
+    <h2 class="q-title">Perfil para:</h2>
     <div class="gender-grid">
       <div class="gender-card" onclick="selGender('homem',this)">
         <div class="gender-card-img"><img src="gender_man.png" alt="Homem" style="width:100%;height:100%;object-fit:cover"></div>
@@ -988,38 +982,17 @@ function renderInfoSocial(){
   </div>`;
 }
 
-function renderInfoChart1(){
-  return `
-  <div>
-    <h2 class="info-big-title">Engenharia metabólica para longevidade e alto desempenho</h2>
-    <div class="chart-box" style="padding:10px;display:flex;justify-content:center;align-items:center;background:rgba(255,255,255,0.02)">
-      <img src="grafic.png" alt="Engenharia Metabólica" style="width:100%;height:auto;max-width:340px;border-radius:12px;display:block">
-    </div>
-    <button class="btn btn-primary mt16" onclick="triggerSyncNext()">Continuar</button>
-  </div>`;
-}
-
 function renderInfoMetabolism(){
   return `
   <div>
-    <h2 class="info-big-title">68% da sua queima calórica é regulada pela flexibilidade metabólica</h2>
-    <p class="info-body-text">Ao otimizar a sua janela de alimentação e a sensibilidade à insulina, o sistema força seu organismo a utilizar gordura estocada como energia contínua.</p>
-    <div class="chart-box" style="padding:10px;display:flex;justify-content:center;align-items:center;background:rgba(255,255,255,0.02)">
-      <img src="chart_metabolism.png" alt="Flexibilidade Metabólica" style="width:100%;height:auto;max-width:340px;border-radius:12px;display:block">
+    <h2 class="info-big-title">Por que perguntamos sobre seus horários?</h2>
+    <p class="info-body-text" style="font-size:13.5px;line-height:1.65;margin-bottom:16px">
+      Seus horários de sono, refeições e trabalho influenciam o tipo de rotina que é mais fácil manter. Por isso, o plano usa suas respostas para sugerir horários e refeições mais compatíveis com o seu dia a dia.
+    </p>
+    <div class="info-box info-blue" style="margin-bottom:16px">
+      <div class="ib-title">💡 Foco em Consistência</div>
+      <p style="font-size:12.5px;line-height:1.5">O objetivo não é criar uma rotina perfeita, e sim uma rotina possível de seguir no seu momento atual.</p>
     </div>
-    <button class="btn btn-primary mt16" onclick="triggerSyncNext()">Continuar</button>
-  </div>`;
-}
-
-function renderInfoFace(){
-  const faceImg = ud.gender === 'homem' ? 'face_transformation_man.png' : 'face_transformation.png';
-  return `
-  <div>
-    <h2 class="info-big-title">Não é só o seu corpo! Veja como o Jejum pode mudar o seu rosto!</h2>
-    <div style="margin:16px auto;width:100%;max-width:320px;display:flex;justify-content:center;align-items:center">
-      <img src="${faceImg}" alt="Transformação Facial" style="width:100%;height:auto;border-radius:16px;display:block">
-    </div>
-    <p class="info-body-text">Perder peso através do jejum ajuda a reduzir gordura e inchaço no rosto, principalmente ao redor dos olhos, queixo e mandíbula, deixando sua pele com aparência mais jovem e saudável.</p>
     <button class="btn btn-primary mt16" onclick="triggerSyncNext()">Continuar</button>
   </div>`;
 }
@@ -1027,27 +1000,26 @@ function renderInfoFace(){
 function renderIMCSummary(){
   const pct = Math.floor(Math.random() * (88 - 65 + 1)) + 65;
   const imcImg = ud.gender === 'homem' ? 'imc_man.png' : 'woman_overweight.png';
-  const labelObese = ud.gender === 'homem' ? 'Obeso' : 'Obesa';
   return `
   <div>
-    <h2 class="info-big-title">Resumo do seu nível de condicionamento físico</h2>
+    <h2 class="info-big-title">Ponto de Partida e Nível de Condicionamento</h2>
     <div style="text-align:left;margin:18px 0">
-      <div style="font-size:13px;font-weight:700;color:var(--silver-light);letter-spacing:0.3px">Índice de massa corporal (IMC)</div>
+      <div style="font-size:13px;font-weight:700;color:var(--silver-light);letter-spacing:0.3px">Estimativa baseada nos dados informados (IMC)</div>
       <div style="display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--silver);margin-top:4px;margin-bottom:6px">
-        <span>Normal - entre 18,4 e 25</span>
+        <span>Faixa estimada</span>
         <span style="font-weight:800;font-size:14px;color:#fff">${pct}%</span>
       </div>
       <div class="imc-track">
         <div class="imc-thumb" style="left:${pct}%"></div>
       </div>
-      <div class="imc-labels"><span>Anormal</span><span>Normal</span><span>${labelObese}</span></div>
+      <div class="imc-labels"><span>Início</span><span>Equilibrado</span><span>Evolução</span></div>
     </div>
     <div style="display:flex;justify-content:center;align-items:center;margin:16px 0">
-      <img src="${imcImg}" alt="Nível de condicionamento" style="height:210px;width:auto;display:block;object-fit:contain">
+      <img src="${imcImg}" alt="Ponto de partida" style="height:210px;width:auto;display:block;object-fit:contain">
     </div>
-    <div style="background:#FFF8EA;border:1px solid #FFE8B8;border-radius:16px;padding:16px;text-align:left;margin-top:16px">
-      <div style="font-family:'Montserrat',sans-serif;font-weight:800;font-size:15px;color:#D97706;margin-bottom:8px">Sua situação é preocupante!</div>
-      <p style="font-size:13px;line-height:1.5;color:#785E2A;margin:0">Parabéns por dar o primeiro passo. Vamos criar um plano personalizado para acelerar seu metabolismo, aumentar sua força e melhorar sua saúde.</p>
+    <div style="background:rgba(0,242,255,0.06);border:1px solid var(--border-glass);border-radius:16px;padding:16px;text-align:left;margin-top:16px">
+      <div style="font-family:'Montserrat',sans-serif;font-weight:800;font-size:15px;color:var(--cyan-neon);margin-bottom:8px">Este é o seu ponto de partida</div>
+      <p style="font-size:13px;line-height:1.5;color:var(--silver);margin:0">Agora vamos organizar os próximos passos para estruturar suas refeições e horários com clareza.</p>
     </div>
     <button class="btn btn-primary mt16" onclick="triggerSyncNext()">Continuar</button>
   </div>`;
@@ -1058,14 +1030,18 @@ function renderWeightGraphScreen(){
   ud.targetWeight = tw;
   return `
   <div>
-    <h2 class="info-big-title">Projeção da sua Curva Metabólica</h2>
-    <p class="info-body-text" style="margin-bottom:4px">Com base no seu perfil biohacker, você alcançará o seu objetivo:</p>
-    <p class="result-target" style="font-family:'Montserrat',sans-serif;font-size:20px;color:var(--cyan-neon);text-shadow:0 0 12px var(--cyan-glow)">${tw}kg em 21 dias</p>
+    <h2 class="info-big-title">Planejamento das 3 Semanas</h2>
+    <p class="info-body-text" style="margin-bottom:12px">Organizamos a evolução da sua rotina em fases simples de acompanhar:</p>
+    <div style="text-align:left;background:rgba(255,255,255,0.03);border:1px solid var(--border-glass);border-radius:16px;padding:16px;margin-bottom:16px">
+      <div style="font-size:13px;color:var(--cyan-neon);font-weight:700;margin-bottom:6px">📍 Semana 1: Organizar horários e refeições</div>
+      <div style="font-size:13px;color:var(--cyan-neon);font-weight:700;margin-bottom:6px">📍 Semana 2: Ajustar o plano à sua rotina</div>
+      <div style="font-size:13px;color:var(--cyan-neon);font-weight:700">📍 Semana 3: Revisar seu progresso e próximos passos</div>
+    </div>
     <div class="graph-wrap">
-      <div class="graph-badge" style="top:12px;left:12px">Você Hoje</div>
-      <div class="graph-goal">${tw}Kg</div>
+      <div class="graph-badge" style="top:12px;left:12px">Evolução de Hábitos</div>
+      <div class="graph-goal">Meta: ${tw}Kg</div>
       <canvas id="wgcanvas" height="200"></canvas>
-      <div class="graph-labels"><span>Dia 01</span><span>Dia 21</span></div>
+      <div class="graph-labels"><span>Semana 1</span><span>Semana 3</span></div>
     </div>
     <button class="btn btn-primary mt16" onclick="triggerSyncNext()">Continuar</button>
   </div>`;
@@ -1094,16 +1070,12 @@ function renderLoading(){
   const tests = getTestimonials();
   return `
   <div style="text-align:center">
-    <h2 style="font-family:'Montserrat',sans-serif;font-size:20px;font-weight:900;margin-bottom:20px;line-height:1.3;color:#fff">Gerando o seu Protocolo no METASYNC LAB</h2>
+    <h2 style="font-family:'Montserrat',sans-serif;font-size:20px;font-weight:900;margin-bottom:20px;line-height:1.3;color:#fff">Organizando o seu plano METASYNC</h2>
     <div style="display:flex;justify-content:flex-end"><span id="lPct" style="font-family:'Montserrat',sans-serif;font-size:13px;font-weight:700;color:var(--cyan-neon)">34%</span></div>
     <div class="loading-bar-track"><div class="loading-bar-fill" id="lBar" style="width:34%"></div></div>
-    <p class="loading-status" id="lStatus" style="margin-top:10px">Sincronizando Cérebro treinado pela Dra. Maya...</p>
-    <p class="loading-sub">Calibrando janelas metabólicas e plano de nutrição adaptada..</p>
-    <div style="margin:22px 0">
-      <div style="font-family:'Montserrat',sans-serif;font-size:38px;font-weight:900;color:#fff;text-shadow:0 0 15px var(--cyan-glow)">+45.000</div>
-      <p style="font-size:13px;color:var(--silver)">usuários já ativaram a plataforma</p>
-    </div>
-    <div id="testWrap">
+    <p class="loading-status" id="lStatus" style="margin-top:10px">Conectando com a Mentora IA METASYNC...</p>
+    <p class="loading-sub">Ajustando sugestões de refeições e horários com base nas suas respostas...</p>
+    <div id="testWrap" style="margin-top:20px">
       ${renderTest(tests[0])}
     </div>
     <div class="dots" id="testDots">
@@ -1133,13 +1105,6 @@ function renderResult(){
   ud.targetWeight = tw;
   return `
   <div>
-    <h2 class="info-big-title">Seu Protocolo METASYNC IA está Pronto!</h2>
-    <p class="info-body-text" style="margin-bottom:4px">De acordo com a calibração dos seus dados metabólicos:</p>
-    <p class="result-target" style="font-family:'Montserrat',sans-serif;font-size:22px;color:var(--cyan-neon);text-shadow:0 0 15px var(--cyan-glow)">Você chegará a ${tw}kg em 21 dias</p>
-    <div class="graph-wrap">
-      <div class="graph-badge" style="top:12px;left:12px">Status: Ativo</div>
-      <div class="graph-goal">${tw}Kg</div>
-      <canvas id="rcanvas" height="200"></canvas>
       <div class="graph-labels"><span>Dia 01</span><span>Dia 21</span></div>
     </div>
     <button class="btn btn-primary mt16" onclick="showSales()">ACESSAR PAINEL DASHBOARD 🚀</button>
@@ -1342,6 +1307,8 @@ function goToCheckout(planType = 'pro'){
   window.location.href = checkoutUrl;
 }
 
+const ENABLE_BASIC_PLAN = true;
+
 function switchDemoTab(tabId){
   haptic();
   document.querySelectorAll('.demo-tab').forEach(t=>t.classList.remove('active'));
@@ -1354,31 +1321,25 @@ function switchDemoTab(tabId){
 
 function sendDemoQuestion(question, answer){
   haptic();
-  const chatBox = document.getElementById('demoChatBox');
-  if(!chatBox) return;
+  const box = document.getElementById('demoChatBox');
+  if(!box) return;
   
   const userMsg = document.createElement('div');
   userMsg.className = 'demo-msg user';
   userMsg.innerHTML = `<div class="demo-msg-bubble">${question}</div>`;
-  chatBox.appendChild(userMsg);
-  chatBox.scrollTop = chatBox.scrollHeight;
-
-  const aiMsg = document.createElement('div');
-  aiMsg.className = 'demo-msg ai';
-  aiMsg.innerHTML = `
-    <div class="demo-msg-avatar"><img src="dra_maya.jpg" style="width:100%;height:100%;object-fit:cover"></div>
-    <div class="demo-msg-bubble"><em>Consultando Cérebro treinado pela Dra. Maya... ⚡</em></div>
-  `;
-  chatBox.appendChild(aiMsg);
-  chatBox.scrollTop = chatBox.scrollHeight;
-
-  setTimeout(()=>{
-    const bubble = aiMsg.querySelector('.demo-msg-bubble');
-    if(bubble){
-      bubble.innerHTML = answer;
-      chatBox.scrollTop = chatBox.scrollHeight;
-    }
-  }, 600);
+  box.appendChild(userMsg);
+  box.scrollTop = box.scrollHeight;
+  
+  setTimeout(() => {
+    const aiMsg = document.createElement('div');
+    aiMsg.className = 'demo-msg ai';
+    aiMsg.innerHTML = `
+      <div class="demo-msg-avatar"><img src="app_logo.png" style="width:100%;height:100%;object-fit:contain"></div>
+      <div class="demo-msg-bubble">${answer}</div>
+    `;
+    box.appendChild(aiMsg);
+    box.scrollTop = box.scrollHeight;
+  }, 350);
 }
 
 function selectFastingStage(hours, stageName, percent, isPro){
@@ -1394,7 +1355,7 @@ function selectFastingStage(hours, stageName, percent, isPro){
   if(timerDisplay) timerDisplay.textContent = `${hours}:00:00`;
   if(stageTitle) {
     if(isPro) {
-      stageTitle.innerHTML = `${stageName} <br><button onclick="scrollToPricing()" style="margin-top:8px;background:linear-gradient(135deg,var(--cyan-neon),#00aaff);color:#06080A;font-family:'Montserrat',sans-serif;font-size:10.5px;font-weight:900;border:none;padding:5px 12px;border-radius:12px;cursor:pointer;box-shadow:0 0 12px var(--cyan-glow)">🔓 DESBLOQUEAR MÓDULO TURBO 24H</button>`;
+      stageTitle.innerHTML = `${stageName} <br><button onclick="scrollToPricing()" style="margin-top:8px;background:linear-gradient(135deg,var(--cyan-neon),#00aaff);color:#06080A;font-family:'Montserrat',sans-serif;font-size:10.5px;font-weight:900;border:none;padding:5px 12px;border-radius:12px;cursor:pointer;box-shadow:0 0 12px var(--cyan-glow)">DESBLOQUEAR PLANO PRO — R$ 29</button>`;
     } else {
       stageTitle.textContent = stageName;
     }
@@ -1431,23 +1392,22 @@ function toggleAudioPlay(){
     isAudioPlaying = false;
     if(btn) btn.textContent = '▶';
     if(waveform) waveform.classList.remove('playing');
-    if(timeTxt) timeTxt.textContent = 'Ouvir áudio da Dra. Maya (0:45)';
+    if(timeTxt) timeTxt.textContent = 'Ouvir uma explicação rápida do plano (0:45)';
   } else {
     audioEl.play().then(() => {
       isAudioPlaying = true;
       if(btn) btn.textContent = '⏸';
       if(waveform) waveform.classList.add('playing');
-      if(timeTxt) timeTxt.textContent = 'Reproduzindo áudio...';
+      if(timeTxt) timeTxt.textContent = 'Reproduzindo explicação do plano...';
 
       audioEl.onended = () => {
         isAudioPlaying = false;
         if(btn) btn.textContent = '▶';
         if(waveform) waveform.classList.remove('playing');
-        if(timeTxt) timeTxt.textContent = 'Ouvir áudio da Dra. Maya (0:45)';
+        if(timeTxt) timeTxt.textContent = 'Ouvir uma explicação rápida do plano (0:45)';
       };
     }).catch(err => {
       console.error("Erro ao tocar áudio MP3:", err);
-      // Fallback em caso de bloqueio de autoplai do navegador
       audioEl.controls = true;
     });
   }
@@ -1455,7 +1415,7 @@ function toggleAudioPlay(){
 
 function openSupportChat(){
   haptic();
-  const msg = encodeURIComponent("Olá! Fiz o teste no METASYNC IA e tenho dúvidas sobre o meu diagnóstico.");
+  const msg = encodeURIComponent("Olá! Fiz a avaliação no METASYNC IA e gostaria de tirar dúvidas sobre o plano.");
   window.open("https://api.whatsapp.com/send?phone=5511999999999&text=" + msg, "_blank");
 }
 
@@ -1463,94 +1423,94 @@ function showSales(){
   try {
     if(typeof fbq === 'function') {
       fbq('track', 'Lead', { content_name: 'METASYNC IA Quiz Completed', gender: ud.gender });
+      fbq('trackCustom', 'OfferPresented', { plan: 'PRO' });
     }
     localStorage.setItem('metasync_completed_quiz', 'true');
     localStorage.setItem('metasync_user_data', JSON.stringify(ud));
   } catch (e) {}
+
   const quizSec = document.getElementById('quiz-section');
   const sp = document.getElementById('sales-page');
   if (quizSec) quizSec.style.display = 'none';
   if (!sp) return;
   sp.style.display = 'block';
+
   const tw = getTargetWeight();
   ud.targetWeight = tw;
   const cw = ud.currentWeight || 70;
   const h = (ud.height || 165) / 100;
   const imc = (cw / (h * h)).toFixed(1);
-  const kgDiff = Math.max(3, Math.round(cw - tw));
-  const kgTargetText = `${kgDiff}kg`;
-  const w1 = Math.max(30, cw - Math.round(kgDiff * 0.35 || 3));
-  const w2 = Math.max(30, cw - Math.round(kgDiff * 0.70 || 6));
-  const w3 = Math.max(30, tw);
 
   sp.innerHTML=`
   <div style="background:var(--bg-deep);max-width:440px;width:100%;padding-bottom:48px">
+    <!-- Quiz Header -->
     <div class="quiz-header" style="display:flex;align-items:center;justify-content:center;padding:16px;position:relative;background:rgba(13, 13, 13, 0.85);backdrop-filter:blur(16px);border-bottom:1px solid var(--border-glass)">
       <button class="btn-back" style="display:block;position:absolute;left:14px;background:none;border:none;font-size:22px;cursor:pointer;color:var(--silver);padding:4px 8px;line-height:1" onclick="returnToQuizFromSales()" title="Voltar ao Quiz">←</button>
       <div class="logo">
-        <span class="logo-badge">LAB</span> METASYNC IA
+        <span class="logo-badge">METASYNC</span> IA
       </div>
     </div>
 
+    <!-- 1. RESULTADO PERSONALIZADO -->
     <div style="padding:22px 20px 0;text-align:center">
       <div style="display:inline-block;background:rgba(0,242,255,0.1);border:1px solid var(--cyan-neon);color:var(--cyan-neon);font-size:10px;font-weight:900;padding:4px 12px;border-radius:20px;letter-spacing:1px;text-transform:uppercase;margin-bottom:10px;box-shadow:0 0 10px var(--cyan-glow)">
-        ⚡ DIAGNÓSTICO METABÓLICO CONCLUÍDO
+        📋 AVALIAÇÃO CONCLUÍDA
       </div>
-      <h2 style="font-family:'Montserrat',sans-serif;font-size:23px;font-weight:900;line-height:1.35;color:#fff;letter-spacing:-0.3px">
-        Seu plano personalizado de <span style="color:var(--cyan-neon);text-shadow:0 0 12px var(--cyan-glow)">21 dias está pronto</span> — veja como começar sua jornada de emagrecimento.
+      <h2 style="font-family:'Montserrat',sans-serif;font-size:22px;font-weight:900;line-height:1.35;color:#fff;letter-spacing:-0.3px">
+        Seu plano personalizado de <span style="color:var(--cyan-neon);text-shadow:0 0 12px var(--cyan-glow)">21 dias está pronto</span>
       </h2>
       <p style="font-size:13px;color:var(--silver);margin-top:8px;line-height:1.5">
-        Com base nas suas respostas, ativamos a sua sincronização hormonal e o Cérebro treinado pela Dra. Maya.
+        Organizamos uma prévia com sugestões de refeições, horários e recursos de acompanhamento a partir das informações que você compartilhou.
       </p>
     </div>
 
-    <!-- CRO 1: DIAGNOSTIC REPORT CARD -->
+    <!-- DIAGNOSTIC SUMMARY CARD -->
     <div class="diag-report-card">
       <div class="diag-header">
-        <div class="diag-user-title">📊 RELATÓRIO DO SEU DIAGNÓSTICO</div>
-        <span class="diag-tag">CALIBRAÇÃO NECESSÁRIA</span>
+        <div class="diag-user-title">📊 RESUMO DAS SUAS RESPOSTAS</div>
+        <span class="diag-tag">PONTO DE PARTIDA</span>
       </div>
       <div class="diag-grid">
         <div class="diag-stat-box">
-          <div class="diag-stat-label">IMC Atual Estimado</div>
-          <div class="diag-stat-val">${imc} kg/m²</div>
+          <div class="diag-stat-label">Ponto de Partida</div>
+          <div class="diag-stat-val">${cw} kg</div>
         </div>
         <div class="diag-stat-box">
-          <div class="diag-stat-label">Meta Recomendada</div>
+          <div class="diag-stat-label">Meta Informada</div>
           <div class="diag-stat-val">${tw} kg</div>
         </div>
       </div>
-      <div class="weekly-projection-title">📉 Projeção de Perda de Peso Gradual:</div>
+      <div class="weekly-projection-title">📅 Estrutura do Plano de 21 Dias:</div>
       <div class="weekly-projection-grid">
         <div class="proj-step">
           <div class="proj-week">Semana 1</div>
-          <div class="proj-weight">${w1} kg</div>
+          <div style="font-size:10.5px;color:var(--silver);margin-top:2px">Organizar horários e refeições</div>
         </div>
         <div class="proj-step">
           <div class="proj-week">Semana 2</div>
-          <div class="proj-weight">${w2} kg</div>
+          <div style="font-size:10.5px;color:var(--silver);margin-top:2px">Ajustar o plano à sua rotina</div>
         </div>
         <div class="proj-step">
           <div class="proj-week">Semana 3</div>
-          <div class="proj-weight">${w3} kg</div>
+          <div style="font-size:10.5px;color:var(--silver);margin-top:2px">Revisar progresso e próximos passos</div>
         </div>
       </div>
     </div>
 
-    <!-- CTA INTERMEDIÁRIO 1 -->
+    <!-- 2. CTA DE TRANSIÇÃO -->
     <div style="padding:0 20px;margin:14px 0">
-      <button class="cta-btn" onclick="scrollToPricing()" style="font-size:12px;padding:12px 18px;box-shadow:0 0 16px var(--cyan-glow)">QUERO ATIVAR MEU PROTOCOLO AGORA ⚡</button>
+      <button class="cta-btn" onclick="scrollToPricing()" style="font-size:12px;padding:12px 18px;box-shadow:0 0 16px var(--cyan-glow)">CONHECER O PLANO COMPLETO — R$ 29 ⚡</button>
     </div>
 
-    <!-- CRO 2: AUDIO PLAYER CARD -->
+    <!-- 3. ÁUDIO EXPLICATIVO CURTO -->
     <div class="audio-player-card">
       <audio id="draMayaAudioEl" src="dra_maya_audio.mp3?v=2" preload="auto"></audio>
       <div class="audio-avatar">
-        <img src="dra_maya.jpg" alt="Dra. Maya" style="width:100%;height:100%;object-fit:cover">
+        <img src="app_logo.png" alt="Mentora IA METASYNC" style="width:100%;height:100%;object-fit:contain;padding:4px;background:#fff">
       </div>
       <div style="flex:1">
-        <div style="font-size:11px;font-weight:800;color:var(--cyan-neon);margin-bottom:2px">DRA. MAYA (VOICE NOTE)</div>
-        <div id="audioTimeTxt" style="font-size:11.5px;color:#fff;font-weight:600">Ouvir áudio da Dra. Maya (0:45)</div>
+        <div style="font-size:11px;font-weight:800;color:var(--cyan-neon);margin-bottom:2px">EXPLICAÇÃO DO PLANO</div>
+        <div id="audioTimeTxt" style="font-size:11.5px;color:#fff;font-weight:600">Ouvir uma explicação rápida do plano (0:45)</div>
       </div>
       <button class="audio-btn" id="audioPlayBtn" onclick="toggleAudioPlay()">▶</button>
       <div class="audio-waveform" id="audioWaveform">
@@ -1563,18 +1523,15 @@ function showSales(){
       </div>
     </div>
 
-    <!-- Cyberpunk Hero Banner -->
-    <div class="app-hero-badge">
-      <div class="app-badge-icon" style="width:52px;height:52px;border-radius:14px;overflow:hidden;background:#fff;padding:4px;display:flex;align-items:center;justify-content:center;box-shadow:0 0 15px var(--cyan-glow);border:1px solid var(--cyan-neon)">
-        <img src="app_logo.png" alt="METASYNC IA" style="width:100%;height:100%;object-fit:contain">
-      </div>
-      <div class="app-badge-txt">
-        <strong>Plataforma SaaS + Cérebro Treinado 24h</strong>
-        Sincronização diária de parâmetros com orientação instantânea do Cérebro treinado pela Dra. Maya a qualquer momento no seu celular.
+    <!-- 4. EXPLICAÇÃO SIMPLES DO PRODUTO -->
+    <div style="padding:0 20px;margin:18px 0">
+      <div class="how-box">
+        <h3>Como funciona o METASYNC IA?</h3>
+        <p>O METASYNC organiza suas respostas em uma estrutura de 21 dias com sugestões de refeições, horários e acompanhamento. A plataforma foi criada para ajudar você a transformar uma meta de emagrecimento em ações mais claras e possíveis de acompanhar no dia a dia.</p>
       </div>
     </div>
 
-    <!-- INTERACTIVE DEMO APP WIDGET -->
+    <!-- 5. DEMO DO APP -->
     <div class="demo-container">
       <div class="demo-header">
         <div class="demo-title">
@@ -1583,18 +1540,18 @@ function showSales(){
         <span class="demo-title-badge" style="background:rgba(255,215,0,0.15);color:#ffd700;border:1px solid #ffd700">VOCÊ ESTÁ VENDO UMA AMOSTRA</span>
       </div>
 
-      <div style="font-family:'Montserrat',sans-serif;font-size:13px;font-weight:900;color:var(--cyan-neon);text-transform:uppercase;letter-spacing:0.8px;margin:10px 0 14px;text-align:center;text-shadow:0 0 10px var(--cyan-glow)">
-        🔍 PRÉVIA DO SEU PLANO PERSONALIZADO
+      <div style="font-family:'Montserrat',sans-serif;font-size:12.5px;font-weight:900;color:var(--cyan-neon);text-transform:uppercase;letter-spacing:0.8px;margin:10px 0 14px;text-align:center;text-shadow:0 0 10px var(--cyan-glow)">
+        🔍 PRÉVIA DE UM PLANO DE 21 DIAS
       </div>
 
       <div class="demo-tabs">
         <button class="demo-tab active" id="tab-btn-chat" onclick="switchDemoTab('chat')">
-          <span class="demo-tab-icon">🧠</span>
-          <span class="demo-tab-label">Cérebro Dra. Maya</span>
+          <span class="demo-tab-icon">🤖</span>
+          <span class="demo-tab-label">Mentora IA</span>
         </button>
         <button class="demo-tab" id="tab-btn-timer" onclick="switchDemoTab('timer')">
           <span class="demo-tab-icon">⏱️</span>
-          <span class="demo-tab-label">Timer Autofagia</span>
+          <span class="demo-tab-label">Janela alimentar</span>
         </button>
         <button class="demo-tab" id="tab-btn-meals" onclick="switchDemoTab('meals')">
           <span class="demo-tab-icon">🥗</span>
@@ -1602,323 +1559,258 @@ function showSales(){
         </button>
       </div>
 
-      <!-- Tab 1: Chat Pane -->
+      <!-- Tab 1: Mentora IA Pane -->
       <div class="demo-pane active" id="demo-pane-chat">
         <div class="demo-chat-box" id="demoChatBox">
           <div class="demo-msg ai">
-            <div class="demo-msg-avatar"><img src="dra_maya.jpg" style="width:100%;height:100%;object-fit:cover"></div>
+            <div class="demo-msg-avatar"><img src="app_logo.png" style="width:100%;height:100%;object-fit:contain"></div>
             <div class="demo-msg-bubble">
-              Olá! Sou o <strong>Cérebro treinado pela Dra. Maya</strong>. Como posso orientar sua janela metabólica hoje? Toque em uma dúvida abaixo para testar a inteligência:
+              Olá! Sou a <strong>Mentora IA METASYNC</strong>. Posso ajudar com dúvidas sobre refeições, substituições e organização da sua rotina. Toque em uma opção para testar uma amostra:
             </div>
           </div>
         </div>
         <div class="demo-quick-chips">
-          <button class="demo-chip" onclick="sendDemoQuestion('Como acelerar minha queima de gordura?', 'Com o METASYNC, ajustamos sua janela metabólica para ativar a enzima AMPK. Isso força seu corpo a queimar a gordura visceral acumulada como combustível primário!')">⚡ Como acelerar a queima?</button>
-          <button class="demo-chip" onclick="sendDemoQuestion('Qual o suplemento secreto para o meu perfil?', 'Analisando seu perfil no algoritmo... Para o seu metabolismo, a combinação para destravar a queima retida é:<br><br><div style=\'background:rgba(0,242,255,0.08);border:1px dashed var(--cyan-neon);padding:10px;border-radius:10px;margin-top:4px;font-size:11px;color:#fff\'>🔒 <strong>CONTEÚDO VIP BLOQUEADO NA DEMO:</strong><br>A dosagem exata e o horário ideal de manipulação foram gerados no seu Protocolo Completo. Desbloqueie abaixo para ver!</div>')">💊 Suplemento para o meu perfil?</button>
-          <button class="demo-chip" onclick="sendDemoQuestion('O que comer hoje no meu jantar de 10 min?', 'Sugestão Express: Omelete Creamy com Abacate + 🔒 <em>[Disponível no PRO: cardápio personalizado + 50 receitas]</em>. O app gera refeições adaptadas às suas preferências em menos de 15 minutos!')">🥗 Cardápio de 10 min?</button>
+          <button class="demo-chip" onclick="sendDemoQuestion('Como organizar uma refeição rápida?', 'Sugerimos refeições com preparo em menos de 15 minutos utilizando ingredientes simples e acessíveis, priorizando proteínas de fácil digestão e vegetais da estação.')">🥗 Como organizar refeição rápida?</button>
+          <button class="demo-chip" onclick="sendDemoQuestion('O que posso usar como substituição?', 'Na versão completa, a Mentora IA oferece substituições imediatas para qualquer ingrediente que você não goste ou não tenha em casa no momento.')">🔄 O que usar como substituição?</button>
+          <button class="demo-chip" onclick="sendDemoQuestion('Como adaptar o plano ao meu horário?', 'O plano ajusta a distribuição das suas refeições de acordo com seu horário de trabalho e sono, facilitando manter a consistência sem estresse.')">⏰ Adaptar ao meu horário?</button>
         </div>
-        <div style="margin-top:12px;padding:10px 12px;background:rgba(255,255,255,0.03);border:1px solid var(--border-glass);border-radius:14px;text-align:center">
-          <div style="font-size:11px;color:var(--silver);margin-bottom:6px">🔥 Quer tirar qualquer dúvida da sua alimentação em tempo real?</div>
-          <button class="cta-btn" onclick="scrollToPricing()" style="font-size:11px;padding:8px 16px;width:auto;margin:0 auto;box-shadow:0 0 12px var(--cyan-glow)">DESBLOQUEAR CÉREBRO COMPLETO ⚡</button>
+        <div style="margin-top:14px;padding:10px 12px;background:rgba(255,255,255,0.03);border:1px solid var(--border-glass);border-radius:14px;text-align:center">
+          <div style="font-size:11px;color:var(--silver);margin-bottom:6px">🔥 Quer consultar outras dúvidas da sua rotina?</div>
+          <button class="cta-btn" onclick="scrollToPricing()" style="font-size:11px;padding:8px 16px;width:auto;margin:0 auto;box-shadow:0 0 12px var(--cyan-glow)">DESBLOQUEAR PLANO PRO — R$ 29</button>
         </div>
       </div>
 
-      <!-- Tab 2: Fasting Timer Pane -->
+      <!-- Tab 2: Janela alimentar Pane -->
       <div class="demo-pane" id="demo-pane-timer">
         <div class="fasting-gauge-wrap">
-          <div class="fasting-timer-display" id="demoFastingTimer">16:00:00</div>
-          <div class="fasting-stage-title" id="demoStageTitle">🔥 Estágio: Autofagia Profunda & Queima de Gordura</div>
+          <div class="fasting-timer-display" id="demoFastingTimer">14:00:00</div>
+          <div class="fasting-stage-title" id="demoStageTitle">⏱️ Janela Alimentar & Organização de Horários</div>
           <div class="fasting-progress-track">
-            <div class="fasting-progress-fill" id="demoFastingFill" style="width: 100%"></div>
+            <div class="fasting-progress-fill" id="demoFastingFill" style="width: 75%"></div>
           </div>
-          <div class="fasting-stages-grid" style="grid-template-columns:repeat(4,1fr)">
-            <div class="stage-btn" id="stage-btn-6" onclick="selectFastingStage('6', 'Digestão & Glicogênio', 25, false)">
+          <div class="fasting-stages-grid" style="grid-template-columns:repeat(3,1fr)">
+            <div class="stage-btn" id="stage-btn-6" onclick="selectFastingStage('6', 'Digestão & Organização Inicial', 33, false)">
               <div class="stage-btn-h">6H</div>
-              <div class="stage-btn-txt">Queda Insulina</div>
+              <div class="stage-btn-txt">Digestão</div>
             </div>
-            <div class="stage-btn" id="stage-btn-12" onclick="selectFastingStage('12', 'Cetose Inicial (Fat Burn)', 50, false)">
+            <div class="stage-btn active" id="stage-btn-12" onclick="selectFastingStage('12', 'Janela Alimentar Equilibrada', 66, false)">
               <div class="stage-btn-h">12H</div>
-              <div class="stage-btn-txt">Queima Ativa</div>
+              <div class="stage-btn-txt">Equilíbrio</div>
             </div>
-            <div class="stage-btn active" id="stage-btn-16" onclick="selectFastingStage('16', 'Autofagia Profunda', 75, false)">
+            <div class="stage-btn" id="stage-btn-16" onclick="selectFastingStage('16', 'Janela Flexível Avançada', 100, false)">
               <div class="stage-btn-h">16H</div>
-              <div class="stage-btn-txt">Renovação</div>
-            </div>
-            <div class="stage-btn" id="stage-btn-24" onclick="selectFastingStage('24', '🔒 Pico HGH & Biohacking (Módulo PRO)', 100, true)" style="border-color:var(--gold,#ffd700)">
-              <div class="stage-btn-h" style="color:#ffd700">24H 🔒</div>
-              <div class="stage-btn-txt" style="color:#ffd700">Turbo PRO</div>
+              <div class="stage-btn-txt">Flexível</div>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Tab 3: Meal Plan Pane -->
+      <!-- Tab 3: Cardápio Pane -->
       <div class="demo-pane" id="demo-pane-meals">
-        <div style="font-size:11.5px;color:var(--silver);margin-bottom:10px">Seu plano de refeições express (< 15 min):</div>
+        <div style="font-size:11.5px;color:var(--silver);margin-bottom:10px">Exemplo de sugestões de refeições:</div>
         <div class="meal-demo-card">
           <div>
-            <div class="meal-demo-time">Refeição 1 (Quebra de Jejum)</div>
-            <div class="meal-demo-name">Omelete Creamy Biohacking com Abacate</div>
+            <div class="meal-demo-time">Refeição 1 (Café da Manhã Prático)</div>
+            <div class="meal-demo-name">Omelete com Ovos e Abacate Proteico</div>
           </div>
-          <div class="meal-demo-cal">380 kcal</div>
+          <div class="meal-demo-cal">350 kcal</div>
         </div>
         <div class="meal-demo-card">
           <div>
-            <div class="meal-demo-time">Refeição 2 (Jantar Princ.)</div>
-            <div class="meal-demo-name">Grelhado Proteico + Salada Folhosa Citrus</div>
+            <div class="meal-demo-time">Refeição 2 (Almoço / Jantar)</div>
+            <div class="meal-demo-name">Grelhado Proteico com Salada Verde Citrus</div>
           </div>
-          <div class="meal-demo-cal">450 kcal</div>
+          <div class="meal-demo-cal">420 kcal</div>
         </div>
         <div class="meal-demo-card" style="position:relative;overflow:hidden;border:1.5px dashed var(--cyan-neon);background:rgba(0,242,255,0.04)">
           <div style="filter:blur(3.5px);opacity:0.4;user-select:none">
-            <div class="meal-demo-time">Refeição 3 (Doce Fit Secreto)</div>
-            <div class="meal-demo-name">Mousse Proteico Instantâneo Antidoce 3 min</div>
+            <div class="meal-demo-time">Refeição 3 (Opção de Lanche Fit)</div>
+            <div class="meal-demo-name">Mousse Proteico Prático de Frutas Vermelhas</div>
           </div>
-          <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:8px;text-align:center;background:rgba(6,8,10,0.85);color:var(--cyan-neon);font-size:10.5px;font-weight:800;line-height:1.35">
-            <span>🔒 BLOQUEADO --- Desbloqueie o plano completo para receber receitas adaptadas às suas preferências</span>
-          </div>
-        </div>
-        <button class="cta-btn" onclick="scrollToPricing()" style="font-size:11px;padding:9px 14px;margin-top:10px;box-shadow:0 0 12px var(--cyan-glow)">DESBLOQUEAR 50+ RECEITAS NO PLANO PRO 🥗</button>
-      </div>
-    </div>
-
-    <!-- CTA INTERMEDIÁRIO 2 -->
-    <div style="padding:0 20px;margin:16px 0 20px">
-      <button class="cta-btn" onclick="scrollToPricing()" style="font-size:12px;padding:12px 18px;box-shadow:0 0 16px var(--cyan-glow)">DESBLOQUEAR PLANO COMPLETO PRO ⚡</button>
-    </div>
-
-    <!-- Before / After Grid -->
-    <div style="padding:0 20px 12px">
-      <div class="compare-wrap">
-        <div style="margin-bottom:14px;border-radius:14px;overflow:hidden;border:1px solid var(--border-glass)">
-          <img src="${ud.gender === 'homem' ? 'before_after_graphic_man.png' : 'before_after_graphic.png'}" alt="Antes e Depois - Agora vs Seu objetivo" style="width:100%;height:auto;display:block">
-        </div>
-        <div class="compare-grid">
-          <div>
-            <div class="compare-col-title">Hoje</div>
-            <div class="metric"><div class="metric-name">Nível de gordura</div><div class="metric-val" style="color:var(--red-neon)">Elevado</div><div class="metric-bar-track"><div class="metric-bar-fill fill-red" style="width:82%"></div></div></div>
-            <div class="metric"><div class="metric-name">Flexibilidade Metabólica</div><div class="metric-val" style="color:var(--red-neon)">Baixa</div><div class="metric-bar-track"><div class="metric-bar-fill fill-red" style="width:18%"></div></div></div>
-            <div class="metric"><div class="metric-name">Energia Diária</div><div class="metric-val" style="color:var(--red-neon)">Baixa</div><div class="metric-bar-track"><div class="metric-bar-fill fill-red" style="width:14%"></div></div></div>
-          </div>
-          <div>
-            <div class="compare-col-title">Em 21 dias</div>
-            <div class="metric"><div class="metric-name">Nível de gordura</div><div class="metric-val" style="color:var(--green-neon)">Otimizado</div><div class="metric-bar-track"><div class="metric-bar-fill fill-green" style="width:14%"></div></div></div>
-            <div class="metric"><div class="metric-name">Flexibilidade Metabólica</div><div class="metric-val" style="color:var(--green-neon)">Máxima</div><div class="metric-bar-track"><div class="metric-bar-fill fill-green" style="width:90%"></div></div></div>
-            <div class="metric"><div class="metric-name">Energia Diária</div><div class="metric-val" style="color:var(--green-neon)">Alta</div><div class="metric-bar-track"><div class="metric-bar-fill fill-green" style="width:93%"></div></div></div>
+          <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:10px;text-align:center;background:rgba(6,8,10,0.88);color:var(--cyan-neon);font-size:11px;font-weight:800;line-height:1.4">
+            <span>🔒 CONTEÚDO DISPONÍVEL NO PRO — Desbloqueie receitas adicionais, substituições e sugestões adaptadas às suas preferências.</span>
           </div>
         </div>
+        <button class="cta-btn" onclick="scrollToPricing()" style="font-size:11px;padding:9px 14px;margin-top:10px;box-shadow:0 0 12px var(--cyan-glow)">DESBLOQUEAR PLANO PRO — R$ 29</button>
       </div>
     </div>
 
-    <div style="padding:0 20px">
-      <div class="how-box">
-        <h3>Como Funciona o METASYNC IA?</h3>
-        <p>Ajustamos a sua sensibilidade hormonal e janela metabólica. O sistema instrui seu organismo a utilizar depósitos adiposos acumulados como combustível constante, sem comprometer massa magra ou sua rotina social.</p>
-      </div>
-    </div>
-
-    <!-- Expert Card -->
-    <div class="expert-card">
-      <div class="expert-avatar"><img src="dra_maya.jpg" alt="Dra. Maya" style="width:100%;height:100%;object-fit:cover"></div>
-      <div class="expert-name">Dra. Maya</div>
-      <div class="expert-title">Metodologia de Nutrição Adaptada & Jejum Funcional</div>
-      <p class="expert-bio">
-        "Desenvolvemos a inteligência do METASYNC com base em consolidadas pesquisas científicas sobre nutrição adaptada e fisiologia alimentar. Ao ativar sua conta, o Cérebro IA com a nossa metodologia estará disponível 24h por dia no seu celular para orientar suas escolhas alimentares!"
-      </p>
-    </div>
-
-    <h2 class="plan-incl-title">O Que Você Recebe na Plataforma:</h2>
-
-    <div class="plan-item">
-      <div class="plan-video-wrap" style="max-w:320px;margin:0 auto 14px;border-radius:16px;overflow:hidden;border:1.5px solid var(--cyan-neon);box-shadow:0 0 20px var(--cyan-light)">
-        <video src="dashboard_demo.mp4" autoplay loop muted playsinline style="width:100%;height:auto;display:block"></video>
-      </div>
-      <div class="plan-title">Acesso ao Dashboard METASYNC LAB</div>
-      <p class="plan-desc">Seu mapa de 21 dias em uma plataforma estilo SaaS futurista. Acompanhe a calibração do seu metabolismo direto do navegador.</p>
-    </div>
-    <div class="plan-item">
-      <div class="plan-icon" style="background:#fff;padding:3px;border-radius:10px;overflow:hidden;border:1px solid var(--cyan-neon)"><img src="app_logo.png" alt="METASYNC IA" style="width:100%;height:100%;object-fit:contain"></div>
-      <div class="plan-title">Cérebro Treinado pela Dra. Maya 24h</div>
-      <p class="plan-desc">Tire dúvidas de restaurantes, alimentos ou substituições instantaneamente via assistente inteligente.</p>
-    </div>
-    <div class="plan-item">
-      <div class="plan-icon">🔄</div>
-      <div class="plan-title">Reprogramação Metabólica Anti-Efeito Sanfona</div>
-      <p class="plan-desc">Manutenção permanente dos resultados para nunca mais recuperar o peso perdido após o 21º dia.</p>
-    </div>
-    <div class="plan-item">
-      <div class="plan-icon">🥗</div>
-      <div class="plan-title">Guia de Nutrição de Montagem Rápida (< 15 min)</div>
-      <p class="plan-desc">Pratos práticos com alto valor nutricional utilizando ingredientes comuns de supermercado.</p>
-    </div>
-    <div class="plan-item">
-      <div class="plan-icon">🥂</div>
-      <div class="plan-title">Protocolo de Janela Flexível</div>
-      <p class="plan-desc">Ajuste seu tempo de jejum para jantares, encontros e churrascos sem perder a queima de gordura.</p>
-      <button class="cta-btn" onclick="scrollToPricing()" style="margin-top:18px">VER PLANOS ⚡</button>
-    </div>
-
-    <!-- CRO 3: BONUSES STACK SECTION -->
-    <div class="bonuses-section">
-      <h2 class="plan-incl-title" style="margin-bottom:14px">🎁 Bônus Exclusivos Inclusos HOJE:</h2>
-      
-      <div class="bonus-card">
-        <span class="bonus-badge">GRÁTIS</span>
-        <div class="bonus-icon">🥑</div>
-        <div>
-          <div class="bonus-title">Bônus #1: Guia Desintoxicação Hepática Express (3 Dias)</div>
-          <div class="bonus-desc">Protocolo acelerado para murchar a barriga e eliminar o inchaço retido logo nos primeiros 3 dias.</div>
-          <div class="bonus-price"><del>R$ 47,00</del> <strong>R$ 0,00</strong></div>
-        </div>
-      </div>
-
-      <div class="bonus-card">
-        <span class="bonus-badge">GRÁTIS</span>
-        <div class="bonus-icon">🛒</div>
-        <div>
-          <div class="bonus-title">Bônus #2: Lista Econômica de Supermercado Anti-Inflamatória</div>
-          <div class="bonus-desc">Alimentos baratos e acessíveis que potencializam a queima de gordura economizando no caixa.</div>
-          <div class="bonus-price"><del>R$ 37,00</del> <strong>R$ 0,00</strong></div>
-        </div>
-      </div>
-
-      <div class="bonus-card">
-        <span class="bonus-badge">GRÁTIS</span>
-        <div class="bonus-icon">☕</div>
-        <div>
-          <div class="bonus-title">Bônus #3: Manual de Bebidas & Chás Biohacking</div>
-          <div class="bonus-desc">Combinações funcionais de chás e bebidas termogênicas para acelerar o metabolismo em repouso.</div>
-          <div class="bonus-price"><del>R$ 29,00</del> <strong>R$ 0,00</strong></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Client Photo Transformations Section -->
-    <div style="margin-top:24px">
-      <h2 class="plan-incl-title" style="margin-bottom:6px">Casos Reais de Sincronização</h2>
-      <p style="text-align:center;font-size:13px;color:var(--silver);margin-bottom:18px;padding:0 20px">Resultados de usuários que reajustaram a flexibilidade metabólica</p>
-      <div class="photos-grid">
-        ${(ud.gender === 'homem' ? ['case1_man.png','case2_man.png','case3_man.png','case4_man.png'] : ['case1.png','case2.png','case3.png','case4.png','case5.png']).map((c,i)=>`
-          <div class="photo-pair-img">
-            <span class="photo-tag-left">Antes</span>
-            <span class="photo-tag-right">Depois</span>
-            <img src="${c}" alt="Caso Real ${i+1}">
-          </div>
-        `).join('')}
-      </div>
-    </div>
-
-    <div style="padding:0 20px;margin-top:10px">
-      ${getTestimonials().map(t=>renderTest(t)).join('')}
-    </div>
-
-    <!-- FAQ Section -->
-    <div style="margin-top:28px">
-      <h2 class="plan-incl-title" style="margin-bottom:14px">Perguntas Frequentes</h2>
-      <div class="faq-wrap">
-        <div class="faq-item">
-          <div class="faq-q" onclick="togFaq(this)">Como funciona o Cérebro Treinado pela Dra. Maya? <span>+</span></div>
-          <div class="faq-a">O Cérebro treinado pela Dra. Maya estará disponível no seu painel e via mensagem no celular 24 horas por dia para tirar qualquer dúvida em tempo real.</div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-q" onclick="togFaq(this)">Preciso parar de comer o que gosto? <span>+</span></div>
-          <div class="faq-a">Não! Nosso algoritmo filtra apenas os alimentos que você declarou que não gosta no quiz e calcula sua janela metabólica para você comer bem.</div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-q" onclick="togFaq(this)">Em quanto tempo vejo resultados? <span>+</span></div>
-          <div class="faq-a">Os primeiros efeitos no alívio do inchaço e aumento da energia são percebidos nos primeiros 3 dias de sincronização da janela.</div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-q" onclick="togFaq(this)">E se eu não gostar da plataforma? <span>+</span></div>
-          <div class="faq-a">Você tem 30 dias de garantia incondicional. Se não aprovar, devolvemos 100% do seu dinheiro sem burocracia.</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- DUAL PRICING TABLE SECTION -->
+    <!-- 6. OFERTA PRO E PREÇO (TABELA DE PREÇOS) -->
     <div class="pricing-section">
-      <!-- Urgency Timer Banner -->
-      <div style="background:rgba(255,59,92,0.12);border:1.5px solid var(--red-neon);border-radius:16px;padding:14px 16px;text-align:center;margin-bottom:16px;box-shadow:0 0 20px rgba(255,59,92,0.2)">
-        <div style="font-size:11px;color:var(--silver-light);font-weight:700;letter-spacing:0.8px;text-transform:uppercase;margin-bottom:4px">⚠️ O SEU DESCONTO DE ANÁLISE FOI RESERVADO PARA ESTA SESSÃO (EXPIRA EM):</div>
-        <div id="offerCountdown" style="font-family:'Montserrat',sans-serif;font-size:28px;font-weight:900;color:var(--red-neon);letter-spacing:2px;text-shadow:0 0 12px rgba(255,59,92,0.5)">09:59</div>
+      <div style="background:rgba(0,242,255,0.06);border:1.5px solid var(--cyan-neon);border-radius:16px;padding:14px 16px;text-align:center;margin-bottom:18px">
+        <div style="font-size:11.5px;color:var(--cyan-neon);font-weight:800;letter-spacing:0.5px">
+          Condição especial para quem concluiu a avaliação: plano PRO por R$ 29 à vista.
+        </div>
       </div>
 
-      <!-- CRO 4: COUPON BANNER -->
-      <div class="coupon-banner" style="margin:0 0 18px">
-        <div class="coupon-txt">🎟️ CUPOM DE ANÁLISE METABÓLICA APLICADO: 85% DE DESCONTO</div>
-      </div>
-
-      <h2 class="plan-incl-title" style="margin-top:0;margin-bottom:16px">Escolha seu Plano de Ativação 👇</h2>
+      <h2 class="plan-incl-title" style="margin-top:0;margin-bottom:16px">Escolha como deseja acessar seu plano 👇</h2>
 
       <div class="pricing-grid">
+        ${ENABLE_BASIC_PLAN ? `
         <!-- PLANO 1: BÁSICO -->
         <div class="plan-card-box basic-plan">
           <div class="plan-card-body">
             <div class="plan-card-title">
-              <span>Plano Básico</span>
+              <span>Plano Guia de 21 dias</span>
               <span style="font-size:12px;color:var(--silver);font-weight:700">Guia PDF</span>
             </div>
-            <div class="plan-card-subtitle">Ideal para quem quer apenas a leitura do guia simples de 21 dias.</div>
+            <div class="plan-card-subtitle">Para quem quer começar com um guia simples em PDF.</div>
             
             <div class="plan-price-wrap">
               <div class="plan-price-inst">3x de R$ 6,84*</div>
-              <div class="plan-price-total">ou R$ 19,00 à vista (<del style="color:var(--red-neon)">R$ 97,00</del>)</div>
+              <div class="plan-price-total">ou R$ 19,00 à vista</div>
               <div style="font-size:9.5px;color:var(--silver);margin-top:2px">*parcelado no cartão com juros da operadora</div>
             </div>
 
             <div class="plan-features-list">
-              <div class="plan-feat included"><span class="plan-feat-icon">✓</span> Guia Nutricional 21 Dias (PDF)</div>
-              <div class="plan-feat included"><span class="plan-feat-icon">✓</span> Protocolo de Janela Flexível</div>
-              <div class="plan-feat included"><span class="plan-feat-icon">✓</span> Reprogramação Anti-Sanfona</div>
-              <div class="plan-feat excluded"><span class="plan-feat-icon">✕</span> Plataforma Dashboard SaaS App</div>
-              <div class="plan-feat excluded"><span class="plan-feat-icon">✕</span> Cérebro Treinado pela Dra. Maya 24h</div>
-              <div class="plan-feat excluded"><span class="plan-feat-icon">✕</span> Monitor de Autofagia & Metas</div>
-              <div class="plan-feat excluded"><span class="plan-feat-icon">✕</span> 3 Bônus Exclusivos de Ação Rápida</div>
+              <div class="plan-feat included"><span class="plan-feat-icon">✓</span> Estrutura simples do guia de 21 dias (PDF)</div>
+              <div class="plan-feat included"><span class="plan-feat-icon">✓</span> Sugestões de horários e refeições em PDF</div>
+              <div class="plan-feat excluded"><span class="plan-feat-icon">✕</span> Plataforma digital interativa</div>
+              <div class="plan-feat excluded"><span class="plan-feat-icon">✕</span> Mentora IA METASYNC para tirar dúvidas</div>
+              <div class="plan-feat excluded"><span class="plan-feat-icon">✕</span> Painel de acompanhamento de metas</div>
+              <div class="plan-feat excluded"><span class="plan-feat-icon">✕</span> Materiais complementares inclusos</div>
             </div>
 
-            <button class="cta-btn-basic" onclick="goToCheckout('basic')">OBTER MEU GUIA DE 21 DIAS — R$ 19</button>
+            <button class="cta-btn-basic" onclick="goToCheckout('basic')">QUERO MEU GUIA DE 21 DIAS — R$ 19</button>
           </div>
         </div>
+        ` : ''}
 
-        <!-- PLANO 2: PRO / VIP (OFICIAL & RECOMENDADO) -->
+        <!-- PLANO 2: PRO -->
         <div class="plan-card-box pro-featured">
-          <div class="pro-ribbon">⭐ OFERTA MAIS POPULAR — 89% ESCOLHEM ESTE</div>
+          <div class="pro-ribbon">PLANO MAIS COMPLETO</div>
           <div class="plan-card-body">
             <div class="plan-card-title">
-              <span>Plano METASYNC PRO ⚡</span>
-              <span style="font-size:11px;background:var(--cyan-neon);color:#06080A;font-weight:900;padding:2px 8px;border-radius:10px">COMPLETO</span>
+              <span>Plano PRO METASYNC ⚡</span>
+              <span style="font-size:11px;background:var(--cyan-neon);color:#06080A;font-weight:900;padding:2px 8px;border-radius:10px">RECOMENDADO</span>
             </div>
-            <div class="plan-card-subtitle">Plataforma SaaS interativa completa + Cérebro Treinado pela Dra. Maya 24h no celular + 3 Bônus.</div>
+            <div class="plan-card-subtitle">Acesso completo à plataforma, receitas, painel de acompanhamento, Mentora IA e materiais complementares.</div>
 
             <div class="plan-price-wrap">
               <div class="plan-price-inst">6x de R$ 5,42* ou 3x de R$ 10,44*</div>
-              <div class="plan-price-total">ou R$ 29,00 à vista (De <del style="color:var(--red-neon)">R$ 197,00</del> por R$ 29,00)</div>
+              <div class="plan-price-total">ou R$ 29,00 à vista</div>
               <div style="font-size:9.5px;color:var(--silver);margin-top:2px">*parcelado no cartão com juros da operadora</div>
             </div>
 
             <div class="plan-features-list">
-              <div class="plan-feat included"><span class="plan-feat-icon">✓</span> Guia Nutricional 21 Dias Adaptado</div>
-              <div class="plan-feat included"><span class="plan-feat-icon">✓</span> Protocolo de Janela Flexível</div>
-              <div class="plan-feat included"><span class="plan-feat-icon">✓</span> Reprogramação Anti-Sanfona Permanente</div>
-              <div class="plan-feat included" style="color:var(--cyan-neon);font-weight:800"><span class="plan-feat-icon">⚡</span> Acesso Vitalício ao Dashboard SaaS</div>
-              <div class="plan-feat included" style="color:var(--cyan-neon);font-weight:800"><span class="plan-feat-icon">⚡</span> Cérebro Treinado pela Dra. Maya 24h Ilimitado</div>
-              <div class="plan-feat included" style="color:var(--cyan-neon);font-weight:800"><span class="plan-feat-icon">⚡</span> Monitor de Autofagia em Tempo Real</div>
-              <div class="plan-feat included" style="color:var(--green-neon);font-weight:800"><span class="plan-feat-icon">🎁</span> 3 Bônus Exclusivos de Ação Rápida</div>
-              <div class="plan-feat included"><span class="plan-feat-icon">🛡️</span> Garantia Incondicional de 30 Dias</div>
+              <div class="plan-feat included"><span class="plan-feat-icon">✓</span> Estrutura completa do Plano de 21 dias</div>
+              <div class="plan-feat included"><span class="plan-feat-icon">✓</span> Cardápio e receitas práticas com substituições</div>
+              <div class="plan-feat included" style="color:var(--cyan-neon);font-weight:800"><span class="plan-feat-icon">🤖</span> Mentora IA METASYNC para consultar dúvidas</div>
+              <div class="plan-feat included" style="color:var(--cyan-neon);font-weight:800"><span class="plan-feat-icon">📊</span> Painel de acompanhamento e metas</div>
+              <div class="plan-feat included" style="color:var(--green-neon);font-weight:800"><span class="plan-feat-icon">🎁</span> Materiais complementares incluídos</div>
+              <div class="plan-feat included"><span class="plan-feat-icon">🛡️</span> Garantia de 30 dias</div>
             </div>
 
-            <button class="cta-btn" onclick="goToCheckout('pro')">ATIVAR CONTA COMPLETA NO LAB ⚡</button>
+            <button class="cta-btn" onclick="goToCheckout('pro')">ATIVAR MEU PLANO PRO — R$ 29</button>
             <div class="trust">
-              <div class="trust-item"><span class="trust-icon">🔒</span><span>Conexão<br>CRIPTOGRAFADA</span></div>
-              <div class="trust-item"><span class="trust-icon">⚡</span><span>Ativação<br>IMEDIATA</span></div>
-              <div class="trust-item"><span class="trust-icon">🛡️</span><span>Garantia<br>ABSOLUTA</span></div>
+              <div class="trust-item"><span class="trust-icon">🔒</span><span>Conexão<br>SEGURA</span></div>
+              <div class="trust-item"><span class="trust-icon">⚡</span><span>Acesso<br>IMEDIATO</span></div>
+              <div class="trust-item"><span class="trust-icon">🛡️</span><span>Garantia<br>30 DIAS</span></div>
             </div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- CRO 5: RISK-FREE GUARANTEE BOX -->
+    <!-- 7. O QUE VOCÊ RECEBE NO PLANO PRO -->
+    <div style="padding:0 20px;margin-top:24px">
+      <h2 class="plan-incl-title">O que você recebe no plano PRO</h2>
+
+      <div class="plan-item">
+        <div class="plan-icon">📅</div>
+        <div class="plan-title">Plano de 21 dias</div>
+        <p class="plan-desc">Uma estrutura simples para organizar refeições e horários no seu dia a dia.</p>
+      </div>
+      <div class="plan-item">
+        <div class="plan-icon">🥗</div>
+        <div class="plan-title">Cardápio e receitas</div>
+        <p class="plan-desc">Sugestões práticas com ingredientes acessíveis e opções de substituição simples.</p>
+      </div>
+      <div class="plan-item">
+        <div class="plan-icon">🤖</div>
+        <div class="plan-title">Mentora IA METASYNC</div>
+        <p class="plan-desc">Uma assistente digital baseada na metodologia do programa para ajudar você a consultar refeições, substituições e organização da rotina.</p>
+      </div>
+      <div class="plan-item">
+        <div class="plan-icon">📊</div>
+        <div class="plan-title">Painel de acompanhamento</div>
+        <p class="plan-desc">Visão clara dos seus objetivos, registros diários e progresso.</p>
+      </div>
+      <div class="plan-item">
+        <div class="plan-icon">🔄</div>
+        <div class="plan-title">Ferramentas de consistência</div>
+        <p class="plan-desc">Materiais e recursos para ajudar você a manter hábitos consistentes depois dos 21 dias.</p>
+      </div>
+    </div>
+
+    <!-- 8. MATERIAIS COMPLEMENTARES (BÔNUS) -->
+    <div class="bonuses-section">
+      <h2 class="plan-incl-title" style="margin-bottom:14px">🎁 Materiais complementares incluídos no plano PRO:</h2>
+      
+      <div class="bonus-card">
+        <span class="bonus-badge">INCLUSO</span>
+        <div class="bonus-icon">🥑</div>
+        <div>
+          <div class="bonus-title">Guia de 3 dias para organizar refeições</div>
+          <div class="bonus-desc">Conteúdo prático para estruturar os primeiros dias e reduzir a sensação de inchaço.</div>
+        </div>
+      </div>
+
+      <div class="bonus-card">
+        <span class="bonus-badge">INCLUSO</span>
+        <div class="bonus-icon">🛒</div>
+        <div>
+          <div class="bonus-title">Lista prática de compras para o plano</div>
+          <div class="bonus-desc">Guia objetivo com os principais ingredientes para facilitar sua ida ao supermercado.</div>
+        </div>
+      </div>
+
+      <div class="bonus-card">
+        <span class="bonus-badge">INCLUSO</span>
+        <div class="bonus-icon">☕</div>
+        <div>
+          <div class="bonus-title">Guia de bebidas e opções sem açúcar</div>
+          <div class="bonus-desc">Opções funcionais de chás e bebidas para acompanhar sua rotina diária.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 9. PROVAS REAIS E VERIFICÁVEIS (DEPOIMENTOS) -->
+    <div style="padding:0 20px;margin-top:28px">
+      <h2 class="plan-incl-title" style="margin-bottom:6px">Relatos de quem já utiliza a plataforma</h2>
+      <p style="text-align:center;font-size:12.5px;color:var(--silver);margin-bottom:18px">Experiências de usuários com a organização da rotina</p>
+      
+      ${getTestimonials().map(t=>renderTest(t)).join('')}
+
+      <div style="margin-top:14px;padding:12px 14px;background:rgba(255,255,255,0.03);border:1px solid var(--border-glass);border-radius:12px;text-align:center;font-size:11px;color:var(--silver);line-height:1.5">
+        Resultados individuais variam conforme o ponto de partida, a rotina e o nível de adesão de cada pessoa.
+      </div>
+    </div>
+
+    <!-- 10. FAQ (PERGUNTAS FREQUENTES) -->
+    <div style="margin-top:28px;padding:0 20px">
+      <h2 class="plan-incl-title" style="margin-bottom:14px">Perguntas Frequentes</h2>
+      <div class="faq-wrap">
+        <div class="faq-item open">
+          <div class="faq-q" onclick="togFaq(this)">O plano substitui acompanhamento médico ou nutricional? <span>+</span></div>
+          <div class="faq-a">Não. A plataforma é uma ferramenta educativa e de organização de rotina. Pessoas com condições de saúde, gestantes, menores de idade ou em uso de medicamentos devem buscar orientação profissional antes de mudar a alimentação ou iniciar uma rotina de jejum.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="togFaq(this)">Como funciona a Mentora IA METASYNC? <span>+</span></div>
+          <div class="faq-a">A Mentora IA é uma assistente digital baseada na metodologia do programa para ajudar você a consultar receitas, ideias de substituição e sugestões para organizar sua rotina no dia a dia.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="togFaq(this)">Como recebo o meu acesso após a compra? <span>+</span></div>
+          <div class="faq-a">Após a confirmação do pagamento, você receberá os dados de acesso diretamente no seu e-mail cadastrado de forma imediata.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" onclick="togFaq(this)">Como funciona a garantia de 30 dias? <span>+</span></div>
+          <div class="faq-a">Você tem 30 dias para conhecer a plataforma. Se decidir que o produto não é adequado para você, basta solicitar o reembolso pelo suporte.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 11. GARANTIA DE 30 DIAS -->
     <div class="guarantee-box">
       <div style="width:125px;height:125px;margin:0 auto 16px">
         <svg viewBox="0 0 200 200" width="100%" height="100%">
@@ -1934,47 +1826,34 @@ function showSales(){
               <feDropShadow dx="0" dy="0" stdDeviation="6" flood-color="#D4AF37" flood-opacity="0.6"/>
             </filter>
           </defs>
-          <!-- Outer Ring & Border -->
           <circle cx="100" cy="100" r="95" fill="none" stroke="url(#goldGrad)" stroke-width="4" filter="url(#goldGlow)"/>
           <circle cx="100" cy="100" r="88" fill="url(#goldGrad)"/>
           <circle cx="100" cy="100" r="79" fill="#0D0D0D" stroke="url(#goldGrad)" stroke-width="2"/>
-          
-          <!-- Crown Icon -->
           <path d="M80,68 L86,80 L100,62 L114,80 L120,68 L117,86 L83,86 Z" fill="url(#goldGrad)"/>
-          <circle cx="80" cy="66" r="2.5" fill="url(#goldGrad)"/>
-          <circle cx="100" cy="60" r="3" fill="url(#goldGrad)"/>
-          <circle cx="120" cy="66" r="2.5" fill="url(#goldGrad)"/>
-          
-          <!-- PREMIUM QUALITY Text -->
-          <text x="100" y="108" font-family="'Montserrat', sans-serif" font-weight="900" font-size="16" fill="url(#goldGrad)" text-anchor="middle" letter-spacing="1">PREMIUM</text>
-          <text x="100" y="130" font-family="'Montserrat', sans-serif" font-weight="900" font-size="19" fill="url(#goldGrad)" text-anchor="middle" letter-spacing="1">QUALITY</text>
-          
-          <!-- Stars -->
-          <polygon points="82,146 84,141 89,141 85,144 86,149 82,146" fill="url(#goldGrad)"/>
-          <polygon points="100,146 102,140 107,140 103,144 105,149 100,146" fill="url(#goldGrad)"/>
-          <polygon points="118,146 120,141 125,141 121,144 122,149 118,146" fill="url(#goldGrad)"/>
+          <text x="100" y="108" font-family="'Montserrat', sans-serif" font-weight="900" font-size="16" fill="url(#goldGrad)" text-anchor="middle" letter-spacing="1">GARANTIA DE</text>
+          <text x="100" y="130" font-family="'Montserrat', sans-serif" font-weight="900" font-size="19" fill="url(#goldGrad)" text-anchor="middle" letter-spacing="1">30 DIAS</text>
         </svg>
       </div>
-      <h3 class="guarantee-title">Garantia Incondicional de 30 Dias</h3>
+      <h3 class="guarantee-title">Garantia de 30 dias</h3>
       <p class="guarantee-desc">
-        Teste a plataforma por 30 dias com Risco Zero. Se por qualquer motivo você não se adaptar à metodologia ou não ficar 100% satisfeito(a), nós devolvemos 100% do seu investimento sem perguntas e sem burocracia.<br><br>
+        Você pode conhecer a plataforma e avaliar se os conteúdos e recursos fazem sentido para sua rotina. Se decidir que o produto não é adequado para você, solicite o reembolso pelo canal de suporte dentro do prazo informado nos termos da compra.<br><br>
         Suporte técnico & atendimento:
       </p>
       <span class="guarantee-email">metasyncia@suporte.com</span>
     </div>
 
-    <!-- STICKY MOBILE CTA BAR -->
+    <!-- 12. STICKY MOBILE CTA BAR & RODAPÉ -->
     <div class="sticky-cta-bar">
       <div>
-        <div style="font-size:10px;color:var(--silver);font-weight:700">PLANO COMPLETO PRO</div>
+        <div style="font-size:10px;color:var(--silver);font-weight:700">PLANO METASYNC PRO</div>
         <div style="font-size:14px;color:var(--green-neon);font-weight:900">R$ 29,00 <span style="font-size:10px;color:var(--silver);font-weight:400">(à vista)</span></div>
       </div>
-      <button class="cta-btn" onclick="scrollToPricing()" style="width:auto;padding:8px 18px;font-size:11px;margin:0;box-shadow:0 0 12px var(--cyan-glow)">LIBERAR ACESSO ⚡</button>
+      <button class="cta-btn" onclick="scrollToPricing()" style="width:auto;padding:8px 18px;font-size:11px;margin:0;box-shadow:0 0 12px var(--cyan-glow)">ATIVAR PLANO PRO ⚡</button>
     </div>
 
     <!-- DISCLAIMER & FOOTER -->
     <div style="margin-top:28px;padding:18px 20px 60px;border-top:1px solid var(--border-subtle);text-align:center;font-size:10.5px;color:var(--silver);line-height:1.6">
-      <p style="margin-bottom:6px"><strong>Isenção de Responsabilidade:</strong> Este site não possui vínculo oficial com o Facebook, Meta, Google ou qualquer uma de suas entidades. Os conteúdos apresentados possuem caráter educativo de reeducação alimentar e saúde. Os resultados podem variar de acordo com o ponto de partida, metabolismo e nível de adesão individual de cada pessoa ao protocolo.</p>
+      <p style="margin-bottom:6px"><strong>Aviso Legal & Isenção de Responsabilidade:</strong> Este site não possui vínculo oficial com o Facebook, Meta, Google ou qualquer uma de suas entidades. Os conteúdos apresentados possuem caráter educativo de organização de rotina alimentar e hábitos saudáveis. Os resultados podem variar de acordo com o ponto de partida, rotina e nível de adesão individual de cada pessoa ao plano.</p>
       <p>© 2026 METASYNC IA — Todos os direitos reservados.</p>
     </div>
 
