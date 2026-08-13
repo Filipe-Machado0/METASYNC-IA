@@ -998,28 +998,28 @@ function renderInfoMetabolism(){
 }
 
 function renderIMCSummary(){
-  const pct = Math.floor(Math.random() * (88 - 65 + 1)) + 65;
+  const pct = Math.floor(Math.random() * (85 - 68 + 1)) + 68;
   const imcImg = ud.gender === 'homem' ? 'imc_man.png' : 'woman_overweight.png';
   return `
   <div>
-    <h2 class="info-big-title">Ponto de Partida e Nível de Condicionamento</h2>
+    <h2 class="info-big-title">Análise do seu IMC e Ponto de Partida</h2>
     <div style="text-align:left;margin:18px 0">
       <div style="font-size:13px;font-weight:700;color:var(--silver-light);letter-spacing:0.3px">Estimativa baseada nos dados informados (IMC)</div>
       <div style="display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--silver);margin-top:4px;margin-bottom:6px">
         <span>Faixa estimada</span>
-        <span style="font-weight:800;font-size:14px;color:#fff">${pct}%</span>
+        <span style="font-weight:800;font-size:14px;color:var(--cyan-neon)">Acima da média</span>
       </div>
       <div class="imc-track">
         <div class="imc-thumb" style="left:${pct}%"></div>
       </div>
-      <div class="imc-labels"><span>Início</span><span>Equilibrado</span><span>Evolução</span></div>
+      <div class="imc-labels"><span>Abaixo</span><span>Ideal</span><span>Acima da faixa</span></div>
     </div>
     <div style="display:flex;justify-content:center;align-items:center;margin:16px 0">
-      <img src="${imcImg}" alt="Ponto de partida" style="height:210px;width:auto;display:block;object-fit:contain">
+      <img src="${imcImg}" alt="Nível de condicionamento" style="height:210px;width:auto;display:block;object-fit:contain">
     </div>
-    <div style="background:rgba(0,242,255,0.06);border:1px solid var(--border-glass);border-radius:16px;padding:16px;text-align:left;margin-top:16px">
-      <div style="font-family:'Montserrat',sans-serif;font-weight:800;font-size:15px;color:var(--cyan-neon);margin-bottom:8px">Este é o seu ponto de partida</div>
-      <p style="font-size:13px;line-height:1.5;color:var(--silver);margin:0">Agora vamos organizar os próximos passos para estruturar suas refeições e horários com clareza.</p>
+    <div style="background:rgba(255,184,0,0.08);border:1px solid rgba(255,184,0,0.3);border-radius:16px;padding:16px;text-align:left;margin-top:16px">
+      <div style="font-family:'Montserrat',sans-serif;font-weight:800;font-size:15px;color:#FFB800;margin-bottom:8px">Seu peso atual está acima da faixa ideal para o seu biotipo</div>
+      <p style="font-size:13px;line-height:1.5;color:var(--silver-light);margin:0">Identificamos que seu ponto de partida está acima da estimativa sugerida para a sua altura e idade. Vamos organizar os próximos passos com refeições e horários adaptados para buscar seu objetivo com consistência.</p>
     </div>
     <button class="btn btn-primary mt16" onclick="triggerSyncNext()">Continuar</button>
   </div>`;
