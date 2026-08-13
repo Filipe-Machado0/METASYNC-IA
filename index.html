@@ -1413,6 +1413,19 @@ function toggleAudioPlay(){
   }
 }
 
+function playDemoVideoWithCover(){
+  haptic();
+  const v = document.getElementById('demoVideoEl');
+  const cover = document.getElementById('videoCoverOverlay');
+  if(cover) cover.style.display = 'none';
+  if(v){
+    v.play().catch(err => {
+      console.error("Erro ao iniciar vídeo:", err);
+      v.controls = true;
+    });
+  }
+}
+
 function openSupportChat(){
   haptic();
   const msg = encodeURIComponent("Olá! Fiz a avaliação no METASYNC IA e gostaria de tirar dúvidas sobre o plano.");
@@ -1518,11 +1531,23 @@ function showSales(){
           <span>🎬</span> ASSISTA À DEMONSTRAÇÃO REAL DO APP
         </div>
         
-        <div style="border-radius:14px;overflow:hidden;background:#000;position:relative;border:1px solid var(--border-glass)">
-          <video controls playsinline webkit-playsinline preload="metadata" style="width:100%;height:auto;display:block;border-radius:12px">
+        <div style="border-radius:14px;overflow:hidden;background:#000;position:relative;border:1px solid var(--border-glass);min-height:210px">
+          <video id="demoVideoEl" controls playsinline webkit-playsinline preload="metadata" style="width:100%;height:auto;display:block;border-radius:12px">
             <source src="dashboard_demop.mp4" type="video/mp4">
             Seu navegador não suporta a exibição deste vídeo.
           </video>
+          
+          <div id="videoCoverOverlay" onclick="playDemoVideoWithCover()" style="position:absolute;inset:0;background:linear-gradient(180deg, rgba(6,8,10,0.5) 0%, rgba(6,8,10,0.92) 100%), url('chart_metabolism.png') center/cover no-repeat;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;z-index:10;padding:16px;text-align:center">
+            <div style="width:58px;height:58px;border-radius:50%;background:linear-gradient(135deg,var(--cyan-neon),#00aaff);display:flex;align-items:center;justify-content:center;box-shadow:0 0 24px var(--cyan-glow);margin-bottom:10px">
+              <span style="color:#06080A;font-size:24px;margin-left:4px">▶</span>
+            </div>
+            <div style="font-family:'Montserrat',sans-serif;font-weight:900;font-size:13.5px;color:#fff;text-shadow:0 2px 8px rgba(0,0,0,0.9);letter-spacing:0.5px">
+              ASSISTA À DEMONSTRAÇÃO REAL DO APP
+            </div>
+            <div style="font-size:11px;color:var(--cyan-neon);font-weight:700;margin-top:5px;background:rgba(0,242,255,0.12);padding:3px 10px;border-radius:12px;border:1px solid var(--cyan-neon)">
+              ⚡ Clique para dar play no vídeo
+            </div>
+          </div>
         </div>
 
         <p style="font-size:12px;line-height:1.5;color:var(--silver-light);margin:12px 0 14px;text-align:center">
