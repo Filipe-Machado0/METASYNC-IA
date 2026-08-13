@@ -1050,17 +1050,17 @@ function renderWeightGraphScreen(){
 function getTestimonials(){
   if(ud.gender === 'homem'){
     return [
-      {n:'Sérgio Augusto',a:'user_sergio.png',t:'Alta tecnologia aplicada à saúde!',b:'O METASYNC se encaixou perfeitamente na minha rotina corrida. Eu sempre gostei de correr mas estava acima do peso... perdi mais de 10kg em 21 dias e voltei a ter disposição total!'},
-      {n:'Carlos Eduardo',a:'user_carlos.png',t:'Definição rápida sem perder massa!',b:'Sempre tive dificuldade para perder a gordura abdominal sem perder massa muscular. A mentoria da IA alinhada com o jejum adaptado me deu resultados surreais em 3 semanas!'},
-      {n:'Rodrigo Mendes',a:'user_rodrigo.jpg',t:'Energia e foco no topo!',b:'Com 42 anos achei que meu metabolismo já era lento demais. Eliminei 8kg e sinto minha energia e disposição no trabalho e nos treinos melhores do que aos 20 anos.'},
-      {n:'Cláudia Santos',a:'user_claudia.png',t:'Resultado incrível para a família toda!',b:'Meu marido e eu ativamos o plano juntos. Ele perdeu 9kg e eu 5kg em poucas semanas. A mentora IA no WhatsApp salvou nossas refeições no dia a dia!'}
+      {n:'Sérgio Augusto',a:'user_sergio.png',t:'Muito mais organização no meu dia a dia!',b:'O METASYNC se encaixou perfeitamente na minha rotina corrida. Consegui organizar meus horários de refeição e sinto muito mais disposição no dia a dia!'},
+      {n:'Carlos Eduardo',a:'user_carlos.png',t:'Definição rápida sem perder massa!',b:'Sempre tive dificuldade para organizar as refeições da semana. A mentoria da IA alinhada com o acompanhamento de horários me deu muita praticidade em 3 semanas!'},
+      {n:'Rodrigo Mendes',a:'user_rodrigo.jpg',t:'Energia e foco no topo!',b:'Com a rotina de trabalho acelerada, achei que não conseguiria ter constância. O plano me deu uma estrutura simples e sinto minha energia e disposição no topo.'},
+      {n:'Cláudia Santos',a:'user_claudia.png',t:'Resultado incrível para a família toda!',b:'Meu marido e eu ativamos o plano juntos. A Mentora IA METASYNC salvou nossas refeições no dia a dia com receitas super práticas!'}
     ];
   }
   return [
-    {n:'Rogéria Cardoso',a:'user_rogeria.jpg',t:'Protocolo impressionante!',b:'Fiquei realmente surpresa com esse plano, não imaginei que iria fazer tanta diferença! Consegui sair dos 68kg e voltar para os meus 60kg. O Cérebro treinado pela Dra. Maya no meu WhatsApp me ajudou a cada refeição!'},
-    {n:'Sérgio Augusto',a:'user_sergio.png',t:'Alta tecnologia aplicada à saúde!',b:'O METASYNC se encaixou perfeitamente na minha rotina corrida. Eu sempre gostei de correr mas estava acima do peso... perdi mais de 10kg em 21 dias e voltei a ter disposição total!'},
-    {n:'Cláudia Santos',a:'user_claudia.png',t:'Menos 5kg e sem cansaço!',b:'Desde que ativei as orientações adaptadas, to muito menos inchada e com menos 5kg na balança. O melhor de tudo foi a energia, pareço ter 20 anos novamente kkkk!'},
-    {n:'Gleide Almeida',a:'user_gleide.png',t:'Fim definitivo do Efeito Sanfona',b:'Depois de testar o METASYNC e alinhar o jejum adaptado com a IA, finalmente estabilizei meu peso ideal por mais de 6 meses sem sofrimento. Recomendo demais!'}
+    {n:'Rogéria Cardoso',a:'user_rogeria.jpg',t:'Protocolo impressionante!',b:'Fiquei realmente surpresa com esse plano, não imaginei que iria fazer tanta diferença na minha organização! A Mentora IA METASYNC no meu WhatsApp me ajudou a cada refeição!'},
+    {n:'Sérgio Augusto',a:'user_sergio.png',t:'Muito mais organização no meu dia a dia!',b:'O METASYNC se encaixou perfeitamente na minha rotina corrida. Consegui organizar meus horários de refeição e sinto muito mais disposição no dia a dia!'},
+    {n:'Cláudia Santos',a:'user_claudia.png',t:'Mais leveza e sem cansaço!',b:'Desde que ativei as orientações adaptadas, sinto minha rotina muito mais leve e organizada. O melhor de tudo foi o aumento da energia no dia a dia!'},
+    {n:'Gleide Almeida',a:'user_gleide.png',t:'Fim definitivo da desorganização alimentar',b:'Depois de testar o METASYNC e alinhar o acompanhamento com a IA, finalmente mantive uma rotina saudável por mais de 6 meses sem sofrimento. Recomendo demais!'}
   ];
 }
 const TESTS = getTestimonials();
@@ -1073,7 +1073,7 @@ function renderLoading(){
     <h2 style="font-family:'Montserrat',sans-serif;font-size:20px;font-weight:900;margin-bottom:20px;line-height:1.3;color:#fff">Organizando o seu plano METASYNC</h2>
     <div style="display:flex;justify-content:flex-end"><span id="lPct" style="font-family:'Montserrat',sans-serif;font-size:13px;font-weight:700;color:var(--cyan-neon)">34%</span></div>
     <div class="loading-bar-track"><div class="loading-bar-fill" id="lBar" style="width:34%"></div></div>
-    <p class="loading-status" id="lStatus" style="margin-top:10px">Sincronizando Cérebro treinado pela Dra. Maya...</p>
+    <p class="loading-status" id="lStatus" style="margin-top:10px">Conectando com a Mentora IA METASYNC...</p>
     <p class="loading-sub">Ajustando sugestões de refeições e horários com base nas suas respostas...</p>
     <div id="testWrap" style="margin-top:20px">
       ${renderTest(tests[0])}
@@ -1166,7 +1166,7 @@ function setUnit(key,unit){
   render();
 }
 
-const loadMsgs=['Iniciando METASYNC LAB...','Analisando flexibilidade metabólica...','Calibrando sensibilidade à insulina...','Sincronizando Cérebro treinado pela Dra. Maya...','Otimizando janelas lipídicas...','Finalizando painel dashboard...','Seu plano está 100% calibrado!'];
+const loadMsgs=['Iniciando METASYNC LAB...','Analisando flexibilidade metabólica...','Calibrando sensibilidade à insulina...','Conectando com a Mentora IA METASYNC...','Otimizando sugestões de refeições...','Finalizando painel dashboard...','Seu plano está 100% calibrado!'];
 let loadPct=34, loadTmr=null;
 
 function startLoading(){
@@ -1392,7 +1392,7 @@ function toggleAudioPlay(){
     isAudioPlaying = false;
     if(btn) btn.textContent = '▶';
     if(waveform) waveform.classList.remove('playing');
-    if(timeTxt) timeTxt.textContent = 'Ouvir uma explicação rápida do plano (0:45)';
+    if(timeTxt) timeTxt.textContent = 'Ouvir explicação de 45 segundos';
   } else {
     audioEl.play().then(() => {
       isAudioPlaying = true;
@@ -1404,7 +1404,7 @@ function toggleAudioPlay(){
         isAudioPlaying = false;
         if(btn) btn.textContent = '▶';
         if(waveform) waveform.classList.remove('playing');
-        if(timeTxt) timeTxt.textContent = 'Ouvir uma explicação rápida do plano (0:45)';
+        if(timeTxt) timeTxt.textContent = 'Ouvir explicação de 45 segundos';
       };
     }).catch(err => {
       console.error("Erro ao tocar áudio MP3:", err);
@@ -1489,11 +1489,12 @@ function showSales(){
           <div class="diag-stat-val">${cw} kg</div>
         </div>
         <div class="diag-stat-box">
-          <div class="diag-stat-label">Meta Informada</div>
+          <div class="diag-stat-label">Objetivo de referência do plano</div>
           <div class="diag-stat-val">${tw} kg</div>
         </div>
       </div>
-      <div class="weekly-projection-title">📅 Estrutura do Plano de 21 Dias:</div>
+      <div style="font-size:10.5px;color:var(--silver);margin-top:6px;text-align:center">Estimativa baseada nas informações fornecidas.</div>
+      <div class="weekly-projection-title" style="margin-top:12px">📅 Estrutura do Plano de 21 Dias:</div>
       <div class="weekly-projection-grid">
         <div class="proj-step">
           <div class="proj-week">Semana 1</div>
@@ -1512,7 +1513,7 @@ function showSales(){
 
     <!-- 2. CTA DE TRANSIÇÃO -->
     <div style="padding:0 20px;margin:14px 0">
-      <button class="cta-btn" onclick="scrollToPricing()" style="font-size:12px;padding:12px 18px;box-shadow:0 0 16px var(--cyan-glow)">CONHECER O PLANO COMPLETO — R$ 29 ⚡</button>
+      <button class="cta-btn" onclick="scrollToPricing()" style="font-size:12px;padding:12px 18px;box-shadow:0 0 16px var(--cyan-glow)">VER O PLANO PRO — R$ 29 ⚡</button>
     </div>
 
     <!-- REAL PRODUCT DEMO VIDEO SECTION -->
@@ -1564,11 +1565,11 @@ function showSales(){
     <div class="audio-player-card">
       <audio id="draMayaAudioEl" src="dra_maya_audio.mp3?v=2" preload="auto"></audio>
       <div class="audio-avatar">
-        <img src="dra_maya.jpg" alt="Dra. Maya" style="width:100%;height:100%;object-fit:cover">
+        <img src="app_logo.png" alt="METASYNC IA" style="width:100%;height:100%;object-fit:contain;padding:4px;background:#fff">
       </div>
       <div style="flex:1">
-        <div style="font-size:11px;font-weight:800;color:var(--cyan-neon);margin-bottom:2px">DRA. MAYA (VOICE NOTE)</div>
-        <div id="audioTimeTxt" style="font-size:11.5px;color:#fff;font-weight:600">Ouvir áudio da Dra. Maya (0:45)</div>
+        <div style="font-size:11px;font-weight:800;color:var(--cyan-neon);margin-bottom:2px">EXPLICAÇÃO RÁPIDA DO PLANO</div>
+        <div id="audioTimeTxt" style="font-size:11.5px;color:#fff;font-weight:600">Ouvir explicação de 45 segundos</div>
       </div>
       <button class="audio-btn" id="audioPlayBtn" onclick="toggleAudioPlay()">▶</button>
       <div class="audio-waveform" id="audioWaveform">
@@ -1604,8 +1605,8 @@ function showSales(){
 
       <div class="demo-tabs">
         <button class="demo-tab active" id="tab-btn-chat" onclick="switchDemoTab('chat')">
-          <span class="demo-tab-icon">🧠</span>
-          <span class="demo-tab-label">Cérebro Dra. Maya</span>
+          <span class="demo-tab-icon">🤖</span>
+          <span class="demo-tab-label">Mentora IA</span>
         </button>
         <button class="demo-tab" id="tab-btn-timer" onclick="switchDemoTab('timer')">
           <span class="demo-tab-icon">⏱️</span>
@@ -1617,13 +1618,13 @@ function showSales(){
         </button>
       </div>
 
-      <!-- Tab 1: Cérebro Dra. Maya Pane -->
+      <!-- Tab 1: Mentora IA METASYNC Pane -->
       <div class="demo-pane active" id="demo-pane-chat">
         <div class="demo-chat-box" id="demoChatBox">
           <div class="demo-msg ai">
-            <div class="demo-msg-avatar"><img src="dra_maya.jpg" style="width:100%;height:100%;object-fit:cover"></div>
+            <div class="demo-msg-avatar"><img src="app_logo.png" style="width:100%;height:100%;object-fit:contain"></div>
             <div class="demo-msg-bubble">
-              Olá! Sou o <strong>Cérebro treinado pela Dra. Maya</strong>. Posso ajudar com dúvidas sobre refeições, substituições e organização da sua rotina. Toque em uma opção para testar uma amostra:
+              Olá! Sou a <strong>Mentora IA METASYNC</strong>. Posso ajudar com dúvidas sobre refeições, substituições e organização da sua rotina. Toque em uma opção para testar uma amostra:
             </div>
           </div>
         </div>
@@ -1634,7 +1635,7 @@ function showSales(){
         </div>
         <div style="margin-top:14px;padding:10px 12px;background:rgba(255,255,255,0.03);border:1px solid var(--border-glass);border-radius:14px;text-align:center">
           <div style="font-size:11px;color:var(--silver);margin-bottom:6px">🔥 Quer consultar outras dúvidas da sua rotina?</div>
-          <button class="cta-btn" onclick="scrollToPricing()" style="font-size:11px;padding:8px 16px;width:auto;margin:0 auto;box-shadow:0 0 12px var(--cyan-glow)">DESBLOQUEAR PLANO PRO — R$ 29</button>
+          <button class="cta-btn" onclick="scrollToPricing()" style="font-size:11px;padding:8px 16px;width:auto;margin:0 auto;box-shadow:0 0 12px var(--cyan-glow)">VER O PLANO PRO — R$ 29</button>
         </div>
       </div>
 
@@ -1689,7 +1690,7 @@ function showSales(){
             <span>🔒 CONTEÚDO DISPONÍVEL NO PRO — Desbloqueie receitas adicionais, substituições e sugestões adaptadas às suas preferências.</span>
           </div>
         </div>
-        <button class="cta-btn" onclick="scrollToPricing()" style="font-size:11px;padding:9px 14px;margin-top:10px;box-shadow:0 0 12px var(--cyan-glow)">DESBLOQUEAR PLANO PRO — R$ 29</button>
+        <button class="cta-btn" onclick="scrollToPricing()" style="font-size:11px;padding:9px 14px;margin-top:10px;box-shadow:0 0 12px var(--cyan-glow)">VER O PLANO PRO — R$ 29</button>
       </div>
     </div>
 
@@ -1736,13 +1737,13 @@ function showSales(){
 
         <!-- PLANO 2: PRO -->
         <div class="plan-card-box pro-featured">
-          <div class="pro-ribbon">PLANO MAIS COMPLETO</div>
+          <div class="pro-ribbon">RECOMENDADO</div>
           <div class="plan-card-body">
             <div class="plan-card-title">
               <span>Plano PRO METASYNC ⚡</span>
-              <span style="font-size:11px;background:var(--cyan-neon);color:#06080A;font-weight:900;padding:2px 8px;border-radius:10px">RECOMENDADO</span>
+              <span style="font-size:11px;background:var(--cyan-neon);color:#06080A;font-weight:900;padding:2px 8px;border-radius:10px">COMPLETO</span>
             </div>
-            <div class="plan-card-subtitle">Acesso completo à plataforma, receitas, painel de acompanhamento, Cérebro treinado pela Dra. Maya 24h e materiais complementares.</div>
+            <div class="plan-card-subtitle">Acesso completo à plataforma, receitas, painel de acompanhamento, Mentora IA METASYNC e materiais complementares.</div>
 
             <div class="plan-price-wrap">
               <div class="plan-price-inst">6x de R$ 5,42* ou 3x de R$ 10,44*</div>
@@ -1753,7 +1754,7 @@ function showSales(){
             <div class="plan-features-list">
               <div class="plan-feat included"><span class="plan-feat-icon">✓</span> Estrutura completa do Plano de 21 dias</div>
               <div class="plan-feat included"><span class="plan-feat-icon">✓</span> Cardápio e receitas práticas com substituições</div>
-              <div class="plan-feat included" style="color:var(--cyan-neon);font-weight:800"><span class="plan-feat-icon">🧠</span> Cérebro Treinado pela Dra. Maya 24h no celular</div>
+              <div class="plan-feat included" style="color:var(--cyan-neon);font-weight:800"><span class="plan-feat-icon">🤖</span> Mentora IA METASYNC para consultar dúvidas sobre refeições, substituições e organização da rotina.</div>
               <div class="plan-feat included" style="color:var(--cyan-neon);font-weight:800"><span class="plan-feat-icon">📊</span> Painel de acompanhamento e metas</div>
               <div class="plan-feat included" style="color:var(--green-neon);font-weight:800"><span class="plan-feat-icon">🎁</span> Materiais complementares incluídos</div>
               <div class="plan-feat included"><span class="plan-feat-icon">🛡️</span> Garantia de 30 dias</div>
@@ -1785,9 +1786,9 @@ function showSales(){
         <p class="plan-desc">Sugestões práticas com ingredientes acessíveis e opções de substituição simples.</p>
       </div>
       <div class="plan-item">
-        <div class="plan-icon">🧠</div>
-        <div class="plan-title">Cérebro Treinado pela Dra. Maya 24h</div>
-        <p class="plan-desc">Uma assistente digital treinada com a nossa metodologia de nutrição adaptada para orientar suas refeições, substituições e dúvidas diretamente no seu celular a qualquer hora.</p>
+        <div class="plan-icon">🤖</div>
+        <div class="plan-title">Mentora IA METASYNC</div>
+        <p class="plan-desc">Uma assistente digital baseada na metodologia do programa para ajudar você a consultar receitas, substituições e sugestões de organização da rotina.</p>
       </div>
       <div class="plan-item">
         <div class="plan-icon">📊</div>
@@ -1833,13 +1834,13 @@ function showSales(){
       </div>
     </div>
 
-    <!-- Expert Card Dra. Maya -->
+    <!-- Seção de Autoridade & Metodologia -->
     <div class="expert-card" style="margin:24px 20px 0">
-      <div class="expert-avatar"><img src="dra_maya.jpg" alt="Dra. Maya" style="width:100%;height:100%;object-fit:cover"></div>
-      <div class="expert-name">Dra. Maya</div>
-      <div class="expert-title">Metodologia de Nutrição Adaptada & Jejum Funcional</div>
+      <div class="expert-avatar"><img src="app_logo.png" alt="METASYNC IA" style="width:100%;height:100%;object-fit:contain;padding:4px;background:#fff"></div>
+      <div class="expert-name">METASYNC IA</div>
+      <div class="expert-title">Plataforma Digital de Acompanhamento de Rotina</div>
       <p class="expert-bio">
-        "Desenvolvemos a inteligência do METASYNC com base em consolidadas pesquisas científicas sobre nutrição adaptada e fisiologia alimentar. Ao ativar sua conta, o Cérebro IA com a nossa metodologia estará disponível 24h por dia no seu celular para orientar suas escolhas alimentares!"
+        "A plataforma reúne recursos digitais para ajudar você a organizar refeições, horários e acompanhamento em uma rotina de 21 dias."
       </p>
     </div>
 
@@ -1851,7 +1852,7 @@ function showSales(){
       ${getTestimonials().map(t=>renderTest(t)).join('')}
 
       <div style="margin-top:14px;padding:12px 14px;background:rgba(255,255,255,0.03);border:1px solid var(--border-glass);border-radius:12px;text-align:center;font-size:11px;color:var(--silver);line-height:1.5">
-        Resultados individuais variam conforme o ponto de partida, a rotina e o nível de adesão de cada pessoa.
+        Relatos individuais não representam garantia de resultado. Os resultados variam conforme o ponto de partida, a rotina e o nível de adesão de cada pessoa.
       </div>
     </div>
 
@@ -1916,7 +1917,7 @@ function showSales(){
         <div style="font-size:10px;color:var(--silver);font-weight:700">PLANO METASYNC PRO</div>
         <div style="font-size:14px;color:var(--green-neon);font-weight:900">R$ 29,00 <span style="font-size:10px;color:var(--silver);font-weight:400">(à vista)</span></div>
       </div>
-      <button class="cta-btn" onclick="scrollToPricing()" style="width:auto;padding:8px 18px;font-size:11px;margin:0;box-shadow:0 0 12px var(--cyan-glow)">ATIVAR PLANO PRO ⚡</button>
+      <button class="cta-btn" onclick="scrollToPricing()" style="width:auto;padding:8px 18px;font-size:11px;margin:0;box-shadow:0 0 12px var(--cyan-glow)">VER O PLANO PRO — R$ 29 ⚡</button>
     </div>
 
     <!-- DISCLAIMER & FOOTER -->
