@@ -448,220 +448,149 @@ canvas{max-width:100%}
 <script>
 let currentStep = 0;
 let goingBack = false;
+// VERSÃO FEMININA: gênero fixo como 'mulher' nesta variante de teste
 const ud = {
-  gender:'mulher', ageRange:null, goal:null, bodyType:null, targetBody:null,
-  focusAreas:[], lastBestShape:null, bodyDescription:null, ifKnowledge:null,
-  breakfast:null, lunch:null, dinner:null, dietaryRestrictions:[], dislikedFoods:[],
-  mealPreference:null, weekendBreak:null, exerciseFrequency:null, stairsBreath:null, workRoutine:null,
+  gender:'mulher',
+  ageRange:null, goal:null, mainDifficulty:null,
+  bodyType:null, targetBody:null, focusAreas:[], lastBestShape:null, bodyDescription:null,
+  ifKnowledge:null,
+  breakfast:null, lunch:null, dinner:null,
+  dietaryRestrictions:[], dislikedFoods:[],
+  mealPreference:null, weekendBreak:null,
+  exerciseFrequency:null, stairsBreath:null, workRoutine:null,
   sleepHours:null, waterIntake:null, physicalProblems:[], weightGainEvents:[],
-  height:165, currentWeight:70, targetWeight:60, exactAge:null, upcomingEvent:null,
+  height:165, currentWeight:70, targetWeight:60,
+  exactAge:null, upcomingEvent:null,
   heightUnit:'cm', weightUnit:'kg'
 };
 
+// ─── QUIZ DE 12 PERGUNTAS (versão feminina) ───────────────────────────────
 const STEPS = [
-  {id:'intro',    type:'intro'},
-  {id:'gender',   type:'gender'},
-  {id:'age',      type:'single', q:'Ajuste o seu plano de acordo com\na sua idade', key:'ageRange',
-    getOpts: ()=>(ud.gender==='homem'?[
-      {l:'18 a 25 anos',img:'h18.jfif'},
-      {l:'26 a 35 anos',img:'h35.jfif'},
-      {l:'36 a 45 anos',img:'h45.jfif'},
-      {l:'+46 anos',img:'h46.jpg'}
-    ]:[
-      {l:'18 a 25 anos',img:'m18.png'},
-      {l:'26 a 35 anos',img:'m35.png'},
-      {l:'36 a 45 anos',img:'m45.png'},
-      {l:'+46 anos',img:'m46.png'}
-    ]),
-    opts:[{l:'18 a 25 anos'},{l:'26 a 35 anos'},{l:'36 a 45 anos'},{l:'+46 anos'}]},
-  {id:'goal',     type:'single', q:'Qual é o seu objetivo principal?', key:'goal',
-    getOpts: ()=>(ud.gender==='homem'?[
-      {l:'Organizar minha alimentação',img:'goal_lose_weight_man.png'},
-      {l:'Buscar mais energia e disposição',img:'goal_get_fit_man.png'},
-      {l:'Melhorar a saúde do coração',img:'goal_heart_health_man.png'},
-      {l:'Aliviar a rotina e o estresse',img:'goal_relieve_stress_man.png'}
-    ]:[
-      {l:'Organizar minha alimentação',img:'goal_lose_weight.png'},
-      {l:'Buscar mais energia e disposição',img:'goal_get_fit.png'},
-      {l:'Melhorar a saúde do coração',img:'goal_heart_health.png'},
-      {l:'Aliviar a rotina e o estresse',img:'goal_relieve_stress.png'}
-    ]),
+  // Tela 0: Introdução (não conta como pergunta)
+  {id:'intro', type:'intro'},
+
+  // P1 — Objetivo principal
+  {id:'goal', type:'single',
+    q:'Qual é o seu objetivo principal neste momento?',
+    key:'goal',
     opts:[
-      {l:'Organizar minha alimentação',img:'goal_lose_weight.png'},
-      {l:'Buscar mais energia e disposição',img:'goal_get_fit.png'},
-      {l:'Melhorar a saúde do coração',img:'goal_heart_health.png'},
-      {l:'Aliviar a rotina e o estresse',img:'goal_relieve_stress.png'}
+      {l:'Organizar minha alimentação', img:'goal_lose_weight.png'},
+      {l:'Buscar mais energia e disposição', img:'goal_get_fit.png'},
+      {l:'Melhorar minha rotina e bem-estar', img:'goal_heart_health.png'},
+      {l:'Emagrecer com uma rotina possível de seguir', img:'goal_relieve_stress.png'}
     ]},
-  {id:'bodytype', type:'single', q:'Como você percebe seu corpo hoje?', key:'bodyType',
-    getOpts: ()=>(ud.gender==='homem'?[
-      {l:'Magro',img:'body_type_magro_man.png'},{l:'Falso magro',img:'body_type_falso_magro_man.png'},{l:'Acima da faixa de peso',img:'body_type_sobrepeso_man.png'},{l:'Acima do peso desejado',img:'body_type_obeso_man.png'}
-    ]:[
-      {l:'Magra',img:'body_magra.png'},{l:'Falsa magra',img:'body_falsa_magra.png'},{l:'Acima da faixa de peso',img:'body_sobrepeso.png'},{l:'Acima do peso desejado',img:'body_obesa.png'}
-    ]),
-    opts:[{l:'Magro(a)'},{l:'Falso magro(a)'},{l:'Acima da faixa de peso'},{l:'Acima do peso desejado'}]},
-  {id:'targetbody',type:'single', q:'Qual resultado você gostaria de buscar?', key:'targetBody',
-    getOpts: ()=>(ud.gender==='homem'?[
-      {l:'Definido',img:'target_definido_man.png'},
-      {l:'Magro',img:'target_magro_man.png'},
-      {l:'Equilibrado',img:'target_normal_man.png'},
-      {l:'Em forma',img:'target_em_forma_man.png'},
-      {l:'Forte',img:'target_forte_man.png'}
-    ]:[
-      {l:'Curvilínea',img:'target_curvilinea.png'},
-      {l:'Magra',img:'target_magra.png'},
-      {l:'Equilibrada',img:'target_normal.png'},
-      {l:'Em forma',img:'target_em_forma.png'},
-      {l:'Mais preenchida',img:'target_cheia.png'}
-    ]),
-    opts:[{l:'Curvilínea'},{l:'Magra'},{l:'Equilibrada'},{l:'Em forma'},{l:'Mais preenchida'}]},
-  {id:'focusareas',type:'multi-card', q:'Quais áreas do corpo você quer\nfocar?', key:'focusAreas',
-    getOpts: ()=>(ud.gender==='homem'?[
-      {l:'Barriga',img:'peitinho.png'},{l:'Peito',img:'peitinho.png'},{l:'Braços',img:'braço.png'},{l:'Costas',img:'costa.png'},{l:'Pernas',img:'perna.png'}
-    ]:[
-      {l:'Barriga',img:'focus_barriga.png'},{l:'Glúteos',img:'focus_bunda.png'},{l:'Busto',img:'focus_peito.png'},{l:'Pernas',img:'focus_pernas.png'}
-    ]),
-    opts:[{l:'Barriga'},{l:'Glúteos'},{l:'Busto'},{l:'Pernas'}]},
-  {id:'lastshape', type:'single', q:'Faz quanto tempo que você se\nsentiu na sua melhor forma?', key:'lastBestShape',
-    layout:'side', getImg: ()=>(ud.gender==='homem'?'lastshape_man.png':'gender_woman.png'),
-    opts:[{l:'0 a 6 meses atrás'},{l:'7 a 12 meses atrás'},{l:'1 a 3 anos atrás'},{l:'Mais de 3 anos atrás'}]},
-  {id:'info-metabolism', type:'info-metabolism'},
-  {id:'bodyDesc', type:'single', q:'O que mais te descreve?', key:'bodyDescription',
-    getOpts: ()=>(ud.gender==='homem'?[
-      {l:'Tenho dificuldade em ganhar massa',e:'😐'},{l:'Mantenho meu peso com facilidade',e:'💪'},{l:'Tenho tendência a acumular peso na rotina',e:'😬'}
-    ]:[
-      {l:'Tenho dificuldade em ganhar massa',e:'😐'},{l:'Mantenho meu peso com facilidade',e:'💪'},{l:'Tenho tendência a acumular peso na rotina',e:'😬'}
-    ]),
-    opts:[{l:'Tenho dificuldade em ganhar massa'},{l:'Mantenho meu peso com facilidade'},{l:'Tenho tendência a acumular peso na rotina'}]},
-  {id:'ifknowledge',type:'single', q:'O que você sabe sobre organizar\nsuas janelas de alimentação?', key:'ifKnowledge',
-    getOpts: ()=>(ud.gender==='homem'?[
-      {l:'Nunca experimentei',img:'h18.jfif'},
-      {l:'Conheço um pouco',img:'h35.jfif'},
-      {l:'Já tenho experiência',img:'h45.jfif'}
-    ]:[
-      {l:'Nunca experimentei',img:'if_know_nothing.jpg'},
-      {l:'Conheço um pouco',img:'if_know_a_little.jpg'},
-      {l:'Já tenho experiência',img:'if_know_a_lot.jpg'}
-    ]),
+
+  // P2 — Faixa etária
+  {id:'age', type:'single',
+    q:'Qual faixa etária melhor representa você?',
+    key:'ageRange',
     opts:[
-      {l:'Nunca experimentei',img:'if_know_nothing.jpg'},
-      {l:'Conheço um pouco',img:'if_know_a_little.jpg'},
-      {l:'Já tenho experiência',img:'if_know_a_lot.jpg'}
+      {l:'18 a 25 anos', img:'m18.png'},
+      {l:'26 a 35 anos', img:'m35.png'},
+      {l:'36 a 45 anos', img:'m45.png'},
+      {l:'46 anos ou mais', img:'m46.png'}
     ]},
-  {id:'breakfast', type:'single', q:'Quando você costuma tomar seu\ncafé da manhã?', key:'breakfast',
+
+  // P3 — Rotina de horários
+  {id:'workroutine', type:'single',
+    q:'Como é a sua rotina de horários?',
+    key:'workRoutine',
+    layout:'side', img:'work_routine.png',
     opts:[
-      {l:'Entre 6 e 8 da manhã',img:'breakfast_early.png'},
-      {l:'Entre 8 e 10 da manhã',img:'breakfast_mid.png'},
-      {l:'Entre 10h e meio-dia',img:'breakfast_late.png'},
-      {l:'Eu costumo pular o café da manhã',img:'breakfast_skip.png'}
+      {l:'Trabalho em horário comercial'},
+      {l:'Trabalho em turnos ou à noite'},
+      {l:'Tenho horários flexíveis'},
+      {l:'Minha rotina muda bastante'},
+      {l:'Estou aposentada ou não tenho horário fixo'}
     ]},
-  {id:'lunch',    type:'single', q:'Quando você costuma almoçar?', key:'lunch',
+
+  // P4 — Restrições alimentares (multi, exclusividade mútua)
+  {id:'restrictions', type:'multi-exclusive',
+    q:'Existe alguma restrição alimentar que devemos considerar?',
+    key:'dietaryRestrictions',
+    exclusiveOpt:'Nenhuma das opções acima',
     opts:[
-      {l:'Entre 10h e 12h',img:'lunch_10.png'},
-      {l:'Entre 12h e 14h',img:'lunch_12.png'},
-      {l:'Entre 14h e 16h',img:'lunch_14.png'},
-      {l:'Eu costumo pular o almoço',img:'lunch_skip.png'}
+      {l:'Sem lactose', sub:'Não consumo alimentos com lactose', e:'🍼'},
+      {l:'Sem glúten', sub:'Evito grãos com glúten', e:'🍩'},
+      {l:'Vegetariana', sub:'Não como carne', e:'🥦'},
+      {l:'Vegana', sub:'Não consumo produtos de origem animal', e:'🌱'},
+      {l:'Não consumo peixe', sub:'Não como nenhum tipo de peixe', e:'🐟'},
+      {l:'Nenhuma das opções acima', sub:'Como quase tudo', e:'❌'}
     ]},
-  {id:'dinner',   type:'single', q:'Quando você janta?', key:'dinner',
-    opts:[{l:'Entre 16h e 18h',e:'🥩'},{l:'Entre 18h e 20h',e:'🍲'},{l:'Entre 20h e 22h',e:'🥑'},{l:'Eu costumo pular o jantar',e:'💧'}]},
-  {id:'restrictions',type:'multi', q:'Você tem alguma restrição\nalimentar?', key:'dietaryRestrictions',
-    getOpts: ()=>(ud.gender==='homem'?[
-      {l:'Sem lactose',sub:'Eu não consumo alimentos com lactose',e:'🍼'},
-      {l:'Sem glúten',sub:'Eu evito grãos com glúten',e:'🍩'},
-      {l:'Vegetariano',sub:'Eu não como carne',e:'🥦'},
-      {l:'Vegano',sub:'Eu não consumo produto de origem animal',e:'🌱'},
-      {l:'Nenhum peixe',sub:'Não como nenhum tipo de peixe',e:'🐟'},
-      {l:'Nenhum dos acima',sub:'Eu como quase tudo',e:'❌'}
-    ]:[
-      {l:'Sem lactose',sub:'Eu não consumo alimentos com lactose',e:'🍼'},
-      {l:'Sem glúten',sub:'Eu evito grãos com glúten',e:'🍩'},
-      {l:'Vegetariana',sub:'Eu não como carne',e:'🥦'},
-      {l:'Vegana',sub:'Eu não consumo produto de origem animal',e:'🌱'},
-      {l:'Nenhum peixe',sub:'Não como nenhum tipo de peixe',e:'🐟'},
-      {l:'Nenhuma das acima',sub:'Eu como quase tudo',e:'❌'}
-    ]),
-    opts:[{l:'Sem lactose'},{l:'Sem glúten'},{l:'Vegetariana'},{l:'Vegana'},{l:'Nenhum peixe'},{l:'Nenhuma das acima'}]},
-  {id:'dislikedfoods',type:'food-picker', q:'Escolha os alimentos que você prefere EXCLUIR'},
-  {id:'mealpref', type:'single', q:'Como você prefere resolver suas refeições?', key:'mealPreference',
-    opts:[{l:'Cozinhar em casa',e:'🍳'},{l:'Comer em restaurante',e:'🍽️'},{l:'Pedir delivery',e:'🍟'},{l:'Um pouco de tudo',e:'😊'}]},
-  {id:'weekendbrk',type:'single', q:'Você prefere uma rotina mais flexível no final de semana?', key:'weekendBreak',
-    opts:[{l:'Sim, prefiro mais liberdade no fim de semana',e:'🤙'},{l:'Prefiro manter a mesma rotina todos os dias',e:'💪'}]},
-  {id:'exercise', type:'single', q:'Com que frequência você se\nexercita?', key:'exerciseFrequency',
-    layout:'side', getImg: ()=>(ud.gender==='homem'?'exercise_man.png':'goal_get_fit.jpg'),
-    opts:[{l:'Quase todos os dias'},{l:'Várias vezes por semana'},{l:'Várias vezes por mês'},{l:'Raramente / Nunca'}]},
-  {id:'stairs', type:'single', q:'Como seu corpo costuma reagir ao subir uma escada?', key:'stairsBreath',
+
+  // P5 — Alimentos a evitar (food-picker com opção exclusiva)
+  {id:'dislikedfoods', type:'food-picker',
+    q:'Quais alimentos você prefere evitar?'},
+
+  // P6 — Forma de organizar as refeições
+  {id:'mealpref', type:'single',
+    q:'Como você prefere organizar suas refeições?',
+    key:'mealPreference',
     opts:[
-      {l:'Fico bastante cansado(a)',e:'🥵'},
-      {l:'Sinto um leve cansaço, mas normal',e:'💨'},
-      {l:'Fico bem, sem alterações',e:'🙂'},
-      {l:'Subo facilmente sem nenhum esforço',e:'🚀'}
+      {l:'Cozinhar em casa', e:'🍳'},
+      {l:'Comer fora', e:'🍽️'},
+      {l:'Pedir delivery', e:'🍟'},
+      {l:'Um pouco de cada', e:'😊'}
     ]},
-  {id:'workroutine',type:'single', q:'Como é a sua rotina de trabalho?', key:'workRoutine',
-    layout:'side', getImg: ()=>(ud.gender==='homem'?'lastshape_man.png':'work_routine.png'),
-    getOpts: ()=>(ud.gender==='homem'?[
-      {l:'das 09:00 às 18:00'},{l:'Turnos noturnos'},{l:'Meu horário é flexível'},{l:'Aposentado / Outro'}
-    ]:[
-      {l:'das 09:00 às 18:00'},{l:'Turnos noturnos'},{l:'Meu horário é flexível'},{l:'Aposentada / Outro'}
-    ]),
-    opts:[{l:'das 09:00 às 18:00'},{l:'Turnos noturnos'},{l:'Meu horário é flexível'},{l:'Aposentado / Outro'}]},
-  {id:'sleep',    type:'single', q:'Quantas horas você costuma\ndormir?', key:'sleepHours',
-    layout:'side', getImg: ()=>(ud.gender==='homem'?'goal_relieve_stress_man.png':'goal_relieve_stress.jpg'),
-    opts:[{l:'Menos de 5 horas'},{l:'Entre 5 e 6 horas'},{l:'Entre 7 e 8 horas'},{l:'Mais de 8 horas'}]},
-  {id:'water',    type:'single', q:'Qual é a sua ingestão diária de\nágua?', key:'waterIntake',
-    layout:'side', img:'💧',
-    opts:[{l:'Consumo pouca água (1-2 copos)'},{l:'Entre 3 e 5 copos'},{l:'Entre 6 e 8 copos'},{l:'Mais de 8 copos'}]},
-  {id:'physical', type:'multi', q:'Existe alguma limitação ou desconforto que devemos considerar?', key:'physicalProblems',
-    getOpts: ()=>(ud.gender==='homem'?[
-      {l:'Sensibilidade nos joelhos',e:'🦵'},{l:'Sensibilidade nas costas',e:'🔙'},{l:'Nenhum dos acima',e:'✅'}
-    ]:[
-      {l:'Sensibilidade nos joelhos',e:'🦵'},{l:'Sensibilidade nas costas',e:'🔙'},{l:'Nenhuma das acima',e:'✅'}
-    ]),
-    opts:[{l:'Sensibilidade nos joelhos'},{l:'Sensibilidade nas costas'},{l:'Nenhum dos acima'}]},
-  {id:'weightgain',type:'multi', q:'Algum desses fatores influenciou seus hábitos nos últimos anos?', key:'weightGainEvents',
-    getOpts: ()=>(ud.gender==='homem'?[
-      {l:'Mudanças na rotina pessoal ou relacionamento',e:'👰'},
-      {l:'Rotina corrida no trabalho ou família',e:'😓'},
-      {l:'Mudanças financeiras ou estresse',e:'💰'},
-      {l:'Falta de tempo para preparar refeições',e:'🏥'},
-      {l:'Mudanças no ritmo do metabolismo',e:'👵'},
-      {l:'Nenhum dos acima',e:'❌'}
-    ]:[
-      {l:'Mudanças na rotina pessoal ou relacionamento',e:'👰'},
-      {l:'Rotina corrida no trabalho ou família',e:'😓'},
-      {l:'Mudanças financeiras ou estresse',e:'💰'},
-      {l:'Falta de tempo para preparar refeições',e:'🏥'},
-      {l:'Mudanças no ritmo do metabolismo',e:'👵'},
-      {l:'Nenhuma das acima',e:'❌'}
-    ]),
+
+  // P7 — Principal dificuldade (NOVO)
+  {id:'maindifficulty', type:'single',
+    q:'O que mais dificulta manter uma rotina alimentar?',
+    key:'mainDifficulty',
     opts:[
-      {l:'Mudanças na rotina pessoal ou relacionamento',e:'👰'},
-      {l:'Rotina corrida no trabalho ou família',e:'😓'},
-      {l:'Mudanças financeiras ou estresse',e:'💰'},
-      {l:'Falta de tempo para preparar refeições',e:'🏥'},
-      {l:'Mudanças no ritmo do metabolismo',e:'👵'},
-      {l:'Nenhuma das acima',e:'❌'}
+      {l:'Falta de tempo', e:'⏰'},
+      {l:'Vontade de comer fora de hora', e:'🍫'},
+      {l:'Dificuldade para planejar refeições', e:'📋'},
+      {l:'Falta de ideias para variar o cardápio', e:'🥗'},
+      {l:'Minha rotina muda constantemente', e:'🔄'}
     ]},
-  {id:'motivation', type:'single', q:'O que melhor descreve seu momento atual?', key:'motivationLevel',
+
+  // P8 — Frequência de exercícios
+  {id:'exercise', type:'single',
+    q:'Com que frequência você se movimenta ou pratica exercícios?',
+    key:'exerciseFrequency',
+    layout:'side', img:'goal_get_fit.jpg',
     opts:[
-      {l:'Quero conhecer o método para entender se encaixa na minha rotina',e:'🤔'},
-      {l:'Estou pronto(a) para organizar meus hábitos e ver evolução',e:'🤘'},
-      {l:'Busco um acompanhamento prático para seguir com consistência',e:'🔥'}
+      {l:'Quase todos os dias'},
+      {l:'Algumas vezes por semana'},
+      {l:'Algumas vezes por mês'},
+      {l:'Raramente ou nunca'}
     ]},
-  {id:'height',   type:'slider', q:'Qual é a sua altura?', key:'height', min:140, max:220, def:165, units:['cm','pol']},
-  {id:'curweight',type:'slider', q:'Qual é o seu peso atual?', key:'currentWeight', min:40, max:180, def:70, units:['kg','lb']},
-  {id:'tgtweight',type:'slider', q:'Qual a sua meta de peso?', key:'targetWeight', min:40, max:180, def:60, units:['kg','lb'], showIMC:true},
-  {id:'exactage', type:'age-input', q:'Qual é a sua idade exata?', key:'exactAge'},
-  {id:'imc-summary', type:'imc-summary'},
-  {id:'event',    type:'single', q:'Você tem algum compromisso ou evento nos próximos meses?',
-    sub:'Ter uma data importante em mente ajuda na consistência do seu plano!',
-    key:'upcomingEvent',
-    opts:[{l:'Viagem / Férias',e:'✈️'},{l:'Casamento / Festa',e:'💍'},{l:'Feriado especial',e:'🏖️'},{l:'Aniversário',e:'🎉'},{l:'Outro evento',e:'🤷'},{l:'Nenhum evento específico',e:'❌'}]},
-  {id:'wgraph',   type:'weight-graph'},
-  {id:'loading',  type:'loading'},
-  {id:'result',   type:'result'}
+
+  // P9 — Experiência com janela alimentar
+  {id:'ifknowledge', type:'single',
+    q:'Você já experimentou organizar uma janela alimentar?',
+    key:'ifKnowledge',
+    opts:[
+      {l:'Nunca experimentei', img:'if_know_nothing.jpg'},
+      {l:'Conheço, mas tenho pouca experiência', img:'if_know_a_little.jpg'},
+      {l:'Já experimentei algumas vezes', img:'if_know_a_lot.jpg'},
+      {l:'Já faz parte da minha rotina', img:'if_know_a_lot.jpg'}
+    ]},
+
+  // P10 — Altura
+  {id:'height', type:'slider',
+    q:'Qual é a sua altura?',
+    key:'height', min:140, max:220, def:165, units:['cm','pol']},
+
+  // P11 — Peso atual
+  {id:'curweight', type:'slider',
+    q:'Qual é o seu peso atual?',
+    key:'currentWeight', min:40, max:180, def:70, units:['kg','lb']},
+
+  // P12 — Objetivo de peso
+  {id:'tgtweight', type:'slider',
+    q:'Qual é o seu objetivo de acompanhamento?',
+    key:'targetWeight', min:40, max:180, def:60, units:['kg','lb'], showIMC:false},
+
+  // Telas auxiliares (não contam como perguntas)
+  {id:'loading', type:'loading'},
+  {id:'result',  type:'result'}
 ];
 
-const QUESTION_IDS = STEPS.filter(s=>['single','multi','multi-card','slider','age-input','food-picker'].includes(s.type)).map(s=>s.id);
-const TOTAL_Q = QUESTION_IDS.length;
+// IDs dos 12 passos respondíveis (para contagem de progresso)
+const QUESTION_IDS = ['goal','age','workroutine','restrictions','dislikedfoods','mealpref','maindifficulty','exercise','ifknowledge','height','curweight','tgtweight'];
+const TOTAL_Q = 12;
 
 function render(){
   const step = STEPS[currentStep];
@@ -672,15 +601,19 @@ function render(){
 
   if (!wrap || !step) return;
 
+  const isQuestion = QUESTION_IDS.includes(step.id);
+  const qIdx = QUESTION_IDS.indexOf(step.id);
+
   if (pbWrap && back && pbFill) {
-    if(step.type === 'intro' || step.type === 'gender'){
+    if(step.type === 'intro'){
       pbWrap.style.display = 'none';
       back.style.display = 'none';
     } else {
       pbWrap.style.display = 'block';
       back.style.display = (currentStep > 1) ? 'block' : 'none';
-      const qIdx = QUESTION_IDS.indexOf(step.id);
-      const pct = qIdx >= 0 ? Math.round(((qIdx+1)/TOTAL_Q)*100) : Math.min(98, Math.round((currentStep/STEPS.length)*100));
+      const pct = isQuestion
+        ? Math.round(((qIdx+1)/TOTAL_Q)*100)
+        : Math.min(99, Math.round((currentStep/STEPS.length)*100));
       pbFill.style.width = pct + '%';
     }
   }
@@ -689,29 +622,30 @@ function render(){
   goingBack = false;
 
   switch(step.type){
-    case 'intro':          wrap.innerHTML = renderIntro(); break;
-    case 'gender':         wrap.innerHTML = renderGender(); break;
-    case 'single':         wrap.innerHTML = renderSingle(step); break;
-    case 'multi':          wrap.innerHTML = renderMulti(step); break;
-    case 'multi-card':     wrap.innerHTML = renderMultiCard(step); break;
-    case 'slider':         wrap.innerHTML = renderSlider(step); postSlider(step); break;
-    case 'age-input':      wrap.innerHTML = renderAgeInput(step); break;
-    case 'food-picker':    wrap.innerHTML = renderFoodPicker(); break;
-    case 'info-social':    wrap.innerHTML = renderInfoSocial(); break;
-    case 'info-chart1':    wrap.innerHTML = renderInfoChart1(); setTimeout(drawChart1,80); break;
-    case 'info-metabolism':wrap.innerHTML = renderInfoMetabolism(); setTimeout(drawMetabolism,80); break;
-    case 'info-face':      wrap.innerHTML = renderInfoFace(); break;
-    case 'imc-summary':    wrap.innerHTML = renderIMCSummary(); break;
-    case 'weight-graph':   wrap.innerHTML = renderWeightGraphScreen(); setTimeout(()=>drawWeightGraph('wgcanvas'),100); break;
-    case 'loading':        wrap.innerHTML = renderLoading(); startLoading(); break;
-    case 'result':         wrap.innerHTML = renderResult(); setTimeout(()=>drawWeightGraph('rcanvas'),100); break;
+    case 'intro':           wrap.innerHTML = renderIntro(); break;
+    case 'single':          wrap.innerHTML = renderSingle(step); break;
+    case 'multi':           wrap.innerHTML = renderMulti(step); break;
+    case 'multi-exclusive': wrap.innerHTML = renderMultiExclusive(step); break;
+    case 'multi-card':      wrap.innerHTML = renderMultiCard(step); break;
+    case 'slider':          wrap.innerHTML = renderSlider(step); postSlider(step); break;
+    case 'food-picker':     wrap.innerHTML = renderFoodPicker(); break;
+    case 'loading':         wrap.innerHTML = renderLoading(); startLoading(); break;
+    case 'result':          wrap.innerHTML = renderResult(); break;
     default: wrap.innerHTML = '<p>Step not found</p>';
   }
   window.scrollTo(0,0);
   saveQuizProgress();
+
+  // ── Rastreamento granular ────────────────────────────────────────────
   try {
     if(typeof fbq === 'function' && step && step.id) {
-      fbq('trackCustom', 'QuizStepCompleted', { step_id: step.id, step_index: currentStep });
+      if(isQuestion) {
+        fbq('trackCustom', 'quiz_step_completed', {
+          step_id: step.id,
+          question_number: qIdx + 1,
+          total_questions: TOTAL_Q
+        });
+      }
     }
   } catch(e){}
 }
@@ -743,7 +677,7 @@ function validateCurrentStep(){
     }
   }
 
-  if(step.type === 'multi' || step.type === 'multi-card'){
+  if(step.type === 'multi' || step.type === 'multi-card' || step.type === 'multi-exclusive'){
     const val = ud[step.key];
     if(!val || val.length === 0){
       showValidationError('Por favor, selecione pelo menos 1 opção para continuar.');
@@ -767,12 +701,23 @@ function validateCurrentStep(){
 function triggerSyncNext(){
   if(!validateCurrentStep()) return;
   haptic();
+
+  // Disparar quiz_started ao sair da intro
+  const step = STEPS[currentStep];
+  if(step && step.type === 'intro') {
+    try {
+      if(typeof fbq === 'function') {
+        fbq('trackCustom', 'quiz_started', {});
+      }
+    } catch(e){}
+  }
+
   const app = document.getElementById('app');
   const sync = document.createElement('div');
   sync.className = 'sync-overlay';
   sync.innerHTML = `
     <div class="sync-spinner"></div>
-    <div class="sync-text">Sincronização Metabólica...</div>
+    <div class="sync-text">Sincronizando...</div>
   `;
   app.appendChild(sync);
 
@@ -802,33 +747,21 @@ function renderIntro(){
   </div>`;
 }
 
+// renderGender() mantida internamente mas não exposta no fluxo
 function renderGender(){
-  return `
-  <div>
-    <div style="background:rgba(0,242,255,0.06);border:1px solid var(--border-glass);border-radius:14px;padding:12px 14px;margin-bottom:16px;font-size:12px;line-height:1.5;color:var(--silver-light);text-align:center">
-      💡 Vou usar suas respostas para adaptar exemplos de refeições, horários e sugestões à sua rotina. Responda com sinceridade. Não existe resposta certa ou errada.
-    </div>
-    <h2 class="q-title">Perfil para:</h2>
-    <div class="gender-grid">
-      <div class="gender-card" onclick="selGender('homem',this)">
-        <div class="gender-card-img"><img src="gender_man.png" alt="Homem" style="width:100%;height:100%;object-fit:cover"></div>
-        <div class="gender-card-foot"><span>Homem</span><span style="color:var(--cyan-neon)">›</span></div>
-      </div>
-      <div class="gender-card" onclick="selGender('mulher',this)">
-        <div class="gender-card-img"><img src="gender_woman.png" alt="Mulher" style="width:100%;height:100%;object-fit:cover"></div>
-        <div class="gender-card-foot"><span>Mulher</span><span style="color:var(--cyan-neon)">›</span></div>
-      </div>
-    </div>
-  </div>`;
+  return `<div><p style="color:var(--silver);text-align:center;padding:40px">Carregando...</p></div>`;
 }
 
 function renderSingle(step){
   const saved = ud[step.key];
   const opts = typeof step.getOpts === 'function' ? step.getOpts() : step.opts;
+  const qNum = QUESTION_IDS.indexOf(step.id) + 1;
+  const qLabel = qNum > 0 ? `<div style="font-size:11px;font-weight:700;color:var(--cyan-neon);letter-spacing:1px;margin-bottom:8px">PERGUNTA ${qNum} DE ${TOTAL_Q}</div>` : '';
   if(step.layout === 'side'){
     const sideImg = typeof step.getImg === 'function' ? step.getImg() : step.img;
     return `
     <div>
+      ${qLabel}
       <h2 class="q-title">${step.question||step.q}</h2>
       <div class="side-layout">
         <div class="side-img-box">${sideImg && sideImg.includes('.') ? `<img src="${sideImg}" style="width:100%;height:100%;object-fit:cover;object-position:${step.id==='workroutine'?'right center':'center center'}">` : sideImg||'👩'}</div>
@@ -843,6 +776,7 @@ function renderSingle(step){
   }
   return `
   <div>
+    ${qLabel}
     <h2 class="q-title">${step.question||step.q}</h2>
     ${step.sub?`<p class="q-sub">${step.sub}</p>`:''}
     <div class="opts">
@@ -861,12 +795,40 @@ function renderSingle(step){
 function renderMulti(step){
   const saved = ud[step.key]||[];
   const opts = typeof step.getOpts === 'function' ? step.getOpts() : step.opts;
+  const qNum = QUESTION_IDS.indexOf(step.id) + 1;
   return `
   <div>
+    ${qNum>0?`<div style="font-size:11px;font-weight:700;color:var(--cyan-neon);letter-spacing:1px;margin-bottom:8px">PERGUNTA ${qNum} DE ${TOTAL_Q}</div>`:''}
     <h2 class="q-title">${step.question||step.q}</h2>
+    <p class="q-sub" style="margin-bottom:14px">Selecione uma ou mais opções.</p>
     <div class="opts" id="multi-opts">
       ${opts.map(o=>`
       <div class="opt ${saved.includes(o.l)?'sel':''}" onclick="togMulti('${step.key}','${esc(o.l)}',this)">
+        ${o.e?`<span class="opt-emoji" style="margin-right:10px;margin-left:0">${o.e}</span>`:''}
+        <div style="flex:1">
+          <div class="opt-label">${o.l}</div>
+          ${o.sub?`<div class="opt-sub">${o.sub}</div>`:''}
+        </div>
+        <div class="chk"><span class="chk-mark">✓</span></div>
+      </div>`).join('')}
+    </div>
+    <div class="mt16"><button class="btn btn-primary" onclick="triggerSyncNext()">Continuar</button></div>
+  </div>`;
+}
+
+function renderMultiExclusive(step){
+  const saved = ud[step.key]||[];
+  const opts = step.opts;
+  const excl = step.exclusiveOpt;
+  const qNum = QUESTION_IDS.indexOf(step.id) + 1;
+  return `
+  <div>
+    ${qNum>0?`<div style="font-size:11px;font-weight:700;color:var(--cyan-neon);letter-spacing:1px;margin-bottom:8px">PERGUNTA ${qNum} DE ${TOTAL_Q}</div>`:''}
+    <h2 class="q-title">${step.q}</h2>
+    <p class="q-sub" style="margin-bottom:14px">Selecione todas que se aplicam.</p>
+    <div class="opts" id="multi-opts">
+      ${opts.map(o=>`
+      <div class="opt ${saved.includes(o.l)?'sel':''}" onclick="togMultiExclusive('${step.key}','${esc(o.l)}','${esc(excl)}',this)">
         ${o.e?`<span class="opt-emoji" style="margin-right:10px;margin-left:0">${o.e}</span>`:''}
         <div style="flex:1">
           <div class="opt-label">${o.l}</div>
@@ -907,13 +869,17 @@ function renderSlider(step){
   const activeUnit = step.key==='height' ? ud.heightUnit : ud.weightUnit;
   const val = step.key==='targetWeight' ? getTargetWeight() : (ud[step.key] || step.def);
   const disp = toDisplay(val, step.key, activeUnit);
-  const imcHtml = step.showIMC ? `
-  <div class="info-box info-blue" id="imcBox">
-    <div class="ib-title" id="imcTitle">O seu IMC requer calibração metabólica!</div>
-    <p>É hora de otimizar sua composição corporal. O sistema criará uma rotina adaptada para reprogramar seu metabolismo, preservar massa magra e maximizar a queima lipídica.</p>
+  const qNum = QUESTION_IDS.indexOf(step.id) + 1;
+  const qLabel = qNum > 0 ? `<div style="font-size:11px;font-weight:700;color:var(--cyan-neon);letter-spacing:1px;margin-bottom:8px">PERGUNTA ${qNum} DE ${TOTAL_Q}</div>` : '';
+  // P12: mensagem de apoio neutra (sem promessa de resultado)
+  const supportMsg = step.id === 'tgtweight' ? `
+  <div class="info-box info-blue" style="margin-top:14px">
+    <div class="ib-title">📌 Referência de acompanhamento</div>
+    <p>Este valor será usado apenas como referência para acompanhar seu ponto de partida e organizar sua rotina.</p>
   </div>` : '';
   return `
   <div>
+    ${qLabel}
     <h2 class="q-title center">${step.q}</h2>
     <div class="slider-wrap">
       <div class="unit-toggle">
@@ -924,10 +890,10 @@ function renderSlider(step){
       <div class="range-track">
         <input type="range" class="rng" id="mainSlider" min="${step.min}" max="${step.max}" value="${val}" oninput="onSlide(this,'${step.key}')">
       </div>
-      <p class="slider-hint">Arraste para calibrar</p>
+      <p class="slider-hint">Arraste para ajustar</p>
       <div class="slider-minmax"><span>${step.min}</span><span>${step.max}</span></div>
     </div>
-    ${imcHtml}
+    ${supportMsg}
     <button class="btn btn-primary mt16" onclick="triggerSyncNext()">Continuar</button>
   </div>`;
 }
@@ -954,9 +920,19 @@ const FOODS = [
 
 function renderFoodPicker(){
   const saved = ud.dislikedFoods||[];
+  const qNum = QUESTION_IDS.indexOf('dislikedfoods') + 1;
   return `
   <div>
-    <h2 class="q-title">Escolha os alimentos para EXCLUIR do seu plano</h2>
+    ${qNum>0?`<div style="font-size:11px;font-weight:700;color:var(--cyan-neon);letter-spacing:1px;margin-bottom:8px">PERGUNTA ${qNum} DE ${TOTAL_Q}</div>`:''}
+    <h2 class="q-title">Quais alimentos você prefere evitar?</h2>
+    <p class="q-sub" style="margin-bottom:14px">Selecione os que desejar. Use a opção abaixo se não tiver preferência.</p>
+    <div style="margin-bottom:14px">
+      <div class="opt ${saved.includes('Não tenho preferência')?'sel':''}" onclick="togFoodExclusive('Não tenho preferência',this)">
+        <span class="opt-emoji" style="margin-right:10px;margin-left:0">😊</span>
+        <div style="flex:1"><div class="opt-label">Não tenho preferência</div></div>
+        <div class="chk"><span class="chk-mark">✓</span></div>
+      </div>
+    </div>
     ${FOODS.map(cat=>`
     <div class="food-cat-title">${cat.cat}</div>
     <div class="food-grid">
@@ -1101,13 +1077,66 @@ function renderTest(t){
 }
 
 function renderResult(){
-  const tw = getTargetWeight();
-  ud.targetWeight = tw;
+  // Disparar quiz_completed após a pergunta 12
+  try {
+    if(typeof fbq === 'function') {
+      fbq('trackCustom', 'quiz_completed', { total_questions: TOTAL_Q });
+      fbq('track', 'Lead', { content_name: 'METASYNC IA Quiz Completed', gender: ud.gender });
+      fbq('trackCustom', 'offer_viewed', { plan: 'PRO' });
+    }
+    localStorage.setItem('metasync_completed_quiz', 'true');
+    localStorage.setItem('metasync_user_data', JSON.stringify(ud));
+  } catch(e){}
+
+  const cw = ud.currentWeight || 70;
+  const tw = ud.targetWeight || getTargetWeight();
+  const userInformedTarget = ud.targetWeight && ud.targetWeight !== getTargetWeight();
+  const targetLabel = userInformedTarget ? 'Meta Informada' : 'Objetivo de referência do plano';
+
+  // Resumo personalizado baseado somente nas respostas reais
+  const items = [];
+  if(ud.goal) items.push(`<div style="font-size:12px;color:var(--silver-light);padding:6px 0;border-bottom:1px solid var(--border-subtle)">🎯 <strong>Objetivo:</strong> ${ud.goal}</div>`);
+  if(ud.workRoutine) items.push(`<div style="font-size:12px;color:var(--silver-light);padding:6px 0;border-bottom:1px solid var(--border-subtle)">⏰ <strong>Rotina de horários:</strong> ${ud.workRoutine}</div>`);
+  if(ud.mainDifficulty) items.push(`<div style="font-size:12px;color:var(--silver-light);padding:6px 0;border-bottom:1px solid var(--border-subtle)">⚠️ <strong>Principal dificuldade:</strong> ${ud.mainDifficulty}</div>`);
+  if(ud.mealPreference) items.push(`<div style="font-size:12px;color:var(--silver-light);padding:6px 0;border-bottom:1px solid var(--border-subtle)">🍽️ <strong>Preferência de refeições:</strong> ${ud.mealPreference}</div>`);
+  if(ud.exerciseFrequency) items.push(`<div style="font-size:12px;color:var(--silver-light);padding:6px 0;border-bottom:1px solid var(--border-subtle)">🏃 <strong>Frequência de exercícios:</strong> ${ud.exerciseFrequency}</div>`);
+  const restr = ud.dietaryRestrictions && ud.dietaryRestrictions.length > 0 ? ud.dietaryRestrictions.join(', ') : null;
+  if(restr) items.push(`<div style="font-size:12px;color:var(--silver-light);padding:6px 0">🥗 <strong>Restrições:</strong> ${restr}</div>`);
+
   return `
   <div>
-      <div class="graph-labels"><span>Dia 01</span><span>Dia 21</span></div>
+    <div style="text-align:center;margin-bottom:20px">
+      <div style="display:inline-block;background:rgba(0,242,255,0.1);border:1px solid var(--cyan-neon);color:var(--cyan-neon);font-size:10px;font-weight:900;padding:4px 12px;border-radius:20px;letter-spacing:1px;text-transform:uppercase;margin-bottom:12px;box-shadow:0 0 10px var(--cyan-glow)">✅ AVALIAÇÃO CONCLUÍDA</div>
+      <h2 class="q-title center" style="font-size:24px;margin-bottom:8px">Seu plano de 21 dias está pronto</h2>
+      <p class="q-sub" style="margin-bottom:0">Organizamos uma prévia com base nas suas respostas sobre rotina, preferências e objetivo.</p>
     </div>
-    <button class="btn btn-primary mt16" onclick="showSales()">ACESSAR PAINEL DASHBOARD 🚀</button>
+
+    <div style="background:rgba(0,242,255,0.06);border:1.5px solid var(--border-glass);border-radius:20px;padding:18px;margin-bottom:18px">
+      <div style="font-size:11px;font-weight:900;color:var(--cyan-neon);letter-spacing:0.8px;margin-bottom:12px">📋 SEU PLANO FOI ORGANIZADO CONSIDERANDO:</div>
+      ${items.length > 0 ? items.join('') : '<div style="font-size:12px;color:var(--silver)">Suas respostas foram registradas com sucesso.</div>'}
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:18px">
+      <div style="background:rgba(0,0,0,0.3);border:1px solid var(--border-subtle);border-radius:14px;padding:12px;text-align:center">
+        <div style="font-size:11px;color:var(--silver);margin-bottom:4px">Ponto de partida</div>
+        <div style="font-family:'Montserrat',sans-serif;font-size:20px;font-weight:900;color:var(--cyan-neon);text-shadow:0 0 10px var(--cyan-glow)">${cw} kg</div>
+      </div>
+      <div style="background:rgba(0,0,0,0.3);border:1px solid var(--border-subtle);border-radius:14px;padding:12px;text-align:center">
+        <div style="font-size:11px;color:var(--silver);margin-bottom:4px">${targetLabel}</div>
+        <div style="font-family:'Montserrat',sans-serif;font-size:20px;font-weight:900;color:var(--cyan-neon);text-shadow:0 0 10px var(--cyan-glow)">${tw} kg</div>
+      </div>
+    </div>
+    <div style="font-size:10.5px;color:var(--silver);text-align:center;margin-bottom:18px">Este valor é uma referência de acompanhamento. Não constitui promessa de resultado.</div>
+
+    <div style="background:rgba(255,255,255,0.03);border:1px solid var(--border-glass);border-radius:16px;padding:16px;margin-bottom:20px">
+      <div style="font-family:'Montserrat',sans-serif;font-size:12px;font-weight:900;color:var(--cyan-neon);margin-bottom:10px;text-align:center">📅 ESTRUTURA DO PLANO DE 21 DIAS</div>
+      <div style="font-size:12px;color:var(--cyan-neon);font-weight:700;margin-bottom:6px">📍 Semana 1: Organizar horários e refeições</div>
+      <div style="font-size:12px;color:var(--cyan-neon);font-weight:700;margin-bottom:6px">📍 Semana 2: Ajustar o plano à sua rotina</div>
+      <div style="font-size:12px;color:var(--cyan-neon);font-weight:700">📍 Semana 3: Revisar progresso e próximos passos</div>
+    </div>
+
+    <button class="btn btn-primary mt16" onclick="showSales()" style="font-size:15px;padding:20px">VER MEU PLANO COMPLETO 🚀</button>
+    <p style="font-size:11px;color:var(--silver);text-align:center;margin-top:8px">Acesse a prévia do plano e as opções de acesso.</p>
   </div>`;
 }
 
@@ -1129,10 +1158,64 @@ function togMulti(key,val,el){
 }
 
 function togFood(food,el){
-  el.classList.toggle('sel');
+  // Se selecionou um alimento específico, remover "Não tenho preferência"
   if(!ud.dislikedFoods) ud.dislikedFoods=[];
+  const noPrefIdx = ud.dislikedFoods.indexOf('Não tenho preferência');
+  if(noPrefIdx >= 0) {
+    ud.dislikedFoods.splice(noPrefIdx, 1);
+    const noPrefel = document.querySelector('.opt.sel .opt-label');
+    // Desmarcar visualmente o botão exclusivo
+    document.querySelectorAll('#foodExclusiveOpt').forEach(e => e.classList.remove('sel'));
+  }
+  el.classList.toggle('sel');
   const i=ud.dislikedFoods.indexOf(food);
   if(i>=0) ud.dislikedFoods.splice(i,1); else ud.dislikedFoods.push(food);
+}
+
+function togFoodExclusive(val, el){
+  haptic();
+  if(!ud.dislikedFoods) ud.dislikedFoods=[];
+  const alreadySel = ud.dislikedFoods.includes(val);
+  if(alreadySel){
+    // Desmarcar
+    el.classList.remove('sel');
+    const idx = ud.dislikedFoods.indexOf(val);
+    if(idx>=0) ud.dislikedFoods.splice(idx,1);
+  } else {
+    // Selecionar exclusivo: desmarcar todos os outros
+    ud.dislikedFoods = [val];
+    document.querySelectorAll('.food-chip.sel').forEach(e => e.classList.remove('sel'));
+    el.classList.add('sel');
+  }
+}
+
+function togMultiExclusive(key, val, exclusiveOpt, el){
+  haptic();
+  if(!ud[key]) ud[key]=[];
+  const isExclusive = (val === exclusiveOpt);
+  const opts = document.querySelectorAll('#multi-opts .opt');
+
+  if(isExclusive){
+    // Selecionar somente o exclusivo
+    const alreadySel = ud[key].includes(val);
+    ud[key] = alreadySel ? [] : [val];
+    opts.forEach(o => o.classList.remove('sel'));
+    if(!alreadySel) el.classList.add('sel');
+  } else {
+    // Desmarcar a opção exclusiva se estiver selecionada
+    const exclIdx = ud[key].indexOf(exclusiveOpt);
+    if(exclIdx >= 0) {
+      ud[key].splice(exclIdx, 1);
+      opts.forEach(o => {
+        const lbl = o.querySelector('.opt-label');
+        if(lbl && lbl.textContent.trim() === exclusiveOpt) o.classList.remove('sel');
+      });
+    }
+    // Toggle o item selecionado
+    el.classList.toggle('sel');
+    const i = ud[key].indexOf(val);
+    if(i>=0) ud[key].splice(i,1); else ud[key].push(val);
+  }
 }
 
 function postSlider(step){
@@ -1292,6 +1375,10 @@ function goToCheckout(planType = 'pro'){
   const val = isBasic ? 19.00 : 29.00;
   try {
     if(typeof fbq === 'function') {
+      // Evento específico por plano
+      fbq('trackCustom', isBasic ? 'basic_cta_clicked' : 'pro_cta_clicked', { plan: planType });
+      // checkout_started somente quando o checkout for realmente aberto
+      fbq('trackCustom', 'checkout_started', { plan: planType, value: val, currency: 'BRL' });
       fbq('track', 'InitiateCheckout', { content_name: planName, currency: 'BRL', value: val });
     }
     localStorage.setItem('metasync_opened_checkout', 'true');
