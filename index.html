@@ -843,17 +843,17 @@ function goBack(){ if(currentStep > 0){ goingBack=true; currentStep--; render();
 function renderIntro(){
   return `
   <div style="text-align:center">
-    <h1 style="font-family:'Montserrat',sans-serif;font-size:23px;font-weight:900;line-height:1.35;margin-bottom:14px;color:#fff">
+    <h1 style="font-family:'Montserrat',sans-serif;font-size:22px;font-weight:900;line-height:1.3;margin-bottom:10px;color:#fff">
       Sua transformação em 21 dias começa com uma <span style="color:var(--cyan-neon);text-shadow:0 0 12px var(--cyan-glow)">rotina possível de seguir.</span>
     </h1>
-    <p style="font-size:13.5px;line-height:1.6;margin-bottom:20px;color:var(--silver)">
+    <p style="font-size:12.5px;line-height:1.5;margin-bottom:14px;color:var(--silver)">
       Responda algumas perguntas sobre seus horários, preferências e objetivo. No final, você verá uma prévia do plano METASYNC organizado para o seu momento.
     </p>
-    <div style="margin:18px 0;border-radius:20px;overflow:hidden;border:1px solid var(--border-glass)">
-      <img src="hero_transformation.png" alt="Exemplo de rotina e acompanhamento METASYNC IA" style="width:100%;height:auto;display:block;border-radius:18px">
+    <div style="margin:12px auto;max-width:290px;border-radius:16px;overflow:hidden;border:1px solid var(--border-glass)">
+      <img src="hero_transformation.png" alt="Exemplo de rotina e acompanhamento METASYNC IA" style="width:100%;height:180px;object-fit:cover;display:block;border-radius:14px">
     </div>
     <button class="btn btn-primary btn-intro" onclick="triggerSyncNext()">CRIAR MEU PLANO GRATUITAMENTE ⚡</button>
-    <p style="font-size:11.5px;color:var(--silver);margin-top:10px">Leva cerca de 2 minutos. Não existe resposta certa ou errada.</p>
+    <p style="font-size:11px;color:var(--silver);margin-top:8px">Leva cerca de 2 minutos. Não existe resposta certa ou errada.</p>
   </div>`;
 }
 
