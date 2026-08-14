@@ -74,7 +74,7 @@ body::before{
 }
 
 /* ===== APP SHELL ===== */
-#app{width:100%;max-width:440px;min-height:100vh;background:var(--bg-deep);position:relative;overflow-x:hidden;z-index:1;box-shadow:0 0 50px rgba(0, 242, 255, 0.12);border-left:1px solid var(--border-subtle);border-right:1px solid var(--border-subtle)}
+#app{width:100%;max-width:440px;min-height:100vh;background:var(--bg-deep);position:relative;overflow-x:hidden;z-index:1;box-shadow:0 0 50px rgba(0, 242, 255, 0.12);border-left:1px solid var(--border-subtle);border-right:1px solid var(--border-subtle);display:flex;flex-direction:column}
 
 /* ===== HEADER ===== */
 .quiz-header{display:flex;align-items:center;justify-content:center;padding:16px;position:relative;background:rgba(13, 13, 13, 0.85);backdrop-filter:blur(16px);border-bottom:1px solid var(--border-glass)}
@@ -426,7 +426,8 @@ canvas{max-width:100%}
 
 /* ===== NEWS MARQUEE CAROUSEL ===== */
 .news-marquee-wrap {
-  margin: 28px 0 16px;
+  margin-top: auto;
+  margin-bottom: 0;
   overflow: hidden;
   position: relative;
   background: rgba(255, 255, 255, 0.01);
@@ -434,6 +435,7 @@ canvas{max-width:100%}
   border-bottom: 1px solid var(--border-subtle);
   padding: 16px 0;
   width: 100%;
+  flex-shrink: 0;
 }
 .news-marquee-title {
   text-align: center;
