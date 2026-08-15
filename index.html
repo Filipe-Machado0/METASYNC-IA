@@ -357,14 +357,17 @@ canvas{max-width:100%}
 .pricing-section{padding:0 20px;margin:24px 0}
 .pricing-grid{display:flex;flex-direction:column;gap:18px}
 .plan-card-box{background:var(--bg-card);border:1px solid var(--border-glass);backdrop-filter:blur(14px);border-radius:22px;overflow:hidden;position:relative;transition:all .25s ease}
-.plan-card-box.pro-featured{border:2px solid var(--cyan-neon);box-shadow:0 0 30px var(--cyan-glow);background:linear-gradient(180deg, rgba(0, 242, 255, 0.08) 0%, rgba(18, 24, 32, 0.85) 100%)}
+.plan-card-box.basic-plan{box-shadow:0 12px 32px rgba(20, 53, 64, 0.08) !important;border:2px solid rgba(0, 122, 135, 0.18) !important}
+.plan-card-box.basic-plan *{font-family:'Montserrat',sans-serif !important}
+.plan-card-box.basic-plan .plan-card-title{color:#143540;font-size:20px !important;font-weight:900 !important}
+.plan-card-box.basic-plan .plan-price-inst{color:#007A87 !important;font-size:28px !important;font-weight:900 !important;text-shadow:none}
+.plan-card-box.basic-plan .plan-price-total{font-size:13px !important;font-weight:700 !important;color:#555 !important}
 .pro-ribbon{background:linear-gradient(135deg,var(--cyan-neon),var(--cyan-dark));color:#06080A;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:900;text-align:center;padding:7px;letter-spacing:1px;text-transform:uppercase}
 .plan-card-body{padding:20px}
 .plan-card-title{font-family:'Montserrat',sans-serif;font-size:18px;font-weight:900;color:#fff;margin-bottom:4px;display:flex;align-items:center;justify-content:space-between}
 .plan-card-subtitle{font-size:12px;color:var(--silver);margin-bottom:14px;line-height:1.4}
 .plan-price-wrap{margin-bottom:16px;padding-bottom:14px;border-bottom:1px solid var(--border-subtle)}
-.plan-price-inst{font-family:'Montserrat',sans-serif;font-size:24px;font-weight:900;color:var(--cyan-neon);text-shadow:0 0 10px var(--cyan-glow)}
-.plan-card-box.basic-plan .plan-price-inst{color:#143540 !important;text-shadow:none}
+.plan-price-inst{font-family:'Montserrat',sans-serif;font-size:28px;font-weight:900;color:var(--cyan-neon);text-shadow:0 0 10px var(--cyan-glow)}
 .plan-price-total{font-size:11.5px;color:var(--silver);margin-top:2px}
 .plan-features-list{display:flex;flex-direction:column;gap:9px;margin-bottom:20px}
 .plan-feat{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--silver-light)}
@@ -372,8 +375,8 @@ canvas{max-width:100%}
 .plan-card-box.basic-plan .plan-feat.included{color:#143540;font-weight:600}
 .plan-feat.excluded{color:rgba(20,53,64,0.4);text-decoration:line-through}
 .plan-feat-icon{font-size:14px;flex-shrink:0}
-.cta-btn-basic{width:100%;padding:16px;background:transparent;color:#143540;border:2px solid #143540;border-radius:14px;font-family:'Montserrat',sans-serif;font-size:13.5px;font-weight:800;cursor:pointer;transition:all .2s;text-transform:uppercase}
-.cta-btn-basic:hover{background:rgba(20,53,64,0.06);border-color:#143540}
+.cta-btn-basic{width:100%;padding:16px;background:#E5F8FA;color:#007A87;border:2px solid #007A87;border-radius:14px;font-family:'Montserrat',sans-serif;font-size:14px;font-weight:800;cursor:pointer;transition:all .2s;text-transform:uppercase;box-shadow:0 4px 12px rgba(0, 122, 135, 0.08)}
+.cta-btn-basic:hover{background:#d2f2f5;border-color:#007A87;transform:translateY(-1px)}
 .plan-card-box.basic-plan .plan-card-title{color:#143540}
 
 /* ===== CRO 1: DIAGNOSTIC REPORT CARD ===== */
