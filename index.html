@@ -1542,10 +1542,10 @@ const loadMsgs=[
   'Entendendo o ritmo que combina com você.',
   'Preparando uma recomendação simples para o seu próximo passo.'
 ];
-let loadTmr=null, loadPct=0, testIdx=0;
+let loadTmr=null, loadPct=0, loadTestIdx=0;
 
 function startLoading(){
-  loadPct=0; testIdx=0; clearInterval(loadTmr);
+  loadPct=0; loadTestIdx=0; clearInterval(loadTmr);
   loadTmr=setInterval(()=>{
     loadPct += 10;
     if(loadPct>=100){ loadPct=100; clearInterval(loadTmr); setTimeout(next,200); }
@@ -1559,11 +1559,11 @@ function startLoading(){
     // Smooth transition of testimonials if needed, or simply rotate
     const tests = getTestimonials();
     const newIdx=Math.floor((loadPct/100)*(tests.length-1));
-    if(newIdx!==testIdx){
-      testIdx=newIdx;
+    if(newIdx!==loadTestIdx){
+      loadTestIdx=newIdx;
       const tw=document.getElementById('testWrap');
-      if(tw){ tw.innerHTML=renderTest(tests[testIdx]); tw.style.animation='none'; void tw.offsetWidth; tw.style.animation='fadeIn .3s ease'; }
-      document.querySelectorAll('#testDots .dot').forEach((d,i)=>d.classList.toggle('act',i===testIdx));
+      if(tw){ tw.innerHTML=renderTest(tests[loadTestIdx]); tw.style.animation='none'; void tw.offsetWidth; tw.style.animation='fadeIn .3s ease'; }
+      document.querySelectorAll('#testDots .dot').forEach((d,i)=>d.classList.toggle('act',i===loadTestIdx));
     }
   },420);
 }
@@ -2107,7 +2107,23 @@ function showSales(){
         <div style="font-family:'Montserrat',sans-serif;font-size:13px;font-weight:900;color:var(--cyan-neon);margin-bottom:10px;text-align:center;letter-spacing:0.5px">
           🚀 COMO VOCÊ COMEÇA
         </div>
-              <!-- PLANO 1: BÁSICO -->
+        <div style="display:flex;flex-direction:column;gap:10px;font-size:12px;color:var(--silver-light);line-height:1.4">
+          <div><strong>1. Confirme o pagamento:</strong> escolha seu plano e conclua a compra em ambiente 100% seguro.</div>
+          <div><strong>2. Receba o acesso:</strong> receba as instruções de acesso no seu e-mail cadastrado.</div>
+          <div><strong>3. Entre na plataforma:</strong> acesse e comece a organizar seu plano de 21 dias.</div>
+        </div>
+      </div>
+
+      <!-- REFORÇO DE SEGURANÇA E LIMITES -->
+      <div style="margin:0 0 16px;padding:10px 14px;background:rgba(255,255,255,0.02);border:1px solid var(--border-subtle);border-radius:12px;text-align:center;font-size:11px;color:var(--silver);line-height:1.4">
+        🔒 O conteúdo é educativo e voltado à organização da rotina alimentar. Ele não substitui orientação médica ou nutricional.
+      </div>
+
+      <h2 class="plan-incl-title" style="margin-top:0;margin-bottom:16px">Escolha como deseja acessar seu plano 👇</h2>
+
+      <div class="pricing-grid">
+        ${ENABLE_BASIC_PLAN ? `
+        <!-- PLANO 1: BÁSICO -->
         <div class="plan-card-box basic-plan">
           <div class="plan-card-body">
             <div class="plan-card-title">
