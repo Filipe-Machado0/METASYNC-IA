@@ -611,80 +611,94 @@ const STEPS = [
   {id:'momento', type:'single',
     q:'Como você se sente em relação à sua rotina hoje?',
     key:'momento',
+    layout:'side',
+    img:'🧭',
     opts:[
-      {l:'Estou começando agora.'},
-      {l:'Já comecei algumas vezes, mas parei.'},
-      {l:'Tenho uma rotina, mas quero organizá-la melhor.'},
-      {l:'Estou sem direção e não sei qual deve ser o próximo passo.'}
+      {l:'Estou começando agora.', e:'🚀'},
+      {l:'Já comecei algumas vezes, mas parei.', e:'🔄'},
+      {l:'Tenho uma rotina, mas quero organizá-la melhor.', e:'✨'},
+      {l:'Estou sem direção e não sei qual deve ser o próximo passo.', e:'📍'}
     ]},
 
   // P2 — Principal dificuldade
   {id:'dificuldade', type:'single',
     q:'O que mais atrapalha sua constância atualmente?',
     key:'dificuldade',
+    layout:'side',
+    img:'🛑',
     opts:[
-      {l:'Falta de tempo.'},
-      {l:'Não saber exatamente o que fazer.'},
-      {l:'Dificuldade para manter a alimentação organizada.'},
-      {l:'Perder o ritmo depois de alguns dias.'},
-      {l:'Minha rotina muda muito.'}
+      {l:'Falta de tempo.', e:'⏱️'},
+      {l:'Não saber exatamente o que fazer.', e:'🤷‍♀️'},
+      {l:'Dificuldade para manter a alimentação organizada.', e:'🥗'},
+      {l:'Perder o ritmo depois de alguns dias.', e:'📉'},
+      {l:'Minha rotina muda muito.', e:'🌀'}
     ]},
 
   // P3 — Rotina real
   {id:'rotina', type:'single',
     q:'Como costuma ser uma semana comum para você?',
     key:'rotina',
+    layout:'side',
+    img:'📅',
     opts:[
-      {l:'Tenho horários relativamente previsíveis.'},
-      {l:'Cada dia é diferente.'},
-      {l:'Tenho pouco tempo livre.'},
-      {l:'Minha rotina muda por trabalho, família ou outros compromissos.'}
+      {l:'Tenho horários relativamente previsíveis.', e:'📆'},
+      {l:'Cada dia é diferente.', e:'🎲'},
+      {l:'Tenho pouco tempo livre.', e:'⏳'},
+      {l:'Minha rotina muda por trabalho, família ou outros compromissos.', e:'🏢'}
     ]},
 
   // P4 — Preferência de acompanhamento
   {id:'acompanhamento', type:'single',
     q:'O que ajudaria você a continuar?',
     key:'acompanhamento',
+    layout:'side',
+    img:'📈',
     opts:[
-      {l:'Saber exatamente qual é o próximo passo.'},
-      {l:'Ter uma lista simples para acompanhar.'},
-      {l:'Receber lembretes e revisões.'},
-      {l:'Adaptar o plano quando algo sair do esperado.'},
-      {l:'Visualizar minha evolução.'}
+      {l:'Saber exatamente qual é o próximo passo.', e:'🎯'},
+      {l:'Ter uma lista simples para acompanhar.', e:'📝'},
+      {l:'Receber lembretes e revisões.', e:'🔔'},
+      {l:'Adaptar o plano quando algo sair do esperado.', e:'🛠️'},
+      {l:'Visualizar minha evolução.', e:'📊'}
     ]},
 
   // P5 — Primeira vitória
   {id:'vitoria', type:'single',
     q:'Qual seria uma boa primeira vitória para você?',
     key:'vitoria',
+    layout:'side',
+    img:'🏆',
     opts:[
-      {l:'Voltar a ter uma rotina organizada.'},
-      {l:'Conseguir cumprir pequenos compromissos comigo.'},
-      {l:'Parar de começar sempre do zero.'},
-      {l:'Entender melhor o que funciona para minha rotina.'},
-      {l:'Sentir que estou avançando com mais clareza.'}
+      {l:'Voltar a ter uma rotina organizada.', e:'🥇'},
+      {l:'Conseguir cumprir pequenos compromissos comigo.', e:'🤝'},
+      {l:'Parar de começar sempre do zero.', e:'🛑'},
+      {l:'Entender melhor o que funciona para minha rotina.', e:'💡'},
+      {l:'Sentir que estou avançando com mais clareza.', e:'🔮'}
     ]},
 
   // P6 — Estilo de jornada
   {id:'estilo', type:'single',
     q:'Qual tipo de jornada parece mais possível agora?',
     key:'estilo',
+    layout:'side',
+    img:'⚡',
     opts:[
-      {l:'Um começo leve, com pequenas ações.'},
-      {l:'Um ritmo diário bem definido.'},
-      {l:'Um recomeço estruturado.'},
-      {l:'Uma base organizada para seguir com mais segurança.'}
+      {l:'Um começo leve, com pequenas ações.', e:'🍃'},
+      {l:'Um ritmo diário bem definido.', e:'⚡'},
+      {l:'Um recomeço estruturado.', e:'🔥'},
+      {l:'Uma base organizada para seguir com mais segurança.', e:'🛡️'}
     ]},
 
   // P7 — Disponibilidade
   {id:'disponibilidade', type:'single',
     q:'Quanto tempo você consegue reservar para cuidar da sua rotina na maioria dos dias?',
     key:'disponibilidade',
+    layout:'side',
+    img:'⏳',
     opts:[
-      {l:'Até 10 minutos.'},
-      {l:'De 10 a 20 minutos.'},
-      {l:'De 20 a 40 minutos.'},
-      {l:'Depende do dia; preciso de flexibilidade.'}
+      {l:'Até 10 minutos.', e:'⚡'},
+      {l:'De 10 a 20 minutos.', e:'🕒'},
+      {l:'De 20 a 40 minutos.', e:'⏰'},
+      {l:'Depende do dia; preciso de flexibilidade.', e:'🔀'}
     ]},
 
   // P8 — Confirmação
@@ -902,11 +916,12 @@ function renderSingle(step){
       ${halftimeBadge}
       <h2 class="q-title">${step.question||step.q}</h2>
       <div class="side-layout">
-        <div class="side-img-box">${sideImg && sideImg.includes('.') ? `<img src="${sideImg}" style="width:100%;height:100%;object-fit:cover;object-position:center center">` : sideImg||'👩'}</div>
+        <div class="side-img-box">${sideImg && sideImg.includes('.') ? `<img src="${sideImg}" style="width:100%;height:100%;object-fit:cover;object-position:center center">` : sideImg||'🧭'}</div>
         <div class="side-opts">
           ${opts.map(o=>`
-          <div class="opt ${saved===o.l?'sel':''}" onclick="selSingle('${step.key}','${esc(o.l)}',this)">
-            <span class="opt-label">${o.l}</span>
+          <div class="opt ${saved===o.l?'sel':''}" onclick="selSingle('${step.key}','${esc(o.l)}',this)" style="display:flex;align-items:center;gap:8px">
+            ${o.e?`<span class="opt-emoji" style="font-size:17px">${o.e}</span>`:''}
+            <span class="opt-label" style="font-size:12.5px;line-height:1.25">${o.l}</span>
           </div>`).join('')}
         </div>
       </div>
@@ -920,7 +935,8 @@ function renderSingle(step){
     ${step.sub?`<p class="q-sub">${step.sub}</p>`:''}
     <div class="opts">
       ${opts.map(o=>`
-      <div class="opt ${saved===o.l?'sel':''}" onclick="selSingle('${step.key}','${esc(o.l)}',this)">
+      <div class="opt ${saved===o.l?'sel':''}" onclick="selSingle('${step.key}','${esc(o.l)}',this)" style="display:flex;align-items:center;gap:10px">
+        ${o.e?`<span class="opt-emoji" style="font-size:20px">${o.e}</span>`:''}
         <div style="flex:1">
           <div class="opt-label">${o.l}</div>
           ${o.sub?`<div class="opt-sub">${o.sub}</div>`:''}
@@ -1280,8 +1296,8 @@ function submitLeadAndShowSales(){
     showValidationError('Por favor, insira o seu primeiro nome.');
     return;
   }
-  if(!contact){
-    showValidationError('Por favor, insira o seu e-mail ou WhatsApp.');
+  if(!contact || !contact.includes('@')){
+    showValidationError('Por favor, insira um e-mail válido.');
     return;
   }
   if(!consent){
@@ -1393,7 +1409,7 @@ function renderResult(){
         <input type="text" id="leadName" placeholder="Seu primeiro nome" style="width:100%;padding:14px;border:1.5px solid var(--border-glass);border-radius:12px;outline:none;font-size:14px;color:var(--silver-light);background:#fff">
       </div>
       <div style="margin-bottom:12px">
-        <input type="text" id="leadContact" placeholder="Seu melhor e-mail ou WhatsApp" style="width:100%;padding:14px;border:1.5px solid var(--border-glass);border-radius:12px;outline:none;font-size:14px;color:var(--silver-light);background:#fff">
+        <input type="email" id="leadContact" placeholder="Seu melhor e-mail" style="width:100%;padding:14px;border:1.5px solid var(--border-glass);border-radius:12px;outline:none;font-size:14px;color:var(--silver-light);background:#fff">
       </div>
       
       <label style="display:flex;align-items:flex-start;gap:8px;font-size:11px;color:var(--silver);cursor:pointer;text-align:left;line-height:1.4">
