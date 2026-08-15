@@ -378,6 +378,12 @@ canvas{max-width:100%}
 
 /* ===== CRO 1: DIAGNOSTIC REPORT CARD ===== */
 .diag-report-card{background:linear-gradient(180deg, rgba(0,242,255,0.06) 0%, rgba(18,24,32,0.85) 100%);border:1.5px solid var(--border-glass);backdrop-filter:blur(16px);border-radius:22px;padding:20px;margin:16px 20px;box-shadow:0 0 25px rgba(0,242,255,0.15)}
+.diag-report-card .diag-stat-label{color:rgba(255,255,255,0.65) !important}
+.plan-card-box.pro-featured .plan-card-subtitle{color:rgba(255,255,255,0.7) !important}
+.plan-card-box.pro-featured .plan-price-total{color:rgba(255,255,255,0.85) !important}
+.plan-card-box.pro-featured .plan-feat.included{color:#fff !important}
+.plan-card-box.pro-featured .trust-item{color:rgba(255,255,255,0.7) !important}
+.plan-card-box.pro-featured .plan-price-wrap{border-bottom-color:rgba(255,255,255,0.12) !important}
 .diag-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid var(--border-subtle)}
 .diag-user-title{font-family:'Montserrat',sans-serif;font-size:13.5px;font-weight:900;color:#fff}
 .diag-tag{background:rgba(255,59,92,0.15);color:var(--red-neon);border:1px solid var(--red-neon);font-size:9.5px;font-weight:800;padding:3px 8px;border-radius:12px;text-transform:uppercase}
@@ -1901,14 +1907,14 @@ function showSales(){
           <div class="diag-stat-val">${tw} kg</div>
         </div>
       </div>
-      <div style="font-size:10.5px;color:var(--silver);margin-top:6px;text-align:center">Estimativa baseada nas informações fornecidas.</div>
+      <div style="font-size:10.5px;color:rgba(255,255,255,0.55);margin-top:6px;text-align:center">Estimativa baseada nas informações fornecidas.</div>
       
       <!-- PERSONALIZAÇÃO COMPROVÁVEL -->
       <div style="margin-top:14px;padding:12px;background:rgba(0,242,255,0.04);border:1px solid var(--border-glass);border-radius:14px;text-align:left">
         <div style="font-size:11px;font-weight:900;color:var(--cyan-neon);letter-spacing:0.5px;margin-bottom:8px">
           📋 SEU PLANO FOI ORGANIZADO CONSIDERANDO:
         </div>
-        <div style="font-size:11.5px;color:var(--silver-light);line-height:1.6">
+        <div style="font-size:11.5px;color:rgba(255,255,255,0.85);line-height:1.6">
           ✓ Seus horários de rotina e sono informados<br>
           ✓ Suas preferências alimentares declaradas<br>
           ✓ Suas restrições e alimentos filtrados no quiz<br>
@@ -1920,16 +1926,16 @@ function showSales(){
       <div class="weekly-projection-title" style="margin-top:14px">📅 Estrutura do Plano de 21 Dias:</div>
       <div class="weekly-projection-grid">
         <div class="proj-step">
-          <div class="proj-week">Semana 1</div>
-          <div style="font-size:10.5px;color:var(--silver);margin-top:2px">Organizar horários e refeições</div>
+          <div class="proj-week" style="color:var(--cyan-neon);font-weight:800">Semana 1</div>
+          <div style="font-size:10.5px;color:rgba(255,255,255,0.7);margin-top:2px">Organizar horários e refeições</div>
         </div>
         <div class="proj-step">
-          <div class="proj-week">Semana 2</div>
-          <div style="font-size:10.5px;color:var(--silver);margin-top:2px">Ajustar o plano à sua rotina</div>
+          <div class="proj-week" style="color:var(--cyan-neon);font-weight:800">Semana 2</div>
+          <div style="font-size:10.5px;color:rgba(255,255,255,0.7);margin-top:2px">Ajustar o plano à sua rotina</div>
         </div>
         <div class="proj-step">
-          <div class="proj-week">Semana 3</div>
-          <div style="font-size:10.5px;color:var(--silver);margin-top:2px">Revisar progresso e próximos passos</div>
+          <div class="proj-week" style="color:var(--cyan-neon);font-weight:800">Semana 3</div>
+          <div style="font-size:10.5px;color:rgba(255,255,255,0.7);margin-top:2px">Revisar progresso e próximos passos</div>
         </div>
       </div>
     </div>
