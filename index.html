@@ -52,23 +52,23 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:
 :root{
   --bg-deep:#FCFAF6;
   --bg-card:#FFFFFF;
-  --cyan-neon:#4A6B53;
-  --cyan-glow:rgba(74, 107, 83, 0.15);
-  --cyan-dark:#3B5441;
-  --cyan-light:rgba(74, 107, 83, 0.05);
+  --cyan-neon:#007A87;
+  --cyan-glow:rgba(0, 122, 135, 0.15);
+  --cyan-dark:#143540;
+  --cyan-light:rgba(0, 122, 135, 0.05);
   --silver:#5A656B;
   --silver-light:#2C3539;
-  --border-glass:rgba(74, 107, 83, 0.15);
+  --border-glass:rgba(0, 122, 135, 0.12);
   --border-subtle:rgba(0, 0, 0, 0.06);
   --red-neon:#D98A6C;
-  --green-neon:#4A6B53;
+  --green-neon:#007A87;
   --yellow-neon:#E9967A;
 }
 
 /* ===== BACKGROUND FX ===== */
 body::before{
   content:'';position:fixed;top:0;left:0;width:100vw;height:100vh;
-  background:radial-gradient(circle at 50% 15%, rgba(74, 107, 83, 0.04) 0%, rgba(245, 243, 238, 0) 70%),
+  background:radial-gradient(circle at 50% 15%, rgba(0, 122, 135, 0.04) 0%, rgba(245, 243, 238, 0) 70%),
              radial-gradient(circle at 80% 75%, rgba(217, 138, 108, 0.02) 0%, rgba(245, 243, 238, 0) 60%);
   pointer-events:none;z-index:0;
 }
@@ -241,7 +241,7 @@ canvas{max-width:100%}
 
 .plan-item{padding:22px 20px;border-bottom:1px solid var(--border-subtle);text-align:center}
 .plan-icon{font-size:44px;margin-bottom:12px;filter:drop-shadow(0 0 10px var(--cyan-glow))}
-.plan-title{font-family:'Montserrat',sans-serif;font-size:17px;font-weight:800;color:#fff;margin-bottom:8px;line-height:1.35}
+.plan-title{font-family:'Montserrat',sans-serif;font-size:17px;font-weight:800;color:#143540;margin-bottom:8px;line-height:1.35}
 .plan-desc{font-size:13.5px;color:var(--silver-light);line-height:1.6}
 
 /* Expert Card */
@@ -358,15 +358,17 @@ canvas{max-width:100%}
 .plan-card-subtitle{font-size:12px;color:var(--silver);margin-bottom:14px;line-height:1.4}
 .plan-price-wrap{margin-bottom:16px;padding-bottom:14px;border-bottom:1px solid var(--border-subtle)}
 .plan-price-inst{font-family:'Montserrat',sans-serif;font-size:24px;font-weight:900;color:var(--cyan-neon);text-shadow:0 0 10px var(--cyan-glow)}
-.plan-card-box.basic-plan .plan-price-inst{color:#fff;text-shadow:none}
+.plan-card-box.basic-plan .plan-price-inst{color:#143540 !important;text-shadow:none}
 .plan-price-total{font-size:11.5px;color:var(--silver);margin-top:2px}
 .plan-features-list{display:flex;flex-direction:column;gap:9px;margin-bottom:20px}
 .plan-feat{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--silver-light)}
-.plan-feat.included{color:#fff;font-weight:600}
-.plan-feat.excluded{color:rgba(255,255,255,0.35);text-decoration:line-through}
+.plan-feat.included{color:#143540;font-weight:600}
+.plan-card-box.basic-plan .plan-feat.included{color:#143540;font-weight:600}
+.plan-feat.excluded{color:rgba(20,53,64,0.4);text-decoration:line-through}
 .plan-feat-icon{font-size:14px;flex-shrink:0}
-.cta-btn-basic{width:100%;padding:16px;background:rgba(255,255,255,0.08);color:#fff;border:1px solid var(--border-glass);border-radius:14px;font-family:'Montserrat',sans-serif;font-size:13.5px;font-weight:800;cursor:pointer;transition:all .2s;text-transform:uppercase}
-.cta-btn-basic:hover{background:rgba(255,255,255,0.15);border-color:var(--silver-light)}
+.cta-btn-basic{width:100%;padding:16px;background:transparent;color:#143540;border:2px solid #143540;border-radius:14px;font-family:'Montserrat',sans-serif;font-size:13.5px;font-weight:800;cursor:pointer;transition:all .2s;text-transform:uppercase}
+.cta-btn-basic:hover{background:rgba(20,53,64,0.06);border-color:#143540}
+.plan-card-box.basic-plan .plan-card-title{color:#143540}
 
 /* ===== CRO 1: DIAGNOSTIC REPORT CARD ===== */
 .diag-report-card{background:linear-gradient(180deg, rgba(0,242,255,0.06) 0%, rgba(18,24,32,0.85) 100%);border:1.5px solid var(--border-glass);backdrop-filter:blur(16px);border-radius:22px;padding:20px;margin:16px 20px;box-shadow:0 0 25px rgba(0,242,255,0.15)}
@@ -399,9 +401,9 @@ canvas{max-width:100%}
 /* ===== CRO 3: BONUSES STACK ===== */
 .bonuses-section{padding:0 20px;margin:24px 0}
 .bonus-card{background:var(--bg-card);border:1px solid var(--border-glass);backdrop-filter:blur(12px);border-radius:18px;padding:16px;margin-bottom:12px;display:flex;align-items:start;gap:14px;position:relative;overflow:hidden}
-.bonus-badge{position:absolute;top:10px;right:10px;background:var(--green-neon);color:#06080A;font-size:9.5px;font-weight:900;padding:2px 8px;border-radius:10px;text-transform:uppercase;box-shadow:0 0 8px var(--green-neon)}
+.bonus-badge{position:absolute;top:10px;right:10px;background:var(--green-neon);color:#fff;font-size:9.5px;font-weight:900;padding:2px 8px;border-radius:10px;text-transform:uppercase;box-shadow:0 0 8px var(--green-neon)}
 .bonus-icon{font-size:32px;flex-shrink:0;filter:drop-shadow(0 0 8px var(--cyan-glow))}
-.bonus-title{font-family:'Montserrat',sans-serif;font-size:14px;font-weight:800;color:#fff;margin-bottom:4px;padding-right:50px}
+.bonus-title{font-family:'Montserrat',sans-serif;font-size:14px;font-weight:800;color:#143540;margin-bottom:4px;padding-right:50px}
 .bonus-desc{font-size:12px;color:var(--silver-light);line-height:1.45;margin-bottom:6px}
 .bonus-price{font-size:11px;color:var(--silver)}
 .bonus-price del{color:var(--red-neon);margin-right:4px}
@@ -1841,7 +1843,7 @@ function showSales(){
     <div class="quiz-header" style="display:flex;align-items:center;justify-content:center;padding:16px;position:relative;background:rgba(13, 13, 13, 0.85);backdrop-filter:blur(16px);border-bottom:1px solid var(--border-glass)">
       <button class="btn-back" style="display:block;position:absolute;left:14px;background:none;border:none;font-size:22px;cursor:pointer;color:var(--silver);padding:4px 8px;line-height:1" onclick="returnToQuizFromSales()" title="Voltar ao Quiz">←</button>
       <div class="logo">
-        <span class="logo-badge">METASYNC</span> IA
+        <span class="logo-badge" style="color:#fff">MÉTODO</span> METASYNC
       </div>
     </div>
     ${renderNewsMarquee()}
@@ -1851,8 +1853,8 @@ function showSales(){
       <div style="display:inline-block;background:rgba(0,242,255,0.1);border:1px solid var(--cyan-neon);color:var(--cyan-neon);font-size:10px;font-weight:900;padding:4px 12px;border-radius:20px;letter-spacing:1px;text-transform:uppercase;margin-bottom:10px;box-shadow:0 0 10px var(--cyan-glow)">
         📋 AVALIAÇÃO CONCLUÍDA
       </div>
-      <h2 style="font-family:'Montserrat',sans-serif;font-size:21px;font-weight:900;line-height:1.35;color:#fff;letter-spacing:-0.3px">
-        Prévia de um plano de 21 dias <span style="color:var(--cyan-neon);text-shadow:0 0 12px var(--cyan-glow)">baseada nas suas respostas</span>
+      <h2 style="font-family:'Montserrat',sans-serif;font-size:21px;font-weight:900;line-height:1.35;color:#143540;letter-spacing:-0.3px">
+        Prévia de um plano de 21 dias <span style="color:var(--cyan-neon);text-shadow:none">baseada nas suas respostas</span>
       </h2>
       <p style="font-size:13px;color:var(--silver);margin-top:8px;line-height:1.5">
         Organizamos uma prévia com sugestões de refeições, horários e recursos de acompanhamento a partir das informações que você compartilhou.
@@ -1916,7 +1918,7 @@ function showSales(){
     <!-- REAL PRODUCT DEMO VIDEO SECTION -->
     <div style="padding:0 20px;margin:22px 0">
       <div style="text-align:center;margin-bottom:14px">
-        <h2 style="font-family:'Montserrat',sans-serif;font-size:18px;font-weight:900;color:#fff;line-height:1.3;letter-spacing:-0.3px;margin-bottom:4px">
+        <h2 style="font-family:'Montserrat',sans-serif;font-size:18px;font-weight:900;color:#143540;line-height:1.3;letter-spacing:-0.3px;margin-bottom:4px">
           VEJA O METASYNC FUNCIONANDO NA PRÁTICA
         </h2>
         <p style="font-size:12.5px;color:var(--silver);margin:0;line-height:1.4">
