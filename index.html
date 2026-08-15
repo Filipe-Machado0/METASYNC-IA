@@ -357,18 +357,18 @@ canvas{max-width:100%}
 .pricing-section{padding:0 20px;margin:24px 0}
 .pricing-grid{display:flex;flex-direction:column;gap:18px}
 .plan-card-box{background:var(--bg-card);border:1px solid var(--border-glass);backdrop-filter:blur(14px);border-radius:22px;overflow:hidden;position:relative;transition:all .25s ease}
-.plan-card-box.basic-plan{box-shadow:0 12px 32px rgba(20, 53, 64, 0.08) !important;border:2px solid rgba(0, 122, 135, 0.18) !important}
+.plan-card-box.basic-plan{box-shadow:0 8px 24px rgba(20, 53, 64, 0.04) !important;border:2px solid rgba(0, 122, 135, 0.25) !important}
 .plan-card-box.basic-plan *{font-family:'Montserrat',sans-serif !important}
 .plan-card-box.basic-plan .plan-card-title{color:#143540;font-size:20px !important;font-weight:900 !important}
 .plan-card-box.basic-plan .plan-price-inst{color:#007A87 !important;font-size:28px !important;font-weight:900 !important;text-shadow:none}
 .plan-card-box.basic-plan .plan-price-total{font-size:13px !important;font-weight:700 !important;color:#555 !important}
-.pro-ribbon{background:linear-gradient(135deg,var(--cyan-neon),var(--cyan-dark));color:#06080A;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:900;text-align:center;padding:7px;letter-spacing:1px;text-transform:uppercase}
+.pro-ribbon{background:var(--cyan-dark);color:#fff;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:900;text-align:center;padding:7px;letter-spacing:1px;text-transform:uppercase}
 .plan-card-body{padding:20px}
-.plan-card-title{font-family:'Montserrat',sans-serif;font-size:18px;font-weight:900;color:#fff;margin-bottom:4px;display:flex;align-items:center;justify-content:space-between}
-.plan-card-subtitle{font-size:12px;color:var(--silver);margin-bottom:14px;line-height:1.4}
+.plan-card-title{font-family:'Montserrat',sans-serif;font-size:18px;font-weight:900;color:#143540;margin-bottom:4px;display:flex;align-items:center;justify-content:space-between}
+.plan-card-subtitle{font-size:12.5px;color:#555;margin-bottom:14px;line-height:1.45}
 .plan-price-wrap{margin-bottom:16px;padding-bottom:14px;border-bottom:1px solid var(--border-subtle)}
-.plan-price-inst{font-family:'Montserrat',sans-serif;font-size:28px;font-weight:900;color:var(--cyan-neon);text-shadow:0 0 10px var(--cyan-glow)}
-.plan-price-total{font-size:11.5px;color:var(--silver);margin-top:2px}
+.plan-price-inst{font-family:'Montserrat',sans-serif;font-size:28px;font-weight:900;color:#007A87;text-shadow:none}
+.plan-price-total{font-size:13px;color:#143540;margin-top:2px;font-weight:700}
 .plan-features-list{display:flex;flex-direction:column;gap:9px;margin-bottom:20px}
 .plan-feat{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--silver-light)}
 .plan-feat.included{color:#143540;font-weight:600}
@@ -384,13 +384,15 @@ canvas{max-width:100%}
 .diag-report-card *{font-family:'Montserrat',sans-serif !important;font-weight:700 !important}
 .diag-report-card .diag-stat-label{color:rgba(255,255,255,0.85) !important;font-size:12.5px;font-weight:800 !important}
 .diag-report-card .diag-stat-val{font-size:22px !important;color:var(--cyan-neon) !important;text-shadow:0 0 10px var(--cyan-glow)}
-.plan-card-box.pro-featured{border:2.5px solid var(--cyan-neon) !important;box-shadow:0 0 35px var(--cyan-glow);background:#0B111A !important}
-.plan-card-box.pro-featured *{font-family:'Montserrat',sans-serif !important;font-weight:700 !important}
-.plan-card-box.pro-featured .plan-card-subtitle{color:rgba(255,255,255,0.85) !important;font-size:13.5px !important;line-height:1.55 !important;font-weight:600 !important}
-.plan-card-box.pro-featured .plan-price-total{color:#fff !important;font-size:13.5px !important;font-weight:800 !important}
-.plan-card-box.pro-featured .plan-feat.included{color:#fff !important;font-size:13.5px !important;font-weight:800 !important}
-.plan-card-box.pro-featured .trust-item{color:rgba(255,255,255,0.9) !important;font-size:12.5px !important;font-weight:800 !important}
-.plan-card-box.pro-featured .plan-price-wrap{border-bottom-color:rgba(255,255,255,0.2) !important}
+.plan-card-box.pro-featured{border:3px solid var(--cyan-dark) !important;box-shadow:0 8px 24px rgba(20,53,64,0.05);background:transparent !important}
+.plan-card-box.pro-featured *{font-family:'Montserrat',sans-serif !important;font-weight:700 !important;color:#143540 !important}
+.plan-card-box.pro-featured .plan-card-title{color:#143540 !important}
+.plan-card-box.pro-featured .plan-card-subtitle{color:#555 !important;font-size:13.5px !important;line-height:1.55 !important;font-weight:600 !important}
+.plan-card-box.pro-featured .plan-price-inst{color:#007A87 !important;font-size:28px !important;font-weight:900 !important}
+.plan-card-box.pro-featured .plan-price-total{color:#143540 !important;font-size:13.5px !important;font-weight:800 !important}
+.plan-card-box.pro-featured .plan-feat.included{color:#143540 !important;font-size:13.5px !important;font-weight:800 !important}
+.plan-card-box.pro-featured .trust-item{color:#143540 !important;font-size:12.5px !important;font-weight:800 !important}
+.plan-card-box.pro-featured .plan-price-wrap{border-bottom-color:var(--border-subtle) !important}
 .diag-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid var(--border-subtle)}
 .diag-user-title{font-family:'Montserrat',sans-serif;font-size:14px;font-weight:900;color:#fff}
 .diag-tag{background:rgba(255,59,92,0.15);color:var(--red-neon);border:1px solid var(--red-neon);font-size:9.5px;font-weight:800;padding:3px 8px;border-radius:12px;text-transform:uppercase}
@@ -2158,7 +2160,14 @@ function showSales(){
         🔒 O conteúdo é educativo e voltado à organização da rotina alimentar. Ele não substitui orientação médica ou nutricional.
       </div>
 
-      <h2 class="plan-incl-title" style="margin-top:0;margin-bottom:16px">Escolha como deseja acessar seu plano 👇</h2>
+      <div style="text-align:center;margin:32px 0 20px">
+        <div style="display:inline-block;background:rgba(0,122,135,0.08);border:1.5px solid var(--cyan-dark);color:var(--cyan-dark);font-size:11px;font-weight:900;padding:5px 14px;border-radius:20px;letter-spacing:1px;text-transform:uppercase;margin-bottom:8px;font-family:'Montserrat',sans-serif">
+          ⚡ OFERTAS DISPONÍVEIS
+        </div>
+        <h2 style="font-family:'Montserrat',sans-serif;font-size:21px;font-weight:900;color:#143540;margin:0;letter-spacing:-0.3px">
+          Escolha como deseja acessar seu plano 👇
+        </h2>
+      </div>
 
       <div class="pricing-grid">
         ${ENABLE_BASIC_PLAN ? `
