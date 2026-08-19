@@ -741,7 +741,7 @@ const STEPS = [
   {id:'weekendbrk',type:'single', q:'Voce prefere uma rotina mais\nflexivel no final de semana?', key:'weekendBreak',
     opts:[{l:'Sim, prefiro mais liberdade no fim de semana',e:'🤙'},{l:'Prefiro manter a mesma rotina todos os dias',e:'📅'}]},
   {id:'workroutine',type:'single', q:'Como e a sua rotina de trabalho?', key:'workRoutine',
-    layout:'side', getImg: ()=>(ud.gender==='homem'?'lastshape_man.png':'work_routine.png'),
+    layout:'side', getImg: ()=>(ud.gender==='homem'?'work_routine_man.png':'work_routine.png'),
     opts:[{l:'Trabalho em casa (home office)'},{l:'Trabalho em escritorio/fora'},{l:'Trabalho em turnos ou horarios variados'},{l:'Nao trabalho / estou disponivel'}]},
   {id:'exercise',  type:'single', q:'Com que frequencia voce pratica\nexercicios fisicos?', key:'exercise',
     layout:'side', getImg: ()=>(ud.gender==='homem'?'exercise_man.png':'goal_get_fit.jpg'),
